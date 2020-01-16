@@ -10,12 +10,13 @@
 		B2E1E96F23D10A58006E7619 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E96E23D10A58006E7619 /* AppDelegate.swift */; };
 		B2E1E97123D10A58006E7619 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E97023D10A58006E7619 /* SceneDelegate.swift */; };
 		B2E1E97423D10A58006E7619 /* RaffleBay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E97223D10A58006E7619 /* RaffleBay.xcdatamodeld */; };
-		B2E1E97623D10A58006E7619 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E97523D10A58006E7619 /* ContentView.swift */; };
+		B2E1E97623D10A58006E7619 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E97523D10A58006E7619 /* NavigationView.swift */; };
 		B2E1E97823D10A59006E7619 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2E1E97723D10A59006E7619 /* Assets.xcassets */; };
 		B2E1E97B23D10A59006E7619 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2E1E97A23D10A59006E7619 /* Preview Assets.xcassets */; };
 		B2E1E97E23D10A59006E7619 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E1E97C23D10A59006E7619 /* LaunchScreen.storyboard */; };
 		B2E1E98923D10A5A006E7619 /* RaffleBayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E98823D10A5A006E7619 /* RaffleBayTests.swift */; };
 		B2E1E99423D10A5A006E7619 /* RaffleBayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E99323D10A5A006E7619 /* RaffleBayUITests.swift */; };
+		B2E1E9A423D12441006E7619 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E9A323D12441006E7619 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,7 @@
 		B2E1E96E23D10A58006E7619 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2E1E97023D10A58006E7619 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B2E1E97323D10A58006E7619 /* RaffleBay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RaffleBay.xcdatamodel; sourceTree = "<group>"; };
-		B2E1E97523D10A58006E7619 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B2E1E97523D10A58006E7619 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		B2E1E97723D10A59006E7619 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2E1E97A23D10A59006E7619 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B2E1E97D23D10A59006E7619 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		B2E1E98F23D10A5A006E7619 /* RaffleBayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaffleBayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E1E99323D10A5A006E7619 /* RaffleBayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleBayUITests.swift; sourceTree = "<group>"; };
 		B2E1E99523D10A5A006E7619 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2E1E9A323D12441006E7619 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +103,10 @@
 		B2E1E96D23D10A58006E7619 /* RaffleBay */ = {
 			isa = PBXGroup;
 			children = (
+				B2E1E9A223D123AB006E7619 /* Models */,
+				B2E1E9A123D12122006E7619 /* Views */,
 				B2E1E96E23D10A58006E7619 /* AppDelegate.swift */,
 				B2E1E97023D10A58006E7619 /* SceneDelegate.swift */,
-				B2E1E97523D10A58006E7619 /* ContentView.swift */,
 				B2E1E97723D10A59006E7619 /* Assets.xcassets */,
 				B2E1E97C23D10A59006E7619 /* LaunchScreen.storyboard */,
 				B2E1E97F23D10A59006E7619 /* Info.plist */,
@@ -137,6 +140,22 @@
 				B2E1E99523D10A5A006E7619 /* Info.plist */,
 			);
 			path = RaffleBayUITests;
+			sourceTree = "<group>";
+		};
+		B2E1E9A123D12122006E7619 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2E1E97523D10A58006E7619 /* NavigationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B2E1E9A223D123AB006E7619 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B2E1E9A323D12441006E7619 /* Product.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +291,8 @@
 			files = (
 				B2E1E96F23D10A58006E7619 /* AppDelegate.swift in Sources */,
 				B2E1E97123D10A58006E7619 /* SceneDelegate.swift in Sources */,
-				B2E1E97623D10A58006E7619 /* ContentView.swift in Sources */,
+				B2E1E9A423D12441006E7619 /* Product.swift in Sources */,
+				B2E1E97623D10A58006E7619 /* NavigationView.swift in Sources */,
 				B2E1E97423D10A58006E7619 /* RaffleBay.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
