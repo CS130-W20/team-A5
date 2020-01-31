@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2734F6023E387F6002155FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734F5F23E387F6002155FB /* User.swift */; };
+		B2734F6223E390D1002155FB /* SaleItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734F6123E390D1002155FB /* SaleItemCellView.swift */; };
+		B2734F6423E3959C002155FB /* SaleItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734F6323E3959C002155FB /* SaleItemTableView.swift */; };
 		B2E1E96F23D10A58006E7619 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E96E23D10A58006E7619 /* AppDelegate.swift */; };
 		B2E1E97123D10A58006E7619 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E97023D10A58006E7619 /* SceneDelegate.swift */; };
 		B2E1E97423D10A58006E7619 /* RaffleBay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E97223D10A58006E7619 /* RaffleBay.xcdatamodeld */; };
@@ -16,7 +19,7 @@
 		B2E1E97E23D10A59006E7619 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E1E97C23D10A59006E7619 /* LaunchScreen.storyboard */; };
 		B2E1E98923D10A5A006E7619 /* RaffleBayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E98823D10A5A006E7619 /* RaffleBayTests.swift */; };
 		B2E1E99423D10A5A006E7619 /* RaffleBayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E99323D10A5A006E7619 /* RaffleBayUITests.swift */; };
-		B2E1E9A423D12441006E7619 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E9A323D12441006E7619 /* Product.swift */; };
+		B2E1E9A423D12441006E7619 /* SaleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1E9A323D12441006E7619 /* SaleItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B2734F5F23E387F6002155FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B2734F6123E390D1002155FB /* SaleItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemCellView.swift; sourceTree = "<group>"; };
+		B2734F6323E3959C002155FB /* SaleItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemTableView.swift; sourceTree = "<group>"; };
 		B2E1E96B23D10A58006E7619 /* RaffleBay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleBay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E1E96E23D10A58006E7619 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2E1E97023D10A58006E7619 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +58,7 @@
 		B2E1E98F23D10A5A006E7619 /* RaffleBayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaffleBayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E1E99323D10A5A006E7619 /* RaffleBayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleBayUITests.swift; sourceTree = "<group>"; };
 		B2E1E99523D10A5A006E7619 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2E1E9A323D12441006E7619 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		B2E1E9A323D12441006E7619 /* SaleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B2734F5E23E3874B002155FB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		B2E1E96223D10A58006E7619 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 		B2E1E96D23D10A58006E7619 /* RaffleBay */ = {
 			isa = PBXGroup;
 			children = (
+				B2734F5E23E3874B002155FB /* Controllers */,
 				B2E1E9A223D123AB006E7619 /* Models */,
 				B2E1E9A123D12122006E7619 /* Views */,
 				B2E1E96E23D10A58006E7619 /* AppDelegate.swift */,
@@ -146,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				B2E1E97523D10A58006E7619 /* NavigationView.swift */,
+				B2734F6123E390D1002155FB /* SaleItemCellView.swift */,
+				B2734F6323E3959C002155FB /* SaleItemTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,7 +169,8 @@
 		B2E1E9A223D123AB006E7619 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B2E1E9A323D12441006E7619 /* Product.swift */,
+				B2E1E9A323D12441006E7619 /* SaleItem.swift */,
+				B2734F5F23E387F6002155FB /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -290,8 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2E1E96F23D10A58006E7619 /* AppDelegate.swift in Sources */,
+				B2734F6423E3959C002155FB /* SaleItemTableView.swift in Sources */,
 				B2E1E97123D10A58006E7619 /* SceneDelegate.swift in Sources */,
-				B2E1E9A423D12441006E7619 /* Product.swift in Sources */,
+				B2734F6223E390D1002155FB /* SaleItemCellView.swift in Sources */,
+				B2734F6023E387F6002155FB /* User.swift in Sources */,
+				B2E1E9A423D12441006E7619 /* SaleItem.swift in Sources */,
 				B2E1E97623D10A58006E7619 /* NavigationView.swift in Sources */,
 				B2E1E97423D10A58006E7619 /* RaffleBay.xcdatamodeld in Sources */,
 			);

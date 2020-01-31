@@ -9,10 +9,10 @@
 import Foundation
 import SwiftUI
 
-struct Product: Identifiable {
-    
+struct SaleItem: Identifiable {
+    //TODO: Fill out based on class diagram
     // unique product id
-    var id: String
+    var id: String = UUID().uuidString
     
     // name of product
     let name: String
@@ -20,9 +20,8 @@ struct Product: Identifiable {
     // image of product
     let image: String
     
-    // price of ticket
-    let price: double_t
-    
-    // number of tickets remaining
-    let tickets: Int
+    init(name: String, image: String) {
+           self.name = name
+           self.image = image
+       }
 }
