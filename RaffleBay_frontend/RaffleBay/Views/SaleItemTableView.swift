@@ -16,11 +16,13 @@ struct SaleItemTableView : View {
     var body: some View {
         // Provides NavigationController
         NavigationView {
+
             VStack(alignment: .center){
                 TextField("Search", text: $search)
                     .frame(width: 360)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .shadow(color: Color.gray, radius: 10, x: 5, y: 5)                .font(Font.system(size: 36, design: .default))
+//                    .shadow(color: Color.gray, radius: 10, x: 5, y: 5)
+                    .font(Font.system(size: 36, design: .default))
                     ScrollView {
                         VStack {
                             
@@ -30,7 +32,19 @@ struct SaleItemTableView : View {
                         }
                     }
             }
-
+            .navigationBarItems(leading:
+                Button(action: {
+                    print("Edit button pressed...")
+                }) {
+                    Text("Menu")
+                },
+                trailing:
+                Button(action: {
+                    print("Edit button pressed...")
+                }) {
+                    Text("Profile")
+                }
+            )
         }.navigationBarTitle(Text("Home"))
     }
 }
