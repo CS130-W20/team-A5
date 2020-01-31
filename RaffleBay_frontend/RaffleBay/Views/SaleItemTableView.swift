@@ -8,17 +8,29 @@
 import SwiftUI
 
 struct SaleItemTableView : View {
-        
+    @State private var search: String = ""
+
     /// posts
-//    let posts = TestData.posts()
-    
+    let saleItems = SaleItemTestData.saleItems()
     /// view body
     var body: some View {
-        
         // Provides NavigationController
         NavigationView {
-            SaleItemCellView(saleItem: SaleItem(name: "meera", image: ""))
-                
+            VStack(alignment: .center){
+                TextField("Search", text: $search)
+                    .frame(width: 360)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .shadow(color: Color.gray, radius: 10, x: 5, y: 5)                .font(Font.system(size: 36, design: .default))
+                    ScrollView {
+                        VStack {
+                            
+                            ForEach(saleItems) { saleItem in
+                                SaleItemCellView(saleItem: saleItem)
+                            }
+                        }
+                    }
+            }
+
         }.navigationBarTitle(Text("Home"))
     }
 }
