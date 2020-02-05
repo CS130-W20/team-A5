@@ -13,13 +13,18 @@ const {UserRepo} = require('./models/user/postgres');
 const {UserModel} = require('./models/user');
 const {UserController} = require('./controllers/user');
 
+const {AuthService} = require('./services/auth')
+
 function start(port) {
   const postgres = PostgresDB(config.database);
 
   const userRepo = UserRepo(postgres);
   userRepo.setupRepo();
   const userModel = UserModel(userRepo);
-  const userController = UserController(userModel);
+
+  const authService = AuthService(userModel);
+
+  const userController = UserController(userModel, authService);
 
 
   const app = express();

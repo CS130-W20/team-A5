@@ -52,6 +52,7 @@ POST /api/users/signup (*No access token in header needed for this request*)
   "state": "<user_address_state>",
   "zip": "<user_address_zip>",
   "phone": "<user_phone>",
+  "auth_token": "<authentication_token_to_be_used_in_future_requests>"
 }
 ```
 returns
@@ -62,3 +63,34 @@ returns
 }
 
 ```
+
+### Get user info of logged in user
+GET /api/users/me
+
+returns
+```
+{
+  "data": <USER_MODEL_ABOVE>,
+  "message": "<ERROR_MESSAGE>",
+}
+
+```
+
+### Get user info of other user
+GET /api/users/{user_id}
+
+returns
+```
+{
+  "data": 
+	{
+	  "id": <RAFFLEBAY_USER_ID>,
+	  "first_name": "<user_first_name>",
+	  "last_name": "<user_last_name>",
+	  "email": "<user_email>",
+	  "picture_url": "<profile_picture_url>"
+	},
+  "message": "<ERROR_MESSAGE>",
+}
+```
+**Note:** If the user ID specified is that of the logged in user, the full user info will be given

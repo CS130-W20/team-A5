@@ -15,6 +15,7 @@ const UserRepo = (postgres) => {
       state text,
       zip text,
       phone text,
+      auth_token text,
       created_at timestamptz DEFAULT NOW()
     );`;
 
@@ -33,14 +34,14 @@ const UserRepo = (postgres) => {
 
   // Inserts a user entry into the users table
   const createUserSQL = `
-    INSERT INTO users(first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+    INSERT INTO users(first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone, auth_token)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
     RETURNING *;`;
 
   // Users createUserSQL and inserts a user into the users column. If we get an
   // error, then we return the (null, error), otherwise return (data, null)
-  const createUser = async (first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone) => {
-    const values = [first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone];
+  const createUser = async (first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone, token) => {
+    const values = [first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone, token];
     try {
       const client = await postgres.connect();
       const res = await client.query(createUserSQL, values);
@@ -51,18 +52,36 @@ const UserRepo = (postgres) => {
     }
   };
 
-  // Retrieve all user fields from the user column by a user's id. This should
-  // only ever return one user, since IDs should be unique
-  const getUserSQL = `
-    SELECT * FROM users WHERE id=$1;`;
+  // Retrieve the user id where the auth_token is given
+  const getUserInfoByAuthTokenSQL = `
+    SELECT * FROM users WHERE auth_token=$1;`;
 
-  // Uses getUserSQL to retrieve the user, and return either (user, null),
+  // Uses getUserIDByAuthTokenSQL to retrieve the user, and return either (user, null),
   // or (null, error)
-  const getUser = async (id) => {
+  const getUserInfoByAuthToken = async (token) => {
+    const values = [token];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getUserInfoByAuthTokenSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
+  // Retrieve abbreviated user fields from the user column by a user's id. This should
+  // only ever return one user, since IDs should be unique
+  const getOtherUserInfoSQL = `
+    SELECT id, first_name, last_name, pic_url FROM users WHERE id=$1;`;
+
+  // Uses getOtherUserInfoSQL to retrieve the user, and return either (user, null),
+  // or (null, error)
+  const getOtherUserInfo = async (id) => {
     const values = [id];
     try {
       const client = await postgres.connect();
-      const res = await client.query(getUserSQL, values);
+      const res = await client.query(getOtherUserInfoSQL, values);
       client.release();
       return [res.rows[0], null];
     } catch (err) {
@@ -73,7 +92,8 @@ const UserRepo = (postgres) => {
   return {
     setupRepo,
     createUser,
-    getUser,
+    getUserInfoByAuthToken,
+    getOtherUserInfo,
   };
 };
 

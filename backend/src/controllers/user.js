@@ -1,5 +1,5 @@
 const express = require('express');
-const UserController = (userModel) => {
+const UserController = (userModel, authService) => {
   const router = express.Router();
 
   // The API path to create a new user. Creates a user object and returns that object
@@ -19,6 +19,10 @@ const UserController = (userModel) => {
     const state = body['state']
     const zip = body['zip']
     const phone = body['phone']
+
+    // TEMP Creation of token for user to simulate authentication
+    const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    console.log(token)
     
     const [user, err] = await userModel.createUser(
       first_name,
@@ -31,6 +35,7 @@ const UserController = (userModel) => {
       state,
       zip, 
       phone,
+      token,
     );
 
     if (err) {
@@ -42,6 +47,64 @@ const UserController = (userModel) => {
     return res.status(200).json({
       data: user,
       message: '',
+    });
+  });
+
+  // Gets the logged in user using the authentication token passed in the request header
+  router.get('/me', async (req, res) => {
+  
+    // Get the user_id of the user sending the request
+    const [user_info, err] = await authService.getLoggedInUserInfo(req.headers);
+
+    if (err) {
+      return res.status(400).json({
+        data: null,
+        message: err.message
+      });
+    }
+
+    return res.status(200).json({
+      data: user,
+      message: ""
+    });
+  });
+
+  // Gets the user info for the user with id specified
+  // If this is not the logged in user, we show an abbreviated profile of 
+  // first name, last name, and profile picture
+  router.get('/:id', async (req, res) => {
+    const params = req.params;
+    const id = parseInt(params.id, 10);
+  
+    // Get the user_id of the user sending the request, to check if the ids match
+    const [user_info, err1] = await authService.getLoggedInUserInfo(req.headers);
+
+    if (err1) {
+      return res.status(400).json({
+        data: null,
+        message: err1
+      });
+    }
+
+    if (user_info['id'] == id) {
+      return res.status(200).json({
+        data: user_info,
+        message: ""
+      });
+    }
+
+    // Since we are accessing a user who is not the logged in user, show an abbreviated profile
+    const [user, err2] = await userModel.getOtherUserInfo(id);
+    if (err2) {
+      return res.status(400).json({
+        data: null,
+        message: err.message
+      });
+    }
+
+    return res.status(200).json({
+      data: user,
+      message: ""
     });
   });
 
