@@ -14,7 +14,7 @@ The backend for Rafflebay
 **Note**: Both **make p_shell** and **make reset_db** can only be run while the server is running
 
 ## How to do authorized requests
-Use the `access_token` from login to make requests
+Use the `auth_token` from the user model to make requests
   - Add `Authorization: Bearer <ACCESS_TOKEN>` to the header of the request
 
 
@@ -34,6 +34,7 @@ Use the `access_token` from login to make requests
   "state": "<user_address_state>",
   "zip": "<user_address_zip>",
   "phone": "<user_phone>",
+  "auth_token": "<authentication_token_to_be_used_in_future_requests>",
   "created_at": "<CREATED_AT_TIMESTAMP>",
 }
 ```
@@ -51,8 +52,7 @@ POST /api/users/signup (*No access token in header needed for this request*)
   "city": "<user_address_city>",
   "state": "<user_address_state>",
   "zip": "<user_address_zip>",
-  "phone": "<user_phone>",
-  "auth_token": "<authentication_token_to_be_used_in_future_requests>"
+  "phone": "<user_phone>"
 }
 ```
 returns
