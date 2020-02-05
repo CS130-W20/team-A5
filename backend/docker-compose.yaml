@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:10-alpine
+    volumes:
+      - rafflebay-pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS:-admin}
+      POSTGRES_DB: ${POSTGRES_DB:-rafflebay}
+    restart: unless-stopped
+  backend:
+    image: rafflebay/backend:latest
+    ports:
+      - 31337:31337
+    environment:
+      POSTGRES_HOSTNAME: postgres
+    restart: unless-stopped
+    depends_on: 
+      - postgres
+
+volumes:
+  rafflebay-pgdata:
