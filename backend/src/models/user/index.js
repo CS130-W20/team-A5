@@ -16,6 +16,9 @@ const UserModel = (repo) => {
 
   const getUserInfoByToken = async (id) => {
     const [user, err] = await repo.getUserInfoByAuthToken(id);
+    if (user == null) {
+      return [null, "User not found"]
+    }
     return [_.pick(user, allButPasshash), err];
   };
 
