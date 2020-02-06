@@ -15,31 +15,14 @@ struct SaleItemTableView : View {
     var body: some View {
         // Provides NavigationController
         NavigationView {
-
-//            VStack(alignment: .center){
-//                TextField("Search", text: $search)
-//                    .frame(width: 360)
-//                    .textFieldStyle(RoundedBorderTextFieldStyle())
-////                    .shadow(color: Color.gray, radius: 10, x: 5, y: 5)
-//                    .font(Font.system(size: 36, design: .default))
-//                    ScrollView {
-//                        VStack {
-//
-//                            ForEach(saleItems) { saleItem in
-//
-//                                SaleItemCellView(saleItem: saleItem)
-//                            }
-//                        }
-//                    }
-//            }
             List {
-                    ForEach(saleItems) { saleItem in
-                        NavigationLink(destination: SaleItemDetailView(saleItem: saleItem)) {
-                        SaleItemCellView(saleItem: saleItem)
+                    ForEach(saleItems) { singleSaleItem in
+                        NavigationLink(destination: SaleItemDetailView(saleItem: singleSaleItem)) {
+                        SaleItemCellView(saleItem: singleSaleItem)
                         }
                     }
-
             }
+        .navigationBarTitle("home")
             .navigationBarItems(leading:
                 Button(action: {
                     print("Edit button pressed...")
@@ -53,6 +36,6 @@ struct SaleItemTableView : View {
                     Text("Profile")
                 }
             )
-        }.navigationBarTitle(Text("Home"))
+        }
     }
 }
