@@ -8,6 +8,7 @@ const UserRepo = (postgres) => {
       first_name text,
       last_name text,
       email text NOT NULL UNIQUE,
+      passhash text NOT NULL,
       pic_url text,
       address_1 text,
       address_2 text,
@@ -34,14 +35,14 @@ const UserRepo = (postgres) => {
 
   // Inserts a user entry into the users table
   const createUserSQL = `
-    INSERT INTO users(first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone, auth_token)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+    INSERT INTO users(first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, auth_token)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
     RETURNING *;`;
 
   // Users createUserSQL and inserts a user into the users column. If we get an
   // error, then we return the (null, error), otherwise return (data, null)
-  const createUser = async (first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone, token) => {
-    const values = [first_name, last_name, email, pic_url, address_1, address_2, city, state, zip, phone, token];
+  const createUser = async (first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, token) => {
+    const values = [first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, token];
     try {
       const client = await postgres.connect();
       const res = await client.query(createUserSQL, values);
@@ -63,6 +64,24 @@ const UserRepo = (postgres) => {
     try {
       const client = await postgres.connect();
       const res = await client.query(getUserInfoByAuthTokenSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
+  // Retrieve the user id where the email is given
+  const getUserInfoByEmailSQL = `
+    SELECT * FROM users WHERE email=$1;`;
+
+  // Uses getUserInfoByEmailSQL to retrieve the user, and return either (user, null),
+  // or (null, error)
+  const getUserInfoByEmail = async (token) => {
+    const values = [token];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getUserInfoByEmailSQL, values);
       client.release();
       return [res.rows[0], null];
     } catch (err) {
@@ -93,6 +112,7 @@ const UserRepo = (postgres) => {
     setupRepo,
     createUser,
     getUserInfoByAuthToken,
+    getUserInfoByEmail,
     getOtherUserInfo,
   };
 };

@@ -21,6 +21,7 @@ Use the `auth_token` from the user model to make requests
 ## API Definitions
 
 ### User Model Definition
+**Note:** The user model also contains a hash of the user password, but that will never be returned
 ```
 {
   "id": <RAFFLEBAY_USER_ID>,
@@ -46,6 +47,7 @@ POST /api/users/signup (*No access token in header needed for this request*)
   "first_name": "<user_first_name>",
   "last_name": "<user_last_name>",
   "email": "<user_email>",
+  "password": "<password>",
   "pic_url": "<profile_picture_url>",
   "address_1": "<user_address_line_one>",
   "address_2": "<user_address_line_two>",
@@ -55,6 +57,23 @@ POST /api/users/signup (*No access token in header needed for this request*)
   "phone": "<user_phone>"
 }
 ```
+returns
+```
+{
+  "data": <USER_MODEL_ABOVE>,
+  "message": "<ERROR_MESSAGE>",
+}
+
+```
+### Login
+POST /api/users/login (*No access token in header needed for this request*)
+```
+{
+	"email": "<user_email",
+	"password": "<user_password>"
+}
+```
+
 returns
 ```
 {
