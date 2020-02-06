@@ -85,7 +85,7 @@ const UserController = (userModel, authService) => {
     if (err) {
       return res.status(400).json({
         data: null,
-        message: err.message
+        message: err
       });
     }
 

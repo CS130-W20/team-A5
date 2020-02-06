@@ -10,6 +10,7 @@ const AuthService = (userModel) => {
 		const token = auth_header.slice(7);
 		
 		[user, err] = await userModel.getUserInfoByToken(token);
+		console.log(user)
 
 		if (err) {
 			return [null, "Authorization failure -- user not found"]
