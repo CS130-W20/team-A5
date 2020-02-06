@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AA23ECAC47007305A0 /* AppDelegate.swift */; };
+		B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AC23ECAC47007305A0 /* SceneDelegate.swift */; };
+		B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */; };
+		B27513B223ECAC47007305A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513B123ECAC47007305A0 /* ContentView.swift */; };
+		B27513B423ECAC4A007305A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B27513B323ECAC4A007305A0 /* Assets.xcassets */; };
+		B27513B723ECAC4A007305A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B27513B623ECAC4A007305A0 /* Preview Assets.xcassets */; };
+		B27513BA23ECAC4A007305A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27513B823ECAC4A007305A0 /* LaunchScreen.storyboard */; };
+		B27513C523ECAC4A007305A0 /* RaffleBayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513C423ECAC4A007305A0 /* RaffleBayTests.swift */; };
+		B27513D023ECAC4A007305A0 /* RaffleBayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513CF23ECAC4A007305A0 /* RaffleBayUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B27513C123ECAC4A007305A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B275139F23ECAC47007305A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B27513A623ECAC47007305A0;
+			remoteInfo = RaffleBay;
+		};
+		B27513CC23ECAC4A007305A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B275139F23ECAC47007305A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B27513A623ECAC47007305A0;
+			remoteInfo = RaffleBay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B27513A723ECAC47007305A0 /* RaffleBay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleBay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B27513AA23ECAC47007305A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B27513AC23ECAC47007305A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B27513AF23ECAC47007305A0 /* RaffleBay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RaffleBay.xcdatamodel; sourceTree = "<group>"; };
+		B27513B123ECAC47007305A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B27513B323ECAC4A007305A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B27513B623ECAC4A007305A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B27513B923ECAC4A007305A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B27513BB23ECAC4A007305A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B27513C023ECAC4A007305A0 /* RaffleBayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaffleBayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B27513C423ECAC4A007305A0 /* RaffleBayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleBayTests.swift; sourceTree = "<group>"; };
+		B27513C623ECAC4A007305A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B27513CB23ECAC4A007305A0 /* RaffleBayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaffleBayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B27513CF23ECAC4A007305A0 /* RaffleBayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleBayUITests.swift; sourceTree = "<group>"; };
+		B27513D123ECAC4A007305A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B27513A423ECAC47007305A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B27513BD23ECAC4A007305A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B27513C823ECAC4A007305A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B275139E23ECAC47007305A0 = {
+			isa = PBXGroup;
+			children = (
+				B27513A923ECAC47007305A0 /* RaffleBay */,
+				B27513C323ECAC4A007305A0 /* RaffleBayTests */,
+				B27513CE23ECAC4A007305A0 /* RaffleBayUITests */,
+				B27513A823ECAC47007305A0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B27513A823ECAC47007305A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B27513A723ECAC47007305A0 /* RaffleBay.app */,
+				B27513C023ECAC4A007305A0 /* RaffleBayTests.xctest */,
+				B27513CB23ECAC4A007305A0 /* RaffleBayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B27513A923ECAC47007305A0 /* RaffleBay */ = {
+			isa = PBXGroup;
+			children = (
+				B27513AA23ECAC47007305A0 /* AppDelegate.swift */,
+				B27513AC23ECAC47007305A0 /* SceneDelegate.swift */,
+				B27513B123ECAC47007305A0 /* ContentView.swift */,
+				B27513B323ECAC4A007305A0 /* Assets.xcassets */,
+				B27513B823ECAC4A007305A0 /* LaunchScreen.storyboard */,
+				B27513BB23ECAC4A007305A0 /* Info.plist */,
+				B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */,
+				B27513B523ECAC4A007305A0 /* Preview Content */,
+			);
+			path = RaffleBay;
+			sourceTree = "<group>";
+		};
+		B27513B523ECAC4A007305A0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B27513B623ECAC4A007305A0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B27513C323ECAC4A007305A0 /* RaffleBayTests */ = {
+			isa = PBXGroup;
+			children = (
+				B27513C423ECAC4A007305A0 /* RaffleBayTests.swift */,
+				B27513C623ECAC4A007305A0 /* Info.plist */,
+			);
+			path = RaffleBayTests;
+			sourceTree = "<group>";
+		};
+		B27513CE23ECAC4A007305A0 /* RaffleBayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B27513CF23ECAC4A007305A0 /* RaffleBayUITests.swift */,
+				B27513D123ECAC4A007305A0 /* Info.plist */,
+			);
+			path = RaffleBayUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B27513A623ECAC47007305A0 /* RaffleBay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B27513D423ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBay" */;
+			buildPhases = (
+				B27513A323ECAC47007305A0 /* Sources */,
+				B27513A423ECAC47007305A0 /* Frameworks */,
+				B27513A523ECAC47007305A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RaffleBay;
+			productName = RaffleBay;
+			productReference = B27513A723ECAC47007305A0 /* RaffleBay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B27513BF23ECAC4A007305A0 /* RaffleBayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B27513D723ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBayTests" */;
+			buildPhases = (
+				B27513BC23ECAC4A007305A0 /* Sources */,
+				B27513BD23ECAC4A007305A0 /* Frameworks */,
+				B27513BE23ECAC4A007305A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B27513C223ECAC4A007305A0 /* PBXTargetDependency */,
+			);
+			name = RaffleBayTests;
+			productName = RaffleBayTests;
+			productReference = B27513C023ECAC4A007305A0 /* RaffleBayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B27513CA23ECAC4A007305A0 /* RaffleBayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B27513DA23ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBayUITests" */;
+			buildPhases = (
+				B27513C723ECAC4A007305A0 /* Sources */,
+				B27513C823ECAC4A007305A0 /* Frameworks */,
+				B27513C923ECAC4A007305A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B27513CD23ECAC4A007305A0 /* PBXTargetDependency */,
+			);
+			name = RaffleBayUITests;
+			productName = RaffleBayUITests;
+			productReference = B27513CB23ECAC4A007305A0 /* RaffleBayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B275139F23ECAC47007305A0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Meera Rachamallu";
+				TargetAttributes = {
+					B27513A623ECAC47007305A0 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					B27513BF23ECAC4A007305A0 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = B27513A623ECAC47007305A0;
+					};
+					B27513CA23ECAC4A007305A0 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = B27513A623ECAC47007305A0;
+					};
+				};
+			};
+			buildConfigurationList = B27513A223ECAC47007305A0 /* Build configuration list for PBXProject "RaffleBay" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B275139E23ECAC47007305A0;
+			productRefGroup = B27513A823ECAC47007305A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B27513A623ECAC47007305A0 /* RaffleBay */,
+				B27513BF23ECAC4A007305A0 /* RaffleBayTests */,
+				B27513CA23ECAC4A007305A0 /* RaffleBayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B27513A523ECAC47007305A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B27513BA23ECAC4A007305A0 /* LaunchScreen.storyboard in Resources */,
+				B27513B723ECAC4A007305A0 /* Preview Assets.xcassets in Resources */,
+				B27513B423ECAC4A007305A0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B27513BE23ECAC4A007305A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B27513C923ECAC4A007305A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B27513A323ECAC47007305A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */,
+				B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */,
+				B27513B223ECAC47007305A0 /* ContentView.swift in Sources */,
+				B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B27513BC23ECAC4A007305A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B27513C523ECAC4A007305A0 /* RaffleBayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B27513C723ECAC4A007305A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B27513D023ECAC4A007305A0 /* RaffleBayUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B27513C223ECAC4A007305A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B27513A623ECAC47007305A0 /* RaffleBay */;
+			targetProxy = B27513C123ECAC4A007305A0 /* PBXContainerItemProxy */;
+		};
+		B27513CD23ECAC4A007305A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B27513A623ECAC47007305A0 /* RaffleBay */;
+			targetProxy = B27513CC23ECAC4A007305A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B27513B823ECAC4A007305A0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B27513B923ECAC4A007305A0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B27513D223ECAC4A007305A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B27513D323ECAC4A007305A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B27513D523ECAC4A007305A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RaffleBay/Preview Content\"";
+				DEVELOPMENT_TEAM = GCC5F24AV4;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RaffleBay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = meera.RaffleBay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B27513D623ECAC4A007305A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RaffleBay/Preview Content\"";
+				DEVELOPMENT_TEAM = GCC5F24AV4;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RaffleBay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = meera.RaffleBay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B27513D823ECAC4A007305A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GCC5F24AV4;
+				INFOPLIST_FILE = RaffleBayTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = meera.RaffleBayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RaffleBay.app/RaffleBay";
+			};
+			name = Debug;
+		};
+		B27513D923ECAC4A007305A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GCC5F24AV4;
+				INFOPLIST_FILE = RaffleBayTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = meera.RaffleBayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RaffleBay.app/RaffleBay";
+			};
+			name = Release;
+		};
+		B27513DB23ECAC4A007305A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GCC5F24AV4;
+				INFOPLIST_FILE = RaffleBayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = meera.RaffleBayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RaffleBay;
+			};
+			name = Debug;
+		};
+		B27513DC23ECAC4A007305A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GCC5F24AV4;
+				INFOPLIST_FILE = RaffleBayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = meera.RaffleBayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RaffleBay;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B27513A223ECAC47007305A0 /* Build configuration list for PBXProject "RaffleBay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B27513D223ECAC4A007305A0 /* Debug */,
+				B27513D323ECAC4A007305A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B27513D423ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B27513D523ECAC4A007305A0 /* Debug */,
+				B27513D623ECAC4A007305A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B27513D723ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B27513D823ECAC4A007305A0 /* Debug */,
+				B27513D923ECAC4A007305A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B27513DA23ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B27513DB23ECAC4A007305A0 /* Debug */,
+				B27513DC23ECAC4A007305A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B27513AF23ECAC47007305A0 /* RaffleBay.xcdatamodel */,
+			);
+			currentVersion = B27513AF23ECAC47007305A0 /* RaffleBay.xcdatamodel */;
+			path = RaffleBay.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B275139F23ECAC47007305A0 /* Project object */;
+}
