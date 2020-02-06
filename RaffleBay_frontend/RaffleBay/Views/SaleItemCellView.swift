@@ -41,3 +41,4 @@ struct SaleItemCellView: View {
         .frame(width: 500)
     }
 }
+
