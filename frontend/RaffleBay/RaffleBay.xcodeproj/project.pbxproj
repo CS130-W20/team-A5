@@ -26,6 +26,8 @@
 		8BE89B9123EF7D4200EC2076 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7F23EF7D4200EC2076 /* Poppins-Black.ttf */; };
 		8BE89B9223EF7D4200EC2076 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B8023EF7D4200EC2076 /* Poppins-SemiBoldItalic.ttf */; };
 		8BE89B9323EF7D4200EC2076 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B8123EF7D4200EC2076 /* Poppins-SemiBold.ttf */; };
+		8BE89B9523EF835400EC2076 /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE89B9423EF835400EC2076 /* SplashscreenView.swift */; };
+		8BE89B9723F0900500EC2076 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE89B9623F0900500EC2076 /* LoginView.swift */; };
 		A3CA20C487169747B8DBE422 /* Pods_RaffleBayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */; };
 		B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AA23ECAC47007305A0 /* AppDelegate.swift */; };
 		B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AC23ECAC47007305A0 /* SceneDelegate.swift */; };
@@ -88,6 +90,8 @@
 		8BE89B7F23EF7D4200EC2076 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
 		8BE89B8023EF7D4200EC2076 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		8BE89B8123EF7D4200EC2076 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		8BE89B9423EF835400EC2076 /* SplashscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenView.swift; sourceTree = "<group>"; };
+		8BE89B9623F0900500EC2076 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABA14B827A9D72B336BFD9D8 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B27513A723ECAC47007305A0 /* RaffleBay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleBay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,6 +287,8 @@
 				B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */,
 				B27513B123ECAC47007305A0 /* ContentView.swift */,
 				B27513F023ECB061007305A0 /* SignupView.swift */,
+				8BE89B9623F0900500EC2076 /* LoginView.swift */,
+				8BE89B9423EF835400EC2076 /* SplashscreenView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -554,12 +560,14 @@
 				B27513EA23ECAD38007305A0 /* SaleItemTableView.swift in Sources */,
 				B27513E723ECAD11007305A0 /* SaleItemCellView.swift in Sources */,
 				B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */,
+				8BE89B9523EF835400EC2076 /* SplashscreenView.swift in Sources */,
 				B27513EC23ECAD52007305A0 /* SaleItemDetailView.swift in Sources */,
 				B27513E223ECACD6007305A0 /* SaleItem.swift in Sources */,
 				B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */,
 				B27513B223ECAC47007305A0 /* ContentView.swift in Sources */,
 				B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */,
 				B27513DF23ECACB3007305A0 /* SaleItemTestData.swift in Sources */,
+				8BE89B9723F0900500EC2076 /* LoginView.swift in Sources */,
 				B27513F123ECB061007305A0 /* SignupView.swift in Sources */,
 				B27513E423ECACEA007305A0 /* User.swift in Sources */,
 			);
