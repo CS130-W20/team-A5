@@ -1,4 +1,7 @@
 const express = require('express');
+const _ = require('lodash');
+const buyerView = ['item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'status', 'deadline']
+
 const ItemController = (itemModel, authService) => {
   const router = express.Router();
 
@@ -45,7 +48,6 @@ const ItemController = (itemModel, authService) => {
       deadline,
       status,
       current_ledger,
-      token,
     );
 
     if (err2) {
@@ -79,33 +81,25 @@ const ItemController = (itemModel, authService) => {
       });
     }
 
-    const [item1, err2] = await itemModel.getItemInfo(item_id)
+    const [item, err2] = await itemModel.getItemInfo(item_id)
     if (err2) {
       return res.status(400).json({
         data: null,
-        message: err.message
+        message: err2
       });
     }
     // if the logged in user is the one selling the item, show full information
-    if (user_info['id'] == item1['seller_id']) {
+    if (user_info['id'] == item['seller_id']) {
       return res.status(200).json({
-        data: item1,
+        data: item,
         message: ""
       });
     }
 
     // otherwise, return only item name, picture, description, tags, item price
-    // ticket price, number of tickets, and deadline 
-    const [item2, err3] = await itemModel.getItemInfoRestricted(item_id)
-    if (err3) {
-      return res.status(400).json({
-        data: null,
-        message: err.message
-      });
-    }
-
+    // ticket price, number of tickets, status, and deadline 
     return res.status(200).json({
-      data: item2,
+      data: _.pick(item, buyerView),
       message: ""
     });
   });

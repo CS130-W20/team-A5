@@ -155,7 +155,7 @@ POST /api/items/create
 returns
 ```
 {
-  "data": <USER_MODEL_ABOVE>,
+  "data": <ITEM_MODEL_ABOVE>,
   "message": "<ERROR_MESSAGE>",
 }
 
@@ -190,6 +190,7 @@ returns
         "sale_price": <item_sale_price>,
         "ticket_price": <item_ticket_price>,
         "total_tickets": <item_total_number_tickets>,
+        "status": "<item_current_status>",
         "deadline": "<item_deadline_timestamp>"
     },
     "message": ""

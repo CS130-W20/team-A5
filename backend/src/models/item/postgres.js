@@ -1,5 +1,6 @@
 // Wrapper around postgres data functions for the Item Model. Requires a
 // postgres connection and ability to make valid postgres queries.
+
 const ItemRepo = (postgres) => {
   //Setup the item table if it does not exist
   const createItemTableSQL = `
@@ -36,14 +37,14 @@ const ItemRepo = (postgres) => {
 
   // Inserts an item entry into the items table
   const createItemSQL = `
-    INSERT INTO items(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger, auth_token)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+    INSERT INTO items(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
     RETURNING *;`;
 
   // Uses createItemSQL and inserts an item into the items column. If we get an
   // error, then we return the (null, error), otherwise return (data, null)
-  const createItem = async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger, token) => {
-    const values = [item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger, token];
+  const createItem = async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger) => {
+    const values = [item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger];
     try {
       const client = await postgres.connect();
       const res = await client.query(createItemSQL, values);
