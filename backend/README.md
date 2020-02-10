@@ -127,17 +127,15 @@ returns
     "ticket_price": <item_ticket_price>,
     "total_tickets": <item_total_number_tickets>,
     "bids": "<item_bid_list>",
-    "is_ended": "<item_ended_boolean>",
     "deadline": "<item_deadline_timestamp>",
     "status": "<item_current_status>",
     "current_ledger": <item_current_ledger>,
-    "auth_token": "<authentication_token>",
     "created_at":"<CREATED_AT_TIMESTAMP>",
 }
 ```
 
 ### Create new item
-POST /api/users/postitem (*No access token in header needed for this request*)
+POST /api/items/create 
 ```
 {
     "item_name": "<item_name>",
@@ -149,7 +147,6 @@ POST /api/users/postitem (*No access token in header needed for this request*)
     "ticket_price": <item_ticket_price>,
     "total_tickets": <item_total_number_tickets>,
     "bids": "<item_bid_list>",
-    "is_ended": "<item_ended_boolean>",
     "deadline": "<item_deadline_timestamp>",
     "status": "<item_current_status>",
     "current_ledger": <item_current_ledger>,
@@ -168,7 +165,7 @@ returns
 ```
 
 ### Get item info when you are  the seller
-GET /api/users/{item_id}
+GET /api/items/{item_id}
 
 returns
 ```
@@ -179,7 +176,7 @@ returns
 ```
 
 ### Get item info when you are not the seller
-GET /api/users/{item_id}
+GET /api/items/{item_id}
 
 returns
 ```

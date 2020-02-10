@@ -14,11 +14,9 @@ const ItemRepo = (postgres) => {
       ticket_price float,
       total_tickets integer NOT NULL,
       bids text,
-      is_ended boolean,
       deadline timestamptz,
       status text,
       current_ledger float,
-      auth_token text,
       created_at timestamptz DEFAULT NOW()
     );`;
 
@@ -38,14 +36,14 @@ const ItemRepo = (postgres) => {
 
   // Inserts an item entry into the items table
   const createItemSQL = `
-    INSERT INTO items(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, is_ended, deadline, status, current_ledger, auth_token)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+    INSERT INTO items(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger, auth_token)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
     RETURNING *;`;
 
   // Uses createItemSQL and inserts an item into the items column. If we get an
   // error, then we return the (null, error), otherwise return (data, null)
-  const createItem = async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, is_ended, deadline, status, current_ledger, token) => {
-    const values = [item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, is_ended, deadline, status, current_ledger, token];
+  const createItem = async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger, token) => {
+    const values = [item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger, token];
     try {
       const client = await postgres.connect();
       const res = await client.query(createItemSQL, values);
@@ -60,7 +58,7 @@ const ItemRepo = (postgres) => {
   const getItemInfoSQL = `
     SELECT * FROM items WHERE item_id=$1;`;
 
-  // Uses getItemIDByAuthTokenSQL to retrieve the item, and return either (item, null),
+  // Uses getItemInfoSQL to retrieve the item, and return either (item, null),
   // or (null, error)
   const getItemInfo= async (item_id) => {
     const values = [item_id];

@@ -1,15 +1,10 @@
-const bcrypt = require('bcrypt');
-const _ = require('lodash');
-
-const saltRounds = 12;
-
-const buyerView = ['item_name', 'seller_id', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets','deadline']
+const buyerView = ['item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets','deadline']
 
 const ItemModel = (repo) => {
   // Creates an item with given info
-  const createItem= async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, is_ended, deadline, status, current_ledger, token) => {
+  const createItem= async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger, token) => {
 
-    const [item, err] = await repo.createItem(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, is_ended, deadline, status, current_ledger, token);
+    const [item, err] = await repo.createItem(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, bids, deadline, status, current_ledger, token);
 
     return [item, err];
   };
