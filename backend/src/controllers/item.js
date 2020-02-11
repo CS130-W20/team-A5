@@ -11,19 +11,21 @@ const ItemController = (itemModel, authService) => {
       "message": "Malformed Request",
     });
     body = req.body
-
+    // Get user inputs
     const item_name = body['item_name']
     const pic_url = body['pic_url']
     const item_description = body['item_description']
     const tags = body['tags']
     const sale_price = body['sale_price']
-    const ticket_price = body['ticket_price']
     const total_tickets = body['total_tickets']
-    const bids = body['bids']
-    const deadline = body['deadline']
-    const status = body['status']
-    const current_ledger = body['current_ledger']
-
+    
+    // Set other vars
+    var dt = new Date();
+    dt.setDate(dt.getDate() + 7); // current date + 7 days (week dedaline)
+    const deadline = dt.toUTCString();
+    const status = "In Progress"
+    const current_ledger = 0;
+    const ticket_price = sale_price / total_tickets
     // Get the user_id of the user sending the request for the seller_id
     const [user_info, err1] = await authService.getLoggedInUserInfo(req.headers);   
     if (err1) {
@@ -44,7 +46,6 @@ const ItemController = (itemModel, authService) => {
       sale_price,
       ticket_price,
       total_tickets,
-      bids,
       deadline,
       status,
       current_ledger,
