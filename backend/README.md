@@ -113,3 +113,79 @@ returns
 }
 ```
 **Note:** If the user ID specified is that of the logged in user, the full user info will be given
+
+### Item Model Definition
+```
+{
+    "item_id": <item_id>,
+    "item_name": "<item_name>",
+    "seller_id": <RAFFLEBAY_USER_ID>,
+    "pic_url": "<item_pic_url>",
+    "item_description": "<item_description>",
+    "tags": "<item_tags>",
+    "sale_price": <item_sale_price>,
+    "ticket_price": <item_ticket_price>,
+    "total_tickets": <item_total_number_tickets>,
+    "bids": "<item_bid_list>",
+    "deadline": "<item_deadline_timestamp>",
+    "status": "<item_current_status>",
+    "current_ledger": <item_current_ledger>,
+    "created_at":"<CREATED_AT_TIMESTAMP>",
+}
+```
+
+### Create new item
+POST /api/items/create 
+```
+{
+    "item_name": "<item_name>",
+    "pic_url": "<item_pic_url>",
+    "item_description": "<item_description>",
+    "tags": "<item_tags>",
+    "sale_price": <item_sale_price>,
+    "total_tickets": <item_total_number_tickets>,
+}
+```
+returns
+```
+{
+  "data": <ITEM_MODEL_ABOVE>,
+  "message": "<ERROR_MESSAGE>",
+}
+
+
+
+```
+
+### Get item info when you are the seller
+GET /api/items/{item_id}
+
+returns
+```
+{
+  "data": <ITEM_MODEL_ABOVE>,
+  "message": "<ERROR_MESSAGE>",
+}
+```
+
+### Get item info when you are not the seller
+GET /api/items/{item_id}
+
+returns
+```
+{
+    "data": {
+        "item_name": "<item_name>",
+        "seller_id": <RAFFLEBAY_USER_ID>,
+        "pic_url": "<item_pic_url>",
+        "item_description": "<item_description>",
+        "tags": "<item_tags>",
+        "sale_price": <item_sale_price>,
+        "ticket_price": <item_ticket_price>,
+        "total_tickets": <item_total_number_tickets>,
+        "status": "<item_current_status>",
+        "deadline": "<item_deadline_timestamp>"
+    },
+    "message": ""
+}
+```

@@ -12,6 +12,9 @@ const {PostgresDB} = require('./db/postgres');
 const {UserRepo} = require('./models/user/postgres');
 const {UserModel} = require('./models/user');
 const {UserController} = require('./controllers/user');
+const {ItemRepo} = require('./models/item/postgres');
+const {ItemModel} = require('./models/item');
+const {ItemController} = require('./controllers/item');
 
 const {AuthService} = require('./services/auth')
 
@@ -20,11 +23,15 @@ function start(port) {
 
   const userRepo = UserRepo(postgres);
   userRepo.setupRepo();
+
   const userModel = UserModel(userRepo);
-
   const authService = AuthService(userModel);
-
   const userController = UserController(userModel, authService);
+  
+  const itemRepo = ItemRepo(postgres);
+  itemRepo.setupRepo();
+  const itemModel = ItemModel(itemRepo);
+  const itemController = ItemController(itemModel, authService);
 
 
   const app = express();
@@ -42,6 +49,7 @@ function start(port) {
 
   const router = express.Router();
   router.use('/users', userController);
+  router.use('/items', itemController);
 
   app.use('/api', router);
 
