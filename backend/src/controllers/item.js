@@ -1,8 +1,8 @@
 const express = require('express');
 const _ = require('lodash');
-const buyerView = ['item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'status', 'deadline']
+const buyerView = ['item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline']
 
-const ItemController = (itemModel, authService) => {
+const ItemController = (itemModel, userModel, authService) => {
   const router = express.Router();
 
   // The API path to create a new item. Creates an item object and returns that object
@@ -21,9 +21,9 @@ const ItemController = (itemModel, authService) => {
     
     // Set other vars
     var dt = new Date();
-    dt.setDate(dt.getDate() + 7); // current date + 7 days (week dedaline)
+    dt.setDate(dt.getDate() + 7); // current date + 7 days (week deadline)
     const deadline = dt.toUTCString();
-    const status = "In Progress"
+    const status = "IP"
     const current_ledger = 0;
     const ticket_price = sale_price / total_tickets
     // Get the user_id of the user sending the request for the seller_id
@@ -59,6 +59,74 @@ const ItemController = (itemModel, authService) => {
     }
     return res.status(200).json({
       data: item,
+      message: '',
+    });
+  });
+
+  // Creates a bid for the specified item
+  router.post('/bid/:item_id', async (req, res) => {
+    const params = req.params;
+    const item_id = parseInt(params.item_id, 10);
+  
+    // Get the user_id of the user sending the request, to know who is making the bid
+    const [user_info, err1] = await authService.getLoggedInUserInfo(req.headers);
+
+    if (err1) {
+      return res.status(400).json({
+        data: null,
+        message: err1
+      });
+    }
+
+    const user_id = user_info['id']
+    const user_current_funds = user_info['balance']
+
+    body = req.body
+    // Get user inputs
+    const ticket_count = body['ticket_count']
+    const total_amount = body['total_amount'] 
+
+    // Check to make sure user has sufficient funds
+    if (user_current_funds - total_amount < 0) {
+      return res.status(400).json({
+        data: null,
+        message: "Insufficient Funds"
+      });
+    }
+
+    // The createBid function is atomic, so we can assume this function
+    // handles all error checks
+
+    // TODO do we want this to return the new item info?
+    const [bid, err2] = await itemModel.createBid(
+      user_id, 
+      item_id, 
+      ticket_count, 
+      total_amount,
+    );
+
+    if (err2) {
+      return res.status(400).json({
+        data: null,
+        message: err2,
+      });
+    }
+
+    // If there is no error, the transaction went through, so debit user funds
+
+    const [new_balance, err3] = await userModel.debitUserFunds(user_id, total_amount);
+
+    if (err3) {
+      return res.status(400).json({
+        data: null,
+        message: err3.message,
+      });
+    }
+
+    return res.status(200).json({
+      data: 
+        bid,
+        new_user_balance: new_balance,
       message: '',
     });
   });

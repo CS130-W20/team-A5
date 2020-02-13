@@ -15,9 +15,16 @@ const ItemModel = (repo) => {
     return [item, err];
   };
 
+  // Calls repo method to create a bid. The repo method is atomic, will ensure bid can
+  // go through before creating
+  const createBid = async (user_id, item_id, ticket_count, total_cost) => {
+    return await repo.createBid(user_id, item_id, ticket_count, total_cost);
+  }
+
   return {
     createItem,
-    getItemInfo
+    getItemInfo,
+    createBid,
   };
 };
 

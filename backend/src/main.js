@@ -31,7 +31,7 @@ function start(port) {
   const itemRepo = ItemRepo(postgres);
   itemRepo.setupRepo();
   const itemModel = ItemModel(itemRepo);
-  const itemController = ItemController(itemModel, authService);
+  const itemController = ItemController(itemModel, userModel, authService);
 
 
   const app = express();

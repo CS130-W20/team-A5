@@ -16,6 +16,7 @@ const UserRepo = (postgres) => {
       state text,
       zip text,
       phone text,
+      balance float,
       auth_token text,
       created_at timestamptz DEFAULT NOW()
     );`;
@@ -35,8 +36,8 @@ const UserRepo = (postgres) => {
 
   // Inserts a user entry into the users table
   const createUserSQL = `
-    INSERT INTO users(first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, auth_token)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+    INSERT INTO users(first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, balance, auth_token)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, 0, $12)
     RETURNING *;`;
 
   // Users createUserSQL and inserts a user into the users column. If we get an
@@ -108,12 +109,33 @@ const UserRepo = (postgres) => {
     }
   };
 
+  const debitUserFundsSQL = `
+    UPDATE users 
+    SET balance = (balance - $2)
+    WHERE id = $1
+    RETURNING balance`;
+
+  // Debits user funds. Assume controller/caller has verified that this will not
+  // make the balance negative
+  const debitUserFunds = async (user_id, amount) => {
+    const values = [user_id, amount];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(debitUserFundsSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
   return {
     setupRepo,
     createUser,
     getUserInfoByAuthToken,
     getUserInfoByEmail,
     getOtherUserInfo,
+    debitUserFunds,
   };
 };
 

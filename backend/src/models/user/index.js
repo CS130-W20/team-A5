@@ -3,7 +3,7 @@ const _ = require('lodash');
 
 const saltRounds = 12;
 
-const allButPasshash = ['id', 'first_name', 'last_name', 'email', 'pic_url', 'address_1', 'address_2', 'city', 'state', 'zip', 'phone', 'auth_token']
+const allButPasshash = ['id', 'first_name', 'last_name', 'email', 'pic_url', 'address_1', 'address_2', 'city', 'state', 'zip', 'phone', 'balance', 'auth_token']
 
 const UserModel = (repo) => {
   // Creates a user with given info
@@ -42,11 +42,16 @@ const UserModel = (repo) => {
     return [null, "Incorrect Password"];
   };
 
+  const debitUserFunds = async (user_id, amount) => {
+    return await repo.debitUserFunds(user_id, amount);
+  }
+
   return {
     createUser,
     getUserInfoByToken,
     getOtherUserInfo,
     verifyPasswordAndReturnUser,
+    debitUserFunds,
   };
 };
 
