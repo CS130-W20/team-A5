@@ -122,7 +122,7 @@ const ItemController = (itemModel, userModel, authService) => {
     }
 
     return res.status(200).json({
-      data: 
+      data:
         {
           bid: bid,
           new_user_balance: new_balance['balance'],
