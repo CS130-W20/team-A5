@@ -13,7 +13,7 @@ import SwiftyJSON
 struct SplashscreenView: View {
     
     var body: some View {
-        
+        NavigationView {
             //Three column Horizontal stack. Spacers on left and right.
             HStack(){
                 
@@ -56,10 +56,21 @@ struct SplashscreenView: View {
                         .offset(y:22)
                         .opacity(0.6)
                         
-                        //Login Button
-                        Button(action: {
-                            
-                        }){
+//                        //Login Button
+//                        Button(action: {
+//
+//                        }){
+//                            Text("Login")
+//                                .fontWeight(.medium)
+//                                .padding(10)
+//                                .font(.custom("Poppins", size: 30))
+//                                .foregroundColor(Color.white)
+//                                .frame(minWidth:0, maxWidth: 300)
+//                        }
+//                        .frame(minWidth:0, maxWidth: 300)
+//                        .background(ButtonGradient)
+//                        .cornerRadius(7)
+                        NavigationLink(destination: LoginView()){
                             Text("Login")
                                 .fontWeight(.medium)
                                 .padding(10)
@@ -92,6 +103,7 @@ struct SplashscreenView: View {
                 //Right Side Spacer
                 Spacer()
             }
+        }
     }
 }
 
