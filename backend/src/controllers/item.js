@@ -24,7 +24,6 @@ const ItemController = (itemModel, userModel, authService) => {
     dt.setDate(dt.getDate() + 7); // current date + 7 days (week deadline)
     const deadline = dt.toUTCString();
     const status = "IP"
-    const current_ledger = 0;
     const ticket_price = sale_price / total_tickets
     // Get the user_id of the user sending the request for the seller_id
     const [user_info, err1] = await authService.getLoggedInUserInfo(req.headers);   
@@ -48,7 +47,6 @@ const ItemController = (itemModel, userModel, authService) => {
       total_tickets,
       deadline,
       status,
-      current_ledger,
     );
 
     if (err2) {
@@ -84,10 +82,10 @@ const ItemController = (itemModel, userModel, authService) => {
     body = req.body
     // Get user inputs
     const ticket_count = body['ticket_count']
-    const total_amount = body['total_amount'] 
+    const total_cost = body['total_cost'] 
 
     // Check to make sure user has sufficient funds
-    if (user_current_funds - total_amount < 0) {
+    if (user_current_funds < total_cost) {
       return res.status(400).json({
         data: null,
         message: "Insufficient Funds"
@@ -102,7 +100,7 @@ const ItemController = (itemModel, userModel, authService) => {
       user_id, 
       item_id, 
       ticket_count, 
-      total_amount,
+      total_cost,
     );
 
     if (err2) {
@@ -114,7 +112,7 @@ const ItemController = (itemModel, userModel, authService) => {
 
     // If there is no error, the transaction went through, so debit user funds
 
-    const [new_balance, err3] = await userModel.debitUserFunds(user_id, total_amount);
+    const [new_balance, err3] = await userModel.debitUserFunds(user_id, total_cost);
 
     if (err3) {
       return res.status(400).json({
@@ -125,8 +123,10 @@ const ItemController = (itemModel, userModel, authService) => {
 
     return res.status(200).json({
       data: 
-        bid,
-        new_user_balance: new_balance,
+        {
+          bid: bid,
+          new_user_balance: new_balance['balance'],
+        },
       message: '',
     });
   });

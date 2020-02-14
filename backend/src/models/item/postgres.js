@@ -51,14 +51,14 @@ const ItemRepo = (postgres) => {
 
   // Inserts an item entry into the items table
   const createItemSQL = `
-    INSERT INTO items(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status, current_ledger)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+    INSERT INTO items(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     RETURNING *;`;
 
   // Uses createItemSQL and inserts an item into the items column. If we get an
   // error, then we return the (null, error), otherwise return (data, null)
-  const createItem = async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status, current_ledger) => {
-    const values = [item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status, current_ledger];
+  const createItem = async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status) => {
+    const values = [item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status];
     try {
       const client = await postgres.connect();
       const res = await client.query(createItemSQL, values);

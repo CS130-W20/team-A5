@@ -35,6 +35,7 @@ Use the `auth_token` from the user model to make requests
   "state": "<user_address_state>",
   "zip": "<user_address_zip>",
   "phone": "<user_phone>",
+  "balance": <current_balance_of_user>,
   "auth_token": "<authentication_token_to_be_used_in_future_requests>",
   "created_at": "<CREATED_AT_TIMESTAMP>",
 }
@@ -117,20 +118,35 @@ returns
 ### Item Model Definition
 ```
 {
-    "item_id": <item_id>,
-    "item_name": "<item_name>",
-    "seller_id": <RAFFLEBAY_USER_ID>,
-    "pic_url": "<item_pic_url>",
-    "item_description": "<item_description>",
-    "tags": "<item_tags>",
-    "sale_price": <item_sale_price>,
-    "ticket_price": <item_ticket_price>,
-    "total_tickets": <item_total_number_tickets>,
-    "bids": "<item_bid_list>",
-    "deadline": "<item_deadline_timestamp>",
-    "status": "<item_current_status>",
-    "current_ledger": <item_current_ledger>,
-    "created_at":"<CREATED_AT_TIMESTAMP>",
+  "item_id": <item_id>,
+  "item_name": "<item_name>",
+  "seller_id": <RAFFLEBAY_USER_ID>,
+  "pic_url": "<item_pic_url>",
+  "item_description": "<item_description>",
+  "tags": "<item_tags>",
+  "sale_price": <item_sale_price>,
+  "ticket_price": <item_ticket_price>,
+  "total_tickets": <item_total_number_tickets>,
+  "tickets_sold": <total_tickets_sold_so_far>,
+  "bids": "<item_bid_list>",
+  "deadline": "<item_deadline_timestamp>",
+  "status": "<item_current_status>",
+  "current_ledger": <item_current_ledger>,
+  "created_at":"<CREATED_AT_TIMESTAMP>",
+}
+```
+
+### Bid Model Definition
+```
+{
+  "bid_id": <id_of_bid>,
+  "user_id": <RAFFLEBAY_USER_ID>,
+  "item_id": <id_of_item_bid_is_for>
+  "ticket_count": <number_of_tickets_in_bid>,
+  "total_cost": <total_cost_of_bid>,
+  "did_win": <boolean>,
+  "refunded": <boolean>,
+  "timestamp": <when_bid_was_created>
 }
 ```
 
@@ -138,12 +154,12 @@ returns
 POST /api/items/create 
 ```
 {
-    "item_name": "<item_name>",
-    "pic_url": "<item_pic_url>",
-    "item_description": "<item_description>",
-    "tags": "<item_tags>",
-    "sale_price": <item_sale_price>,
-    "total_tickets": <item_total_number_tickets>,
+  "item_name": "<item_name>",
+  "pic_url": "<item_pic_url>",
+  "item_description": "<item_description>",
+  "tags": "<item_tags>",
+  "sale_price": <item_sale_price>,
+  "total_tickets": <item_total_number_tickets>,
 }
 ```
 returns
@@ -174,18 +190,38 @@ GET /api/items/{item_id}
 returns
 ```
 {
-    "data": {
-        "item_name": "<item_name>",
-        "seller_id": <RAFFLEBAY_USER_ID>,
-        "pic_url": "<item_pic_url>",
-        "item_description": "<item_description>",
-        "tags": "<item_tags>",
-        "sale_price": <item_sale_price>,
-        "ticket_price": <item_ticket_price>,
-        "total_tickets": <item_total_number_tickets>,
-        "status": "<item_current_status>",
-        "deadline": "<item_deadline_timestamp>"
-    },
-    "message": ""
+  "data": {
+      "item_name": "<item_name>",
+      "seller_id": <RAFFLEBAY_USER_ID>,
+      "pic_url": "<item_pic_url>",
+      "item_description": "<item_description>",
+      "tags": "<item_tags>",
+      "sale_price": <item_sale_price>,
+      "ticket_price": <item_ticket_price>,
+      "total_tickets": <item_total_number_tickets>,
+      "status": "<item_current_status>",
+      "deadline": "<item_deadline_timestamp>"
+  },
+  "message": ""
+}
+```
+
+### Buy tickets for an item
+POST /api/items/bid/{item_id}
+```
+{
+  "ticket_count": <number_of_tickets_in_bid>,
+  "total_cost": <total_cost_of_bid>,
+}
+```
+
+returns
+```
+{
+  "data": {
+    "bid: <BID_MODEL_ABOVE>,
+    "new_user_balance": <new_balance_of_user_after_purchase>
+  }
+  "message": "<error_message>"
 }
 ```
