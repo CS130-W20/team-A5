@@ -3,20 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>NSAppTransportSecurity</key>
-	<dict/>
-	<key>NSAllowsArbitraryLoads</key>
-	<true/>
-	<key>NSExceptionDomains</key>
 	<dict>
-		<key>localhost</key>
-		<dict/>
-		<key>NSIncludesSubdomains</key>
-		<true/>
-		<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-		<true/>
-		<key>NSTemporaryExceptionMinimumTLSVersion</key>
-		<string>TLSv1.1</string>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
 	</dict>
+	<key>Allow Arbitrary Loads</key>
+	<true/>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>UIAppFonts</key>

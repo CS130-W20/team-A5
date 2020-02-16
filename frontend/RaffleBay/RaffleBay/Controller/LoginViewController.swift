@@ -11,26 +11,18 @@ import Alamofire_SwiftyJSON
 import Alamofire
 import SwiftyJSON
 func login_request(email: String, password: String) -> Int {
-    var response = "";
-    Alamofire.request("https://localhost:31337/api/users/login", method: .post)
+    var result = 0
+    Alamofire.request("http://localhost:31337/api/users/login", method: .post, parameters: ["email":email, "password":password])
     .responseSwiftyJSON { dataResponse in
-                print(dataResponse.request)
-                print(dataResponse.response)
-                print(dataResponse.error)
-                print(dataResponse.value)
-        if ((dataResponse.value?["first_name"].string) != nil) {
-            response = dataResponse.value?["message"].string ?? "error";
+        if dataResponse.result.isSuccess {
+            let data = dataResponse.value!["data"].string
+            print(data)
+            let message = dataResponse.value!["message"].string
+            print(message)
+            result = 1
+        } else {
+            print(dataResponse.error)
         }
     };
-    return 1;
+    return result;
 }
-
-//func login_request_response(email: String, password: String) -> SaleItemTableView {
-//    if login_request(email: email, password: password) == "error" {
-//        print("YAAASSSSS")
-//
-//        return SaleItemTableView()
-//    }
-//    print("NOOOOOOOOOO")
-//    return SaleItemTableView()
-//}

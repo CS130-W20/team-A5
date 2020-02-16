@@ -49,55 +49,24 @@ struct LoginView: View {
 
                         //Login Button
                         NavigationLink(destination: SaleItemTableView(), tag: 1, selection: self.$selection){
-                            Text("")
-//                                .fontWeight(.medium)
-//                                .padding(10)
-//                                .font(.custom("Poppins", size: 30))
-//                                .foregroundColor(Color.white)
-//                                .frame(minWidth:0, maxWidth: 300)
+                            Button(action: {
+                                self.selection =  login_request(email: "longerbeamalex@gmail.com", password: "PASSWORD1")
+                            }){
+                                Text("Login")
+                                    .fontWeight(.medium)
+                                    .padding(10)
+                                    .font(.custom("Poppins", size: 30))
+                                    .foregroundColor(Color.white)
+                                    .frame(minWidth:0, maxWidth: 300)
+                                    
+                            }
+                        .frame(minWidth:0, maxWidth: 300)
+                        .cornerRadius(7)
                         }
                         .frame(minWidth:0, maxWidth: 300)
                         .background(ButtonGradient)
                         .cornerRadius(7)
-                        Button("Login") {self.selection =  login_request(email: "longerbeamalex@gmail.com", password: "PASSWORD1")}
-                        }
-                    
-//                                        ZStack(){
-//                                            //Create a Rectangle behind the button to simulate a smaller shadow for a 3D effect.
-//                                            RoundedRectangle(cornerRadius: 25)
-//                                            .fill(Color.white)
-//                                            .frame(minWidth:0, maxWidth: 250, minHeight:10, maxHeight: 10)
-//                                            .shadow(color: Color("PurpleBlue"), radius: 5.0, x: 0, y: 10)
-//                                            .offset(y:22)
-//                                            .opacity(0.6)
-//
-//                    //                        //Login Button
-//                    //                        Button(action: {
-//                    //
-//                    //                        }){
-//                    //                            Text("Login")
-//                    //                                .fontWeight(.medium)
-//                    //                                .padding(10)
-//                    //                                .font(.custom("Poppins", size: 30))
-//                    //                                .foregroundColor(Color.white)
-//                    //                                .frame(minWidth:0, maxWidth: 300)
-//                    //                        }
-//                    //                        .frame(minWidth:0, maxWidth: 300)
-//                    //                        .background(ButtonGradient)
-//                    //                        .cornerRadius(7)
-//                                            NavigationLink(destination: LoginView()){
-//                                                Text("Login")
-//                                                    .fontWeight(.medium)
-//                                                    .padding(10)
-//                                                    .font(.custom("Poppins", size: 30))
-//                                                    .foregroundColor(Color.white)
-//                                                    .frame(minWidth:0, maxWidth: 300)
-//                                            }
-//                                            .frame(minWidth:0, maxWidth: 300)
-//                                            .background(ButtonGradient)
-//                                            .cornerRadius(7)
-//                                        }
-                    
+                    }
                     
                     //Signup Button
                     //Login Button
