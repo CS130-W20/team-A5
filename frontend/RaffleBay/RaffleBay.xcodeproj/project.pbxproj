@@ -45,6 +45,7 @@
 		B27513EA23ECAD38007305A0 /* SaleItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513E923ECAD38007305A0 /* SaleItemTableView.swift */; };
 		B27513EC23ECAD52007305A0 /* SaleItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */; };
 		B27513F123ECB061007305A0 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513F023ECB061007305A0 /* SignupView.swift */; };
+		B2FF79FC23F5FA0900AE9572 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */; };
 		EA1F03AABD6C0E1B52460AF6 /* Pods_RaffleBay_RaffleBayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5712EAFB30555AB4BBECD42 /* Pods_RaffleBay_RaffleBayUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		B27513E923ECAD38007305A0 /* SaleItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemTableView.swift; sourceTree = "<group>"; };
 		B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemDetailView.swift; sourceTree = "<group>"; };
 		B27513F023ECB061007305A0 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C5712EAFB30555AB4BBECD42 /* Pods_RaffleBay_RaffleBayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBay_RaffleBayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -296,6 +298,7 @@
 		B27513ED23ECAD5C007305A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2FF79FC23F5FA0900AE9572 /* LoginViewController.swift in Sources */,
 				B27513EA23ECAD38007305A0 /* SaleItemTableView.swift in Sources */,
 				B27513E723ECAD11007305A0 /* SaleItemCellView.swift in Sources */,
 				B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */,
