@@ -151,6 +151,28 @@ extension Text {
             .font(.custom("Poppins", size: 24))
             
     }
+    
+    //Normal Text Style to be typically used for standard, non-bold text.
+    //NEED TO CHANGE: Setting "size" will override any user preferences in iOS Accessiblity.
+    func standardRegularText() -> Text {
+        self
+            .foregroundColor(Color.gray)
+            .fontWeight(.regular)
+            .font(.custom("Poppins", size: 14))
+
+    }
+    
+    //Normal Bold Text Style to be typically used for standard, bold text.
+       //NEED TO CHANGE: Setting "size" will override any user preferences in iOS Accessiblity.
+    func standardBoldText() -> Text {
+        self
+            .foregroundColor(Color.gray)
+            .fontWeight(.bold)
+            .font(.custom("Poppins", size: 14))
+
+   }
+    
+    
 }
 
 

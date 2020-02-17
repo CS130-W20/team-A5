@@ -39,37 +39,24 @@ struct LoginView: View {
                     //Login Stack
                     //ZStack here to allow for custom shadow manipulation.
                     ZStack(){
-                        //Create a Rectangle behind the button to simulate a smaller shadow for a 3D effect.
-                        RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.white)
-                        .frame(minWidth:0, maxWidth: 250, minHeight:10, maxHeight: 10)
-                        .shadow(color: Color("PurpleBlue"), radius: 5.0, x: 0, y: 10)
-                        .offset(y:22)
-                        .opacity(0.6)
+                        ShadowBoxView()
 
                         //Login Button
+                        //Personal Comment: Should we not have a natigation link here? I haven't looked into this yet but I'm assuming when we have a real DB hooked up, the view will change prior to recieving confirmation from the DB if the user input is correct
                         NavigationLink(destination: SaleItemTableView(), tag: 1, selection: self.$selection){
                             Button(action: {
                                 self.selection =  login_request(email: "longerbeamalex@gmail.com", password: "PASSWORD1")
                             }){
                                 Text("Login")
-                                    .fontWeight(.medium)
-                                    .padding(10)
-                                    .font(.custom("Poppins", size: 30))
-                                    .foregroundColor(Color.white)
+                                    .blueButtonText()
                                     .frame(minWidth:0, maxWidth: 300)
                                     
                             }
-                        .frame(minWidth:0, maxWidth: 300)
-                        .cornerRadius(7)
                         }
-                        .frame(minWidth:0, maxWidth: 300)
-                        .background(blueButtonGradient)
-                        .cornerRadius(7)
+                        .buttonStyle(BigBlueButtonStyle())
                     }
                     
                     //Signup Button
-                    //Login Button
                     Button(action: {
                         
                     }){
@@ -78,30 +65,19 @@ struct LoginView: View {
                         }){
                             HStack(){
                                 Text("Don't have an account?")
-                                .fontWeight(.regular)
-                                .padding(8)
-                                .font(.custom("Poppins", size: 14))
-                                .foregroundColor(Color.gray)
-                   
+                                    .standardRegularText()
+                                    .padding(8)
                                 
                                 Text("Sign Up")
-                                .fontWeight(.bold)
-                                .padding(8)
-                                .font(.custom("Poppins", size: 14))
-                                .foregroundColor(Color.gray)
-                                
+                                    .standardBoldText()
+                                    .padding(8)
                             }
                         }
-                        
-                        
-                            
                     }
-                    .frame(minWidth:0, maxWidth: 375)
-                    .cornerRadius(7)
+                    .buttonStyle(BigClearButtonStyle())
                  
                     Spacer()
-                    
-                }.frame(minWidth:0, maxWidth: 375)
+                }
                 
                 //Right Side Spacer
                 Spacer()
