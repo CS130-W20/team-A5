@@ -160,7 +160,18 @@ extension Text {
             .fontWeight(.bold)
             .font(.custom("Poppins", size: 14))
 
-   }
+    }
+    
+    //Normal Bold Text Style to be typically used for standard, bold text.
+    //NEED TO CHANGE: Setting "size" will override any user preferences in iOS Accessiblity.
+    func saleItemText() -> Text {
+        self
+            .foregroundColor(Color.white)
+            .fontWeight(.bold)
+            .font(.custom("Poppins", size: 18))
+            
+
+    }
     
     
 }
