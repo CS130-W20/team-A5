@@ -8,16 +8,6 @@
 
 import SwiftUI
 
-
-
-//CONTROL VARIABLES
-
-//Size of the frames for the Text Fields - used to adjust keyboard hiding.
-let signupFrameHeight: CGFloat = 60
-
-
-
-
 //********** CUSTOM STYLES **********//
 
 //********** Views **********//
@@ -104,7 +94,7 @@ struct BigBlueButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(10)
-            .frame(minWidth:0, maxWidth: 300)
+            .frame(minWidth:0, maxWidth: frameMaxWidth)
             .background(blueButtonGradient)
             .cornerRadius(7)
         
@@ -118,7 +108,7 @@ struct BigClearButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(8)
-            .frame(minWidth:0, maxWidth: 300)
+            .frame(minWidth:0, maxWidth: frameMaxWidth)
             .cornerRadius(7)
         
         

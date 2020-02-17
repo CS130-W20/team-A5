@@ -41,7 +41,7 @@ struct SplashscreenView: View {
                         NavigationLink(destination: LoginView()){
                             Text("Login")
                                 .blueButtonText()
-                                .frame(minWidth:0, maxWidth: 300)
+                                .frame(minWidth:0, maxWidth: frameMaxWidth)
                         }
                         .buttonStyle(BigBlueButtonStyle())
                     }
@@ -50,7 +50,7 @@ struct SplashscreenView: View {
                     NavigationLink(destination: SignupView()){
                         Text("Signup")
                             .clearButtonText()
-                            .frame(minWidth:0, maxWidth: 300)
+                            .frame(minWidth:0, maxWidth: frameMaxWidth)
                     }
                     .buttonStyle(BigClearButtonStyle())
                  

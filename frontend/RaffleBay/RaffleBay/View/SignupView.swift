@@ -124,7 +124,7 @@ struct SignupView : View {
                     NavigationLink(destination: SaleItemTableView()){
                         Text("Login")
                           .blueButtonText()
-                          .frame(minWidth:0, maxWidth: 300)
+                          .frame(minWidth:0, maxWidth: frameMaxWidth)
                     }
                     .buttonStyle(BigBlueButtonStyle())
                 }

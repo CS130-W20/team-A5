@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		43ECFBBF65465718D230BF45 /* Pods_RaffleBay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3081B660AC02309A8C4192C8 /* Pods_RaffleBay.framework */; };
 		8B3ACCF823FA14CB0045F6BF /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF723FA14CB0045F6BF /* styles.swift */; };
+		8B3ACCFA23FA48A70045F6BF /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF923FA48A70045F6BF /* constants.swift */; };
 		8BE89B8223EF7D4200EC2076 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */; };
 		8BE89B8323EF7D4200EC2076 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7123EF7D4100EC2076 /* Poppins-ThinItalic.ttf */; };
 		8BE89B8423EF7D4200EC2076 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7223EF7D4100EC2076 /* Poppins-Italic.ttf */; };
@@ -75,6 +76,7 @@
 		6DA863272F66B65FDDC4B6ED /* Pods-RaffleBayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBayTests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBayTests/Pods-RaffleBayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C9F8FC28B3FA4503302B099 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8B3ACCF723FA14CB0045F6BF /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
+		8B3ACCF923FA48A70045F6BF /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
 		8BE89B7123EF7D4100EC2076 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
 		8BE89B7223EF7D4100EC2076 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				8BE89B9623F0900500EC2076 /* LoginView.swift */,
 				8BE89B9423EF835400EC2076 /* SplashscreenView.swift */,
 				8B3ACCF723FA14CB0045F6BF /* styles.swift */,
+				8B3ACCF923FA48A70045F6BF /* constants.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				8BE89B9523EF835400EC2076 /* SplashscreenView.swift in Sources */,
 				B27513EC23ECAD52007305A0 /* SaleItemDetailView.swift in Sources */,
 				B27513E223ECACD6007305A0 /* SaleItem.swift in Sources */,
+				8B3ACCFA23FA48A70045F6BF /* constants.swift in Sources */,
 				B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */,
 				B27513B223ECAC47007305A0 /* ContentView.swift in Sources */,
 				B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */,

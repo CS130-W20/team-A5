@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 func login_request(email: String, password: String) -> Int {
     var result = 0
-    Alamofire.request("http://localhost:31337/api/users/login", method: .post, parameters: ["email":email, "password":password])
+    Alamofire.request(url + "/api/users/login", method: .post, parameters: ["email":email, "password":password])
     .responseSwiftyJSON { dataResponse in
         if dataResponse.result.isSuccess {
             let data = dataResponse.value!["data"].string
