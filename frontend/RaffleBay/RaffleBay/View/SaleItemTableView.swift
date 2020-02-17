@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-//Swift GridView
+//Create a GridView to display sale items in a grid fashion.
 struct GridStack<Content: View>: View {
     let rows: Int
     let columns: Int
@@ -41,9 +41,8 @@ struct SaleItemTableView : View {
     /// view body
     var body: some View {
 
+        //Currently this will only show the first even number of items. If there is a an odd number of sale items, the last item will not show. Will be slightly challenging to display that last item.
         GridStack(rows: saleItems.count / 2, columns: 2) { row, col in
-
-            
             SaleItemCellView(saleItem: self.saleItems[row * 2 + col])
                 .padding(.bottom, 20)
         }
