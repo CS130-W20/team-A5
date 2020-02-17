@@ -27,10 +27,10 @@ struct LoginView: View {
                     
                     VStack(){
                         TextField("Email", text: $email)
-                            .textFieldStyle(SignUpStyle())
+                            .textFieldStyle(SignUpTextFieldStyle())
                       
                         SecureField("Password", text: $password)
-                            .textFieldStyle(SignUpStyle())
+                            .textFieldStyle(SignUpTextFieldStyle())
                         
                     }
                     
@@ -38,11 +38,11 @@ struct LoginView: View {
                     
                     //Login Stack
                     //ZStack here to allow for custom shadow manipulation.
-                    VStack(){
+                    ZStack(){
                         //Create a Rectangle behind the button to simulate a smaller shadow for a 3D effect.
                         RoundedRectangle(cornerRadius: 25)
                         .fill(Color.white)
-                        .frame(minWidth:0, maxWidth: 300, minHeight:10, maxHeight: 10)
+                        .frame(minWidth:0, maxWidth: 250, minHeight:10, maxHeight: 10)
                         .shadow(color: Color("PurpleBlue"), radius: 5.0, x: 0, y: 10)
                         .offset(y:22)
                         .opacity(0.6)
@@ -64,7 +64,7 @@ struct LoginView: View {
                         .cornerRadius(7)
                         }
                         .frame(minWidth:0, maxWidth: 300)
-                        .background(ButtonGradient)
+                        .background(blueButtonGradient)
                         .cornerRadius(7)
                     }
                     
@@ -80,14 +80,14 @@ struct LoginView: View {
                                 Text("Don't have an account?")
                                 .fontWeight(.regular)
                                 .padding(8)
-//                                .font(.custom("Poppins", size: 14))
+                                .font(.custom("Poppins", size: 14))
                                 .foregroundColor(Color.gray)
                    
                                 
                                 Text("Sign Up")
                                 .fontWeight(.bold)
                                 .padding(8)
-//                                .font(.custom("Poppins", size: 14))
+                                .font(.custom("Poppins", size: 14))
                                 .foregroundColor(Color.gray)
                                 
                             }

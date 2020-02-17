@@ -25,62 +25,25 @@ struct SplashscreenView: View {
                     Spacer()
                     
                     //Title
-                    HStack(spacing: 0){
-                        Text("raffle")
-                        .fontWeight(.black)
-                        .font(.custom("Poppins", size: 70))
-                        .foregroundColor(Color("LightYellow"))
-                        
-                        Text("bay")
-                        .fontWeight(.black)
-                        .font(.custom("Poppins", size: 70))
-                        .foregroundColor(Color("LightBlue"))
-                    }
+                    LogoView()
                     
                     //Description/Tagline
-                    Text("Win items you love. Repeat.")
-                        .fontWeight(.medium)
-                        .font(.custom("Poppins", size: 18))
-                        .foregroundColor(Color.gray)
+                    DescriptionView()
                     
                     Spacer()
                     
                     //Login Stack
                     //ZStack here to allow for custom shadow manipulation.
                     ZStack(){
-                        //Create a Rectangle behind the button to simulate a smaller shadow for a 3D effect.
-                        RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.white)
-                        .frame(minWidth:0, maxWidth: 250, minHeight:10, maxHeight: 10)
-                        .shadow(color: Color("PurpleBlue"), radius: 5.0, x: 0, y: 10)
-                        .offset(y:22)
-                        .opacity(0.6)
+                    
+                        ShadowBoxView()
                         
-//                        //Login Button
-//                        Button(action: {
-//
-//                        }){
-//                            Text("Login")
-//                                .fontWeight(.medium)
-//                                .padding(10)
-//                                .font(.custom("Poppins", size: 30))
-//                                .foregroundColor(Color.white)
-//                                .frame(minWidth:0, maxWidth: 300)
-//                        }
-//                        .frame(minWidth:0, maxWidth: 300)
-//                        .background(ButtonGradient)
-//                        .cornerRadius(7)
                         NavigationLink(destination: LoginView()){
                             Text("Login")
-                                .fontWeight(.medium)
-                                .padding(10)
-                                .font(.custom("Poppins", size: 30))
-                                .foregroundColor(Color.white)
+                                .blueButtonText()
                                 .frame(minWidth:0, maxWidth: 300)
                         }
-                        .frame(minWidth:0, maxWidth: 300)
-                        .background(ButtonGradient)
-                        .cornerRadius(7)
+                        .buttonStyle(BigBlueButtonStyle())
                     }
                     
                     //Signup Button
@@ -88,15 +51,10 @@ struct SplashscreenView: View {
                         
                     }){
                         Text("Signup")
-                            .fontWeight(.regular)
-                            .padding(8)
-                            .font(.custom("Poppins", size: 24))
-                            .foregroundColor(Color.gray)
+                            .clearButtonText()
                             .frame(minWidth:0, maxWidth: 300)
-                            
                     }
-                    .frame(minWidth:0, maxWidth: 300)
-                    .cornerRadius(7)
+                    .buttonStyle(BigClearButtonStyle())
                  
                 }
                 
