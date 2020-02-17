@@ -108,8 +108,6 @@ struct SignupView : View {
 //                    DatePicker("Birthdate", selection: $birthdate, in: ...Date(), displayedComponents: .date)
 //                        .labelsHidden()
 //                        .textFieldStyle(SignUpTextFieldStyle())
-                        
-                    
                 }
                 
                 Spacer()
@@ -117,7 +115,6 @@ struct SignupView : View {
                 //Login Stack
                 //ZStack here to allow for custom shadow manipulation.
                 ZStack(){
-                    //Create a Rectangle behind the button to simulate a smaller shadow for a 3D effect.
                     ShadowBoxView()
                     
                     //Signup Button
@@ -125,15 +122,10 @@ struct SignupView : View {
                         
                     }){
                         Text("Signup")
-                            .fontWeight(.medium)
-                            .padding(10)
-                            //.font(.custom("Poppins", size: 30))
-                            .foregroundColor(Color.white)
+                            .blueButtonText()
                             .frame(minWidth:0, maxWidth: 300)
                     }
-                    .frame(minWidth:0, maxWidth: 375)
-                    .background(blueButtonGradient)
-                    .cornerRadius(7)
+                    .buttonStyle(BigBlueButtonStyle())
                 }
                 
                 //Login Button
@@ -143,28 +135,19 @@ struct SignupView : View {
                     }){
                         HStack(){
                             Text("Already have an account?")
-                            .fontWeight(.regular)
-                            .padding(8)
-                            //.font(.custom("Poppins", size: 14))
-                            .foregroundColor(Color.gray)
+                                .standardRegularText()
+                                .padding(8)
                
-                            
                             Text("Login Here")
-                            .fontWeight(.bold)
-                            .padding(8)
-                            //.font(.custom("Poppins", size: 14))
-                            .foregroundColor(Color.gray)
-                            
+                                 .standardBoldText()
+                                .padding(8)
                         }
                     }
-                    
-                    
-                        
+
                 }
-                .frame(minWidth:0, maxWidth: 375)
-                .cornerRadius(CGFloat(7))
+                .buttonStyle(BigClearButtonStyle())
              
-                }.frame(minWidth:0, maxWidth: 375)
+                }
                 .offset(y: -self.value)
                 .animation(.spring())
                 .onAppear(){
