@@ -31,8 +31,6 @@ struct SignupView : View {
 //           formatter.dateStyle = .long
 //           return formatter
 //       }
-
-    
     
     var body: some View {
         
@@ -120,12 +118,10 @@ struct SignupView : View {
                     ShadowBoxView()
                     
                     //Signup Button
-                    Button(action: {
-                        
-                    }){
-                        Text("Signup")
-                            .blueButtonText()
-                            .frame(minWidth:0, maxWidth: 300)
+                    NavigationLink(destination: SaleItemTableView()){
+                        Text("Login")
+                          .blueButtonText()
+                          .frame(minWidth:0, maxWidth: 300)
                     }
                     .buttonStyle(BigBlueButtonStyle())
                 }
