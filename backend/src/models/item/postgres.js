@@ -126,6 +126,12 @@ const ItemRepo = (postgres) => {
       const soldCount = item['tickets_sold']
       const totalTix = item['total_tickets'];
       const status = item['status'];
+      const seller_id = item['seller_id']
+
+      // Ensure the seller is not bidding on their own item
+      if (seller_id == user_id) {
+        return [null, "Not allowed to buy tickets for own item"];
+      }
 
       // Ensure the item is still accepting bids
       if (status != "IP") {
