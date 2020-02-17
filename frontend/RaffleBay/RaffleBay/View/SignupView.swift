@@ -20,17 +20,9 @@ import SwiftyJSON
 struct SignupView : View {
    
     //Create some user and use a password confirmation var to confirm
-    let someUser = User()
+    @ObservedObject var someUser = User()
     @State private var pwdConfirm = String()
     @State var value: CGFloat = 0
-    
-    
-//    //Format Date inputs
-//    var dateFormatter: DateFormatter {
-//           let formatter = DateFormatter()
-//           formatter.dateStyle = .long
-//           return formatter
-//       }
     
     var body: some View {
         
@@ -40,30 +32,32 @@ struct SignupView : View {
             Spacer()
             
             //Center Column
-            
             VStack(){
-                //Spacer().frame(height: 50)
+                Spacer().frame(height: 180)
+                Text(someUser.firstName)
                 
                 VStack(){
-                    TextField("First Name", text: someUser.$firstName)
+                    TextField("First Name", text: $someUser.firstName)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 0
                         }
                   
-                    TextField("Last Name", text: someUser.$lastName)
+                  
+                    
+                    TextField("Last Name", text: $someUser.lastName)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 1
                         }
 
-                    TextField("Email", text: someUser.$email)
+                    TextField("Email", text: $someUser.email)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 2
                         }
 
-                    SecureField("Password", text: someUser.$password)
+                    SecureField("Password", text: $someUser.password)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 3
@@ -75,42 +69,51 @@ struct SignupView : View {
                             self.value = signupFrameHeight * 4
                         }
 
-                    TextField("Street Address", text: someUser.$streetAddress)
+                    TextField("Street Address", text: $someUser.streetAddress)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 5
                         }
 
-                    TextField("City", text: someUser.$city)
+                    TextField("City", text: $someUser.city)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 6
                         }
 
                     HStack(){
-                        TextField("State", text: someUser.$state)
+                        TextField("State", text: $someUser.state)
                         .textFieldStyle(SignUpTextFieldStyle())
 
-                        TextField("Zipcode", text: someUser.$zipcode)
+                        TextField("Zipcode", text: $someUser.zipcode)
                         .textFieldStyle(SignUpTextFieldStyle())
                     }
                         .onTapGesture {
                             self.value = signupFrameHeight * 7
                         }
 
-                    TextField("Phone Number", text: someUser.$phoneNumber)
+                    TextField("Phone Number", text: $someUser.phoneNumber)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .keyboardType(.numberPad)
                         .onTapGesture {
                             self.value = signupFrameHeight * 8
                         }
                     
-//                    DatePicker("Birthdate", selection: userInformation[10], in: ...Date(), displayedComponents: .date)
-//                        .labelsHidden()
-//                        .textFieldStyle(SignUpTextFieldStyle())
+                    
+                    TextField("Birthdate",  text: $someUser.birthdate)
+                        .textFieldStyle(SignUpTextFieldStyle())
+                        .onTapGesture {
+                            self.value = signupFrameHeight * 9
+                        }
                 }
                 
                 Spacer()
+
+                if(someUser.password != pwdConfirm) {
+                    Text("Your passwords do not match.")
+                        .foregroundColor(.red)
+                    
+                }
                 
                 //Login Stack
                 //ZStack here to allow for custom shadow manipulation.

@@ -9,22 +9,22 @@
 import Foundation
 import SwiftUI
 
-class User {
+class User: ObservableObject {
     
     //TODO: Fill out based on class diagram
     
     
     //Acount Information from Sign Up
-    @State var firstName = String()
-    @State var lastName =  String()
-    @State var email = String()
-    @State var password = String()
-    @State var streetAddress = String()
-    @State var city = String()
-    @State var state = String()
-    @State var zipcode = String()
-    @State var phoneNumber = String()
-    @State var birthdate = Date()
+    @Published var firstName: String = ""
+    @Published var lastName: String  = ""
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var streetAddress: String = ""
+    @Published var city: String = ""
+    @Published var state: String = ""
+    @Published var zipcode: String = ""
+    @Published var phoneNumber: String = ""
+    @Published var birthdate: String = ""
     
 //    //Should these be all private and have public getters/setters?
 //    init(firstName: String, lastName: String, email: String, password: String, streetAddress: String, city: String, state: String, zipcode: String, phoneNumber: String, birthdate: Date) {

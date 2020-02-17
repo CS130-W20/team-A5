@@ -23,7 +23,7 @@ struct LoginView: View {
                 
                 //Center Column
                 VStack(){
-                    //Spacer().frame(height: 70)
+                    //Spacer().frame(height: 80)
                     
                     VStack(){
                         TextField("Email", text: $email)
@@ -75,7 +75,6 @@ struct LoginView: View {
                         }
                     }
                     .buttonStyle(BigClearButtonStyle())
-                 
                     Spacer()
                 }
                 
