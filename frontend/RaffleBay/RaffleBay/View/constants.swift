@@ -19,3 +19,6 @@ let frameMaxWidth:CGFloat = 300
 
 //URL for API connection
 let url:String = "http://localhost:31337"
+
+//Number of Columns to display on Sale Page
+let cols = 2

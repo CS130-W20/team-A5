@@ -11,18 +11,18 @@ import SwiftUI
 struct SaleItemCellView: View {
    
     let saleItem: SaleItem
-    let cellHeight:CGFloat = 200
-    let cellWidth:CGFloat = 400
+    let cellHeight:CGFloat = 250
+    let cellWidth:CGFloat = 175
     
     
     var body: some View {
         
-        VStack(){
+        VStack(spacing: 0){
             ZStack(){
                 Image(saleItem.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: cellWidth, height: cellHeight)
+                    .frame(maxWidth: cellWidth, maxHeight: cellHeight)
                     .foregroundColor(Color("LightBlue"))
                 
                 HStack(){
@@ -34,51 +34,18 @@ struct SaleItemCellView: View {
                     }.offset(x:cellWidth/40)
                     Spacer()
                 }
-                
             }
+            
             ZStack(){
                 Rectangle()
-                .frame(width: cellWidth, height: cellHeight/4)
+                .frame(maxWidth: cellWidth, maxHeight: cellHeight/5)
                 .foregroundColor(Color("LightYellow"))
                 
                 Text("Buy Tickets")
                     .blueButtonText()
-                    
-                
             }
-            
-                
-                
-        }.cornerRadius(8)
-            
-        
-        
-        
-//        VStack() {
-//            ZStack {
-//                Image(saleItem.image)
-//                .resizable()
-//                .frame(width: 360, height: 270)
-//                .cornerRadius(8)
-////                    .shadow(color: Color.gray, radius: 15)
-//                Rectangle()
-//                .offset(y:155)
-//                .fill(Color.red)
-//                .frame(width: 360, height: 10)
-//                Text(saleItem.name)
-//                    .offset(x: -20, y: 120)
-//                    .foregroundColor(Color.white)
-//                    .shadow(color: Color.black, radius: 15)
-//            }.padding(10)
-//            ZStack{
-//                Rectangle()
-//                .fill(Color.red)
-//                .frame(width: 360, height: 50)
-//                .cornerRadius(8)
-//                Text("Tickets left: 24")
-//                    .foregroundColor(Color.white)
-//            }
-//        }
-//        .frame(width: 500)
+        }
+        .frame(maxWidth: cellWidth, maxHeight: cellHeight)
+        .cornerRadius(cellWidth/20)
     }
 }
