@@ -18,19 +18,21 @@ import SwiftyJSON
 
 
 struct SignupView : View {
-    
-    //Create a User
-    let user : User
    
+    //Create some user and use a password confirmation var to confirm
+    let someUser = User()
+    @State private var pwdConfirm = String()
+    @State var value: CGFloat = 0
     
-    //Format Date inputs
-    var dateFormatter: DateFormatter {
-           let formatter = DateFormatter()
-           formatter.dateStyle = .long
-           return formatter
-       }
+    
+//    //Format Date inputs
+//    var dateFormatter: DateFormatter {
+//           let formatter = DateFormatter()
+//           formatter.dateStyle = .long
+//           return formatter
+//       }
 
-    @State var value :CGFloat = 0
+    
     
     var body: some View {
         
@@ -45,67 +47,67 @@ struct SignupView : View {
                 //Spacer().frame(height: 50)
                 
                 VStack(){
-                    TextField("First Name", text: user.$firstName)
+                    TextField("First Name", text: someUser.$firstName)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 0
                         }
                   
-                    TextField("Last Name", text: user.$lastName)
+                    TextField("Last Name", text: someUser.$lastName)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 1
                         }
-                    
-                    TextField("Email", text: user.$email)
+
+                    TextField("Email", text: someUser.$email)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 2
                         }
-                    
-                    SecureField("Password", text: user.$password)
+
+                    SecureField("Password", text: someUser.$password)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 3
                         }
-                        
-                    SecureField("Password Confirmation", text: user.$passwordComfirmation)
+
+                    SecureField("Password Confirmation", text: $pwdConfirm)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 4
                         }
 
-                    TextField("Street Address", text: user.$streetAddress)
+                    TextField("Street Address", text: someUser.$streetAddress)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 5
                         }
 
-                    TextField("City", text: user.$city)
+                    TextField("City", text: someUser.$city)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 6
                         }
-                    
+
                     HStack(){
-                        TextField("State", text: user.$state)
+                        TextField("State", text: someUser.$state)
                         .textFieldStyle(SignUpTextFieldStyle())
-                        
-                        TextField("Zipcode", text: user.$zipcode)
+
+                        TextField("Zipcode", text: someUser.$zipcode)
                         .textFieldStyle(SignUpTextFieldStyle())
                     }
                         .onTapGesture {
                             self.value = signupFrameHeight * 7
                         }
-                    
-                    TextField("Phone Number", text: user.$phoneNumber)
+
+                    TextField("Phone Number", text: someUser.$phoneNumber)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .keyboardType(.numberPad)
                         .onTapGesture {
                             self.value = signupFrameHeight * 8
                         }
                     
-//                    DatePicker("Birthdate", selection: $birthdate, in: ...Date(), displayedComponents: .date)
+//                    DatePicker("Birthdate", selection: userInformation[10], in: ...Date(), displayedComponents: .date)
 //                        .labelsHidden()
 //                        .textFieldStyle(SignUpTextFieldStyle())
                 }
@@ -134,7 +136,7 @@ struct SignupView : View {
                         
                     }){
                         HStack(){
-                            Text("Already have an account?")
+                            Text("Have an account?")
                                 .standardRegularText()
                                 .padding(8)
                

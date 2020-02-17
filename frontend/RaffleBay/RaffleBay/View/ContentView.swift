@@ -31,7 +31,7 @@ struct ContentView: View {
 //                }
 //                .tag(1)
 //        }
-        SplashscreenView()
+        SignupView()
     }
 }
 

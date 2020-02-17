@@ -47,9 +47,7 @@ struct SplashscreenView: View {
                     }
                     
                     //Signup Button
-                    Button(action: {
-                        
-                    }){
+                    NavigationLink(destination: LoginView()){
                         Text("Signup")
                             .clearButtonText()
                             .frame(minWidth:0, maxWidth: 300)
