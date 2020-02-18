@@ -43,7 +43,38 @@ struct ProfileView: View {
                         .padding(8)
                 }
             }
+            HStack(){
+                Spacer()
+                VStack(){
+                    HStack(){
+                        Text("Items You've Listed")
+                            .standardBoldText()
+                            .padding(8)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                           
+                        }){
+                           Text("(+)")
+                               .standardBoldText()
+                               .padding(8)
+                        }
+                    }
+                    Rectangle()
+                        .frame(height: 1.0, alignment: .bottom)
+                        .foregroundColor(Color("LightGray"))
+                        .offset(y:-10)
+                }
+                Spacer()
+            }
             
+            List(){
+                
+                ProfileSaleItemView()
+                ProfileSaleItemView()
+                ProfileSaleItemView()
+            }
             Spacer()
         
         }

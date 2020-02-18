@@ -11,6 +11,7 @@
 		8B3ACCF823FA14CB0045F6BF /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF723FA14CB0045F6BF /* styles.swift */; };
 		8B3ACCFA23FA48A70045F6BF /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF923FA48A70045F6BF /* constants.swift */; };
 		8BC5210123FBABE600BCC476 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5210023FBABE600BCC476 /* ProfileView.swift */; };
+		8BC5210323FBB25000BCC476 /* ProfileSaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5210223FBB25000BCC476 /* ProfileSaleItemView.swift */; };
 		8BE89B8223EF7D4200EC2076 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */; };
 		8BE89B8323EF7D4200EC2076 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7123EF7D4100EC2076 /* Poppins-ThinItalic.ttf */; };
 		8BE89B8423EF7D4200EC2076 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7223EF7D4100EC2076 /* Poppins-Italic.ttf */; };
@@ -79,6 +80,7 @@
 		8B3ACCF723FA14CB0045F6BF /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		8B3ACCF923FA48A70045F6BF /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8BC5210023FBABE600BCC476 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8BC5210223FBB25000BCC476 /* ProfileSaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSaleItemView.swift; sourceTree = "<group>"; };
 		8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
 		8BE89B7123EF7D4100EC2076 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
 		8BE89B7223EF7D4100EC2076 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				8B3ACCF723FA14CB0045F6BF /* styles.swift */,
 				8B3ACCF923FA48A70045F6BF /* constants.swift */,
 				8BC5210023FBABE600BCC476 /* ProfileView.swift */,
+				8BC5210223FBB25000BCC476 /* ProfileSaleItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 			files = (
 				B2FF79FC23F5FA0900AE9572 /* LoginViewController.swift in Sources */,
 				B27513EA23ECAD38007305A0 /* SaleItemTableView.swift in Sources */,
+				8BC5210323FBB25000BCC476 /* ProfileSaleItemView.swift in Sources */,
 				B27513E723ECAD11007305A0 /* SaleItemCellView.swift in Sources */,
 				B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */,
 				8BE89B9523EF835400EC2076 /* SplashscreenView.swift in Sources */,
