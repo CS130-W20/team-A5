@@ -3,10 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43ECFBBF65465718D230BF45 /* Pods_RaffleBay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3081B660AC02309A8C4192C8 /* Pods_RaffleBay.framework */; };
+		8B3ACCF823FA14CB0045F6BF /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF723FA14CB0045F6BF /* styles.swift */; };
+		8B3ACCFA23FA48A70045F6BF /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF923FA48A70045F6BF /* constants.swift */; };
+		8BE89B8223EF7D4200EC2076 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */; };
+		8BE89B8323EF7D4200EC2076 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7123EF7D4100EC2076 /* Poppins-ThinItalic.ttf */; };
+		8BE89B8423EF7D4200EC2076 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7223EF7D4100EC2076 /* Poppins-Italic.ttf */; };
+		8BE89B8523EF7D4200EC2076 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7323EF7D4100EC2076 /* Poppins-Medium.ttf */; };
+		8BE89B8623EF7D4200EC2076 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7423EF7D4100EC2076 /* Poppins-ExtraLight.ttf */; };
+		8BE89B8723EF7D4200EC2076 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7523EF7D4100EC2076 /* Poppins-ExtraBoldItalic.ttf */; };
+		8BE89B8823EF7D4200EC2076 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7623EF7D4100EC2076 /* Poppins-Bold.ttf */; };
+		8BE89B8923EF7D4200EC2076 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7723EF7D4100EC2076 /* Poppins-MediumItalic.ttf */; };
+		8BE89B8A23EF7D4200EC2076 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7823EF7D4100EC2076 /* Poppins-ExtraLightItalic.ttf */; };
+		8BE89B8B23EF7D4200EC2076 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7923EF7D4100EC2076 /* Poppins-Regular.ttf */; };
+		8BE89B8C23EF7D4200EC2076 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7A23EF7D4100EC2076 /* Poppins-Thin.ttf */; };
+		8BE89B8D23EF7D4200EC2076 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7B23EF7D4100EC2076 /* Poppins-ExtraBold.ttf */; };
+		8BE89B8E23EF7D4200EC2076 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7C23EF7D4200EC2076 /* Poppins-BoldItalic.ttf */; };
+		8BE89B8F23EF7D4200EC2076 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7D23EF7D4200EC2076 /* Poppins-Light.ttf */; };
+		8BE89B9023EF7D4200EC2076 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7E23EF7D4200EC2076 /* Poppins-BlackItalic.ttf */; };
+		8BE89B9123EF7D4200EC2076 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7F23EF7D4200EC2076 /* Poppins-Black.ttf */; };
+		8BE89B9223EF7D4200EC2076 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B8023EF7D4200EC2076 /* Poppins-SemiBoldItalic.ttf */; };
+		8BE89B9323EF7D4200EC2076 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B8123EF7D4200EC2076 /* Poppins-SemiBold.ttf */; };
+		8BE89B9523EF835400EC2076 /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE89B9423EF835400EC2076 /* SplashscreenView.swift */; };
+		8BE89B9723F0900500EC2076 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE89B9623F0900500EC2076 /* LoginView.swift */; };
+		A3CA20C487169747B8DBE422 /* Pods_RaffleBayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */; };
 		B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AA23ECAC47007305A0 /* AppDelegate.swift */; };
 		B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AC23ECAC47007305A0 /* SceneDelegate.swift */; };
 		B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */; };
@@ -22,6 +46,9 @@
 		B27513E723ECAD11007305A0 /* SaleItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513E623ECAD11007305A0 /* SaleItemCellView.swift */; };
 		B27513EA23ECAD38007305A0 /* SaleItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513E923ECAD38007305A0 /* SaleItemTableView.swift */; };
 		B27513EC23ECAD52007305A0 /* SaleItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */; };
+		B27513F123ECB061007305A0 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513F023ECB061007305A0 /* SignupView.swift */; };
+		B2FF79FC23F5FA0900AE9572 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */; };
+		EA1F03AABD6C0E1B52460AF6 /* Pods_RaffleBay_RaffleBayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5712EAFB30555AB4BBECD42 /* Pods_RaffleBay_RaffleBayUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +69,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20D7B4E73972CF595F6EE612 /* Pods-RaffleBay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay.release.xcconfig"; path = "Target Support Files/Pods-RaffleBay/Pods-RaffleBay.release.xcconfig"; sourceTree = "<group>"; };
+		297D5F3C5198DEDED748DFDB /* Pods-RaffleBay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay/Pods-RaffleBay.debug.xcconfig"; sourceTree = "<group>"; };
+		3081B660AC02309A8C4192C8 /* Pods_RaffleBay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55E779020CC0948D0C0A0494 /* Pods-RaffleBayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBayTests.release.xcconfig"; path = "Target Support Files/Pods-RaffleBayTests/Pods-RaffleBayTests.release.xcconfig"; sourceTree = "<group>"; };
+		6DA863272F66B65FDDC4B6ED /* Pods-RaffleBayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBayTests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBayTests/Pods-RaffleBayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7C9F8FC28B3FA4503302B099 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8B3ACCF723FA14CB0045F6BF /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
+		8B3ACCF923FA48A70045F6BF /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		8BE89B7123EF7D4100EC2076 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
+		8BE89B7223EF7D4100EC2076 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		8BE89B7323EF7D4100EC2076 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		8BE89B7423EF7D4100EC2076 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		8BE89B7523EF7D4100EC2076 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		8BE89B7623EF7D4100EC2076 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		8BE89B7723EF7D4100EC2076 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		8BE89B7823EF7D4100EC2076 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		8BE89B7923EF7D4100EC2076 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		8BE89B7A23EF7D4100EC2076 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		8BE89B7B23EF7D4100EC2076 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		8BE89B7C23EF7D4200EC2076 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		8BE89B7D23EF7D4200EC2076 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		8BE89B7E23EF7D4200EC2076 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		8BE89B7F23EF7D4200EC2076 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		8BE89B8023EF7D4200EC2076 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		8BE89B8123EF7D4200EC2076 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		8BE89B9423EF835400EC2076 /* SplashscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenView.swift; sourceTree = "<group>"; };
+		8BE89B9623F0900500EC2076 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABA14B827A9D72B336BFD9D8 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B27513A723ECAC47007305A0 /* RaffleBay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleBay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27513AA23ECAC47007305A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27513AC23ECAC47007305A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +120,9 @@
 		B27513E623ECAD11007305A0 /* SaleItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemCellView.swift; sourceTree = "<group>"; };
 		B27513E923ECAD38007305A0 /* SaleItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemTableView.swift; sourceTree = "<group>"; };
 		B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemDetailView.swift; sourceTree = "<group>"; };
+		B27513F023ECB061007305A0 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C5712EAFB30555AB4BBECD42 /* Pods_RaffleBay_RaffleBayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBay_RaffleBayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43ECFBBF65465718D230BF45 /* Pods_RaffleBay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3CA20C487169747B8DBE422 /* Pods_RaffleBayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,12 +146,61 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1F03AABD6C0E1B52460AF6 /* Pods_RaffleBay_RaffleBayUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47D03C900500155FDD4A07AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				297D5F3C5198DEDED748DFDB /* Pods-RaffleBay.debug.xcconfig */,
+				20D7B4E73972CF595F6EE612 /* Pods-RaffleBay.release.xcconfig */,
+				ABA14B827A9D72B336BFD9D8 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */,
+				7C9F8FC28B3FA4503302B099 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */,
+				6DA863272F66B65FDDC4B6ED /* Pods-RaffleBayTests.debug.xcconfig */,
+				55E779020CC0948D0C0A0494 /* Pods-RaffleBayTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8BE89B6F23EF7C7200EC2076 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8BE89B7F23EF7D4200EC2076 /* Poppins-Black.ttf */,
+				8BE89B7E23EF7D4200EC2076 /* Poppins-BlackItalic.ttf */,
+				8BE89B7623EF7D4100EC2076 /* Poppins-Bold.ttf */,
+				8BE89B7C23EF7D4200EC2076 /* Poppins-BoldItalic.ttf */,
+				8BE89B7B23EF7D4100EC2076 /* Poppins-ExtraBold.ttf */,
+				8BE89B7523EF7D4100EC2076 /* Poppins-ExtraBoldItalic.ttf */,
+				8BE89B7423EF7D4100EC2076 /* Poppins-ExtraLight.ttf */,
+				8BE89B7823EF7D4100EC2076 /* Poppins-ExtraLightItalic.ttf */,
+				8BE89B7223EF7D4100EC2076 /* Poppins-Italic.ttf */,
+				8BE89B7D23EF7D4200EC2076 /* Poppins-Light.ttf */,
+				8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */,
+				8BE89B7323EF7D4100EC2076 /* Poppins-Medium.ttf */,
+				8BE89B7723EF7D4100EC2076 /* Poppins-MediumItalic.ttf */,
+				8BE89B7923EF7D4100EC2076 /* Poppins-Regular.ttf */,
+				8BE89B8123EF7D4200EC2076 /* Poppins-SemiBold.ttf */,
+				8BE89B8023EF7D4200EC2076 /* Poppins-SemiBoldItalic.ttf */,
+				8BE89B7A23EF7D4100EC2076 /* Poppins-Thin.ttf */,
+				8BE89B7123EF7D4100EC2076 /* Poppins-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A774BB9277D7FA20759246DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3081B660AC02309A8C4192C8 /* Pods_RaffleBay.framework */,
+				C5712EAFB30555AB4BBECD42 /* Pods_RaffleBay_RaffleBayUITests.framework */,
+				A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B275139E23ECAC47007305A0 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +208,8 @@
 				B27513C323ECAC4A007305A0 /* RaffleBayTests */,
 				B27513CE23ECAC4A007305A0 /* RaffleBayUITests */,
 				B27513A823ECAC47007305A0 /* Products */,
+				47D03C900500155FDD4A07AE /* Pods */,
+				A774BB9277D7FA20759246DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +236,7 @@
 				B27513B823ECAC4A007305A0 /* LaunchScreen.storyboard */,
 				B27513BB23ECAC4A007305A0 /* Info.plist */,
 				B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */,
+				8BE89B6F23EF7C7200EC2076 /* Fonts */,
 				B27513B523ECAC4A007305A0 /* Preview Content */,
 			);
 			path = RaffleBay;
@@ -178,6 +292,11 @@
 				B27513E923ECAD38007305A0 /* SaleItemTableView.swift */,
 				B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */,
 				B27513B123ECAC47007305A0 /* ContentView.swift */,
+				B27513F023ECB061007305A0 /* SignupView.swift */,
+				8BE89B9623F0900500EC2076 /* LoginView.swift */,
+				8BE89B9423EF835400EC2076 /* SplashscreenView.swift */,
+				8B3ACCF723FA14CB0045F6BF /* styles.swift */,
+				8B3ACCF923FA48A70045F6BF /* constants.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +304,7 @@
 		B27513ED23ECAD5C007305A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -196,9 +316,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B27513D423ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBay" */;
 			buildPhases = (
+				972013249AE8884B3F818589 /* [CP] Check Pods Manifest.lock */,
 				B27513A323ECAC47007305A0 /* Sources */,
 				B27513A423ECAC47007305A0 /* Frameworks */,
 				B27513A523ECAC47007305A0 /* Resources */,
+				F9C8DF6D6BDDD8E680440C5F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,6 +335,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B27513D723ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBayTests" */;
 			buildPhases = (
+				A6256D1A74A191FBFBA3CB50 /* [CP] Check Pods Manifest.lock */,
 				B27513BC23ECAC4A007305A0 /* Sources */,
 				B27513BD23ECAC4A007305A0 /* Frameworks */,
 				B27513BE23ECAC4A007305A0 /* Resources */,
@@ -231,9 +354,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B27513DA23ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBayUITests" */;
 			buildPhases = (
+				84FDB1AC561C3EBEC5178E70 /* [CP] Check Pods Manifest.lock */,
 				B27513C723ECAC4A007305A0 /* Sources */,
 				B27513C823ECAC4A007305A0 /* Frameworks */,
 				B27513C923ECAC4A007305A0 /* Resources */,
+				DA8BEE579B2DF7D2275514FC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -293,9 +418,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE89B8A23EF7D4200EC2076 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				8BE89B8F23EF7D4200EC2076 /* Poppins-Light.ttf in Resources */,
+				8BE89B8D23EF7D4200EC2076 /* Poppins-ExtraBold.ttf in Resources */,
+				8BE89B8C23EF7D4200EC2076 /* Poppins-Thin.ttf in Resources */,
+				8BE89B8423EF7D4200EC2076 /* Poppins-Italic.ttf in Resources */,
+				8BE89B9223EF7D4200EC2076 /* Poppins-SemiBoldItalic.ttf in Resources */,
+				8BE89B9123EF7D4200EC2076 /* Poppins-Black.ttf in Resources */,
+				8BE89B8B23EF7D4200EC2076 /* Poppins-Regular.ttf in Resources */,
+				8BE89B8923EF7D4200EC2076 /* Poppins-MediumItalic.ttf in Resources */,
+				8BE89B8523EF7D4200EC2076 /* Poppins-Medium.ttf in Resources */,
 				B27513BA23ECAC4A007305A0 /* LaunchScreen.storyboard in Resources */,
+				8BE89B8723EF7D4200EC2076 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				B27513B723ECAC4A007305A0 /* Preview Assets.xcassets in Resources */,
+				8BE89B8623EF7D4200EC2076 /* Poppins-ExtraLight.ttf in Resources */,
+				8BE89B8323EF7D4200EC2076 /* Poppins-ThinItalic.ttf in Resources */,
+				8BE89B9323EF7D4200EC2076 /* Poppins-SemiBold.ttf in Resources */,
+				8BE89B8823EF7D4200EC2076 /* Poppins-Bold.ttf in Resources */,
 				B27513B423ECAC4A007305A0 /* Assets.xcassets in Resources */,
+				8BE89B8223EF7D4200EC2076 /* Poppins-LightItalic.ttf in Resources */,
+				8BE89B9023EF7D4200EC2076 /* Poppins-BlackItalic.ttf in Resources */,
+				8BE89B8E23EF7D4200EC2076 /* Poppins-BoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,20 +458,129 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		84FDB1AC561C3EBEC5178E70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RaffleBay-RaffleBayUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		972013249AE8884B3F818589 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RaffleBay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6256D1A74A191FBFBA3CB50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RaffleBayTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA8BEE579B2DF7D2275514FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9C8DF6D6BDDD8E680440C5F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RaffleBay/Pods-RaffleBay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RaffleBay/Pods-RaffleBay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RaffleBay/Pods-RaffleBay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B27513A323ECAC47007305A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2FF79FC23F5FA0900AE9572 /* LoginViewController.swift in Sources */,
 				B27513EA23ECAD38007305A0 /* SaleItemTableView.swift in Sources */,
 				B27513E723ECAD11007305A0 /* SaleItemCellView.swift in Sources */,
 				B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */,
+				8BE89B9523EF835400EC2076 /* SplashscreenView.swift in Sources */,
 				B27513EC23ECAD52007305A0 /* SaleItemDetailView.swift in Sources */,
 				B27513E223ECACD6007305A0 /* SaleItem.swift in Sources */,
+				8B3ACCFA23FA48A70045F6BF /* constants.swift in Sources */,
 				B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */,
 				B27513B223ECAC47007305A0 /* ContentView.swift in Sources */,
 				B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */,
 				B27513DF23ECACB3007305A0 /* SaleItemTestData.swift in Sources */,
+				8BE89B9723F0900500EC2076 /* LoginView.swift in Sources */,
+				B27513F123ECB061007305A0 /* SignupView.swift in Sources */,
+				8B3ACCF823FA14CB0045F6BF /* styles.swift in Sources */,
 				B27513E423ECACEA007305A0 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +744,7 @@
 		};
 		B27513D523ECAC4A007305A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 297D5F3C5198DEDED748DFDB /* Pods-RaffleBay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -512,6 +765,7 @@
 		};
 		B27513D623ECAC4A007305A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20D7B4E73972CF595F6EE612 /* Pods-RaffleBay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +786,7 @@
 		};
 		B27513D823ECAC4A007305A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DA863272F66B65FDDC4B6ED /* Pods-RaffleBayTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -554,6 +809,7 @@
 		};
 		B27513D923ECAC4A007305A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55E779020CC0948D0C0A0494 /* Pods-RaffleBayTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -576,6 +832,7 @@
 		};
 		B27513DB23ECAC4A007305A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABA14B827A9D72B336BFD9D8 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -596,6 +853,7 @@
 		};
 		B27513DC23ECAC4A007305A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C9F8FC28B3FA4503302B099 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'RaffleBay' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for RaffleBay
+	pod 'Alamofire', '~> 4.5'
+	pod 'SwiftyJSON', '~> 4.0'
+	pod 'Alamofire-SwiftyJSON'  
+target 'RaffleBayTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'RaffleBayUITests' do
+    # Pods for testing
+  end
+
+end
