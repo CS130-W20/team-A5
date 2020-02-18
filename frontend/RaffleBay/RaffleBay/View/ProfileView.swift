@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+let circleDiameter: CGFloat = 30
+
+
 struct ProfileView: View {
     var body: some View {
         VStack(){
@@ -52,13 +55,10 @@ struct ProfileView: View {
                             .padding(8)
                         
                         Spacer()
-                        
                         Button(action: {
                            
                         }){
-                           Text("(+)")
-                               .standardBoldText()
-                               .padding(8)
+                            PlusButtonView()
                         }
                     }
                     Rectangle()
