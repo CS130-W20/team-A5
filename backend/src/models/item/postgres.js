@@ -96,9 +96,82 @@ const ItemRepo = (postgres) => {
     }
   };
 
+  // Gets all bids for a specified item id
+  const getBidsForItemSQL = `
+    SELECT * from bids where item_id=$1;`;
+
+  // Given an item id, get all bids
+  const getBidsForItem = async(item_id) => {
+    const values = [item_id];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getBidsForItemSQL, values);
+      client.release();
+      return [res.rows, null];
+    } catch (err) {
+      return [null, err];
+    }
+  }
+
+  // Sets a bid with a given bid_id as the winning bid
+  const setBidAsWinnerSQL = `
+    UPDATE bids SET did_win=true WHERE bid_id=$1 RETURNING *;`;
+
+  // Given a bid ID, set it as a winner
+  const setBidAsWinner = async(bid_id) => {
+    const values = [bid_id];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(setBidAsWinnerSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  }
+
+  // Gets all items with a given status. 
+  // Includes current_ledger and tickets_sold as this will be used for displaying items
+  const getItemsWithStatusSQL = `
+    SELECT 
+      items.*, 
+      COALESCE(SUM(bids.total_cost),0) AS current_ledger,
+      CAST(COALESCE(SUM(bids.ticket_count),0) AS integer) AS tickets_sold
+    FROM items LEFT JOIN bids 
+      ON items.item_id = bids.item_id 
+    WHERE items.status = $1
+    GROUP BY items.item_id;`;
+
+  // Returns all items with a given status.
+  // Includes aggregated fields current_ledger and tickets_sold
+  const getItemsWithStatus= async (status) => {
+    const values = [status];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getItemsWithStatusSQL, values);
+      client.release();
+      return [res.rows, null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
   // SQL to update the status of an item
   const updateItemStatusSQL = `
-    UPDATE items SET status = $1;`
+    UPDATE items SET status = $2 WHERE item_id=$1;`
+
+  // Sets the item with given id to the goven status
+  const updateItemStatus= async (id, status) => {
+    const values = [id, status];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(updateItemStatusSQL, values);
+      client.release();
+      return [res.rows, null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
 
   // SQL to create a new Bid item
   const createBidSQL = `
@@ -137,7 +210,6 @@ const ItemRepo = (postgres) => {
       if (status != "IP") {
         return [null, "The raffle is no longer in progress"];
       }
-      console.log(typeof soldCount)
       // Ensure there are enough tickets left to sell
       if (soldCount + ticket_count > totalTix) {
         return [null, "Attempt to purchase too many tickets"];
@@ -148,7 +220,7 @@ const ItemRepo = (postgres) => {
 
       // If this used up the last of the tickets, set the item status to "AR" ("Awaiting Raffle")
       if (soldCount + ticket_count == totalTix) {
-        const itemStatusRes = await client.query(updateItemStatusSQL, ["AR"]);
+        const itemStatusRes = await updateItemStatus(item_id, "AR");
       }
       client.release();
       return [res.rows[0], null];
@@ -162,6 +234,10 @@ const ItemRepo = (postgres) => {
     createItem,
     getItemInfo,
     createBid,
+    getBidsForItem,
+    setBidAsWinner,
+    getItemsWithStatus,
+    updateItemStatus,
   };
 };
 
