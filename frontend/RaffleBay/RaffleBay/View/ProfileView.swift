@@ -15,6 +15,13 @@ struct ProfileView: View {
     var body: some View {
         VStack(){
             HStack(){
+                Text("Profile")
+                    .h1()
+                Spacer()
+                HamburgerIconView()
+            }.padding()
+                
+            HStack(){
                 Spacer()
                 VStack(){
                     Image("bose")

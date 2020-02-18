@@ -11,6 +11,7 @@
 		8B3ACCF823FA14CB0045F6BF /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF723FA14CB0045F6BF /* styles.swift */; };
 		8B3ACCFA23FA48A70045F6BF /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF923FA48A70045F6BF /* constants.swift */; };
 		8B6C220623FCA4A10014796E /* SidebarNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C220523FCA4A10014796E /* SidebarNavView.swift */; };
+		8B6C220823FCAFF00014796E /* CreateSaleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C220723FCAFF00014796E /* CreateSaleItem.swift */; };
 		8BC5210123FBABE600BCC476 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5210023FBABE600BCC476 /* ProfileView.swift */; };
 		8BC5210323FBB25000BCC476 /* ProfileSaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5210223FBB25000BCC476 /* ProfileSaleItemView.swift */; };
 		8BE89B8223EF7D4200EC2076 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */; };
@@ -81,6 +82,7 @@
 		8B3ACCF723FA14CB0045F6BF /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		8B3ACCF923FA48A70045F6BF /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8B6C220523FCA4A10014796E /* SidebarNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavView.swift; sourceTree = "<group>"; };
+		8B6C220723FCAFF00014796E /* CreateSaleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSaleItem.swift; sourceTree = "<group>"; };
 		8BC5210023FBABE600BCC476 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8BC5210223FBB25000BCC476 /* ProfileSaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSaleItemView.swift; sourceTree = "<group>"; };
 		8BE89B7023EF7D4100EC2076 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				B27513E623ECAD11007305A0 /* SaleItemCellView.swift */,
 				B27513E923ECAD38007305A0 /* SaleItemTableView.swift */,
 				B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */,
+				8B6C220723FCAFF00014796E /* CreateSaleItem.swift */,
 				B27513B123ECAC47007305A0 /* ContentView.swift */,
 				B27513F023ECB061007305A0 /* SignupView.swift */,
 				8BE89B9623F0900500EC2076 /* LoginView.swift */,
@@ -578,6 +581,7 @@
 				B2FF79FC23F5FA0900AE9572 /* LoginViewController.swift in Sources */,
 				8B6C220623FCA4A10014796E /* SidebarNavView.swift in Sources */,
 				B27513EA23ECAD38007305A0 /* SaleItemTableView.swift in Sources */,
+				8B6C220823FCAFF00014796E /* CreateSaleItem.swift in Sources */,
 				8BC5210323FBB25000BCC476 /* ProfileSaleItemView.swift in Sources */,
 				B27513E723ECAD11007305A0 /* SaleItemCellView.swift in Sources */,
 				B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */,

@@ -1,17 +1,14 @@
 //
-//  SaleItemDetailView.swift
+//  CreateSaleItem.swift
 //  RaffleBay
 //
-//  Created by Meera Rachamallu on 2/6/20.
+//  Created by Pierson Marks on 2/18/20.
 //  Copyright © 2020 Meera Rachamallu. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
-struct SaleItemDetailView : View {
-
-//    let saleItem: SaleItem
+struct CreateSaleItem: View {
     var body: some View {
         VStack(){
             Spacer().frame(height: 100)
@@ -54,5 +51,11 @@ struct SaleItemDetailView : View {
                     .blueButtonText()
             }.buttonStyle(BigBlueButtonStyle())
         }.padding(40)
+    }
+}
+
+struct CreateSaleItem_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateSaleItem()
     }
 }

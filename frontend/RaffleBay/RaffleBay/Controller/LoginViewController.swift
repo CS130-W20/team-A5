@@ -15,9 +15,9 @@ func login_request(email: String, password: String) -> Int {
     Alamofire.request(url + "/api/users/login", method: .post, parameters: ["email":email, "password":password])
     .responseSwiftyJSON { dataResponse in
         if dataResponse.result.isSuccess {
-            let data = dataResponse.value!["data"].string
+            let data = dataResponse.value!["data"]
             print(data)
-            let message = dataResponse.value!["message"].string
+            let message = dataResponse.value!["message"]
             print(message)
             result = 1
         } else {

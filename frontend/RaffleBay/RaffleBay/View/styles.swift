@@ -199,10 +199,21 @@ extension Text {
             .foregroundColor(Color.white)
             .fontWeight(.bold)
             .font(.custom("Poppins", size: 18))
-            
-
     }
     
+    func h1() -> Text {
+        self
+            .foregroundColor(Color.black)
+            .fontWeight(.semibold)
+            .font(.custom("Poppins", size: 28))
+    }
+    
+    func h2() -> Text {
+        self
+            .foregroundColor(Color.black)
+            .fontWeight(.regular)
+            .font(.custom("Poppins", size: 16))
+    }
     
 }
 
