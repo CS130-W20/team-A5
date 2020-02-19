@@ -68,7 +68,6 @@ const ItemModel = (repo) => {
     return await repo.updateItemStatus(item_id, status);
   }
 
-  // 
   /**
    * Calls repo method to create a bid. 
    * The repo method is atomic, will ensure bid can go through before creating
