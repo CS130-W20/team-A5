@@ -117,6 +117,24 @@ struct SignUpTextFieldStyle : TextFieldStyle {
     }
 }
 
+//Text Field Styling - Search Bar
+//Description: Replaces traditional text fields with a blank text field with a search bar.
+//struct SearchTextFieldStyle : TextFieldStyle {
+//    func _body(configuration: TextField<Self._Label>) -> some View {
+//            VStack{
+//            configuration
+//                .font(.custom("Poppins", size: 24))
+//                .padding()
+//                .frame(height: signupFrameHeight)
+//
+//                RoundedRectangle()
+//                    .frame(height: 1.0, alignment: .bottom)
+//                    .foregroundColor(Color("LightGray"))
+//                    .offset(y:-10)
+//            }
+//    }
+//}
+
 
 //Big Blue Button Styling - Flat Design Style
 //Description: Big Blue Button styling as a Call to Action. 

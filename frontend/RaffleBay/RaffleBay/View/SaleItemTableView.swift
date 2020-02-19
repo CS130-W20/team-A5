@@ -42,14 +42,55 @@ struct SaleItemTableView : View {
     var body: some View {
 
         VStack(){
-            //Currently this will only show the first even number of items. If there is a an odd number of sale items, the last item will not show. Will be slightly challenging to display that last item.
-            GridStack(rows: saleItems.count / 2, columns: 2) { row, col in
-                SaleItemCellView(saleItem: self.saleItems[row * 2 + col])
-                    .padding(5)
+            HStack(){
+                VStack(){
+                    Button(action: {
+                        
+                    }){
+                         HamburgerIconView()
+                    }
+                    
+                    .foregroundColor(Color("LightGray"))
+                }
+                Spacer()
+                VStack(){
+                    Button(action: {
+                        
+                    }){
+                         Text("Profile")
+                    }
+                    .foregroundColor(Color("LightGray"))
+                }
             }
-        }
-        
-        
+            Spacer().frame(height: 30)
+            TextField("Search", text: $search)
+                .padding(20)
+                  .background(RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(Color.white).frame(height: frameMaxWidth * 1.1 / 7))
+                    .shadow(radius: 7, y: 5)
+                    
+            .frame(height: frameMaxWidth * 1.1 / 7)
+            Spacer().frame(height: 30)
+            
+            HStack(){
+                Text("Items for Sale")
+                    .fontWeight(.bold)
+                    
+                Spacer()
+//                Text("Sort By: Most Recent")
+//                    .fontWeight(.light)
+                    
+                    
+            }
+            ScrollView(){
+                //Currently this will only show the first even number of items. If there is a an odd number of sale items, the last item will not show. Will be slightly challenging to display that last item.
+                GridStack(rows: saleItems.count / 2, columns: 2) { row, col in
+                    SaleItemCellView(saleItem: self.saleItems[row * 2 + col])
+                        .padding(5)
+                }
+            }
+    }
+    .padding(20)
         
         
 //        NavigationView {

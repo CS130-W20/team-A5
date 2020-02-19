@@ -47,5 +47,6 @@ struct SaleItemCellView: View {
         }
         .frame(maxWidth: cellWidth, maxHeight: cellHeight)
         .cornerRadius(cellWidth/20)
+        .shadow(radius: 3, y: 5)
     }
 }
