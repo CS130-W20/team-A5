@@ -42,7 +42,7 @@ struct SaleItemCellView: View {
                 .foregroundColor(Color("LightYellow"))
                 
                 Text("Buy Tickets")
-                    .blueButtonText()
+                    .standardBoldText()
             }
         }
         .frame(maxWidth: cellWidth, maxHeight: cellHeight)
