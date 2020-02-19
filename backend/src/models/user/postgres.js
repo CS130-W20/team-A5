@@ -90,18 +90,17 @@ const UserRepo = (postgres) => {
     }
   };
 
-  // Retrieve abbreviated user fields from the user column by a user's id. This should
-  // only ever return one user, since IDs should be unique
-  const getOtherUserInfoSQL = `
-    SELECT id, first_name, last_name, pic_url FROM users WHERE id=$1;`;
+  // Retrieves user info by user_id. Lets layer above this pick certain fields to return
+  const getUserInfoByIdSQL = `
+    SELECT * FROM users WHERE id=$1;`;
 
-  // Uses getOtherUserInfoSQL to retrieve the user, and return either (user, null),
+  // Uses getUserInfoByIdSQL to retrieve the user, and return either (user, null),
   // or (null, error)
-  const getOtherUserInfo = async (id) => {
+  const getUserInfoById = async (id) => {
     const values = [id];
     try {
       const client = await postgres.connect();
-      const res = await client.query(getOtherUserInfoSQL, values);
+      const res = await client.query(getUserInfoByIdSQL, values);
       client.release();
       return [res.rows[0], null];
     } catch (err) {
@@ -134,7 +133,7 @@ const UserRepo = (postgres) => {
     createUser,
     getUserInfoByAuthToken,
     getUserInfoByEmail,
-    getOtherUserInfo,
+    getUserInfoById,
     debitUserFunds,
   };
 };

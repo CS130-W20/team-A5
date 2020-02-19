@@ -15,8 +15,10 @@ const {UserController} = require('./controllers/user');
 const {ItemRepo} = require('./models/item/postgres');
 const {ItemModel} = require('./models/item');
 const {ItemController} = require('./controllers/item');
+const {AdminController} = require('./controllers/admin')
 
 const {AuthService} = require('./services/auth')
+const {RaffleService} = require('./services/raffle')
 
 function start(port) {
   const postgres = PostgresDB(config.database);
@@ -25,13 +27,18 @@ function start(port) {
   userRepo.setupRepo();
 
   const userModel = UserModel(userRepo);
-  const authService = AuthService(userModel);
+
+  const authService = AuthService(userModel); 
   const userController = UserController(userModel, authService);
   
   const itemRepo = ItemRepo(postgres);
   itemRepo.setupRepo();
   const itemModel = ItemModel(itemRepo);
   const itemController = ItemController(itemModel, userModel, authService);
+
+  const raffleService = RaffleService(itemModel, userModel);
+
+  const adminController = AdminController(userModel, itemModel, raffleService);
 
 
   const app = express();
@@ -50,6 +57,7 @@ function start(port) {
   const router = express.Router();
   router.use('/users', userController);
   router.use('/items', itemController);
+  router.use('/admin', adminController);
 
   app.use('/api', router);
 
