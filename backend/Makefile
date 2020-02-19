@@ -28,5 +28,10 @@ p_shell:
 reset_db: 
 	docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE bids, items, users;"
 
+jsdoc:
+	- rm -r JSDoc_Output/
+	docker exec -i -t `docker ps -q --filter status=running --filter ancestor=rafflebay/backend:latest` /bin/sh -c "node_modules/jsdoc/jsdoc.js -r src"
+	docker cp `docker ps -q --filter status=running --filter ancestor=rafflebay/backend:latest`:/app/out/ ./JSDoc_Output
+
 
 
