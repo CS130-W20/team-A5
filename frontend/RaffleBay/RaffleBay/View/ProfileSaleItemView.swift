@@ -40,6 +40,7 @@ struct ProfileSaleItemView: View {
             .frame(width: frameMaxWidth * 1.1, height: frameMaxWidth * 1.1 / 2)
             )
         .padding(20)
+        .frame(width: 400, height: frameMaxWidth * 1.2 / 2)
     }
     
 }

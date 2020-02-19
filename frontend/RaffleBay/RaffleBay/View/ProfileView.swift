@@ -54,12 +54,11 @@ struct ProfileView: View {
                 }
             }
             HStack(){
-                Spacer()
-                VStack(){
-                    HStack(){
+                VStack(alignment: .center){
+                    HStack(alignment: .bottom){
                         Text("Items You've Listed")
                             .standardBoldText()
-                            .padding(8)
+                            
                         
                         Spacer()
                         Button(action: {
@@ -68,22 +67,19 @@ struct ProfileView: View {
                             PlusButtonView()
                         }
                     }
+                    .padding(8)
                     Rectangle()
-                        .frame(height: 1.0, alignment: .bottom)
+                        .frame(height: 2.0, alignment: .bottom)
                         .foregroundColor(Color("LightGray"))
                         .offset(y:-10)
+                    
+                    ScrollView(){
+                        ProfileSaleItemView()
+                        ProfileSaleItemView()
+                        ProfileSaleItemView()
+                    }
                 }
-                Spacer()
             }
-            
-            List(){
-                
-                ProfileSaleItemView()
-                ProfileSaleItemView()
-                ProfileSaleItemView()
-            }
-            Spacer()
-        
         }
         
     }
