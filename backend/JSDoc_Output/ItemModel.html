@@ -142,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line7">line 7</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -391,7 +391,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line82">line 82</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line96">line 96</a>
     </li></ul></dd>
     
 
@@ -432,6 +432,372 @@ The repo method is atomic, will ensure bid can go through before creating
     <dd>
         
 <span class="param-type">Array.&lt;{0: Bid, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~createItem"><span class="type-signature">(async, inner) </span>createItem<span class="signature">(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Item, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates an item with given info
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>item_name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Name of item to add</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>seller_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of user posting the item</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pic_url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Picture of the item to sell</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item_description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Description of item to sell</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Tags used to describe item</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sale_price</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Price for item</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ticket_price</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Price for each ticket for the item</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>total_tickets</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Amount of tickets to sell</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deadline</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">timestamp</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Deadline for the item to sell</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Status of the sale</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with new Rafflebay Item Object and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: Item, 1: String}></span>
 
 
     </dd>
@@ -550,7 +916,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line36">line 36</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -591,6 +957,165 @@ The repo method is atomic, will ensure bid can go through before creating
     <dd>
         
 <span class="param-type">Array.&lt;{0: Array.&lt;Bid>, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getBidsForUser"><span class="type-signature">(async, inner) </span>getBidsForUser<span class="signature">(user_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Bid, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets all bids for user
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of user bidding on item</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line116">line 116</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with Rafflebay Bid Objects for userand error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: Bid, 1: String}></span>
 
 
     </dd>
@@ -709,7 +1234,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line22">line 22</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line37">line 37</a>
     </li></ul></dd>
     
 
@@ -739,6 +1264,165 @@ The repo method is atomic, will ensure bid can go through before creating
         
 <div class="param-desc">
     - Array with Rafflebay Item Object and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: Item, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getItemsForSeller"><span class="type-signature">(async, inner) </span>getItemsForSeller<span class="signature">(seller_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Item, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get all items where user was the seller
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>seller_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of user selling the item</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line106">line 106</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with Raffelbay Item Objects for seller and error (only one or the other)
 </div>
 
 
@@ -868,7 +1552,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line56">line 56</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -1027,7 +1711,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line46">line 46</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -1209,7 +1893,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line67">line 67</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -1277,13 +1961,13 @@ The repo method is atomic, will ensure bid can go through before creating
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ItemModel.html">ItemModel</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ItemModel.html">ItemModel</a></li><li><a href="UserModel.html">UserModel</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ItemRepo">ItemRepo</a></li><li><a href="global.html#PostgresDB">PostgresDB</a></li><li><a href="global.html#UserRepo">UserRepo</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Feb 19 2020 20:01:32 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Feb 20 2020 06:18:55 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

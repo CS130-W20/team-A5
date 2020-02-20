@@ -5,7 +5,22 @@
  * @return {ItemModel} - ItemModel Object
  */
 const ItemModel = (repo) => {
-  // Creates an item with given info
+
+  /**
+   * Creates an item with given info
+   * 
+   * @param  {string} item_name - Name of item to add
+   * @param  {number} seller_id - ID of user posting the item
+   * @param  {string} pic_url - Picture of the item to sell
+   * @param  {string} item_description - Description of item to sell
+   * @param  {string} tags - Tags used to describe item
+   * @param  {number} sale_price - Price for item
+   * @param  {number} ticket_price - Price for each ticket for the item
+   * @param  {number} total_tickets - Amount of tickets to sell
+   * @param  {timestamp} deadline - Deadline for the item to sell
+   * @param  {string} status - Status of the sale
+   * @return {Array<{0: Item, 1: String}>} - Array with new Rafflebay Item Object and error (only one or the other)
+   */
   const createItem= async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status) => {
 
     const [item, err] = await repo.createItem(item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status);

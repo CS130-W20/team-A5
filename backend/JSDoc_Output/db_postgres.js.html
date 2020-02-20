@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: db/postgres.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,38 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: db/postgres.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const {Pool} = require('pg');
 
+/**
+ * Instantiates a new postgres connection pool, and returns the pool as a Postgres object, 
+ * allowing the other parts of our application to access postgres, such as storing and retrieving data.
+ * 
+ * @param  {Configuration} config - Database configuration
+ * @return {PostgresObject} - Returns the postgres connection pool
+ */
+const PostgresDB = (config) => {
+  const pool = new Pool(config);
+  pool.on('error', (err, client) => {
+    console.error('Unexpected error occured on idle client', err);
+  });
+  return pool;
+};
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = {
+  PostgresDB,
+};
+</code></pre>
+        </article>
+    </section>
 
 
 
