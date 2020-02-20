@@ -1,6 +1,7 @@
 const express = require('express');
 const _ = require('lodash');
 const buyerView = ['item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline']
+const bidderView = ['item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline', 'total_cost', 'tickets_bought']
 
 const ItemController = (itemModel, userModel, authService) => {
   const router = express.Router();
@@ -130,6 +131,61 @@ const ItemController = (itemModel, userModel, authService) => {
       message: '',
     });
   });
+
+  // Gets the logged in user using the authentication token passed in the request header
+  router.get('/me', async (req, res) => {
+  
+    // Get the user_id of the user sending the request
+    const [user_info, err] = await authService.getLoggedInUserInfo(req.headers);
+
+    if (err) {
+      return res.status(400).json({
+        data: null,
+        message: err
+      });
+    }
+
+    // Get all items that are sold by the user
+    const [items_selling, err1] = await itemModel.getItemsForSeller(user_info['id'])
+
+    if (err1) {
+      return res.status(400).json({
+        data: null,
+        message: err1
+      });
+    }
+
+    // Get all the bids from theuser
+    const [bid_info, err2] = await itemModel.getBidsForUser(user_info['id'])
+    
+    if (err2) {
+      return res.status(400).json({
+        data: null,
+        message: err2
+      });
+    }
+
+    // Only return the information 
+    var items_bidding = []
+    var arrayLength = bid_info.length;
+    for (var i = 0; i < arrayLength; i++) {
+      var bid = _.pick(bid_info[i], bidderView)
+      items_bidding.push(bid)
+      
+    }
+
+
+
+
+    // Return one data object with all the items the user is selling an the items the user is bidding on
+    const data = {"Items Selling": items_selling, "Items Bidding On": items_bidding}
+
+    return res.status(200).json({
+      data: data,
+      message: ""
+    });
+  });
+
 
   // Gets the item info for the item with item_id specified
   // If the logged in user is not the seller, we show an 
