@@ -5,7 +5,7 @@ const {Pool} = require('pg');
  * allowing the other parts of our application to access postgres, such as storing and retrieving data.
  * 
  * @param  {Configuration} config - Database configuration
- * @return {PostgresObject} - Returns the postgres connection pool
+ * @return {PostgresDB} - Returns the postgres connection pool
  */
 const PostgresDB = (config) => {
   const pool = new Pool(config);

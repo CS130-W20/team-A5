@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ItemModel</title>
+    <title>JSDoc: Class: ItemRepo</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ItemModel</h1>
+    <h1 class="page-title">Class: ItemRepo</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>ItemModel<span class="signature">(repo)</span><span class="type-signature"> &rarr; {<a href="ItemModel.html">ItemModel</a>}</span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>ItemRepo<span class="signature">(postgres)</span><span class="type-signature"> &rarr; {<a href="ItemRepo.html">ItemRepo</a>}</span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="ItemModel"><span class="type-signature"></span>new ItemModel<span class="signature">(repo)</span><span class="type-signature"> &rarr; {<a href="ItemModel.html">ItemModel</a>}</span></h4>
+    <h4 class="name" id="ItemRepo"><span class="type-signature"></span>new ItemRepo<span class="signature">(postgres)</span><span class="type-signature"> &rarr; {<a href="ItemRepo.html">ItemRepo</a>}</span></h4>
     
 
     
@@ -49,7 +49,8 @@
 
 
 <div class="description">
-    Function to define the Item Model
+    Wrapper around postgres data functions for the Item Model. 
+Requires a postgres connection and ability to make valid postgres queries.
 </div>
 
 
@@ -85,13 +86,13 @@
 
         <tr>
             
-                <td class="name"><code>repo</code></td>
+                <td class="name"><code>postgres</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="ItemRepo.html">ItemRepo</a></span>
+<span class="param-type"><a href="global.html#PostgresDB">PostgresDB</a></span>
 
 
             
@@ -101,7 +102,7 @@
 
             
 
-            <td class="description last">Item Database Model to be used</td>
+            <td class="description last">Database instance</td>
         </tr>
 
     
@@ -142,7 +143,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line7">line 7</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -171,7 +172,7 @@
 
         
 <div class="param-desc">
-    - ItemModel Object
+    - ItemRepo Object
 </div>
 
 
@@ -182,7 +183,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="ItemModel.html">ItemModel</a></span>
+<span class="param-type"><a href="ItemRepo.html">ItemRepo</a></span>
 
 
     </dd>
@@ -210,6 +211,806 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="~createBidSQL"><span class="type-signature">(inner, constant) </span>createBidSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Creates a new bid item
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line261">line 261</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~createBidTableSQL"><span class="type-signature">(inner, constant) </span>createBidTableSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Set up the bid table if it does not exist
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~createItemSQL"><span class="type-signature">(inner, constant) </span>createItemSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Inserts an item entry into the items tabl
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line75">line 75</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~createItemTableSQL"><span class="type-signature">(inner, constant) </span>createItemTableSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Set up the item table if it does not exist
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getBidsForItemSQL"><span class="type-signature">(inner, constant) </span>getBidsForItemSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Gets all bids for a specified item id
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line147">line 147</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getBidsForUserSQL"><span class="type-signature">(inner, constant) </span>getBidsForUserSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Gets list of bids by user_id
+Includes aggregated fields total_cost and tickets_bought
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line363">line 363</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getItemInfoSQL"><span class="type-signature">(inner, constant) </span>getItemInfoSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Retrieve the item id where the id is given and the user is the seller.
+Aggregates the total tickets sold value into the returned info for ease of displaying this info to users
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line114">line 114</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getItemsForSellerSQL"><span class="type-signature">(inner, constant) </span>getItemsForSellerSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Gets list of items by seller_id
+Includes aggregated fields current_ledger and tickets_sold
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line329">line 329</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getItemsWithStatusSQL"><span class="type-signature">(inner, constant) </span>getItemsWithStatusSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Gets all items with a given status
+Includes current-ledger and tickets_sold as this will be used for displaying items
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line200">line 200</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~setBidAsWinnerSQL"><span class="type-signature">(inner, constant) </span>setBidAsWinnerSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Sets a bid with a given bid_id as the winning bid
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line173">line 173</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~updateItemStatusSQL"><span class="type-signature">(inner, constant) </span>updateItemStatusSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Updates the status of an item
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line234">line 234</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -228,8 +1029,13 @@
 
 
 <div class="description">
-    Calls repo method to create a bid. 
-The repo method is atomic, will ensure bid can go through before creating
+    Use createBidSQL to create a new bid, tying together a user and item they have bid on
+THIS METHOD IS ATOMIC
+Steps to take
+1. Get tickets sold count for item
+2. Ensure it is possible to make the transaction
+3. Create the bid
+4. If this used up all the tickets, set the item status to "AR" ("Awaiting Raffle")
 </div>
 
 
@@ -281,7 +1087,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">ID of user creating the bid</td>
+            <td class="description last">ID of user buying the bid</td>
         </tr>
 
     
@@ -304,7 +1110,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">ID of item bid is for</td>
+            <td class="description last">ID of the item being bid on</td>
         </tr>
 
     
@@ -327,7 +1133,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Number of tickets being purchased</td>
+            <td class="description last">Amount of tickets user wants to buy</td>
         </tr>
 
     
@@ -350,7 +1156,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Total cost of entire bid</td>
+            <td class="description last">Total cost of tickets that are being bought</td>
         </tr>
 
     
@@ -391,7 +1197,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line96">line 96</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line282">line 282</a>
     </li></ul></dd>
     
 
@@ -420,7 +1226,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
         
 <div class="param-desc">
-    - Array with new Rafflebay Bid Object and error (only one or the other)
+    - Array with Rafflebay Bid Object and error (only one or the other)
 </div>
 
 
@@ -457,7 +1263,8 @@ The repo method is atomic, will ensure bid can go through before creating
 
 
 <div class="description">
-    Creates an item with given info
+    Uses createItemSQL and inserts an item into the items column. 
+If we get an error, then we return the (null, error), otherwise return (data, null)
 </div>
 
 
@@ -509,7 +1316,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Name of item to add</td>
+            <td class="description last">Name of item</td>
         </tr>
 
     
@@ -532,7 +1339,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">ID of user posting the item</td>
+            <td class="description last">ID of user who posted item</td>
         </tr>
 
     
@@ -555,7 +1362,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Picture of the item to sell</td>
+            <td class="description last">String of url for item picture</td>
         </tr>
 
     
@@ -578,7 +1385,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Description of item to sell</td>
+            <td class="description last">Description for item</td>
         </tr>
 
     
@@ -601,7 +1408,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Tags used to describe item</td>
+            <td class="description last">List of tags to describe the item</td>
         </tr>
 
     
@@ -624,7 +1431,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Price for item</td>
+            <td class="description last">Price of the item</td>
         </tr>
 
     
@@ -647,7 +1454,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Price for each ticket for the item</td>
+            <td class="description last">Price of the tickets for the item</td>
         </tr>
 
     
@@ -670,7 +1477,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Amount of tickets to sell</td>
+            <td class="description last">Amount of tickets being sold</td>
         </tr>
 
     
@@ -683,7 +1490,7 @@ The repo method is atomic, will ensure bid can go through before creating
             <td class="type">
             
                 
-<span class="param-type">timestamp</span>
+<span class="param-type">datetime</span>
 
 
             
@@ -693,7 +1500,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Deadline for the item to sell</td>
+            <td class="description last">Time until raffle closes</td>
         </tr>
 
     
@@ -716,7 +1523,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Status of the sale</td>
+            <td class="description last">Status of the raffle</td>
         </tr>
 
     
@@ -757,7 +1564,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line24">line 24</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line96">line 96</a>
     </li></ul></dd>
     
 
@@ -786,7 +1593,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
         
 <div class="param-desc">
-    - Array with new Rafflebay Item Object and error (only one or the other)
+    - Array with Rafflebay Item Object and error (only one or the other)
 </div>
 
 
@@ -823,7 +1630,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
 
 <div class="description">
-    Gets all bids for a given item_id
+    Given an item id, get all bids
 </div>
 
 
@@ -916,7 +1723,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line51">line 51</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line156">line 156</a>
     </li></ul></dd>
     
 
@@ -945,7 +1752,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
         
 <div class="param-desc">
-    - Array with Array of Bids for given item_id and error (only one or the other)
+    - Array with array of Rafflebay Bid Objects and error (only one or the other)
 </div>
 
 
@@ -974,7 +1781,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
 
     
-    <h4 class="name" id="~getBidsForUser"><span class="type-signature">(async, inner) </span>getBidsForUser<span class="signature">(user_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Bid, 1: String}>}</span></h4>
+    <h4 class="name" id="~getBidsForUser"><span class="type-signature">(async, inner) </span>getBidsForUser<span class="signature">(user_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Array.&lt;Bid>, 1: String}>}</span></h4>
     
 
     
@@ -982,7 +1789,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
 
 <div class="description">
-    Gets all bids for user
+    Gets all bids for user with user_id
 </div>
 
 
@@ -1034,7 +1841,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">ID of user bidding on item</td>
+            <td class="description last">ID of user who bought the bids</td>
         </tr>
 
     
@@ -1075,7 +1882,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line116">line 116</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line379">line 379</a>
     </li></ul></dd>
     
 
@@ -1104,7 +1911,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
         
 <div class="param-desc">
-    - Array with Rafflebay Bid Objects for userand error (only one or the other)
+    - Array with array of Rafflebay Bid Objects and error (only one or the other)
 </div>
 
 
@@ -1115,7 +1922,7 @@ The repo method is atomic, will ensure bid can go through before creating
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;{0: Bid, 1: String}></span>
+<span class="param-type">Array.&lt;{0: Array.&lt;Bid>, 1: String}></span>
 
 
     </dd>
@@ -1141,7 +1948,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
 
 <div class="description">
-    Gets item info given an item id
+    Uses getItemInfoSQL to retrieve the item, and return either (item, null), or (null, error)
 </div>
 
 
@@ -1193,7 +2000,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">ID of item to get</td>
+            <td class="description last">ID of item to get info of</td>
         </tr>
 
     
@@ -1234,7 +2041,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line37">line 37</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line130">line 130</a>
     </li></ul></dd>
     
 
@@ -1292,7 +2099,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
 
     
-    <h4 class="name" id="~getItemsForSeller"><span class="type-signature">(async, inner) </span>getItemsForSeller<span class="signature">(seller_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Item, 1: String}>}</span></h4>
+    <h4 class="name" id="~getItemsForSeller"><span class="type-signature">(async, inner) </span>getItemsForSeller<span class="signature">(seller_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Array.&lt;Item>, 1: String}>}</span></h4>
     
 
     
@@ -1300,7 +2107,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
 
 <div class="description">
-    Get all items where user was the seller
+    Gets all items that are sold by the user with seller_id
 </div>
 
 
@@ -1352,7 +2159,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">ID of user selling the item</td>
+            <td class="description last">ID of user who put up the item</td>
         </tr>
 
     
@@ -1393,7 +2200,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line106">line 106</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line345">line 345</a>
     </li></ul></dd>
     
 
@@ -1422,7 +2229,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
         
 <div class="param-desc">
-    - Array with Raffelbay Item Objects for seller and error (only one or the other)
+    - Array with array of Rafflebay Item Objects and error (only one or the other)
 </div>
 
 
@@ -1433,7 +2240,7 @@ The repo method is atomic, will ensure bid can go through before creating
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;{0: Item, 1: String}></span>
+<span class="param-type">Array.&lt;{0: Array.&lt;Item>, 1: String}></span>
 
 
     </dd>
@@ -1459,7 +2266,8 @@ The repo method is atomic, will ensure bid can go through before creating
 
 
 <div class="description">
-    Gets all items with a given status
+    Returns all items with a given status.
+Includes aggregated fields current_ledger and tickets_sold
 </div>
 
 
@@ -1511,7 +2319,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Status string of ("IP", "AR", "AS") to get items for</td>
+            <td class="description last">Status of items to look for</td>
         </tr>
 
     
@@ -1552,7 +2360,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line71">line 71</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line217">line 217</a>
     </li></ul></dd>
     
 
@@ -1581,7 +2389,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
         
 <div class="param-desc">
-    - Array with Array of Items for given status and error (only one or the other)
+    - Array with array of Rafflebay Item Objects and error (only one or the other)
 </div>
 
 
@@ -1618,7 +2426,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
 
 <div class="description">
-    Sets a bid as the winner given a bid_id
+    Given a bid ID, set it as a winner
 </div>
 
 
@@ -1670,7 +2478,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">ID of bid to set as the winner</td>
+            <td class="description last">ID of bid to update</td>
         </tr>
 
     
@@ -1711,7 +2519,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line61">line 61</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line182">line 182</a>
     </li></ul></dd>
     
 
@@ -1769,7 +2577,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
 
     
-    <h4 class="name" id="~updateItemStatus"><span class="type-signature">(async, inner) </span>updateItemStatus<span class="signature">(item_id, status)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Item, 1: String}>}</span></h4>
+    <h4 class="name" id="~setupRepo"><span class="type-signature">(async, inner) </span>setupRepo<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -1777,7 +2585,117 @@ The repo method is atomic, will ensure bid can go through before creating
 
 
 <div class="description">
-    Updates item with given id to the given status
+    Uses createItemTableSQL and createBidTableSQL to create the tables, and logs the error.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Return Null if the tables are created, and an error otherwise
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~updateItemStatus"><span class="type-signature">(async, inner) </span>updateItemStatus<span class="signature">(id, status)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Item, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the item with the given id to the given status
 </div>
 
 
@@ -1813,7 +2731,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
         <tr>
             
-                <td class="name"><code>item_id</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
@@ -1829,7 +2747,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">ID of item to change status for</td>
+            <td class="description last">ID of item to update</td>
         </tr>
 
     
@@ -1852,7 +2770,7 @@ The repo method is atomic, will ensure bid can go through before creating
 
             
 
-            <td class="description last">Status string of ("IP", "AR", "AS") to set item</td>
+            <td class="description last">Status to update item to</td>
         </tr>
 
     
@@ -1893,7 +2811,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line82">line 82</a>
+        <a href="models_item_postgres.js.html">models/item/postgres.js</a>, <a href="models_item_postgres.js.html#line244">line 244</a>
     </li></ul></dd>
     
 

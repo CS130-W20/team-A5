@@ -12,7 +12,7 @@ The backend for Rafflebay
 * **make jsdoc**: Updates the JSDoc output in local file JSDoc_Output
 * **make reset_db**: **CAUTION** THIS WILL DELETE ALL DATA IN THE DB. Use when you change schemas and you are ok losing data. Tables will be recreated on the next re-start of server.
 
-**Note**: Both **make p_shell** and **make reset_db** can only be run while the server is running
+**Note**: **make jsdoc**, **make p_shell**, and **make reset_db** can only be run while the server is running
 
 ## How to do authorized requests
 Use the `auth_token` from the user model to make requests
@@ -169,9 +169,6 @@ returns
   "data": <ITEM_MODEL_ABOVE>,
   "message": "<ERROR_MESSAGE>",
 }
-
-
-
 ```
 
 ### Get item info when you are the seller
