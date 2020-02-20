@@ -226,3 +226,32 @@ returns
   "message": "<error_message>"
 }
 ```
+
+### View all items selling and bidding
+GET /api/items/me
+
+returns
+```
+{
+  "data": {
+    "items_selling": [<ITEM_MODEL_ABOVE>],
+    "items_bidding": [
+      {
+        "item_name": "<item_name>",
+        "seller_id": <RAFFLEBAY_USER_ID>,
+        "pic_url": "<item_pic_url>",
+        "item_description": "<item_description>",
+        "tags": "<item_tags>",
+        "sale_price": <item_sale_price>,
+        "ticket_price": <item_ticket_price>,
+        "total_tickets": <item_total_number_tickets>,
+        "status": "<item_current_status>",
+        "deadline": "<item_deadline_timestamp>"
+        "total_cost": <total_ticket_cost>,
+        "tickets_bought": <total_tickets_bought>
+      }
+    ]
+  },
+  "message": "<error_message>"
+}
+```

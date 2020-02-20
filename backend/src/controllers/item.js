@@ -174,11 +174,8 @@ const ItemController = (itemModel, userModel, authService) => {
       
     }
 
-
-
-
     // Return one data object with all the items the user is selling an the items the user is bidding on
-    const data = {"Items Selling": items_selling, "Items Bidding On": items_bidding}
+    const data = {"items_selling": items_selling, "items_bidding": items_bidding}
 
     return res.status(200).json({
       data: data,
