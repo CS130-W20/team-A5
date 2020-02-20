@@ -132,7 +132,8 @@ const ItemController = (itemModel, userModel, authService) => {
     });
   });
 
-  // Gets the logged in user using the authentication token passed in the request header
+  // Gets the list of all items that the user is selling and all items that the user has bid on 
+  // Uses the authentication token to get the user information
   router.get('/me', async (req, res) => {
   
     // Get the user_id of the user sending the request
@@ -145,7 +146,7 @@ const ItemController = (itemModel, userModel, authService) => {
       });
     }
 
-    // Get all items that are sold by the user
+    // Get all items where the logged in user is the seller
     const [items_selling, err1] = await itemModel.getItemsForSeller(user_info['id'])
 
     if (err1) {
@@ -155,7 +156,7 @@ const ItemController = (itemModel, userModel, authService) => {
       });
     }
 
-    // Get all the bids from theuser
+    // Get all of the items that the user has bid on
     const [bid_info, err2] = await itemModel.getBidsForUser(user_info['id'])
     
     if (err2) {
@@ -165,7 +166,8 @@ const ItemController = (itemModel, userModel, authService) => {
       });
     }
 
-    // Only return the information 
+    // Users who bid on items should see limited information about the items
+    // Make sure each item that is returned only has the specfic information included
     var items_bidding = []
     var arrayLength = bid_info.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -174,7 +176,7 @@ const ItemController = (itemModel, userModel, authService) => {
       
     }
 
-    // Return one data object with all the items the user is selling an the items the user is bidding on
+    // Return one data object with all of the items the user is selling an the items the user is bidding on
     const data = {"items_selling": items_selling, "items_bidding": items_bidding}
 
     return res.status(200).json({
