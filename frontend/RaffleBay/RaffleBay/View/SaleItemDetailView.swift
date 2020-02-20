@@ -82,3 +82,9 @@ struct SaleItemDetailView : View {
         }.padding(40)
     }
 }
+
+struct SaleItemDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        SaleItemDetailView()
+    }
+}

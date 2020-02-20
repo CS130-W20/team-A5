@@ -64,7 +64,7 @@ struct SaleItemTableView : View {
 //
 //                }
 //            }
-            Spacer().frame(height: 30)
+//            Spacer().frame(height: 30)
             TextField("Search", text: $search)
                 .padding(20)
                   .background(RoundedRectangle(cornerRadius: 8)
@@ -121,8 +121,10 @@ struct SaleItemTableView : View {
 //                }
 //            )
 //        }
+            
     }
-
+        
+    .navigationBarBackButtonHidden(true)
     }
 
 }

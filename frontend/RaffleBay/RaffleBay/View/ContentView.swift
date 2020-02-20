@@ -15,9 +15,26 @@ struct ContentView: View {
 
     var body: some View {
         if false{
-            return AnyView(LoginView())
+            return AnyView(SplashscreenView())
         } else {
-            return AnyView(UploadSaleItemView())
+            return AnyView(TabView(selection: $selection){
+                SaleItemTableView()
+                    .tabItem {
+                        VStack {
+                            Image("first")
+                            Text("First")
+                        }
+                    }
+                    .tag(0)
+                ProfileView()
+                    .tabItem {
+                        VStack {
+                            Image("second")
+                            Text("Second")
+                        }
+                    }
+                    .tag(1)
+            })
         }
 
     }

@@ -17,9 +17,9 @@ class SaleItem: ObservableObject {
     @Published var pic_url: String  = ""
     @Published var item_description: String = ""
     @Published var tags: String = ""
-    @Published var sale_price: Int = 0
-    @Published var ticket_price: Int = 0
-    @Published var total_tickets: Int = 0
+    @Published var sale_price: String = ""
+    @Published var ticket_price: String = ""
+    @Published var total_tickets: String = ""
     @Published var is_ended: Bool = true
     
     init(item_name: String, pic_url: String) {

@@ -13,6 +13,7 @@ let circleDiameter: CGFloat = 30
 
 struct ProfileView: View {
     var body: some View {
+        NavigationView {
         VStack(){
             HStack(){
                 Text("Profile")
@@ -61,9 +62,8 @@ struct ProfileView: View {
                             
                         
                         Spacer()
-                        Button(action: {
-                           
-                        }){
+                        NavigationLink(destination: UploadSaleItemView()) {
+                            
                             PlusButtonView()
                         }
                     }
@@ -81,7 +81,8 @@ struct ProfileView: View {
                 }
             }
         }
-        
+        }
+    .navigationBarBackButtonHidden(true)
     }
 }
 

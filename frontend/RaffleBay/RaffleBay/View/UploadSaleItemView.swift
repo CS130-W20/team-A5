@@ -65,12 +65,12 @@ struct CameraView: View {
 struct UploadSaleItemView : View {
    
     //Create some user and use a password confirmation var to confirm
-    @ObservedObject var newSaleItem = User()
-    @State private var pwdConfirm = String()
+    @ObservedObject var newSaleItem = SaleItem(item_name: "", pic_url: "")
+    @ObservedObject var oldSaleItem = User()
+    @State var temp_total_ticket: String = ""
     @State var value: CGFloat = 0
     
     var body: some View {
-        NavigationView {
         HStack(){
             
             //Left Side Spacer
@@ -79,11 +79,10 @@ struct UploadSaleItemView : View {
             //Center Column
             VStack(){
                 Spacer().frame(height: 80)
-                Text(newSaleItem.firstName)
                 
                 CameraView()
                 VStack(){
-                    TextField("Item Name", text: $newSaleItem.firstName)
+                    TextField("Item Name", text: $newSaleItem.item_name)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 0
@@ -91,42 +90,38 @@ struct UploadSaleItemView : View {
                   
                   
                     
-                    TextField("Item Description", text: $newSaleItem.lastName)
+                    TextField("Item Description", text: $newSaleItem.item_description)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 1
                         }
 
-                    TextField("Item Price", text: $newSaleItem.email)
+                    TextField("Item Price", text: $newSaleItem.sale_price)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 2
                         }
 
-                    TextField("Number of Tickets", text: $newSaleItem.streetAddress)
+                    TextField("Number of Tickets", text: $newSaleItem.total_tickets)
+                        .keyboardType(.decimalPad)
                         .textFieldStyle(SignUpTextFieldStyle())
                         .onTapGesture {
                             self.value = signupFrameHeight * 5
                         }
-                    if (false) {
+                    if (newSaleItem.total_tickets != "") {
+//                        $newSaleItem.ticket_price = "1"
                         Text("Ticket Price: $5")
                     }
                     
                 }
                 
                 Spacer()
-
-                if(newSaleItem.password != pwdConfirm) {
-                    Text("Your passwords do not match.")
-                        .foregroundColor(.red)
-                    
-                }
                 //ZStack here to allow for custom shadow manipulation.
                 ZStack(){
                     ShadowBoxView()
                     
                     //Signup Button
-                    NavigationLink(destination: CreateSaleItem()){
+                    NavigationLink(destination: CreateSaleItem(newSaleItem: newSaleItem)){
                         Text("Submit")
                           .blueButtonText()
                           .frame(minWidth:0, maxWidth: frameMaxWidth)
@@ -146,7 +141,7 @@ struct UploadSaleItemView : View {
             //Right Side Spacer
             Spacer()
         }
-        }
+        
     }
 }
 
