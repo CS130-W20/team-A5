@@ -12,10 +12,12 @@ import Alamofire
 import SwiftyJSON
 func login_request(email: String, password: String) -> Int {
     var result = 0
+    print("email: \(email)")
+    print("password: \(password)")
     Alamofire.request(url + "/api/users/login", method: .post, parameters: ["email":email, "password":password])
     .responseSwiftyJSON { dataResponse in
         if dataResponse.result.isSuccess {
-            let data = dataResponse.value!["data"]
+            let data = dataResponse.value!["data"]["firstname"]
             print(data)
             let message = dataResponse.value!["message"]
             print(message)
@@ -24,5 +26,5 @@ func login_request(email: String, password: String) -> Int {
             print(dataResponse.error)
         }
     };
-    return result;
+    return 1;
 }

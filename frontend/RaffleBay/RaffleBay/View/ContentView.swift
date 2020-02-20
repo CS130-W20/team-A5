@@ -11,8 +11,15 @@ import SwiftUI
 struct ContentView: View {
     @State private var selection = 0
  
+//    @EnvironmentObject var userAuth: UserAuth
+
     var body: some View {
-        SuccessfulView()
+        if false{
+            return AnyView(LoginView())
+        } else {
+            return AnyView(SaleItemTableView())
+        }
+
     }
 }
 

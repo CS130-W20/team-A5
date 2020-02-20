@@ -19,7 +19,7 @@ struct SaleItemDetailView : View {
                 Image("bose")
                     .resizable()
                     .frame(maxWidth: 350, maxHeight: 200)
-                Text("saleItem.name")
+                Text("Bose QuietComfort 100")
                     .h1()
                 HStack(alignment: .top){
                     VStack(alignment: .leading){
