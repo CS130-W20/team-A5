@@ -1,6 +1,7 @@
 const express = require('express');
 const _ = require('lodash');
 const buyerView = ['item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline']
+const bidderView = ['item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline', 'total_cost', 'tickets_bought']
 
 const ItemController = (itemModel, userModel, authService) => {
   const router = express.Router();
@@ -130,6 +131,60 @@ const ItemController = (itemModel, userModel, authService) => {
       message: '',
     });
   });
+
+  // Gets the list of all items that the user is selling and all items that the user has bid on 
+  // Uses the authentication token to get the user information
+  router.get('/me', async (req, res) => {
+  
+    // Get the user_id of the user sending the request
+    const [user_info, err] = await authService.getLoggedInUserInfo(req.headers);
+
+    if (err) {
+      return res.status(400).json({
+        data: null,
+        message: err
+      });
+    }
+
+    // Get all items where the logged in user is the seller
+    const [items_selling, err1] = await itemModel.getItemsForSeller(user_info['id'])
+
+    if (err1) {
+      return res.status(400).json({
+        data: null,
+        message: err1
+      });
+    }
+
+    // Get all of the items that the user has bid on
+    const [bid_info, err2] = await itemModel.getBidsForUser(user_info['id'])
+    
+    if (err2) {
+      return res.status(400).json({
+        data: null,
+        message: err2
+      });
+    }
+
+    // Users who bid on items should see limited information about the items
+    // Make sure each item that is returned only has the specfic information included
+    var items_bidding = []
+    var arrayLength = bid_info.length;
+    for (var i = 0; i < arrayLength; i++) {
+      var bid = _.pick(bid_info[i], bidderView)
+      items_bidding.push(bid)
+      
+    }
+
+    // Return one data object with all of the items the user is selling an the items the user is bidding on
+    const data = {"items_selling": items_selling, "items_bidding": items_bidding}
+
+    return res.status(200).json({
+      data: data,
+      message: ""
+    });
+  });
+
 
   // Gets the item info for the item with item_id specified
   // If the logged in user is not the seller, we show an 

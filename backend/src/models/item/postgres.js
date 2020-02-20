@@ -229,6 +229,55 @@ const ItemRepo = (postgres) => {
     }
   };
 
+
+  // SQL to get list of items by seller_id
+  const getItemsForSellerSQL = `
+    SELECT 
+      items.*, 
+      COALESCE(SUM(bids.total_cost),0) AS current_ledger,
+      CAST(COALESCE(SUM(bids.ticket_count),0) AS integer) AS tickets_sold
+    FROM items LEFT JOIN bids 
+      ON items.item_id = bids.item_id 
+    WHERE items.seller_id = $1
+    GROUP BY items.item_id;`
+
+  // Gets all items that are sold by the user with seller_id
+  const getItemsForSeller = async(seller_id) => {
+    const values = [seller_id]
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getItemsForSellerSQL, values);
+      client.release();
+      return [res.rows, null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
+  // SQL to get list of bids by user_id
+  const getBidsForUserSQL = `
+    SELECT 
+      items.*, 
+      COALESCE(SUM(bids.total_cost),0) AS total_cost,
+      CAST(COALESCE(SUM(bids.ticket_count),0) AS integer) AS tickets_bought
+    FROM items LEFT JOIN bids 
+      ON items.item_id = bids.item_id 
+    WHERE bids.user_id = $1
+    GROUP BY items.item_id;`
+
+  // Gets all bids for user with user_id
+  const getBidsForUser = async(user_id) => {
+    const values = [user_id]
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getBidsForUserSQL, values);
+      client.release();
+      return [res.rows, null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
   return {
     setupRepo,
     createItem,
@@ -238,6 +287,8 @@ const ItemRepo = (postgres) => {
     setBidAsWinner,
     getItemsWithStatus,
     updateItemStatus,
+    getItemsForSeller,
+    getBidsForUser,
   };
 };
 

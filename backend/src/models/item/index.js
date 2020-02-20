@@ -82,6 +82,26 @@ const ItemModel = (repo) => {
     return await repo.createBid(user_id, item_id, ticket_count, total_cost);
   }
 
+  /**
+   * Get all items where user was the seller
+   * 
+   * @param  {number} seller_id - ID of user selling the item
+   * @return {Array<{0: Item, 1: String}>} - Array with Raffelbay Item Objects for seller and error (only one or the other)
+   */
+  const getItemsForSeller = async(seller_id) => {
+    return await repo.getItemsForSeller(seller_id)
+  }
+
+  /**
+   * Gets all bids for user
+   * 
+   * @param  {number} user_id - ID of user bidding on item
+   * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Objects for userand error (only one or the other)
+   */
+  const getBidsForUser = async(user_id) => {
+    return await repo.getBidsForUser(user_id)
+  }
+
   return {
     createItem,
     getItemInfo,
@@ -90,6 +110,8 @@ const ItemModel = (repo) => {
     setBidAsWinner,
     getItemsWithStatus,
     updateItemStatus,
+    getItemsForSeller,
+    getBidsForUser,
   };
 };
 
