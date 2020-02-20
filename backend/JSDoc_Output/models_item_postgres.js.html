@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: models/item/postgres.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: models/item/postgres.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * Wrapper around postgres data functions for the Item Model. 
  * Requires a postgres connection and ability to make valid postgres queries.
  * 
@@ -90,7 +118,7 @@ const ItemRepo = (postgres) => {
    * @param  {number} total_tickets - Amount of tickets being sold
    * @param  {datetime} deadline - Time until raffle closes
    * @param  {string} status - Status of the raffle
-   * @return {Array<{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
+   * @return {Array&lt;{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
    */
   const createItem = async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status) => {
     const values = [item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status];
@@ -124,7 +152,7 @@ const ItemRepo = (postgres) => {
    * Uses getItemInfoSQL to retrieve the item, and return either (item, null), or (null, error)
    * 
    * @param  {number} item_id - ID of item to get info of
-   * @return {Array<{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
+   * @return {Array&lt;{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
    */
   const getItemInfo= async (item_id) => {
     const values = [item_id];
@@ -150,7 +178,7 @@ const ItemRepo = (postgres) => {
    * Given an item id, get all bids
    * 
    * @param  {number} item_id - ID of item to get bids for
-   * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
+   * @return {Array&lt;{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
    */
   const getBidsForItem = async(item_id) => {
     const values = [item_id];
@@ -176,7 +204,7 @@ const ItemRepo = (postgres) => {
    * Given a bid ID, set it as a winner
    * 
    * @param  {number} bid_id - ID of bid to update
-   * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
+   * @return {Array&lt;{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
    */
   const setBidAsWinner = async(bid_id) => {
     const values = [bid_id];
@@ -211,7 +239,7 @@ const ItemRepo = (postgres) => {
    * Includes aggregated fields current_ledger and tickets_sold
    * 
    * @param  {string} status - Status of items to look for 
-   * @return {Array<{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
+   * @return {Array&lt;{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
    */
   const getItemsWithStatus= async (status) => {
     const values = [status];
@@ -238,7 +266,7 @@ const ItemRepo = (postgres) => {
    * 
    * @param  {number} id - ID of item to update
    * @param  {string} status - Status to update item to
-   * @return {Array<{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
+   * @return {Array&lt;{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
    */
   const updateItemStatus= async (id, status) => {
     const values = [id, status];
@@ -276,7 +304,7 @@ const ItemRepo = (postgres) => {
    * @param  {number} item_id - ID of the item being bid on
    * @param  {number} ticket_count - Amount of tickets user wants to buy
    * @param  {number} total_cost - Total cost of tickets that are being bought
-   * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
+   * @return {Array&lt;{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
    */
   const createBid = async(user_id, item_id, ticket_count, total_cost) => {
     const values = [user_id, item_id, ticket_count, total_cost]
@@ -339,7 +367,7 @@ const ItemRepo = (postgres) => {
    * Gets all items that are sold by the user with seller_id
    * 
    * @param  {number} seller_id - ID of user who put up the item
-   * @return {Array<{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
+   * @return {Array&lt;{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
    */
   const getItemsForSeller = async(seller_id) => {
     const values = [seller_id]
@@ -373,7 +401,7 @@ const ItemRepo = (postgres) => {
    * Gets all bids for user with user_id
    * 
    * @param  {number} user_id - ID of user who bought the bids
-   * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
+   * @return {Array&lt;{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
    */
   const getBidsForUser = async(user_id) => {
     const values = [user_id]
@@ -404,3 +432,26 @@ const ItemRepo = (postgres) => {
 module.exports = {
   ItemRepo,
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ItemModel.html">ItemModel</a></li><li><a href="UserModel.html">UserModel</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ItemRepo">ItemRepo</a></li><li><a href="global.html#PostgresDB">PostgresDB</a></li><li><a href="global.html#UserRepo">UserRepo</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Feb 20 2020 05:08:34 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
