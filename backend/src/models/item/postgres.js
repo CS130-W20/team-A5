@@ -150,7 +150,7 @@ const ItemRepo = (postgres) => {
    * Given an item id, get all bids
    * 
    * @param  {number} item_id - ID of item to get bids for
-   * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
+   * @return {Array<{0: Array<Bid>, 1: String}>} - Array with array of Rafflebay Bid Objects and error (only one or the other)
    */
   const getBidsForItem = async(item_id) => {
     const values = [item_id];
@@ -211,7 +211,7 @@ const ItemRepo = (postgres) => {
    * Includes aggregated fields current_ledger and tickets_sold
    * 
    * @param  {string} status - Status of items to look for 
-   * @return {Array<{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
+   * @return {Array<{0: Array<Item>, 1: String}>} - Array with array of Rafflebay Item Objects and error (only one or the other)
    */
   const getItemsWithStatus= async (status) => {
     const values = [status];
@@ -339,7 +339,7 @@ const ItemRepo = (postgres) => {
    * Gets all items that are sold by the user with seller_id
    * 
    * @param  {number} seller_id - ID of user who put up the item
-   * @return {Array<{0: Item, 1: String}>} - Array with Rafflebay Item Object and error (only one or the other)
+   * @return {Array<{0: Array<Item>, 1: String}>} - Array with array of Rafflebay Item Objects and error (only one or the other)
    */
   const getItemsForSeller = async(seller_id) => {
     const values = [seller_id]
@@ -373,7 +373,7 @@ const ItemRepo = (postgres) => {
    * Gets all bids for user with user_id
    * 
    * @param  {number} user_id - ID of user who bought the bids
-   * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
+   * @return {Array<{0: Array<Bid>, 1: String}>} - Array with array of Rafflebay Bid Objects and error (only one or the other)
    */
   const getBidsForUser = async(user_id) => {
     const values = [user_id]
