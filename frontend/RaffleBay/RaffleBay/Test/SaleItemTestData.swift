@@ -10,12 +10,12 @@ struct SaleItemTestData {
 
     /// posts
     static func saleItems() -> [SaleItem] {
-        let saleItem1 = SaleItem(name: "Bose QuietComfort 100", image: "bose")
-        let saleItem2 = SaleItem(name: "Bose QuietComfort 200", image: "bose")
-        let saleItem3 = SaleItem(name: "Bose QuietComfort 300", image: "bose")
-        let saleItem4 = SaleItem(name: "Bose QuietComfort 400", image: "bose")
-        let saleItem5 = SaleItem(name: "Bose QuietComfort 500", image: "bose")
-        let saleItem6 = SaleItem(name: "Bose QuietComfort 600", image: "bose")
+        let saleItem1 = SaleItem(item_name: "Bose QuietComfort 100", pic_url: "bose")
+        let saleItem2 = SaleItem(item_name: "Bose QuietComfort 200", pic_url: "bose")
+        let saleItem3 = SaleItem(item_name: "Bose QuietComfort 300", pic_url: "bose")
+        let saleItem4 = SaleItem(item_name: "Bose QuietComfort 400", pic_url: "bose")
+        let saleItem5 = SaleItem(item_name: "Bose QuietComfort 500", pic_url: "bose")
+        let saleItem6 = SaleItem(item_name: "Bose QuietComfort 600", pic_url: "bose")
 
 
 

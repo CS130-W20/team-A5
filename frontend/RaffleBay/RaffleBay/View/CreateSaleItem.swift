@@ -45,7 +45,7 @@ struct CreateSaleItem: View {
                 }
             }.padding(20)
             Button(action:{
-               
+               return AnyView(SaleItemTableView())
             }){
                 Text("Add Listing")
                     .blueButtonText()

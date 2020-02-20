@@ -9,19 +9,21 @@
 import Foundation
 import SwiftUI
 
-struct SaleItem: Identifiable {
-    //TODO: Fill out based on class diagram
-    // unique product id
-    var id: String = UUID().uuidString
+class SaleItem: ObservableObject {
     
-    // name of product
-    let name: String
+    @Published var item_id: Int = 0
+    @Published var item_name: String = ""
+    @Published var seller_id: Int = 0
+    @Published var pic_url: String  = ""
+    @Published var item_description: String = ""
+    @Published var tags: String = ""
+    @Published var sale_price: Int = 0
+    @Published var ticket_price: Int = 0
+    @Published var total_tickets: Int = 0
+    @Published var is_ended: Bool = true
     
-    // image of product
-    let image: String
-    
-    init(name: String, image: String) {
-           self.name = name
-           self.image = image
-       }
+    init(item_name: String, pic_url: String) {
+        self.item_name = item_name
+        self.pic_url = pic_url
+    }
 }

@@ -17,7 +17,7 @@ struct ContentView: View {
         if false{
             return AnyView(LoginView())
         } else {
-            return AnyView(SaleItemTableView())
+            return AnyView(UploadSaleItemView())
         }
 
     }
