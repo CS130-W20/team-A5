@@ -12,11 +12,18 @@ let circleDiameter: CGFloat = 30
 
 
 struct ProfileView: View {
+    @ObservedObject var currUser = User()
+    @ObservedObject var authenticationVM = AuthenticationViewModel()
     var body: some View {
+        NavigationView {
         VStack(){
             HStack(){
-                Text("Profile")
-                    .h1()
+                Button(action: {
+                    self.authenticationVM.auth_token = ""
+                }){
+                   Text("logout")
+                       .h1()
+                }
                 Spacer()
                 HamburgerIconView()
             }.padding()
@@ -28,7 +35,7 @@ struct ProfileView: View {
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 4))
                         .shadow(radius: 7)
-                    Text("Pierson Marks")
+                    Text("\(currUser.firstName) \(currUser.lastName)")
                         .clearButtonText()
                     Text("Account Balance: $" + "47.00")
                         .standardBoldText()
@@ -61,9 +68,8 @@ struct ProfileView: View {
                             
                         
                         Spacer()
-                        Button(action: {
-                           
-                        }){
+                        NavigationLink(destination: UploadSaleItemView()) {
+                            
                             PlusButtonView()
                         }
                     }
@@ -81,7 +87,9 @@ struct ProfileView: View {
                 }
             }
         }
-        
+        }
+    .navigationBarBackButtonHidden(true)
+        .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
     }
 }
 

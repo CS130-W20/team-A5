@@ -19,7 +19,7 @@ struct SaleItemCellView: View {
         
         VStack(spacing: 0){
             ZStack(){
-                Image(saleItem.image)
+                Image(saleItem.pic_url)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(maxWidth: cellWidth, maxHeight: cellHeight)
@@ -28,7 +28,7 @@ struct SaleItemCellView: View {
                 HStack(){
                     VStack(){
                         Spacer()
-                        Text(saleItem.name)
+                        Text(saleItem.item_name)
                             .saleItemText()
                             .shadow(radius: 1)
                     }.offset(x:cellWidth/40)

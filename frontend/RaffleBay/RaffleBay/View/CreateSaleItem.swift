@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CreateSaleItem: View {
+    @ObservedObject var newSaleItem: SaleItem
     var body: some View {
         VStack(){
             Spacer().frame(height: 100)
@@ -17,9 +18,9 @@ struct CreateSaleItem: View {
                     .resizable()
                     .frame(maxWidth: 350, maxHeight: 200)
                 
-                Text("saleItem.name")
+                Text(newSaleItem.item_name)
                     .h1()
-                Text("Description")
+                Text(newSaleItem.item_description)
                     .h2()
                 
             }
@@ -33,29 +34,31 @@ struct CreateSaleItem: View {
                     Text("Total List Price: ")
                         .clearButtonText()
                     Spacer()
-                    Text("$50.00")
+                    Text(newSaleItem.sale_price)
                         .clearButtonText()
                 }
                 HStack(){
                     Text("Tickets to Sell: ")
                         .clearButtonText()
                     Spacer()
-                    Text("10")
+                    Text(newSaleItem.total_tickets)
                         .clearButtonText()
                 }
             }.padding(20)
-            Button(action:{
-               
-            }){
-                Text("Add Listing")
-                    .blueButtonText()
-            }.buttonStyle(BigBlueButtonStyle())
+            NavigationLink(destination: ProfileView()){
+                Button(action: {post_sale_item(saleItem: self.newSaleItem)}) {
+                    Text("Add Listing")
+                      .blueButtonText()
+                      .frame(minWidth:0, maxWidth: frameMaxWidth)
+                }
+            }
+            .buttonStyle(BigBlueButtonStyle())
         }.padding(40)
     }
 }
 
-struct CreateSaleItem_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateSaleItem()
-    }
-}
+//struct CreateSaleItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreateSaleItem(newSaleItem: SaleItem)
+//    }
+//}

@@ -19,7 +19,7 @@ struct SaleItemDetailView : View {
                 Image("bose")
                     .resizable()
                     .frame(maxWidth: 350, maxHeight: 200)
-                Text("saleItem.name")
+                Text("Bose QuietComfort 100")
                     .h1()
                 HStack(alignment: .top){
                     VStack(alignment: .leading){
@@ -80,5 +80,11 @@ struct SaleItemDetailView : View {
                     .blueButtonText()
             }.buttonStyle(BigBlueButtonStyle())
         }.padding(40)
+    }
+}
+
+struct SaleItemDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        SaleItemDetailView()
     }
 }
