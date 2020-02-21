@@ -7,7 +7,7 @@ The novelty of this project is the ability for users to buy a valued product at 
 We seperated our code into Frontend and Backend folders. The Frontend folder includes all presentation layer logic for implementing the iOS app. The backend is seperated into src and JSDoc_Output. In JSDoc_Output, all of the documentation for the backend is listed, including API descriptions. In src, our business and persistence logic is seperated within controllers and models
 
 ## Installation/Run instructions
-To run the full app using the frontend, ****.
+To run the full app using the frontend, navigate to frontend/Rafflebay and click on Rafflebay.xcworkspace. Then, simply run the project and a simulator should appear.
 To just test the backend, there are makefile commands that are listed within the README.md in the backend folder.
 
 ## Relevant Links 
