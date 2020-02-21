@@ -10,11 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection = 0
- 
-//    @EnvironmentObject var userAuth: UserAuth
+    @ObservedObject var authenticationVM = AuthenticationViewModel()
 
     var body: some View {
-        if false{
+        if self.authenticationVM.auth_token == "" {
             return AnyView(SplashscreenView())
         } else {
             return AnyView(TabView(selection: $selection){

@@ -38,6 +38,7 @@
 		A3CA20C487169747B8DBE422 /* Pods_RaffleBayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */; };
 		B247F55523FE270500FA7830 /* UploadSaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55423FE270500FA7830 /* UploadSaleItemView.swift */; };
 		B247F55723FE349E00FA7830 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55623FE349E00FA7830 /* CameraController.swift */; };
+		B247F55923FF38E600FA7830 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55823FF38E600FA7830 /* AuthenticationViewModel.swift */; };
 		B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AA23ECAC47007305A0 /* AppDelegate.swift */; };
 		B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AC23ECAC47007305A0 /* SceneDelegate.swift */; };
 		B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */; };
@@ -113,6 +114,7 @@
 		ABA14B827A9D72B336BFD9D8 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B247F55423FE270500FA7830 /* UploadSaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSaleItemView.swift; sourceTree = "<group>"; };
 		B247F55623FE349E00FA7830 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		B247F55823FF38E600FA7830 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		B27513A723ECAC47007305A0 /* RaffleBay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleBay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27513AA23ECAC47007305A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27513AC23ECAC47007305A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			children = (
 				B27513E123ECACD6007305A0 /* SaleItem.swift */,
 				B27513E323ECACEA007305A0 /* User.swift */,
+				B247F55823FF38E600FA7830 /* AuthenticationViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				8BE89B9523EF835400EC2076 /* SplashscreenView.swift in Sources */,
 				B27513EC23ECAD52007305A0 /* SaleItemDetailView.swift in Sources */,
 				B27513E223ECACD6007305A0 /* SaleItem.swift in Sources */,
+				B247F55923FF38E600FA7830 /* AuthenticationViewModel.swift in Sources */,
 				8B3ACCFA23FA48A70045F6BF /* constants.swift in Sources */,
 				B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */,
 				8BC5210123FBABE600BCC476 /* ProfileView.swift in Sources */,
