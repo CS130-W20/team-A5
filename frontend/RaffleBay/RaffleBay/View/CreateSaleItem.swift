@@ -46,9 +46,11 @@ struct CreateSaleItem: View {
                 }
             }.padding(20)
             NavigationLink(destination: ProfileView()){
-                Text("Add Listing")
-                  .blueButtonText()
-                  .frame(minWidth:0, maxWidth: frameMaxWidth)
+                Button(action: {post_sale_item(saleItem: self.newSaleItem)}) {
+                    Text("Add Listing")
+                      .blueButtonText()
+                      .frame(minWidth:0, maxWidth: frameMaxWidth)
+                }
             }
             .buttonStyle(BigBlueButtonStyle())
         }.padding(40)
