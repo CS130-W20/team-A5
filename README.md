@@ -11,7 +11,36 @@ To run the full app using the frontend, navigate to frontend/Rafflebay and click
 To just test the backend, there are makefile commands that are listed within the README.md in the backend folder.
 
 ## Testing
-To view the testing scenarios, [view the backend/tests folder](https://github.com/CS130-W20/team-A5/tree/master/backend).
+To view the testing scenarios, [view the backend/tests folder](https://github.com/CS130-W20/team-A5/tree/master/backend/test).
+The testing scenarios described, with their individiual test cases are as follows:
+
+-Creating an item to sell
+  -Creating an item with accepted parameters was expected to succeed. 
+  -Creating an item with no body of data describing the item was expected to fail. 
+  -Creating an item with missing descriptive data was expected to fail. 
+  -Creating two items that are the exact same should fail. 
+
+-Bidding on an item 
+  -Creating a bid with accepted parameters was expected to succeed. 
+  -Creating a bid for an unauthenticated user should fail. 
+  -Creating a bid for a user with insufficient funds should fail.
+-Creating a user 
+  -Creating a user with accepted parameters should succeed. 
+  -Creating a user with missing optional fields should succeed. 
+  -Creating a user with missing required fields should fail. 
+  -Creating a user with empty required fields should fail. 
+  -Creating two users with the same background data should fail.
+-authenticating a user
+  -Authenticating a user with accepted parameters should succeed.
+  -Authenticating a user that does not exist should fail. 
+  -Authenticating a user currently logged in should fail. 
+  -Authenticating a known user with an incorrect password should fail.
+-getting the info of other users
+  -Obtaining private information from a user that is not the one accessing the data should fail. 
+  -Obtaining private information about a user that is the accessor of the data should succeed. 
+-choosing the winner of a raffle
+  -Choosing winners for an item that is not awaiting a raffle should fail. 
+  -Choosing multiple winners for the same item should fail. 
 
 ## Relevant Links 
 To view the documentation for the backend, [view the backend/JSDoc_Output folder](https://github.com/CS130-W20/team-A5/tree/master/backend/JSDoc_Output). 
