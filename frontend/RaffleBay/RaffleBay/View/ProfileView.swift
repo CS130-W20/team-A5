@@ -89,7 +89,7 @@ struct ProfileView: View {
         }
         }
     .navigationBarBackButtonHidden(true)
-        .onAppear {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}
+        .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
     }
 }
 
