@@ -8,7 +8,7 @@ const allButPasshash = ['id', 'first_name', 'last_name', 'email', 'pic_url', 'ad
 /**
  * Function to define the User Model
  * @constructor
- * @param  {Database} repo - Database Model to be used
+ * @param  {UserRepo} repo - User Database Model to be used
  * @return {UserModel} - UserModel Object
  */
 const UserModel = (repo) => {

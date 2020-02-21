@@ -1,7 +1,18 @@
+/**
+ * A standalone service to help with user and request authentication
+ * @constructor
+ * 
+ * @param  {UserModel} userModel - The UserModel that provides access to the User Database
+ * @return {AuthService} - Returns an instance of AuthService
+ */
 const AuthService = (userModel) => {
 	 
-	// Pass in the 'headers' attribute of the request to get the user id of the user 
-	// sending the request. Returns [user_id, error] where user_id is an int
+	/**
+	 * Uses the Authorization header to find the logged in user, returning an error if the token is invalid
+	 * 
+	 * @param  {Object} header - The request header sent with the request, as a Javascript object
+	 * @return {Array<{User, String}>} - Returns the information for the logged-in user as defined by the given auth_token
+	 */
 	const getLoggedInUserInfo = async (header) => {
 		const auth_header = header['authorization']
 		if (auth_header == null) {

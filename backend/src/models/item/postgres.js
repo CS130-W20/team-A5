@@ -1,8 +1,9 @@
 /**
  * Wrapper around postgres data functions for the Item Model. 
  * Requires a postgres connection and ability to make valid postgres queries.
+ * @constructor
  * 
- * @param  {Database} postgres - Database for the objects
+ * @param  {PostgresDB} postgres - Database instance
  * @return {ItemRepo} - ItemRepo Object
  */
 const ItemRepo = (postgres) => {

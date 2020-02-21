@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UserModel</title>
+    <title>JSDoc: Class: UserRepo</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UserModel</h1>
+    <h1 class="page-title">Class: UserRepo</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>UserModel<span class="signature">(repo)</span><span class="type-signature"> &rarr; {<a href="UserModel.html">UserModel</a>}</span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>UserRepo<span class="signature">(postgres)</span><span class="type-signature"> &rarr; {<a href="UserRepo.html">UserRepo</a>}</span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="UserModel"><span class="type-signature"></span>new UserModel<span class="signature">(repo)</span><span class="type-signature"> &rarr; {<a href="UserModel.html">UserModel</a>}</span></h4>
+    <h4 class="name" id="UserRepo"><span class="type-signature"></span>new UserRepo<span class="signature">(postgres)</span><span class="type-signature"> &rarr; {<a href="UserRepo.html">UserRepo</a>}</span></h4>
     
 
     
@@ -49,7 +49,8 @@
 
 
 <div class="description">
-    Function to define the User Model
+    Wrapper around postgres data functions for the User Model. 
+Requires a postgres connection and ability to make valid postgres queries.
 </div>
 
 
@@ -85,13 +86,13 @@
 
         <tr>
             
-                <td class="name"><code>repo</code></td>
+                <td class="name"><code>postgres</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="UserRepo.html">UserRepo</a></span>
+<span class="param-type"><a href="global.html#PostgresDB">PostgresDB</a></span>
 
 
             
@@ -101,7 +102,7 @@
 
             
 
-            <td class="description last">User Database Model to be used</td>
+            <td class="description last">Database instance</td>
         </tr>
 
     
@@ -142,7 +143,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_index.js.html">models/user/index.js</a>, <a href="models_user_index.js.html#line14">line 14</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -171,7 +172,7 @@
 
         
 <div class="param-desc">
-    - UserModel Object
+    - UserRepo Object
 </div>
 
 
@@ -182,7 +183,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="UserModel.html">UserModel</a></span>
+<span class="param-type"><a href="UserRepo.html">UserRepo</a></span>
 
 
     </dd>
@@ -210,6 +211,442 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="~createUserSQL"><span class="type-signature">(inner, constant) </span>createUserSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Inserts a user entry into the users table
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line57">line 57</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~createUserTableSQL"><span class="type-signature">(inner, constant) </span>createUserTableSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Sets up the user table if it does not exist
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~debitUserFundsSQL"><span class="type-signature">(inner, constant) </span>debitUserFundsSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Updates user balance
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line174">line 174</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getUserInfoByAuthTokenSQL"><span class="type-signature">(inner, constant) </span>getUserInfoByAuthTokenSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Retrieve the user when given the auth_token
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line97">line 97</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getUserInfoByEmailSQL"><span class="type-signature">(inner, constant) </span>getUserInfoByEmailSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Retrieve the user when the email is given
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getUserInfoByIdSQL"><span class="type-signature">(inner, constant) </span>getUserInfoByIdSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Retrieves the user when the id is given, other layers can pick certain fields to return
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line148">line 148</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -228,7 +665,8 @@
 
 
 <div class="description">
-    Creates a user with given info
+    Users createUserSQL and inserts a user into the users column. 
+If we get an error, then we return the (null, error), otherwise return (data, null)
 </div>
 
 
@@ -574,7 +1012,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_index.js.html">models/user/index.js</a>, <a href="models_user_index.js.html#line32">line 32</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -639,6 +1077,10 @@
 
 
 
+<div class="description">
+    Debits user funds. Assume controller/caller has verified that this will not make the balance negative
+</div>
+
 
 
 
@@ -688,7 +1130,7 @@
 
             
 
-            <td class="description last">ID for user to add funds</td>
+            <td class="description last">ID of user to update</td>
         </tr>
 
     
@@ -711,7 +1153,7 @@
 
             
 
-            <td class="description last">Amount to deposit into user's account</td>
+            <td class="description last">Amount used to update user balance</td>
         </tr>
 
     
@@ -752,7 +1194,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_index.js.html">models/user/index.js</a>, <a href="models_user_index.js.html#line104">line 104</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line187">line 187</a>
     </li></ul></dd>
     
 
@@ -781,7 +1223,7 @@
 
         
 <div class="param-desc">
-    - Array with updated Rafflebay User Object and error (only one or the other)
+    - Array with Rafflebay User Object and error (only one or the other)
 </div>
 
 
@@ -810,7 +1252,7 @@
     
 
     
-    <h4 class="name" id="~getOtherUserInfo"><span class="type-signature">(async, inner) </span>getOtherUserInfo<span class="signature">(id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: User, 1: String}>}</span></h4>
+    <h4 class="name" id="~getUserInfoByAuthToken"><span class="type-signature">(async, inner) </span>getUserInfoByAuthToken<span class="signature">(token)</span><span class="type-signature"> &rarr; {Array.&lt;{0: User, 1: String}>}</span></h4>
     
 
     
@@ -818,8 +1260,7 @@
 
 
 <div class="description">
-    Retrieve abbreviated user fields from the user column by a user's id. 
-This should only ever return one user, since IDs should be unique
+    Uses getUserIDByAuthTokenSQL to retrieve the user, and return either (user, null), or (null, error)
 </div>
 
 
@@ -855,13 +1296,13 @@ This should only ever return one user, since IDs should be unique
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>token</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
             
@@ -871,7 +1312,7 @@ This should only ever return one user, since IDs should be unique
 
             
 
-            <td class="description last">ID of user to get</td>
+            <td class="description last">Authentication token for the user</td>
         </tr>
 
     
@@ -912,7 +1353,166 @@ This should only ever return one user, since IDs should be unique
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_index.js.html">models/user/index.js</a>, <a href="models_user_index.js.html#line71">line 71</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line106">line 106</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with Rafflebay User Object and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: User, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getUserInfoByEmail"><span class="type-signature">(async, inner) </span>getUserInfoByEmail<span class="signature">(email)</span><span class="type-signature"> &rarr; {Array.&lt;{0: User, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Uses getUserInfoByEmailSQL to retrieve the user, and return either (user, null), or (null, error)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Email of the user to retrieve</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -978,7 +1578,7 @@ This should only ever return one user, since IDs should be unique
 
 
 <div class="description">
-    Returns all user info (except passhash) given a user id
+    Uses getUserInfoByIdSQL to retrieve the user, and return either (user, null), or (null, error)
 </div>
 
 
@@ -1020,7 +1620,7 @@ This should only ever return one user, since IDs should be unique
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -1030,7 +1630,7 @@ This should only ever return one user, since IDs should be unique
 
             
 
-            <td class="description last">ID of user to get</td>
+            <td class="description last">ID of user to retrieve</td>
         </tr>
 
     
@@ -1071,7 +1671,7 @@ This should only ever return one user, since IDs should be unique
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_index.js.html">models/user/index.js</a>, <a href="models_user_index.js.html#line59">line 59</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line157">line 157</a>
     </li></ul></dd>
     
 
@@ -1129,7 +1729,7 @@ This should only ever return one user, since IDs should be unique
     
 
     
-    <h4 class="name" id="~getUserInfoByToken"><span class="type-signature">(async, inner) </span>getUserInfoByToken<span class="signature">(token)</span><span class="type-signature"> &rarr; {Array.&lt;{0: User, 1: String}>}</span></h4>
+    <h4 class="name" id="~setupRepo"><span class="type-signature">(async, inner) </span>setupRepo<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -1137,7 +1737,7 @@ This should only ever return one user, since IDs should be unique
 
 
 <div class="description">
-    Gets user info (except pass_hash) given the user's authentication token
+    Uses createUserTableSQL to create the table, and logs the error.
 </div>
 
 
@@ -1146,55 +1746,6 @@ This should only ever return one user, since IDs should be unique
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>token</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Authentication token used to get user information</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -1230,7 +1781,7 @@ This should only ever return one user, since IDs should be unique
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_index.js.html">models/user/index.js</a>, <a href="models_user_index.js.html#line45">line 45</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -1259,7 +1810,7 @@ This should only ever return one user, since IDs should be unique
 
         
 <div class="param-desc">
-    - Array with Rafflebay User Object and error (only one or the other)
+    - Return Null if the table is created, and an error otherwise
 </div>
 
 
@@ -1270,189 +1821,7 @@ This should only ever return one user, since IDs should be unique
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;{0: User, 1: String}></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="~verifyPasswordAndReturnUser"><span class="type-signature">(async, inner) </span>verifyPasswordAndReturnUser<span class="signature">(email, password)</span><span class="type-signature"> &rarr; {Array.&lt;{0: User, 1: String}>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Verifies a users email and password for user login
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>email</code></td>
-            
-
-            <td class="type">
-            
-                
 <span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Email string of user for login</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Password string of user for login</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_index.js.html">models/user/index.js</a>, <a href="models_user_index.js.html#line83">line 83</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    - Array with Rafflebay User Object and error (only one or the other)
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;{0: User, 1: String}></span>
 
 
     </dd>

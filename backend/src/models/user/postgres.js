@@ -1,7 +1,10 @@
 /**
  * Wrapper around postgres data functions for the User Model. 
  * Requires a postgres connection and ability to make valid postgres queries.
- * @param  {Database} postgres - Database for the objects
+ *
+ * @constructor
+ * 
+ * @param  {PostgresDB} postgres - Database instance
  * @return {UserRepo} - UserRepo Object
  */
 const UserRepo = (postgres) => {

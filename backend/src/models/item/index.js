@@ -1,7 +1,7 @@
 /**
  * Function to define the Item Model
  * @constructor
- * @param  {Database} repo - Database Model to be used
+ * @param  {ItemRepo} repo - Item Database Model to be used
  * @return {ItemModel} - ItemModel Object
  */
 const ItemModel = (repo) => {
