@@ -54,8 +54,38 @@ struct ShadowBoxView: View {
     }
 }
 
+//Circular Plus Button
+//Description: Create a + button with a outlayed circle.
+struct PlusButtonView: View{
+    var body: some View{
+        ZStack(){
+            Text("+")
+                .fontWeight(.black)
+                .foregroundColor(Color.gray)
+        Circle()
+            .stroke(lineWidth: 3)
+            .size(width: circleDiameter, height: circleDiameter)
+            .frame(width: circleDiameter, height: circleDiameter, alignment: .leading)
+            .foregroundColor(Color("LightGray"))
+        }
+    }
+}
                        
-
+struct HamburgerIconView: View{
+    var body: some View{
+        VStack(){
+            Rectangle()
+                .size(width: 40, height: 5)
+                .frame(width: 40, height: 5)
+            Rectangle()
+                .size(width: 30, height: 5)
+                .frame(width: 40, height: 5)
+            Rectangle()
+                .size(width: 40, height: 5)
+                .frame(width: 40, height: 5)
+        }
+    }
+}
 
 //********** Style Formats **********//
 
@@ -86,6 +116,24 @@ struct SignUpTextFieldStyle : TextFieldStyle {
             }
     }
 }
+
+//Text Field Styling - Search Bar
+//Description: Replaces traditional text fields with a blank text field with a search bar.
+//struct SearchTextFieldStyle : TextFieldStyle {
+//    func _body(configuration: TextField<Self._Label>) -> some View {
+//            VStack{
+//            configuration
+//                .font(.custom("Poppins", size: 24))
+//                .padding()
+//                .frame(height: signupFrameHeight)
+//
+//                RoundedRectangle()
+//                    .frame(height: 1.0, alignment: .bottom)
+//                    .foregroundColor(Color("LightGray"))
+//                    .offset(y:-10)
+//            }
+//    }
+//}
 
 
 //Big Blue Button Styling - Flat Design Style
@@ -160,8 +208,30 @@ extension Text {
             .fontWeight(.bold)
             .font(.custom("Poppins", size: 14))
 
-   }
+    }
     
+    //Normal Bold Text Style to be typically used for standard, bold text.
+    //NEED TO CHANGE: Setting "size" will override any user preferences in iOS Accessiblity.
+    func saleItemText() -> Text {
+        self
+            .foregroundColor(Color.white)
+            .fontWeight(.bold)
+            .font(.custom("Poppins", size: 18))
+    }
+    
+    func h1() -> Text {
+        self
+            .foregroundColor(Color.black)
+            .fontWeight(.semibold)
+            .font(.custom("Poppins", size: 28))
+    }
+    
+    func h2() -> Text {
+        self
+            .foregroundColor(Color.black)
+            .fontWeight(.regular)
+            .font(.custom("Poppins", size: 16))
+    }
     
 }
 

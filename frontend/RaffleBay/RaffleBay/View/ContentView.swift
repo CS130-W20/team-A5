@@ -10,9 +10,32 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection = 0
- 
+    @ObservedObject var authenticationVM = AuthenticationViewModel()
+
     var body: some View {
-        SplashscreenView()
+        if self.authenticationVM.auth_token == "" {
+            return AnyView(SplashscreenView())
+        } else {
+            return AnyView(TabView(selection: $selection){
+                SaleItemTableView()
+                    .tabItem {
+                        VStack {
+                            Image("first")
+                            Text("First")
+                        }
+                    }
+                    .tag(0)
+                ProfileView()
+                    .tabItem {
+                        VStack {
+                            Image("second")
+                            Text("Second")
+                        }
+                    }
+                    .tag(1)
+            })
+        }
+
     }
 }
 
