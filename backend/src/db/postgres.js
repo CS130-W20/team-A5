@@ -1,8 +1,12 @@
 const {Pool} = require('pg');
 
-// Instantiates a new postgres connection pool, and returns the pool as a
-// Postgres object, allowing the other parts of our application to access
-// postgres, such as storing and retrieving data.
+/**
+ * Instantiates a new postgres connection pool, and returns the pool as a Postgres object, 
+ * allowing the other parts of our application to access postgres, such as storing and retrieving data.
+ * 
+ * @param  {Configuration} config - Database configuration
+ * @return {PostgresDB} - Returns the postgres connection pool
+ */
 const PostgresDB = (config) => {
   const pool = new Pool(config);
   pool.on('error', (err, client) => {
