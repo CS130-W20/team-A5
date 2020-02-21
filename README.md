@@ -10,5 +10,8 @@ We seperated our code into Frontend and Backend folders. The Frontend folder inc
 To run the full app using the frontend, navigate to frontend/Rafflebay and click on Rafflebay.xcworkspace. Then, simply run the project and a simulator should appear.
 To just test the backend, there are makefile commands that are listed within the README.md in the backend folder.
 
+## Testing
+To view the testing scenarios, [view the backend/tests folder](https://github.com/CS130-W20/team-A5/tree/master/backend).
+
 ## Relevant Links 
 To view the documentation for the backend, [view the backend/JSDoc_Output folder](https://github.com/CS130-W20/team-A5/tree/master/backend/JSDoc_Output). 
