@@ -10,15 +10,23 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASS:-admin}
       POSTGRES_DB: ${POSTGRES_DB:-rafflebay}
     restart: unless-stopped
+  postgres_test:
+    image: postgres:10-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS:-admin}
+      POSTGRES_DB: rafflebay_test
+    restart: unless-stopped
+    command: -p 5433
   backend:
     image: rafflebay/backend:latest
     ports:
       - 31337:31337
     environment:
-      POSTGRES_HOSTNAME: postgres
+      POSTGRES_HOSTNAME: ${DATABASE}
     restart: unless-stopped
     depends_on: 
-      - postgres
+      - ${DATABASE}
 
 volumes:
   rafflebay-pgdata:
