@@ -10,6 +10,7 @@ The backend for Rafflebay
 * **make stop**: If you run **make run_background**, use this to stop the server
 * **make p_shell**: Opens an interactive psql shell connected to our postgres instance
 * **make jsdoc**: Updates the JSDoc output in local file JSDoc_Output
+* **make test**: Builds and runs a server for the testing environment.
 * **make reset_db**: **CAUTION** THIS WILL DELETE ALL DATA IN THE DB. Use when you change schemas and you are ok losing data. Tables will be recreated on the next re-start of server.
 
 **Note**: **make jsdoc**, **make p_shell**, and **make reset_db** can only be run while the server is running
