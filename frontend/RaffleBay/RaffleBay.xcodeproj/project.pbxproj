@@ -39,6 +39,7 @@
 		B247F55523FE270500FA7830 /* UploadSaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55423FE270500FA7830 /* UploadSaleItemView.swift */; };
 		B247F55723FE349E00FA7830 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55623FE349E00FA7830 /* CameraController.swift */; };
 		B247F55923FF38E600FA7830 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55823FF38E600FA7830 /* AuthenticationViewModel.swift */; };
+		B247F55B23FFA00100FA7830 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55A23FFA00100FA7830 /* ProfileViewController.swift */; };
 		B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AA23ECAC47007305A0 /* AppDelegate.swift */; };
 		B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AC23ECAC47007305A0 /* SceneDelegate.swift */; };
 		B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */; };
@@ -115,6 +116,7 @@
 		B247F55423FE270500FA7830 /* UploadSaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSaleItemView.swift; sourceTree = "<group>"; };
 		B247F55623FE349E00FA7830 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		B247F55823FF38E600FA7830 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		B247F55A23FFA00100FA7830 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B27513A723ECAC47007305A0 /* RaffleBay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleBay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27513AA23ECAC47007305A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27513AC23ECAC47007305A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			children = (
 				B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */,
 				B247F55623FE349E00FA7830 /* CameraController.swift */,
+				B247F55A23FFA00100FA7830 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				8BE89B9723F0900500EC2076 /* LoginView.swift in Sources */,
 				B27513F123ECB061007305A0 /* SignupView.swift in Sources */,
 				8B3ACCF823FA14CB0045F6BF /* styles.swift in Sources */,
+				B247F55B23FFA00100FA7830 /* ProfileViewController.swift in Sources */,
 				B27513E423ECACEA007305A0 /* User.swift in Sources */,
 				B247F55523FE270500FA7830 /* UploadSaleItemView.swift in Sources */,
 			);
