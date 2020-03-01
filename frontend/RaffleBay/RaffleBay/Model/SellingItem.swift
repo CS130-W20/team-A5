@@ -22,20 +22,15 @@ class SellingItem: Identifiable, ObservableObject {
     @Published var total_tickets: String = ""
     @Published var tickets_sold: String = ""
     @Published var created_at: String = ""
-    init(item_name: String, pic_url: String, sale_price: String, created_at: String, tickets_sold: String) {
+    init(item_name: String, pic_url: String, sale_price: String, created_at: String, tickets_sold: String, total_tickets: String) {
         self.item_name = item_name
         self.pic_url = pic_url
         self.sale_price = sale_price
         self.created_at = created_at
         self.tickets_sold = tickets_sold
+        self.total_tickets = total_tickets
     }
 }
 
-class SellingItemList: ObservableObject {
-    @Published var sellingItems: [SellingItem]
-    init(sellingItems: [SellingItem]) {
-        self.sellingItems = sellingItems
-    }
-}
 
 

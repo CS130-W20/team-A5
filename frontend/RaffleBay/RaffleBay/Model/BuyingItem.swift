@@ -9,8 +9,8 @@
 import Foundation
 import SwiftUI
 
-class BuyingItem: ObservableObject {
-    
+class BuyingItem: Identifiable, ObservableObject {
+    let id = UUID()
     @Published var item_id: Int = 0
     @Published var item_name: String = ""
     @Published var seller_id: Int = 0
@@ -22,12 +22,13 @@ class BuyingItem: ObservableObject {
     @Published var total_tickets: String = ""
     @Published var tickets_sold: String = ""
     @Published var created_at: String = ""
-    init(item_name: String, pic_url: String, sale_price: String, created_at: String, tickets_sold: String) {
+    init(item_name: String, pic_url: String, sale_price: String, created_at: String, tickets_sold: String, total_tickets: String) {
         self.item_name = item_name
         self.pic_url = pic_url
         self.sale_price = sale_price
         self.created_at = created_at
         self.tickets_sold = tickets_sold
+        self.total_tickets = total_tickets
     }
 }
 

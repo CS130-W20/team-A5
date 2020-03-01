@@ -16,6 +16,7 @@ struct ProfileView: View {
     @ObservedObject var authenticationVM = AuthenticationViewModel()
     @State var sellingItems: [SellingItem] = []
     @State var buyingItems: [BuyingItem] = []
+    @State var items_bid_on = false
     var body: some View {
         NavigationView {
         VStack(){
@@ -47,7 +48,7 @@ struct ProfileView: View {
             
             HStack(){
                 Button(action: {
-                   
+                    self.items_bid_on = true
                 }){
                    Text("Items Bid On")
                        .standardBoldText()
@@ -55,7 +56,7 @@ struct ProfileView: View {
                 }
                 
                 Button(action: {
-                    
+                    self.items_bid_on = false
                 }){
                     Text("Items Listed")
                         .standardBoldText()
@@ -65,9 +66,13 @@ struct ProfileView: View {
             HStack(){
                 VStack(alignment: .center){
                     HStack(alignment: .bottom){
-                        Text("Items You've Listed")
+                        if items_bid_on {
+                            Text("Items You've Bid On")
                             .standardBoldText()
-                            
+                        } else {
+                            Text("Items You've Listed")
+                            .standardBoldText()
+                        }
                         
                         Spacer()
                         NavigationLink(destination: UploadSaleItemView()) {
@@ -80,13 +85,17 @@ struct ProfileView: View {
                         .frame(height: 2.0, alignment: .bottom)
                         .foregroundColor(Color("LightGray"))
                         .offset(y:-10)
-//                    ScrollView{
-//                        ProfileSaleItemView()
-//                    }
-                }
-                ScrollView {
-                    ForEach(sellingItems, id: \.id) { item in
-                        ProfileSaleItemView(sellingItem: item)
+                    ScrollView {
+                        if self.items_bid_on {
+                            ForEach(buyingItems, id: \.id) { item in
+                                ProfileBidItemView(buyingItem: item)
+                            }
+
+                        } else {
+                            ForEach(sellingItems, id: \.id) { item in
+                                ProfileSaleItemView(sellingItem: item)
+                            }
+                        }
                     }
                 }
             }
@@ -96,10 +105,15 @@ struct ProfileView: View {
         .onAppear {
             if self.currUser.lastName == ""          {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)
             }
-            let tup = get_items_selling_and_bidding(auth_token: self.authenticationVM.auth_token)
-            self.sellingItems = tup.0
-            self.buyingItems = tup.1
-            print("selling count: \(self.sellingItems.count) \(tup)")
+            get_items_selling_and_bidding(auth_token: self.authenticationVM.auth_token) {
+                response in
+                self.sellingItems = response.0
+                self.buyingItems = response.1
+                print("selling count: \(self.sellingItems.count) ")
+            }
+//            self.sellingItems = tup.0
+//            self.buyingItems = tup.1
+            
         }
     }
 }
