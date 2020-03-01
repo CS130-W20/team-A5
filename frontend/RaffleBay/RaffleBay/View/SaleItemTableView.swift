@@ -35,6 +35,8 @@ struct GridStack<Content: View>: View {
 }
 
 struct SaleItemTableView : View {
+    @ObservedObject var currUser = User()
+    @ObservedObject var authenticationVM = AuthenticationViewModel()
     @State private var search: String = ""
 
     @State private var saleItems = SaleItemTestData.saleItems()
@@ -125,6 +127,7 @@ struct SaleItemTableView : View {
     }
         
     .navigationBarBackButtonHidden(true)
+    .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
     }
 
 }

@@ -14,6 +14,8 @@ let circleDiameter: CGFloat = 30
 struct ProfileView: View {
     @ObservedObject var currUser = User()
     @ObservedObject var authenticationVM = AuthenticationViewModel()
+    @State var sellingItems: [SellingItem] = []
+    @State var buyingItems: [BuyingItem] = []
     var body: some View {
         NavigationView {
         VStack(){
@@ -78,18 +80,27 @@ struct ProfileView: View {
                         .frame(height: 2.0, alignment: .bottom)
                         .foregroundColor(Color("LightGray"))
                         .offset(y:-10)
-                    
-                    ScrollView(){
-                        ProfileSaleItemView()
-                        ProfileSaleItemView()
-                        ProfileSaleItemView()
+//                    ScrollView{
+//                        ProfileSaleItemView()
+//                    }
+                }
+                ScrollView {
+                    ForEach(sellingItems, id: \.id) { item in
+                        ProfileSaleItemView(sellingItem: item)
                     }
                 }
             }
         }
         }
     .navigationBarBackButtonHidden(true)
-        .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
+        .onAppear {
+            if self.currUser.lastName == ""          {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)
+            }
+            let tup = get_items_selling_and_bidding(auth_token: self.authenticationVM.auth_token)
+            self.sellingItems = tup.0
+            self.buyingItems = tup.1
+            print("selling count: \(self.sellingItems.count) \(tup)")
+        }
     }
 }
 

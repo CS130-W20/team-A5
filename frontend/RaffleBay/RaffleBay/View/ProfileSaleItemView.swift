@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ProfileSaleItemView: View {
+    @State var sellingItem: SellingItem
     var body: some View {
         HStack(){
             Rectangle()
@@ -45,8 +46,8 @@ struct ProfileSaleItemView: View {
     
 }
 
-struct ProfileSaleItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileSaleItemView()
-    }
-}
+//struct ProfileSaleItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileSaleItemView()
+//    }
+//}
