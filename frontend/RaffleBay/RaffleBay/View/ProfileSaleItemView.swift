@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ProfileSaleItemView: View {
-    @State var sellingItem: SellingItem
+    @State var sellingItem: SellingOrBuyingItem
     var body: some View {
         HStack(){
             Rectangle()

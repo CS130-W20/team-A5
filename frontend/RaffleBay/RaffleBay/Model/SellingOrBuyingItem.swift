@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class SellingItem: Identifiable, ObservableObject {
+class SellingOrBuyingItem: Identifiable, ObservableObject {
     let id = UUID()
     @Published var item_id: Int = 0
     @Published var item_name: String = ""

@@ -14,8 +14,8 @@ let circleDiameter: CGFloat = 30
 struct ProfileView: View {
     @ObservedObject var currUser = User()
     @ObservedObject var authenticationVM = AuthenticationViewModel()
-    @State var sellingItems: [SellingItem] = []
-    @State var buyingItems: [BuyingItem] = []
+    @State var sellingItems: [SellingOrBuyingItem] = []
+    @State var buyingItems: [SellingOrBuyingItem] = []
     @State var items_bid_on = false
     var body: some View {
         NavigationView {
