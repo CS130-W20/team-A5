@@ -40,7 +40,7 @@ struct ProfileView: View {
                         .shadow(radius: 7)
                     Text("\(currUser.firstName) \(currUser.lastName)")
                         .clearButtonText()
-                    Text("Account Balance: $" + "47.00")
+                    Text("Account Balance: $\(currUser.account_balance)")
                         .standardBoldText()
                 }
                 Spacer()

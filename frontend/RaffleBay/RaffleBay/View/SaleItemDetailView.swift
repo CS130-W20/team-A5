@@ -11,6 +11,10 @@ import SwiftUI
 
 struct SaleItemDetailView : View {
     @State private var num_of_tickets: Int? = 0
+    @State private var showingAlert = false
+    
+    @ObservedObject var currUser = User()
+    @ObservedObject var authenticationVM = AuthenticationViewModel()
 //    let saleItem: SaleItem
     var body: some View {
         VStack(){
@@ -75,11 +79,18 @@ struct SaleItemDetailView : View {
                     .fontWeight(.bold)
             }.padding(20)
             Button(action:{
+                if Int(self.currUser.account_balance)! >= 5 {
+                    
+                    self.showingAlert = true
+                }
                
             }){
                 Text("Buy Now")
                     .blueButtonText()
             }.buttonStyle(BigBlueButtonStyle())
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Ticket Confirmed"), message: Text(""), dismissButton: .default(Text("Got it!")))
+            }
         }.padding(40)
     }
 }

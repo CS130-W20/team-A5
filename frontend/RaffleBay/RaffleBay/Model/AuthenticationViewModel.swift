@@ -9,7 +9,7 @@
 import Foundation
 
 class AuthenticationViewModel: ObservableObject {
-    @Published var auth_token: String = UserDefaults.standard.string(forKey: "auth_token")! {
+    @Published var auth_token: String = UserDefaults.standard.string(forKey: "auth_token") ?? "" {
         didSet{
             UserDefaults.standard.set(self.auth_token, forKey: "auth_token")
         }
