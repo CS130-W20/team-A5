@@ -49,6 +49,20 @@ const ItemRepo = (postgres) => {
     );`;
 
   /**
+   * Set up the shipment table if it does not exist
+   * 
+   * @type {string}
+   */
+  const createShipmentTableSQL = `
+    CREATE TABLE IF NOT EXISTS shipments(
+      shipment_id SERIAL PRIMARY KEY,
+      item_id integer NOT NULL,
+      label text NOT NULL,
+      tracking_number text NOT NULL,
+      timestamp timestamptz DEFAULT NOW()
+    );`;
+
+  /**
    * Uses createItemTableSQL and createBidTableSQL to create the tables, and logs the error.
    * 
    * @return {string} - Return Null if the tables are created, and an error otherwise
@@ -58,9 +72,11 @@ const ItemRepo = (postgres) => {
       const client = await postgres.connect();
       await client.query(createItemTableSQL);
       await client.query(createBidTableSQL);
+      await client.query(createShipmentTableSQL);
       client.release();
       console.log('Item Table Created');
       console.log('Bid Table Created');
+      console.log('Shipment Table Created');
       return null;
     } catch (err) {
       return err;
@@ -388,6 +404,39 @@ const ItemRepo = (postgres) => {
     }
   };
 
+
+  /**
+   * Inserts an item entry into the items tabl
+   * 
+   * @type {string}
+   */
+  const createShipmentSQL = `
+    INSERT INTO shipments(item_id, label, tracking_number)
+    VALUES($1, $2, $3)
+    RETURNING *;`;
+
+  /**
+   * Uses createShipmentSQL and inserts a shipment into the shipments column. 
+   * If we get an error, then we return the (null, error), otherwise return (data, null)
+   * 
+   * @param  {number} item_id - ID of item
+   * @param  {string} label - URL of shipping label
+   * @param  {string} tracking_number - String of tracking number
+   * @return {Array<{0: Shipment, 1: String}>} - Array with Rafflebay Shipment Object and error (only one or the other)
+   */
+  const createShipment = async (item_id, label, tracking_number) => {
+    const values = [item_id, label, tracking_number];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(createShipmentSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
+
   return {
     setupRepo,
     createItem,
@@ -399,6 +448,7 @@ const ItemRepo = (postgres) => {
     updateItemStatus,
     getItemsForSeller,
     getBidsForUser,
+    createShipment,
   };
 };
 
