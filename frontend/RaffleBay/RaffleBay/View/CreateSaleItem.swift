@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CreateSaleItem: View {
     @ObservedObject var newSaleItem: SaleItem
+    @ObservedObject var authenticationVM = AuthenticationViewModel()
     var body: some View {
         VStack(){
             Spacer().frame(height: 100)
@@ -46,7 +47,7 @@ struct CreateSaleItem: View {
                 }
             }.padding(20)
             NavigationLink(destination: ProfileView()){
-                Button(action: {post_sale_item(saleItem: self.newSaleItem)}) {
+                Button(action: {post_sale_item(auth_token: self.authenticationVM.auth_token, saleItem: self.newSaleItem)}) {
                     Text("Add Listing")
                       .blueButtonText()
                       .frame(minWidth:0, maxWidth: frameMaxWidth)
