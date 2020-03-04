@@ -8,6 +8,7 @@ build:
 run:
 	-pkill docker-compose
 	docker-compose up postgres backend
+	docker-compose up
 
 run_background:
 	-pkill docker-compose
@@ -27,6 +28,7 @@ test:
 	docker build -t rafflebay/test .
 	-pkill docker-compose
 	docker-compose up postgres_test test  
+
 
 format:
 	npx prettier --write --arrow-parens always --single-quote --trailing-comma all --no-bracket-spacing "src/**/*.js"
