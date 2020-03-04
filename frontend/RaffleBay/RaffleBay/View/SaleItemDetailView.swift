@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 struct SaleItemDetailView : View {
-
+    @State private var num_of_tickets: Int? = 0
 //    let saleItem: SaleItem
     var body: some View {
         VStack(){
@@ -69,14 +69,15 @@ struct SaleItemDetailView : View {
             }
             Spacer()
             VStack(alignment: .center){
-                Text("Tickets to Buy:")
+                Text("How many tickets would you like to purchase?:")
+
                 Text("1")
                     .fontWeight(.bold)
             }.padding(20)
             Button(action:{
                
             }){
-                Text("Buy Now ($15.00)")
+                Text("Buy Now")
                     .blueButtonText()
             }.buttonStyle(BigBlueButtonStyle())
         }.padding(40)

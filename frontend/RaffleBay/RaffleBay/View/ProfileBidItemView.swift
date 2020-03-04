@@ -8,20 +8,20 @@
 
 import SwiftUI
 
-struct ProfileSaleItemView: View {
-    @State var sellingItem: SellingOrBuyingItem
+struct ProfileBidItemView: View {
+    @State var buyingItem: SellingOrBuyingItem
     var body: some View {
         HStack(){
             Rectangle()
                 .frame(width: frameMaxWidth * 0.4, height: frameMaxWidth * 0.4)
             
             VStack(alignment: .leading){
-                Text(sellingItem.item_name)
+                Text(buyingItem.item_name)
                     .standardBoldText()
                 Spacer().frame(height: 1)
-                Text("Total Price: $\(sellingItem.sale_price)")
+                Text("Total Price: $\(buyingItem.sale_price)")
                     .standardRegularText()
-                Text("Tickets Sold: \(sellingItem.tickets_sold)/\(sellingItem.total_tickets)")
+                Text("Tickets Sold: \(buyingItem.tickets_sold)/\(buyingItem.total_tickets)")
                     .standardRegularText()
                 Spacer().frame(height: 10)
                 Text("Time Left: 01:44:23")
