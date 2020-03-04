@@ -27,9 +27,6 @@ test:
 	-pkill docker-compose
 	docker-compose up postgres_test test  
 
-run_test:
-	docker exec -i -t `docker ps -q --filter status=running --filter ancestor=rafflebay/backend:latest` /bin/sh -c "npm run test"
-
 format:
 	npx prettier --write --arrow-parens always --single-quote --trailing-comma all --no-bracket-spacing "src/**/*.js"
 	npx prettier --write --arrow-parens always --single-quote --trailing-comma all --no-bracket-spacing "test/**/*.js"
