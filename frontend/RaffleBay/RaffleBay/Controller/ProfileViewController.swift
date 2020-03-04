@@ -16,7 +16,7 @@ func get_user_request(auth_token: String, user: User) -> Void {
     ]
     Alamofire.request(url + "/api/users/1", method: .get, encoding: JSONEncoding.default, headers: headers)
     .responseSwiftyJSON { dataResponse in
-        print(dataResponse.request)
+        print(dataResponse.request!)
         if dataResponse.result.isSuccess {
             let message = dataResponse.value!["message"]
             print("message: \(message)")
@@ -30,7 +30,7 @@ func get_user_request(auth_token: String, user: User) -> Void {
                 user.pic_url = data["pic_url"].string!
             }
         } else {
-            print(dataResponse.error)
+            print(dataResponse.error!)
         }
     };
     
@@ -43,7 +43,7 @@ func get_items_selling_and_bidding(auth_token: String, completion: @escaping (([
        ]
        Alamofire.request(url + "/api/items/me", method: .get, encoding: JSONEncoding.default, headers: headers)
        .responseSwiftyJSON { dataResponse in
-           print(dataResponse.request)
+           print(dataResponse.request!)
            if dataResponse.result.isSuccess {
                let message = dataResponse.value!["message"]
                print("message: \(message)")
@@ -61,7 +61,7 @@ func get_items_selling_and_bidding(auth_token: String, completion: @escaping (([
                 completion((selling, buying))
                }
            } else {
-               print(dataResponse.error)
+               print(dataResponse.error!)
            }
        };
 }

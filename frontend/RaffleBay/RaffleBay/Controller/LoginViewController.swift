@@ -21,7 +21,7 @@ func login_request(email: String, password: String, authenticationVM: Authentica
     print("password: \(password)")
     Alamofire.request(url + "/api/users/login", method: .post, parameters: parameters, encoding: JSONEncoding.default)
     .responseSwiftyJSON { dataResponse in
-        print(dataResponse.request)
+        print(dataResponse.request!)
         if dataResponse.result.isSuccess {
             let message = dataResponse.value!["message"]
             print("message: \(message)")
@@ -37,7 +37,7 @@ func login_request(email: String, password: String, authenticationVM: Authentica
                 result = 1
             }
         } else {
-            print(dataResponse.error)
+            print(dataResponse.error!)
         }
     };
     

@@ -19,12 +19,12 @@ func post_sale_item(auth_token: String, saleItem: SaleItem) -> Void {
         "pic_url": "<url>",
         "item_description": saleItem.item_description,
         "tags": "fun",
-        "sale_price": Double(saleItem.sale_price),
-        "total_tickets": Double(saleItem.total_tickets)
+        "sale_price": Double(saleItem.sale_price)!,
+        "total_tickets": Double(saleItem.total_tickets)!
     ]
     Alamofire.request(url + "/api/items/create", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
     .responseSwiftyJSON { dataResponse in
-        print(dataResponse.request)
+        print(dataResponse.request!)
         if dataResponse.result.isSuccess {
             let message = dataResponse.value!["message"]
             print("message: \(message)")
@@ -33,7 +33,7 @@ func post_sale_item(auth_token: String, saleItem: SaleItem) -> Void {
                 print("data: \(data)")
             }
         } else {
-            print(dataResponse.error)
+            print(dataResponse.error!)
         }
     };
     
