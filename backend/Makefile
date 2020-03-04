@@ -7,7 +7,7 @@ build:
 
 run:
 	-pkill docker-compose
-	DATABASE=postgres docker-compose up
+	docker-compose up
 
 run_background:
 	-pkill docker-compose
@@ -19,10 +19,11 @@ stop:
 test:
 	docker build -t rafflebay/test .
 	-pkill docker-compose
-	DATABASE=postgres_test docker-compose up -d 
+	docker-compose up postgres_test test  
 
 run_test:
 	docker exec -i -t `docker ps -q --filter status=running --filter ancestor=rafflebay/backend:latest` /bin/sh -c "npm run test"
+	DATABASE=postgres_test docker-compose up
 
 format:
 	npx prettier --write --arrow-parens always --single-quote --trailing-comma all --no-bracket-spacing "src/**/*.js"
