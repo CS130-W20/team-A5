@@ -59,21 +59,15 @@ struct LoginView: View {
                     }
                     
                     //Signup Button
-                    Button(action: {
-                        
-                    }){
-                        Button(action: {
-                            
-                        }){
-                            HStack(){
-                                Text("Don't have an account?")
-                                    .standardRegularText()
-                                    .padding(8)
-                                
-                                Text("Sign Up")
-                                    .standardBoldText()
-                                    .padding(8)
-                            }
+                    NavigationLink(destination: SignupView()){
+                        HStack(){
+                            Text("Don't have an account?")
+                                .standardRegularText()
+                                .padding(8)
+
+                            Text("Sign Up")
+                                .standardBoldText()
+                                .padding(8)
                         }
                     }
                     .buttonStyle(BigClearButtonStyle())
