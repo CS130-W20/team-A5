@@ -67,9 +67,11 @@ function start(port) {
 
   app.use('/api', router);
 
+  if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
+  }
 
   // Cron job so every night at midnight, all raffles past a deadline are ended
   var task = cron.schedule('0 0 * * *', () => {

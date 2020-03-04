@@ -19,7 +19,7 @@ stop:
 test:
 	docker build -t rafflebay/test .
 	-pkill docker-compose
-	DATABASE=postgres_test docker-compose up
+	DATABASE=postgres_test docker-compose up -d 
 
 format:
 	npx prettier --write --arrow-parens always --single-quote --trailing-comma all --no-bracket-spacing "src/**/*.js"
