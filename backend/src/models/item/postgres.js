@@ -59,7 +59,8 @@ const ItemRepo = (postgres) => {
       item_id integer NOT NULL,
       label text NOT NULL,
       tracking_number text NOT NULL,
-      timestamp timestamptz DEFAULT NOW()
+      timestamp timestamptz DEFAULT NOW(),
+      FOREIGN KEY (item_id) REFERENCES items(item_id)
     );`;
 
   /**
