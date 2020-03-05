@@ -76,6 +76,11 @@ const FundsController = (userModel, authService) => {
         return res.status(400).json({"err": "No payment found"});
       }
 
+      // Check to make sure there can be no duplicate payment confirmations
+      if (payment_info.completed) {
+        return res.status(400).json({"err": "Payment has already been completed"});
+      }
+
       // Payment matches up, so update a user's account, and mark the payment as completed
       let user_id = payment_info.user_id
       let amount = payment_info.amount
