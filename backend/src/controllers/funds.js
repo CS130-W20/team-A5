@@ -25,7 +25,26 @@ const FundsController = (userModel, authService) => {
       amount: body.amount,
       currency: 'usd',
     });
+
     const clientSecret = paymentIntent.client_secret
+    
+    // Create a payment object with this info
+    let payment_id = paymentIntent.id
+    let cents_amount = body.amount*1.0 
+
+    let amount = cents_amount / 100
+
+    let user_id = user_info.id
+
+
+    const [payment_info, err1] = await userModel.createPayment(payment_id, amount, user_id)
+
+    if (err1) {
+      return res.status(400).json({
+        data: null,
+        message: err1.message
+      });
+    }
   
     return res.status(200).json({
       data: {
@@ -36,50 +55,42 @@ const FundsController = (userModel, authService) => {
   });
 
   router.post('/complete', async (req, res) => {
-    if (!req.body) return res.status(400).json({
-      "message": "Malformed Request",
-    });
-    body = req.body
+    
+    let event;
 
-    // Get the user_id of the user sending the request
-    const [user_info, err] = await authService.getLoggedInUserInfo(req.headers);
-
-    // Make sure this is a valid user
-    if (err) {
-      return res.status(400).json({
-        data: null,
-        message: err
-      });
+    try {
+      event = JSON.parse(req.body);
+    } catch (err) {
+      return res.status(400).json({"err": `Webhook Error: ${err.message}`});
     }
 
-    const paymentID = body.payment_id;
+    // Handle the event
+    if (event.type == 'payment_intent.succeeded') {
+      const paymentIntent = event.data.object;
 
-    const paymentIntent = await stripe.paymentIntents.retrieve(paymentID);
-
-    if (paymentIntent && paymentIntent.status === 'succeeded') {
-      const centsAmount = paymentIntent.amount
-
-      const amount = centsAmount * 1.0 / 100;
-
-      [user, err1] = await userModel.addUserFunds(user_info.id, amount)
+      const payment_id = paymentIntent.id;
+      [payment_info, err1] = await userModel.getPaymentInfoByPaymentId(payment_id)
 
       if (err1) {
-        return res.status(400).json({
-          data: null,
-          message: err1
-        });
+        return res.status(400).json({"err": err1.message});
       }
 
-      return res.status(200).json({
-        data: user,
-        message: ""
-      })
-    } else {
-      return res.status(400).json({
-          data: null,
-          message: "Payment not completed"
-      });
-    } 
+      // Payment matches up, so update a user's account, and mark the payment as completed
+      let user_id = payment_info.user_id
+      let amount = payment_info.amount
+
+      [updated_user_info, err2] = userModel.addUserFundsAndSetPaymentCompleted(user_id, amount, payment_id);
+
+      if (err2) {
+        return res.status(400).json({"err": err1.message});
+      }
+
+      // If no errors, send back status 200, Stripe doesnt need any body
+      return res.status(200).json({"message": "Success"})
+
+      } else {
+        return res.status(400).send("Invalid Event Type");
+      } 
   });
 
   return router;

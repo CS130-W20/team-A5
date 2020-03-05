@@ -31,7 +31,7 @@ p_shell:
 
 #CAUTION: WILL DELETE ALL DATA
 reset_db: 
-	DATABASE=postgres docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE bids, items, users;"
+	DATABASE=postgres docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE payments, shipments, bids, items, users;"
 
 jsdoc:
 	- rm -r JSDoc_Output/
