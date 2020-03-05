@@ -443,7 +443,7 @@ const ItemRepo = (postgres) => {
    */
   const getItemFeedSQL = `
    SELECT * FROM items
-   WHERE status=IP
+   WHERE status=$1
    ORDER BY deadline;
   `;
 
@@ -453,9 +453,10 @@ const ItemRepo = (postgres) => {
    * @return {Array<{0: Array<Item>, 1: String}>} - Array with array of Rafflebay Item Objects and error (only one or the other)
    */
   const getItemFeed = async () => {
+    values=["IP"]
     try {
       const client = await postgres.connect();
-      const res = await client.query(getItemFeedSQL);
+      const res = await client.query(getItemFeedSQL, values);
       client.release();
       return [res.rows, null];
     } catch (err) {

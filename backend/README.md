@@ -253,3 +253,19 @@ returns
   "message": "<error_message>"
 }
 ```
+
+### Get Item Feed
+GET /api/items/feed *No auth_token needed*
+
+returns
+```
+{
+  "data": [
+    {
+      <BUYER_ITEM_VIEW>
+    },
+    ...
+    ],
+  "message": "<ERROR_MESSAGE>"
+}
+```
