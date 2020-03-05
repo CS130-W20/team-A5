@@ -63,7 +63,15 @@ struct NavigationHost: View{
    }
 }
 
-
+//Check if we have some auth token
+func whatView(token: String) -> AnyView{
+    if (token == ""){
+        return AnyView(SplashscreenView())
+    }else{
+        return AnyView(SaleItemTableView())
+    }
+    
+}
 
 struct ContentView: View {
     //@State private var selection = 0
@@ -72,8 +80,9 @@ struct ContentView: View {
     var body: some View {
         NavigationHost()
         .environmentObject(NavigationStack(
-           NavigationItem( view: AnyView(SplashscreenView())))) 
-        
+            NavigationItem( view: whatView(token: self.authenticationVM.auth_token))
+                            ))
+    
         
         
 //        if self.authenticationVM.auth_token == "" {
