@@ -10,15 +10,26 @@ import Foundation
 import Alamofire_SwiftyJSON
 import Alamofire
 import SwiftyJSON
-func post_bid_on_item(saleItem: SaleItem, auth_token: String, num_of_tickets: String) -> Void {
-    let headers: HTTPHeaders = [
-        "Authorization": "Bearer \(auth_token)"
-    ]
+func post_bid_on_item(saleItem: SaleItem) -> Void {
+//    let headers: HTTPHeaders = [
+//        "Authorization": "Bearer \(auth_token)"
+//    ]
     let parameters: [String: Any] = [
-        "ticket_count": Int(num_of_tickets),
-        "total_cost": Int(num_of_tickets)! * Int(saleItem.ticket_price)!
+        "item_name": saleItem.item_name,
+        "seller_id": "1",
+        "pic_url": "<url>",
+        "item_description": saleItem.item_description,
+        "tags": "fun",
+        "sale_price": saleItem.sale_price,
+        "ticket_price": saleItem.ticket_price,
+        "total_tickets": saleItem.total_tickets,
+        "bids": "4",
+        "is_ended": "False",
+        "deadline": "now",
+        "status": "cur_status",
+        "current_ledger": "0"
     ]
-    Alamofire.request(url + "/api/items/bid/1", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+    Alamofire.request(url + "/api/items/postitem", method: .post, parameters: parameters, encoding: JSONEncoding.default)
     .responseSwiftyJSON { dataResponse in
         print(dataResponse.request)
         if dataResponse.result.isSuccess {

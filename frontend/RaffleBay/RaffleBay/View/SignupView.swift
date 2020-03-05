@@ -121,7 +121,7 @@ struct SignupView : View {
                     ShadowBoxView()
                     
                     //Signup Button
-                    NavigationLink(destination: LoginView()){
+                    NavigationLink(destination: SaleItemTableView()){
                         Text("Login")
                           .blueButtonText()
                           .frame(minWidth:0, maxWidth: frameMaxWidth)
