@@ -122,11 +122,16 @@ struct SignupView : View {
                     
                     //Signup Button
                     NavigationLink(destination: LoginView()){
+                        Button(action: {
+                            post_signup(newUser: self.someUser)
+                        }){
                         Text("Login")
                           .blueButtonText()
                           .frame(minWidth:0, maxWidth: frameMaxWidth)
+                        }
+                        .buttonStyle(BigBlueButtonStyle())
                     }
-                    .buttonStyle(BigBlueButtonStyle())
+                    
                 }
                 
                 //Login Button

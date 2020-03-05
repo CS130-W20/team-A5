@@ -13,6 +13,7 @@ struct ContentView: View {
     @ObservedObject var authenticationVM = AuthenticationViewModel()
 
     var body: some View {
+        print(self.authenticationVM.auth_token)
         if self.authenticationVM.auth_token == "" {
             return AnyView(SplashscreenView())
         } else {
