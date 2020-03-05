@@ -70,7 +70,7 @@ const FundsController = (userModel, authService) => {
 
       const payment_id = paymentIntent.id;
       
-      [payment_info, err1] = await userModel.getPaymentInfoByPaymentId(payment_id)
+      const [payment_info, err1] = await userModel.getPaymentInfoByPaymentId(payment_id)
 
       if (err1 || payment_info == null) {
         return res.status(400).json({"err": "No payment found"});
@@ -80,7 +80,7 @@ const FundsController = (userModel, authService) => {
       let user_id = payment_info.user_id
       let amount = payment_info.amount
 
-      [updated_user_info, err2] = userModel.addUserFundsAndSetPaymentCompleted(user_id, amount, payment_id);
+      const [updated_user_info, err2] = await userModel.addUserFundsAndSetPaymentCompleted(user_id, amount, payment_id);
 
       if (err2) {
         return res.status(400).json({"err": err1.message});
