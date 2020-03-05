@@ -22,6 +22,7 @@ run_test:
 	docker-compose exec postgres_test psql -p 5433 -U postgres rafflebay_test -c "DROP TABLE bids, items, users CASCADE;"
 	docker-compose down
 
+
 test:
 	docker build -t rafflebay/test .
 	-pkill docker-compose

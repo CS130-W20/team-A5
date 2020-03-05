@@ -35,7 +35,7 @@ services:
     environment:
       POSTGRES_HOSTNAME: postgres_test
     restart: "no"
-    command: npm test 
+    command: npm test
     depends_on: 
       - postgres_test
 
