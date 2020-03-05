@@ -14,7 +14,7 @@ func get_user_request(auth_token: String, user: User) -> Void {
     let headers: HTTPHeaders = [
         "Authorization": "Bearer \(auth_token)"
     ]
-    Alamofire.request(url + "/api/users/1", method: .get, encoding: JSONEncoding.default, headers: headers)
+    Alamofire.request(url + "/api/users/me", method: .get, encoding: JSONEncoding.default, headers: headers)
     .responseSwiftyJSON { dataResponse in
         print(dataResponse.request)
         if dataResponse.result.isSuccess {
@@ -27,8 +27,8 @@ func get_user_request(auth_token: String, user: User) -> Void {
                 print("auth: \(auth)")
                 user.firstName = data["first_name"].string!
                 user.lastName = data["last_name"].string!
-                user.pic_url = data["pic_url"].string!
-//                user.account_balance = String(data["balance"].int!)
+                user.pic_url = data["picture_url"].string!
+                user.account_balance = String(data["balance"].int!)
             }
         } else {
             print(dataResponse.error)
