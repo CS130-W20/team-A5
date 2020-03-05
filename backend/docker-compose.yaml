@@ -21,7 +21,7 @@ services:
   backend:
     image: rafflebay/backend:latest
     ports:
-      - 31337:31337
+      - 80:80
     environment:
       POSTGRES_HOSTNAME: ${DATABASE}
     restart: unless-stopped

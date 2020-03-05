@@ -11,7 +11,7 @@ run:
 
 run_background:
 	-pkill docker-compose
-	docker-compose up -d
+	DATABASE=postgres docker-compose up -d
 
 stop:
 	docker-compose down

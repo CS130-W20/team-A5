@@ -57,9 +57,9 @@ const FundsController = (userModel, authService) => {
   router.post('/complete', async (req, res) => {
     
     let event;
-
+    
     try {
-      event = JSON.parse(req.body);
+      event = req.body;
     } catch (err) {
       return res.status(400).json({"err": `Webhook Error: ${err.message}`});
     }
@@ -69,10 +69,11 @@ const FundsController = (userModel, authService) => {
       const paymentIntent = event.data.object;
 
       const payment_id = paymentIntent.id;
+      
       [payment_info, err1] = await userModel.getPaymentInfoByPaymentId(payment_id)
 
-      if (err1) {
-        return res.status(400).json({"err": err1.message});
+      if (err1 || payment_info == null) {
+        return res.status(400).json({"err": "No payment found"});
       }
 
       // Payment matches up, so update a user's account, and mark the payment as completed
