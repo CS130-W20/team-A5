@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --testTimeout=10000",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand --testTimeout=10000",
     "serve": "node src/main.js"
   },
   "author": "",
@@ -36,7 +36,6 @@
     "jest": "^25.1.0",
     "jsdoc": "^3.6.3",
     "mocha": "^5.2.0",
-	"jest": "^25.1.0",
     "nyc": "^14.1.1",
     "prettier": "^1.14.3",
     "sinon": "^6.3.5"

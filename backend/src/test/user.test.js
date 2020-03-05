@@ -20,6 +20,7 @@ describe('Create User', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
+		
 		expect(response.data.email).toEqual(userData.email); 
 	})
 	it('should allow for null optional fields', async () => {

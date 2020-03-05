@@ -23,65 +23,63 @@ const {AuthService} = require('./services/auth')
 const {RaffleService} = require('./services/raffle')
 
 function start(port) {
-  const postgres = PostgresDB(config.database);
+	const postgres = PostgresDB(config.database);
 
-  const userRepo = UserRepo(postgres);
-  userRepo.setupRepo();
+	const userRepo = UserRepo(postgres);
+	userRepo.setupRepo();
 
-  const userModel = UserModel(userRepo);
+	const userModel = UserModel(userRepo);
 
-  const authService = AuthService(userModel); 
-  const userController = UserController(userModel, authService);
-  
-  const itemRepo = ItemRepo(postgres);
-  itemRepo.setupRepo();
-  const itemModel = ItemModel(itemRepo);
-  const itemController = ItemController(itemModel, userModel, authService);
+	const authService = AuthService(userModel); 
+	const userController = UserController(userModel, authService);
 
-  const raffleService = RaffleService(itemModel, userModel);
+	const itemRepo = ItemRepo(postgres);
+	itemRepo.setupRepo();
+	const itemModel = ItemModel(itemRepo);
+	const itemController = ItemController(itemModel, userModel, authService);
 
-  const adminController = AdminController(userModel, itemModel, raffleService);
+	const raffleService = RaffleService(itemModel, userModel);
+
+	const adminController = AdminController(userModel, itemModel, raffleService);
 
 
-  const app = express();
-  app.disable('x-powered-by');
-  app.use(compression());
-  app.use(morgan('dev'));
-  app.use(
-    cors({
-      origin: ['http://localhost:3000'],
-      credentials: true,
-    }),
-  );
-  app.use(cookieParser());
-  app.use(bodyParser.json({
-    verify: (req, res, buf) => {
-      req.rawBody = buf
-    }
-  }))
+	const app = express();
+	app.disable('x-powered-by');
+	app.use(compression());
+	app.use(morgan('dev'));
+	app.use(
+		cors({
+			origin: ['http://localhost:3000'],
+			credentials: true,
+		}),
+	);
+	app.use(cookieParser());
+	app.use(bodyParser.json({
+		verify: (req, res, buf) => {
+			req.rawBody = buf
+		}
+	}))
 
-  const router = express.Router();
-  router.use('/users', userController);
-  router.use('/items', itemController);
-  router.use('/admin', adminController);
+	const router = express.Router();
+	router.use('/users', userController);
+	router.use('/items', itemController);
+	router.use('/admin', adminController);
 
-  app.use('/api', router);
+	app.use('/api', router);
 
-  if (process.env.NODE_ENV !== 'test') {
-  app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-  });
-  }
+	app.listen(port, () => {
+		console.log(`Listening on port ${port}`);
+	});
 
-  // Cron job so every night at midnight, all raffles past a deadline are ended
-  var task = cron.schedule('0 0 * * *', () => {
-    raffleService.checkDeadlines()
-   }, {
-     scheduled: true,
-     timezone: "America/Los_Angeles"
-   });
+	// Cron job so every night at midnight, all raffles past a deadline are ended
+	var task = cron.schedule('0 0 * * *', () => {
+		raffleService.checkDeadlines()
+	}, {
+		scheduled: true,
+		timezone: "America/Los_Angeles"
+	});
 
-  task.start();
+	task.start();
 }
 
 start(config.port);
