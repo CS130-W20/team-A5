@@ -46,8 +46,8 @@ struct LoginView: View {
                         //Personal Comment: Should we not have a natigation link here? I haven't looked into this yet but I'm assuming when we have a real DB hooked up, the view will change prior to recieving confirmation from the DB if the user input is correct
                         NavigationLink(destination: ContentView(), tag: 1, selection: self.$selection){
                             Button(action: {
-//                                let response = login_request(email: self.email, password: self.password, authenticationVM: self.authenticationVM, user: self.newUser)
-//                                self.selection = response
+                                let response = login_request(email: self.email, password: self.password, authenticationVM: self.authenticationVM, user: self.newUser)
+                                self.selection = response
                             }){
                                 Text("Login")
                                     .blueButtonText()

@@ -123,7 +123,7 @@ struct SignupView : View {
                         ShadowBoxView()
                         
                         //Signup Button
-                        NavigationLink(destination: SaleItemTableView()){
+                        NavigationLink(destination: ContentView()){
                             Text("Login")
                               .blueButtonText()
                               .frame(minWidth:0, maxWidth: frameMaxWidth)
