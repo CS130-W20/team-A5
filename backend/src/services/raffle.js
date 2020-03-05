@@ -1,3 +1,6 @@
+const EasyPost = require('@easypost/api');
+const api = new EasyPost('EZTK306be7aecba44da486ac37dd01871296leZm7Qb3VVPb0bv17K3ACA')
+
 /**
  * A standalone service to help with raffle lifecycle events, such as randomly selecting a winner and updating databases
  * @constructor
@@ -60,8 +63,22 @@ const RaffleService = (itemModel, userModel) => {
 		const [winning_user_info, e2] = await userModel.getUserInfoById(winning_bid_info['user_id'])
 
 		// TODO
-		// Use this info to send alert emails and get shipping label
-		// For now just print emails to ensure this happens correctly
+		// Use emails to send shipping label and tracking number to winner and seller
+		// For now just create a new shipping object with this information
+		
+		// Get the shipment object
+		const shipment = await createShippingLabel(item, seller_info, winning_user_info)
+
+		// Buy the lowest rate shipment option
+		const sh = shipment.buy(shipment.lowestRate(['USPS'], ['First']))
+
+		// Create a new shipment object with the shipping label and tracking number, to be used later or an error if the shipment was not created
+		sh.then(function(result) {
+			const [object, e3] = itemModel.createShipment(item['item_id'], result.postage_label.label_url, result.tracking_code)
+		}).catch(function(err) {
+			console.log("Error creating shipping label " + err)
+		})
+
 		console.log("For item id " + item['item_id'])
 		console.log("Seller email: " + seller_info['email'])
 		console.log("Winner email: " + winning_user_info['email'])
@@ -70,8 +87,80 @@ const RaffleService = (itemModel, userModel) => {
 		return winning_bid_id;
 	}
 
+
+	/**
+	 * This method creates the shipment item using EasyPost
+	 * 
+	 * What this method does:
+	 * 1. Get address of both buyer and seller
+	 * 2. Get information for the parcel
+	 * 3. Create the shipment
+	 * 4. Return the created shipment
+	 * 
+	 * @param  {Item} item - Item object that is being sold
+	 * @param  {User} seller - Seller of the item, the From Address
+	 * @param  {User} winner - Winner of the item, the To Address
+	 * @return {Shipment} - Shipment created using EasyPost API
+	 */
+	const createShippingLabel = async (item, seller, winner) => {
+		
+		// From address is the seller of the item
+		const fromAddress = new api.Address({
+		  name: seller['first_name'] + " " + seller['last_name'], 
+		  street1: seller['address_1'],
+		  street2: seller['address_2'],
+		  city: seller['city'],
+		  state: seller['state'],
+		  zip: seller['zip'],
+		  phone: seller['phone']
+		});
+
+		fromAddress.save()
+
+		// To address is the winner of the item
+		const toAddress = new api.Address({
+		  name: winner['first_name'] + " " + winner['last_name'], 
+		  street1: winner['address_1'],
+		  street2: winner['address_2'],
+		  city: winner['city'],
+		  state: winner['state'],
+		  zip: winner['zip'],
+		  phone: winner['phone']
+		});
+
+		toAddress.save()
+		
+
+		// Parcel information
+		// Arbitrary numbers since we don't record this for the item
+		// TODO: Add these fields when user creates an item
+		// OR just keep them arbitrary for now
+		const parcel = new api.Parcel({
+		  length: 9,
+		  width: 6,
+		  height: 2,
+		  weight: 10,
+		});
+
+		parcel.save()
+
+		// Create the shipment item
+		const shipment = new api.Shipment({
+		  to_address: toAddress,
+		  from_address: fromAddress,
+		  parcel: parcel
+		});
+
+		await shipment.save()
+
+		// Return the shipment
+		return shipment;
+
+	}
+
 	return {
     	chooseAndNotifyWinner,
+    	createShippingLabel,
   };
 }
 

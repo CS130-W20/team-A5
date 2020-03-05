@@ -18,7 +18,7 @@ class SaleItem: ObservableObject {
     @Published var item_description: String = ""
     @Published var tags: String = ""
     @Published var sale_price: String = ""
-    @Published var ticket_price: String = ""
+    @Published var ticket_price: String = "0"
     @Published var total_tickets: String = ""
     @Published var is_ended: Bool = true
     

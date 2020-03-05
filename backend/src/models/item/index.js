@@ -117,6 +117,19 @@ const ItemModel = (repo) => {
     return await repo.getBidsForUser(user_id)
   }
 
+  /**
+   * Creates a new Shipment object
+   * 
+   * @param  {number} item_id - ID of item for shipment
+   * @param  {string} label - String for URL for shipping label
+   * @param  {string} tracking_number - String for tracking number for the shipment
+   * @return {Array<{0: Shipment, 1: String}>} - Array with Rafflebay Shipment Objects and error (only one or the other)
+   */
+  const createShipment = async(item_id, label, tracking_number) => {
+    return await repo.createShipment(item_id, label, tracking_number)
+  }
+
+
   return {
     createItem,
     getItemInfo,
@@ -127,6 +140,7 @@ const ItemModel = (repo) => {
     updateItemStatus,
     getItemsForSeller,
     getBidsForUser,
+    createShipment,
   };
 };
 

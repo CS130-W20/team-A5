@@ -1,0 +1,7 @@
+osx_image: xcode11.3 #Image for Xcode. macOS 10.14
+language: swift #alias to objective-c
+xcode_workspace: frontend/RaffleBay/RaffleBay.xcworkspace
+xcode_scheme: RaffleBay
+xcode_destination: platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max
+
+

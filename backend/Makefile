@@ -27,11 +27,11 @@ format:
 
 # Open shell to the postgres instance
 p_shell:
-	docker-compose exec postgres psql -U postgres rafflebay
+	DATABASE=postgres docker-compose exec postgres psql -U postgres rafflebay
 
 #CAUTION: WILL DELETE ALL DATA
 reset_db: 
-	docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE bids, items, users;"
+	DATABASE=postgres docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE bids, items, users;"
 
 jsdoc:
 	- rm -r JSDoc_Output/
