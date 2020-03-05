@@ -1,6 +1,9 @@
 const express = require('express');
+const {FundsController} = require('./funds.js')
+
 const UserController = (userModel, authService) => {
   const router = express.Router();
+  const fundsController = FundsController(userModel, authService);
 
   // The API path to create a new user. Creates a user object and returns that object
   router.post('/signup', async (req, res) => {
@@ -90,7 +93,7 @@ const UserController = (userModel, authService) => {
     }
 
     return res.status(200).json({
-      data: user,
+      data: user_info,
       message: ""
     });
   });
@@ -133,6 +136,8 @@ const UserController = (userModel, authService) => {
       message: ""
     });
   });
+
+  router.use('/funds', fundsController);
 
   return router;
 

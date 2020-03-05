@@ -11,7 +11,7 @@ run:
 
 run_background:
 	-pkill docker-compose
-	docker-compose up -d
+	DATABASE=postgres docker-compose up -d
 
 stop:
 	docker-compose down
@@ -31,7 +31,7 @@ p_shell:
 
 #CAUTION: WILL DELETE ALL DATA
 reset_db: 
-	DATABASE=postgres docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE bids, items, users;"
+	DATABASE=postgres docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE payments, shipments, bids, items, users;"
 
 jsdoc:
 	- rm -r JSDoc_Output/

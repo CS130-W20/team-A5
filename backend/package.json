@@ -11,6 +11,7 @@
   "license": "MPL-2.0",
   "dependencies": {
     "@easypost/api": "^3.8.1",
+    "@sendgrid/mail": "^6.5.3",
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
@@ -24,6 +25,7 @@
     "node-pre-gyp": "^0.14.0",
     "pg": "^7.5.0",
     "prop-types": "^15.7.2",
+    "stripe": "^8.27.0",
     "supertest": "^4.0.2"
   },
   "devDependencies": {
