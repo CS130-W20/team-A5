@@ -437,6 +437,33 @@ const ItemRepo = (postgres) => {
     }
   };
 
+  /**
+   * SQL to get a feed of items where the raffle is in progress
+   * @type {string}
+   */
+  const getItemFeedSQL = `
+   SELECT * FROM items
+   WHERE status=$1
+   ORDER BY deadline;
+  `;
+
+  /**
+   * Gets a feed of all in progress objects
+   * 
+   * @return {Array<{0: Array<Item>, 1: String}>} - Array with array of Rafflebay Item Objects and error (only one or the other)
+   */
+  const getItemFeed = async () => {
+    values=["IP"]
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getItemFeedSQL, values);
+      client.release();
+      return [res.rows, null];
+    } catch (err) {
+      return [null, err];
+    }
+  }
+
 
   return {
     setupRepo,
@@ -450,6 +477,7 @@ const ItemRepo = (postgres) => {
     getItemsForSeller,
     getBidsForUser,
     createShipment,
+    getItemFeed,
   };
 };
 
