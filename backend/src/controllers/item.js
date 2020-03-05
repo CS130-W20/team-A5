@@ -62,6 +62,29 @@ const ItemController = (itemModel, userModel, authService) => {
     });
   });
 
+  // Returns a feed of Items that are being sold
+  router.get('/feed', async (req, res) => {
+    const [items, err] = await itemModel.getItemFeed();
+
+    if (err) {
+      return res.status(400).json({
+        data: null,
+        message: err.message
+      });
+    }
+
+    // For each item, only get the buyer's view of it
+    let buyer_view_items = []
+    for (let i = 0; i<items.length; i++) {
+      buyer_view_items.push(_.pick(items[i], buyerView))
+    }
+
+    return res.status(200).json({
+        data: buyer_view_items,
+        message: ""
+      });
+  })
+
   // Creates a bid for the specified item
   router.post('/bid/:item_id', async (req, res) => {
     const params = req.params;
