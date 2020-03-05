@@ -27,7 +27,7 @@ func get_user_request(auth_token: String, user: User) -> Void {
                 print("auth: \(auth)")
                 user.firstName = data["first_name"].string!
                 user.lastName = data["last_name"].string!
-                user.pic_url = data["picture_url"].string!
+                user.pic_url = data["pic_url"].string!
                 user.account_balance = String(data["balance"].int!)
             }
         } else {
