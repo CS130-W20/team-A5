@@ -35,7 +35,22 @@ final class NavigationStack: ObservableObject {
     }
     
     func home( ){
+       currentView = NavigationItem( view: AnyView(SaleItemTableView()))
+       viewStack.removeAll()
+    }
+    
+    func splashscreen( ){
        currentView = NavigationItem( view: AnyView(SplashscreenView()))
+       viewStack.removeAll()
+    }
+    
+    func login( ){
+       currentView = NavigationItem( view: AnyView(LoginView()))
+       viewStack.removeAll()
+    }
+    
+    func signup( ){
+       currentView = NavigationItem( view: AnyView(SignupView()))
        viewStack.removeAll()
     }
 }

@@ -39,9 +39,7 @@ struct SplashscreenView: View {
                     ShadowBoxView()
                     
                     Button(action: {
-                        self.navigation.advance( NavigationItem(view: AnyView(LoginView())) )
-                    
-                        
+                        self.navigation.login()
                         }){
                             Text("Login")
                             .blueButtonText()
@@ -51,9 +49,7 @@ struct SplashscreenView: View {
                 
                 //Signup Button
                 Button(action: {
-                    self.navigation.advance( NavigationItem(view: AnyView(SignupView())) )
-                
-                    
+                    self.navigation.signup()
                     }){
                         Text("Signup")
                         .clearButtonText()

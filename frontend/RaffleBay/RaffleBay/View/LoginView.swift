@@ -11,6 +11,8 @@ import Foundation
 import Alamofire_SwiftyJSON
 
 struct LoginView: View {
+    @EnvironmentObject var navigation: NavigationStack
+    
     @State private var selection: Int? = nil
     @State private var email: String = ""
     @State private var password: String = ""
@@ -24,7 +26,17 @@ struct LoginView: View {
                 
                 //Center Column
                 VStack(){
-                    //Spacer().frame(height: 80)
+                    Spacer().frame(height: 10)
+                    HStack(){
+                    
+                        Button(action: {
+                            self.navigation.splashscreen()
+                        }){
+                            Text("Back")
+                        }
+                        Spacer()
+                    }
+                    Spacer().frame(height: 40)
                     
                     VStack(){
                         TextField("Email", text: $email)
@@ -60,20 +72,16 @@ struct LoginView: View {
                     
                     //Signup Button
                     Button(action: {
-                        
+                        self.navigation.signup()
                     }){
-                        Button(action: {
+                        HStack(){
+                            Text("Don't have an account?")
+                                .standardRegularText()
+                                .padding(8)
                             
-                        }){
-                            HStack(){
-                                Text("Don't have an account?")
-                                    .standardRegularText()
-                                    .padding(8)
-                                
-                                Text("Sign Up")
-                                    .standardBoldText()
-                                    .padding(8)
-                            }
+                            Text("Sign Up")
+                                .standardBoldText()
+                                .padding(8)
                         }
                     }
                     .buttonStyle(BigClearButtonStyle())
