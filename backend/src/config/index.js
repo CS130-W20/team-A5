@@ -20,7 +20,7 @@ const config = {
     host: postgreshostname,
     database: db_name,
   },
-  port: 31337,
+  port: 80,
   auth: {
     secret: 'rafflebay test secret',
     expirationTime: 86400,

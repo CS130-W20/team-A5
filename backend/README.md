@@ -117,6 +117,41 @@ returns
 ```
 **Note:** If the user ID specified is that of the logged in user, the full user info will be given
 
+### Start the Payment flow to add funds to user account
+POST /api/users/funds/start
+```
+{
+  "amount": <amount_in_cents>
+}
+```
+
+returns
+```
+{
+  "data": 
+    {
+      "client_secret": "<client_secret_for_frontend>"
+    }
+  "message": "<ERROR_MESSAGE>"
+}
+```
+
+### Tell the backend that a payment has been completed
+POST /api/users/funds/complete
+```
+{
+  "payment_id": "<payment_id_from_stripe>"
+}
+```
+
+returns
+```
+{
+  "data": "<UPDATED_USER_MODEL>",
+  "message": "<ERROR_MESSAGE>"
+}
+```
+
 ### Item Model Definition
 ```
 {
