@@ -167,7 +167,7 @@ const UserRepo = (postgres) => {
   };
 
   /**
-   * Updates user balance
+   * SQL to debit funds from user balance
    * 
    * @type {string}
    */
@@ -175,7 +175,7 @@ const UserRepo = (postgres) => {
     UPDATE users 
     SET balance = (balance - $2)
     WHERE id = $1
-    RETURNING balance`;
+    RETURNING *`;
 
   /**
    * Debits user funds. Assume controller/caller has verified that this will not make the balance negative
@@ -196,6 +196,36 @@ const UserRepo = (postgres) => {
     }
   };
 
+  /**
+   * SQL to add funds to user balance
+   * 
+   * @type {string}
+   */
+  const addUserFundsSQL = `
+    UPDATE users 
+    SET balance = (balance + $2)
+    WHERE id = $1
+    RETURNING *`;
+
+  /**
+   * Adds user funds. 
+   * 
+   * @param  {number} user_id - ID of user to update
+   * @param  {number} amount - Amount used to update user balance
+   * @return {Array<{0: User, 1: String}>} - Array with Rafflebay User Object and error (only one or the other)
+   */
+  const addUserFunds = async (user_id, amount) => {
+    const values = [user_id, amount];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(addUserFundsSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
   return {
     setupRepo,
     createUser,
@@ -203,6 +233,7 @@ const UserRepo = (postgres) => {
     getUserInfoByEmail,
     getUserInfoById,
     debitUserFunds,
+    addUserFunds,
   };
 };
 

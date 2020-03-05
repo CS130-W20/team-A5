@@ -97,12 +97,23 @@ const UserModel = (repo) => {
   };
 
   /**
+   * @param  {number} user_id - ID for user to debit funds from
+   * @param  {number} amount - Amount to remove from user's account
+   * @return {Array<{0: User, 1: String}>} - Array with updated Rafflebay User Object and error (only one or the other)
+   */
+  const debitUserFunds = async (user_id, amount) => {
+    const [user, err] = await repo.debitUserFunds(user_id, amount);
+    return [_.pick(user, allButPasshash), err];
+  }
+
+  /**
    * @param  {number} user_id - ID for user to add funds
    * @param  {number} amount - Amount to deposit into user's account
    * @return {Array<{0: User, 1: String}>} - Array with updated Rafflebay User Object and error (only one or the other)
    */
-  const debitUserFunds = async (user_id, amount) => {
-    return await repo.debitUserFunds(user_id, amount);
+  const addUserFunds = async (user_id, amount) => {
+    const [user, err] = await repo.addUserFunds(user_id, amount);
+    return [_.pick(user, allButPasshash), err];
   }
 
   return {
@@ -112,6 +123,7 @@ const UserModel = (repo) => {
     getOtherUserInfo,
     verifyPasswordAndReturnUser,
     debitUserFunds,
+    addUserFunds,
   };
 };
 
