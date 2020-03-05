@@ -124,38 +124,32 @@ struct SignupView : View {
                     
                     //Signup Button
                     Button(action: {
+                        
+                        //NEED TO DO: REQUEST TO CREATE USER + LOGIN
                         self.navigation.home()
+                        
+                        
                         }){
                             Text("Sign Up")
                             .blueButtonText()
                             .frame(minWidth:0, maxWidth: frameMaxWidth)
                     }.buttonStyle(BigBlueButtonStyle())
                     
-                    
-                    NavigationLink(destination: SaleItemTableView()){
-                        Text("Sign Up")
-                          .blueButtonText()
-                          .frame(minWidth:0, maxWidth: frameMaxWidth)
-                    }
-                    .buttonStyle(BigBlueButtonStyle())
                 }
                 
                 //Login Button
-                 NavigationLink(destination: LoginView()){
-                    Button(action: {
-                        
-                    }){
-                        HStack(){
-                            Text("Have an account?")
-                                .standardRegularText()
-                                .padding(8)
-               
-                            Text("Login Here")
-                                 .standardBoldText()
-                                .padding(8)
-                        }
+                Button(action: {
+                    self.navigation.login()
+                }){
+                    HStack(){
+                        Text("Have an account?")
+                            .standardRegularText()
+                            .padding(8)
+           
+                        Text("Login Here")
+                             .standardBoldText()
+                            .padding(8)
                     }
-
                 }
                 .buttonStyle(BigClearButtonStyle())
              
@@ -169,15 +163,17 @@ struct SignupView : View {
                 }
                 
                 
-                HStack(){
-                
-                    Button(action: {
-                        self.navigation.home()
-                    }){
-                        Text("Back")
-                    }
-                    Spacer()
-                }
+//                HStack(){
+//
+//                    Button(action: {
+//                        self.navigation.home()
+//                    }){
+//                        Text("Back")
+//                    }
+//                    Spacer()
+//                }
+//                .frame(height: 100).background(Color.gray)
+//
                 Spacer()
                 
             }

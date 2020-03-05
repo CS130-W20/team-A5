@@ -66,7 +66,7 @@ struct NavigationHost: View{
 
 
 struct ContentView: View {
-    @State private var selection = 0
+    //@State private var selection = 0
     @ObservedObject var authenticationVM = AuthenticationViewModel()
 
     var body: some View {
