@@ -34,9 +34,9 @@ struct SaleItemDetailView : View {
                    
                     Spacer()
                     VStack(alignment: .trailing){
-                        Text("Time Remaining:")
+                        Text("Expires at 5pm PST on:")
                             .h2()
-                        Text("00:45:31")
+                        Text(saleItem.created_at)
                             .foregroundColor(Color.red)
                     }
                 }

@@ -22,6 +22,7 @@ class SellingOrBuyingItem: Identifiable, ObservableObject {
     @Published var total_tickets: String = ""
     @Published var tickets_sold: String = ""
     @Published var created_at: String = ""
+    
     init(item_name: String, pic_url: String, sale_price: String, created_at: String, tickets_sold: String, total_tickets: String) {
         self.item_name = item_name
         self.pic_url = pic_url

@@ -68,11 +68,16 @@ struct SaleItemTableView : View {
             ScrollView(){
                 //Currently this will only show the first even number of items. If there is a an odd number of sale items, the last item will not show. Will be slightly challenging to display that last item.
                 GridStack(rows: saleItems.count / 2, columns: 2) { row, col in
-                    NavigationLink(destination: SaleItemDetailView(saleItem: self.saleItems[row * 2 + col])) {
-                        SaleItemCellView(saleItem: self.saleItems[row * 2 + col])
-                        .padding(5)
-                    }
+                        Button(action:{
+                            
+                        }){
+                            SaleItemCellView(saleItem: self.saleItems[row * 2 + col])
+                            .padding(5)
+                        }.buttonStyle(PlainButtonStyle())
                     
+//                    destination: SaleItemDetailView(saleItem: self.saleItems[row * 2 + col])) 
+
+
                 }
             }
     }
