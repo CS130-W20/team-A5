@@ -22,8 +22,13 @@ class SaleItem: ObservableObject {
     @Published var total_tickets: String = ""
     @Published var is_ended: Bool = true
     
-    init(item_name: String, pic_url: String) {
+    init(item_name: String, seller_id: Int, pic_url: String, item_description: String, sale_price: String, ticket_price: String, total_tickets: String) {
         self.item_name = item_name
+        self.seller_id = seller_id
         self.pic_url = pic_url
+        self.item_description = item_description
+        self.sale_price = sale_price
+        self.ticket_price = ticket_price
+        self.total_tickets = total_tickets
     }
 }

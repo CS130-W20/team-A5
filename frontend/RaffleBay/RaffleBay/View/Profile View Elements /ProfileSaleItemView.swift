@@ -48,6 +48,6 @@ struct ProfileSaleItemView: View {
 
 //struct ProfileSaleItemView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ProfileSaleItemView()
+//        ProfileSaleItemView(sellingItem: item)
 //    }
 //}
