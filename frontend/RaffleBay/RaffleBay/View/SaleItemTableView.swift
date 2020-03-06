@@ -35,6 +35,8 @@ struct GridStack<Content: View>: View {
 }
 
 struct SaleItemTableView : View {
+    @EnvironmentObject var navigation: NavigationStack
+
     @ObservedObject var currUser = User()
     @ObservedObject var authenticationVM = AuthenticationViewModel()
     @State private var search: String = ""
@@ -43,30 +45,30 @@ struct SaleItemTableView : View {
     
     /// view body
     var body: some View {
-        NavigationView {
 
         VStack(){
-//            HStack(){
-//                VStack(){
-//                    Button(action: {
-//
-//                    }){
-//                         HamburgerIconView()
-//                    }
-//
-//                    .foregroundColor(Color("LightGray"))
-//                }
-//                Spacer()
-//                VStack(){
-//                    Button(action: {
-//
-//                    }){
-//                         Text("Profile")
-//                    }
-//
-//                }
-//            }
-//            Spacer().frame(height: 30)
+            HStack(){
+                VStack(){
+                    Button(action: {
+                        self.navigation.advance(
+                            NavigationItem( view: AnyView(SidebarNavView())))
+                    }){
+                         HamburgerIconView()
+                    }
+
+                    .foregroundColor(Color("LightGray"))
+                }
+                Spacer()
+                VStack(){
+                    Button(action: {
+
+                    }){
+                         Text("Profile")
+                    }
+
+                }
+            }
+            Spacer().frame(height: 30)
             TextField("Search", text: $search)
                 .padding(20)
                   .background(RoundedRectangle(cornerRadius: 8)
@@ -75,15 +77,12 @@ struct SaleItemTableView : View {
 
             .frame(height: frameMaxWidth * 1.1 / 7)
             Spacer().frame(height: 30)
-//
+
             HStack(){
                 Text("Items for Sale")
                     .fontWeight(.bold)
 
                 Spacer()
-//                Text("Sort By: Most Recent")
-//                    .fontWeight(.light)
-
 
             }
             ScrollView(){
@@ -98,35 +97,6 @@ struct SaleItemTableView : View {
             }
     }
     .padding(20)
-
-
-//        NavigationView {
-//        List {
-//                ForEach(saleItems) { singleSaleItem in
-//                    NavigationLink(destination: SaleItemDetailView(saleItem: singleSaleItem)) {
-//                    SaleItemCellView(saleItem: singleSaleItem)
-//                    }
-//                }
-//        }
-//        .navigationBarTitle("home")
-//            .navigationBarItems(leading:
-//                Button(action: {
-//                    print("Edit button pressed...")
-//                }) {
-//                    Text("Menu")
-//                },
-//                trailing:
-//                Button(action: {
-//                    print("Edit button pressed...")
-//                }) {
-//                    Text("Profile")
-//                }
-//            )
-//        }
-            
-    }
-        
-    .navigationBarBackButtonHidden(true)
     .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
     }
 

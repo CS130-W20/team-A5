@@ -9,64 +9,66 @@
 import SwiftUI
 
 struct SidebarNavView: View {
+    @EnvironmentObject var navigation: NavigationStack
+    @ObservedObject var authenticationVM = AuthenticationViewModel()
+    
     var body: some View {
-        ZStack(){
+        VStack(){
             HStack(){
-                VStack(){
-                    Button(action: {
-                        
-                    }){
-                         HamburgerIconView()
-                    }
-                    .padding(40)
-                    .foregroundColor(Color("LightGray"))
-                    Spacer()
+                Button(action: {
+                     self.navigation.unwind()
+                }){
+                     HamburgerIconView()
                 }
+                .foregroundColor(Color("LightGray"))
                 Spacer()
-            }
+                
+            }.padding()
+            Spacer()
             HStack(){
                 
                 Spacer()
                 VStack(){
                         Button(action: {
-                            
+                            self.navigation.home()
                         }){
                             Text("Home")
                                 .foregroundColor(Color.gray)
                                 .fontWeight(.semibold)
                                 .font(.custom("Poppins", size: 24))
-                        }.padding(10)
+                        }.padding()
                     
                         Button(action: {
-                            
+                            self.navigation.profile()
                         }){
                             Text("Profile")
                                 .foregroundColor(Color.gray)
                                 .fontWeight(.semibold)
                                 .font(.custom("Poppins", size: 24))
-                        }.padding(10)
+                        }.padding()
                         Spacer().frame(height: 80)
                         Button(action: {
                                 
                         }){
-                            Text("Setting")
+                            Text("Settings")
                                 .foregroundColor(Color.gray)
                                 .fontWeight(.semibold)
                                 .font(.custom("Poppins", size: 24))
-                        }.padding(10)
+                            }.padding().disabled(true)
                         
                         Button(action: {
-                                
+                                self.authenticationVM.auth_token = ""
+                                self.navigation.splashscreen()
                         }){
                             Text("Logout")
                                 .foregroundColor(Color.gray)
                                 .fontWeight(.semibold)
                                 .font(.custom("Poppins", size: 24))
-                        }.padding(10)
+                        }.padding()
                 }
                 Spacer()
-           
             }
+            Spacer()
         }
     }
 }

@@ -53,6 +53,13 @@ final class NavigationStack: ObservableObject {
        currentView = NavigationItem( view: AnyView(SignupView()))
        viewStack.removeAll()
     }
+    
+    func profile( ){
+       currentView = NavigationItem( view: AnyView(ProfileView()))
+       viewStack.removeAll()
+    }
+    
+    
 }
 
 struct NavigationHost: View{
@@ -65,11 +72,11 @@ struct NavigationHost: View{
 
 //Check if we have some auth token
 func whatView(token: String) -> AnyView{
-    if (token == ""){
+//    if (token == ""){
         return AnyView(SplashscreenView())
-    }else{
-        return AnyView(SaleItemTableView())
-    }
+//    }else{
+//        return AnyView(SaleItemTableView())
+    //}
     
 }
 

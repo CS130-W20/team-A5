@@ -12,23 +12,31 @@ let circleDiameter: CGFloat = 30
 
 
 struct ProfileView: View {
+    @EnvironmentObject var navigation: NavigationStack
+    
     @ObservedObject var currUser = User()
     @ObservedObject var authenticationVM = AuthenticationViewModel()
     @State var sellingItems: [SellingOrBuyingItem] = []
     @State var buyingItems: [SellingOrBuyingItem] = []
     @State var items_bid_on = false
     var body: some View {
-        NavigationView {
         VStack(){
             HStack(){
                 Button(action: {
+                     self.navigation.advance(
+                        NavigationItem( view: AnyView(SidebarNavView())))
+                }){
+                     HamburgerIconView()
+                }
+                .foregroundColor(Color("LightGray"))
+                Spacer()
+                Button(action: {
                     self.authenticationVM.auth_token = ""
+                    self.navigation.splashscreen()
                 }){
                    Text("logout")
                        .h1()
                 }
-                Spacer()
-                HamburgerIconView()
             }.padding()
                 
             HStack(){
@@ -100,8 +108,6 @@ struct ProfileView: View {
                 }
             }
         }
-        }
-    .navigationBarBackButtonHidden(true)
         .onAppear {
             if self.currUser.lastName == ""          {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)
             }
