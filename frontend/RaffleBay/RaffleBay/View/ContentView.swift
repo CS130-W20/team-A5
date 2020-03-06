@@ -54,8 +54,8 @@ final class NavigationStack: ObservableObject {
        viewStack.removeAll()
     }
     
-    func profile( ){
-       currentView = NavigationItem( view: AnyView(ProfileView()))
+    func success( ){
+       currentView = NavigationItem( view: AnyView(SuccessfulView()))
        viewStack.removeAll()
     }
     

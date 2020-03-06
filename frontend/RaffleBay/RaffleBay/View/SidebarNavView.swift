@@ -39,7 +39,8 @@ struct SidebarNavView: View {
                         }.padding()
                     
                         Button(action: {
-                            self.navigation.profile()
+                             self.navigation.advance(
+                                                   NavigationItem( view: AnyView(ProfileView())))
                         }){
                             Text("Profile")
                                 .foregroundColor(Color.gray)

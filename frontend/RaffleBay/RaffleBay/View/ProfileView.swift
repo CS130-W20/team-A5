@@ -31,11 +31,12 @@ struct ProfileView: View {
                 .foregroundColor(Color("LightGray"))
                 Spacer()
                 Button(action: {
-                    self.authenticationVM.auth_token = ""
-                    self.navigation.splashscreen()
+                    self.navigation.unwind()
                 }){
-                   Text("logout")
-                       .h1()
+                   Text("Back")
+                        .foregroundColor(Color.gray)
+                        .fontWeight(.semibold)
+                        .font(.custom("Poppins", size: 24))
                 }
             }.padding()
                 
@@ -83,8 +84,9 @@ struct ProfileView: View {
                         }
                         
                         Spacer()
-                        NavigationLink(destination: UploadSaleItemView()) {
-                            
+                        Button(action:{
+                            self.navigation.advance(NavigationItem( view: AnyView(UploadSaleItemView())))
+                        }){
                             PlusButtonView()
                         }
                     }
