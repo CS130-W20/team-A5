@@ -50,3 +50,9 @@ struct SaleItemCellView: View {
         .shadow(radius: 3, y: 5)
     }
 }
+
+struct SaleItemCellView_Previews: PreviewProvider {
+    static var previews: some View {
+        SaleItemCellView(saleItem: SaleItemTestData.saleItems()[0])
+    }
+}

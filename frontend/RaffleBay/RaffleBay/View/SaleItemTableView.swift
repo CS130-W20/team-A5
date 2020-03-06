@@ -46,36 +46,15 @@ struct SaleItemTableView : View {
         NavigationView {
 
         VStack(){
-//            HStack(){
-//                VStack(){
-//                    Button(action: {
-//
-//                    }){
-//                         HamburgerIconView()
-//                    }
-//
-//                    .foregroundColor(Color("LightGray"))
-//                }
-//                Spacer()
-//                VStack(){
-//                    Button(action: {
-//
-//                    }){
-//                         Text("Profile")
-//                    }
-//
-//                }
-//            }
-//            Spacer().frame(height: 30)
+
             TextField("Search", text: $search)
                 .padding(20)
-                  .background(RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color.white).frame(height: frameMaxWidth * 1.1 / 7))
-                    .shadow(radius: 7, y: 5)
-
-            .frame(height: frameMaxWidth * 1.1 / 7)
+                .background(RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.white).frame(height: frameMaxWidth * 1.1 / 7))
+                .shadow(radius: 7, y: 5)
+                //.frame(height: frameMaxWidth * 1.1 / 7)
             Spacer().frame(height: 30)
-//
+
             HStack(){
                 Text("Items for Sale")
                     .fontWeight(.bold)
@@ -98,31 +77,6 @@ struct SaleItemTableView : View {
             }
     }
     .padding(20)
-
-
-//        NavigationView {
-//        List {
-//                ForEach(saleItems) { singleSaleItem in
-//                    NavigationLink(destination: SaleItemDetailView(saleItem: singleSaleItem)) {
-//                    SaleItemCellView(saleItem: singleSaleItem)
-//                    }
-//                }
-//        }
-//        .navigationBarTitle("home")
-//            .navigationBarItems(leading:
-//                Button(action: {
-//                    print("Edit button pressed...")
-//                }) {
-//                    Text("Menu")
-//                },
-//                trailing:
-//                Button(action: {
-//                    print("Edit button pressed...")
-//                }) {
-//                    Text("Profile")
-//                }
-//            )
-//        }
             
     }
         
@@ -130,4 +84,10 @@ struct SaleItemTableView : View {
     .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
     }
 
+}
+
+struct SaleItemTableView_Previews: PreviewProvider {
+    static var previews: some View {
+        SaleItemTableView()
+    }
 }
