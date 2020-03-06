@@ -26,7 +26,12 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
+            <pre class="prettyprint source linenums"><code>const EasyPost = require('@easypost/api');
+const api = new EasyPost('EZTK306be7aecba44da486ac37dd01871296leZm7Qb3VVPb0bv17K3ACA')
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey('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');
+
+/**
  * A standalone service to help with raffle lifecycle events, such as randomly selecting a winner and updating databases
  * @constructor
  * 
@@ -88,18 +93,139 @@ const RaffleService = (itemModel, userModel) => {
 		const [winning_user_info, e2] = await userModel.getUserInfoById(winning_bid_info['user_id'])
 
 		// TODO
-		// Use this info to send alert emails and get shipping label
-		// For now just print emails to ensure this happens correctly
-		console.log("For item id " + item['item_id'])
-		console.log("Seller email: " + seller_info['email'])
-		console.log("Winner email: " + winning_user_info['email'])
+		// Use emails to send shipping label and tracking number to winner and seller
+		// For now just create a new shipping object with this information
+		
+		// Get the shipment object
+		const shipment = await createShippingLabel(item, seller_info, winning_user_info)
 
-		// Return id of the winning bid
+		// Buy the lowest rate shipment option
+		// Then create a new shipment object with the shipping label and tracking number, to be used later or an error if the shipment was not created
+		// Then send an email to the seller with the shipping label
+		let sh = await shipment.buy(shipment.lowestRate(['USPS'], ['First']))
+		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], sh.postage_label.label_url, sh.tracking_code);
+		await sendShippingLabel(item, seller_info, sh.postage_label.label_url)
+		if (e3) {
+			console.log("Error while creating shipment object");
+			return -1;
+		}
+
 		return winning_bid_id;
+	}
+
+	/**
+	 * Function to send the tracking number to the winner
+	 * Used once Easypost notifies us that the shipment was shipped
+	 * @param  {Item} item - Item information that is being shipped
+	 * @param  {User} winner - User who won the item
+	 * @param  {string} tracking_code - tracking number
+	 * @return {null} - Nothing is returned
+	 */
+	const sendTrackingNumber = async (item, winner, tracking_code) => {
+		const msg = {
+		  to: winner['email'],
+		  from: 'admin@rafflebay.com',
+		  subject: 'Your tracking number for your Rafflebay Item',
+		  text: 'Congratulations! You won ' + item['item_name'] + ' . Here is the tracking code so you can follow your item: ' + tracking_code + ' . Enjoy!',
+		};
+		sgMail.send(msg);
+	}
+
+
+	/**
+	 * Function to send the shipment label to the seller
+	 * Used right after we create the shipping label
+	 * @param  {Item} item - Item information that is being shipped
+	 * @param  {User} seller - User who is selling the item
+	 * @param  {string} label - link to the shipment label
+	 * @return {null} - Nothing is returned
+	 */
+	const sendShippingLabel = async (item, seller, label) => {
+		const msg = {
+		  to: seller['email'],
+		  from: 'admin@rafflebay.com',
+		  subject: 'Your shipping label for your Rafflebay Item',
+		  text: 'Congratulations! You sold ' + item['item_name'] + ' . Here is a link to the shipping label so you can send your item: ' + label + ' . Enjoy!',
+		};
+		sgMail.send(msg);
+	}
+
+
+	/**
+	 * This method creates the shipment item using EasyPost
+	 * 
+	 * What this method does:
+	 * 1. Get address of both buyer and seller
+	 * 2. Get information for the parcel
+	 * 3. Create the shipment
+	 * 4. Return the created shipment
+	 * 
+	 * @param  {Item} item - Item object that is being sold
+	 * @param  {User} seller - Seller of the item, the From Address
+	 * @param  {User} winner - Winner of the item, the To Address
+	 * @return {Shipment} - Shipment created using EasyPost API
+	 */
+	const createShippingLabel = async (item, seller, winner) => {
+		
+		// From address is the seller of the item
+		const fromAddress = new api.Address({
+		  name: seller['first_name'] + " " + seller['last_name'], 
+		  street1: seller['address_1'],
+		  street2: seller['address_2'],
+		  city: seller['city'],
+		  state: seller['state'],
+		  zip: seller['zip'],
+		  phone: seller['phone']
+		});
+
+		fromAddress.save()
+
+		// To address is the winner of the item
+		const toAddress = new api.Address({
+		  name: winner['first_name'] + " " + winner['last_name'], 
+		  street1: winner['address_1'],
+		  street2: winner['address_2'],
+		  city: winner['city'],
+		  state: winner['state'],
+		  zip: winner['zip'],
+		  phone: winner['phone']
+		});
+
+		toAddress.save()
+		
+
+		// Parcel information
+		// Arbitrary numbers since we don't record this for the item
+		// TODO: Add these fields when user creates an item
+		// OR just keep them arbitrary for now
+		const parcel = new api.Parcel({
+		  length: 9,
+		  width: 6,
+		  height: 2,
+		  weight: 10,
+		});
+
+		parcel.save()
+
+		// Create the shipment item
+		const shipment = new api.Shipment({
+		  to_address: toAddress,
+		  from_address: fromAddress,
+		  parcel: parcel
+		});
+
+		await shipment.save()
+
+		// Return the shipment
+		return shipment;
+
 	}
 
 	return {
     	chooseAndNotifyWinner,
+    	sendTrackingNumber,
+    	sendShippingLabel,
+    	createShippingLabel,
   };
 }
 
@@ -121,7 +247,7 @@ module.exports = {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Feb 20 2020 23:08:27 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 05 2020 22:03:38 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

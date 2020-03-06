@@ -33,7 +33,22 @@ const UserRepo = (postgres) => {
     );`;
 
   /**
-   * Uses createUserTableSQL to create the table, and logs the error.
+   * Sets up the payments table
+   *
+   * @type {string}
+   */
+  const createPaymentTableSQL = `
+    CREATE TABLE IF NOT EXISTS payments(
+      payment_id text PRIMARY KEY,
+      user_id integer NOT NULL,
+      amount float,
+      completed BOOLEAN,
+      FOREIGN KEY (user_id) REFERENCES users(id),
+      timestamp timestamptz DEFAULT NOW()
+    );`
+
+  /**
+   * Uses createUserTableSQL and createPaymentTableSQL to create the tables.
    * 
    * @return {string} - Return Null if the table is created, and an error otherwise
    */
@@ -41,8 +56,10 @@ const UserRepo = (postgres) => {
     try {
       const client = await postgres.connect();
       await client.query(createUserTableSQL);
+      await client.query(createPaymentTableSQL);
       client.release();
       console.log('User Table Created');
+      console.log('Payments Table Created')
       return null;
     } catch (err) {
       return err;
@@ -167,7 +184,7 @@ const UserRepo = (postgres) => {
   };
 
   /**
-   * Updates user balance
+   * SQL to debit funds from user balance
    * 
    * @type {string}
    */
@@ -175,7 +192,7 @@ const UserRepo = (postgres) => {
     UPDATE users 
     SET balance = (balance - $2)
     WHERE id = $1
-    RETURNING balance`;
+    RETURNING *`;
 
   /**
    * Debits user funds. Assume controller/caller has verified that this will not make the balance negative
@@ -196,6 +213,121 @@ const UserRepo = (postgres) => {
     }
   };
 
+  /**
+   * SQL to add funds to user balance
+   * 
+   * @type {string}
+   */
+  const addUserFundsSQL = `
+    UPDATE users 
+    SET balance = (balance + $2)
+    WHERE id = $1
+    RETURNING *`;
+
+  /**
+   * Adds user funds. 
+   * 
+   * @param  {number} user_id - ID of user to update
+   * @param  {number} amount - Amount used to update user balance
+   * @return {Array<{0: User, 1: String}>} - Array with Rafflebay User Object and error (only one or the other)
+   */
+  const addUserFunds = async (user_id, amount) => {
+    const values = [user_id, amount];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(addUserFundsSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
+  /**
+   * SQL to create new payment table entry
+   * @type {string}
+   */
+  const createPaymentSQL = `
+    INSERT INTO payments(payment_id, amount, user_id, completed)
+    VALUES($1, $2, $3, false)
+    RETURNING *;
+  `;
+
+  /**
+   * Creates a new payment entry 
+   * 
+   * @param  {string} payment_id - Stripe payment ID
+   * @param  {float} amount - Dollar amount of payment
+   * @param  {number} user_id - Rafflebay user id of the payment
+   * @return {Array<{0: Payment, 1: String}>} - Array with Rafflebay Payment Object and error (only one or the other)
+   */
+  const createPayment = async (payment_id, amount, user_id) => {
+    const values = [payment_id, amount, user_id];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(createPaymentSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  }
+
+  /**
+   * SQL to get payment info by a payment id
+   * @type {string}
+   */
+  const getPaymentByIdSQL = `
+    SELECT * FROM payments
+    WHERE payment_id=$1;
+  `;
+
+  /**
+   * Gets the info of a payment
+   * 
+   * @param  {string} payment_id - Stripe Payment ID
+   * @return {Array<{0: Payment, 1: String}>} - Array with Rafflebay Payment Object and error (only one or the other)
+   */
+  const getPaymentInfoByPaymentId = async (payment_id) => {
+    const values = [payment_id];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getPaymentByIdSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  }
+
+  /**
+   * SQL to set a payment as completed
+   * 
+   * @type {string}
+   */
+  const setPaymentCompletedSQL = `
+    UPDATE payments SET completed=true
+    WHERE payment_id=$1
+    RETURNING *;
+  `;
+
+  /**
+   * Sets a given payment ID as completed, i.e. funds have been transferred
+   * @param  {string} payment_id - Stripe payment ID
+   * @return {Array<{0: Payment, 1: String}>} - Array with Rafflebay Payment Object and error (only one or the other)
+   */
+  const setPaymentCompleted = async (payment_id) => {
+    const values = [payment_id];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(setPaymentCompletedSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
   return {
     setupRepo,
     createUser,
@@ -203,6 +335,10 @@ const UserRepo = (postgres) => {
     getUserInfoByEmail,
     getUserInfoById,
     debitUserFunds,
+    addUserFunds,
+    createPayment,
+    getPaymentInfoByPaymentId,
+    setPaymentCompleted,
   };
 };
 

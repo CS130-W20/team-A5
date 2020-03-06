@@ -3,6 +3,7 @@ const api = new EasyPost('EZTK306be7aecba44da486ac37dd01871296leZm7Qb3VVPb0bv17K
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+
 /**
  * A standalone service to help with raffle lifecycle events, such as randomly selecting a winner and updating databases
  * @constructor

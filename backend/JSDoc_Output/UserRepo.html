@@ -215,6 +215,222 @@ Requires a postgres connection and ability to make valid postgres queries.
 
         
             
+<h4 class="name" id="~addUserFundsSQL"><span class="type-signature">(inner, constant) </span>addUserFundsSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    SQL to add funds to user balance
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line221">line 221</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~createPaymentSQL"><span class="type-signature">(inner, constant) </span>createPaymentSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    SQL to create new payment table entry
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line250">line 250</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~createPaymentTableSQL"><span class="type-signature">(inner, constant) </span>createPaymentTableSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    Sets up the payments table
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
 <h4 class="name" id="~createUserSQL"><span class="type-signature">(inner, constant) </span>createUserSQL<span class="type-signature"> :string</span></h4>
 
 
@@ -269,7 +485,7 @@ Requires a postgres connection and ability to make valid postgres queries.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line57">line 57</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -365,7 +581,7 @@ Requires a postgres connection and ability to make valid postgres queries.
 
 
 <div class="description">
-    Updates user balance
+    SQL to debit funds from user balance
 </div>
 
 
@@ -413,7 +629,79 @@ Requires a postgres connection and ability to make valid postgres queries.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line174">line 174</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line191">line 191</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~getPaymentByIdSQL"><span class="type-signature">(inner, constant) </span>getPaymentByIdSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    SQL to get payment info by a payment id
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line280">line 280</a>
     </li></ul></dd>
     
 
@@ -485,7 +773,7 @@ Requires a postgres connection and ability to make valid postgres queries.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line97">line 97</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line114">line 114</a>
     </li></ul></dd>
     
 
@@ -557,7 +845,7 @@ Requires a postgres connection and ability to make valid postgres queries.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line123">line 123</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line140">line 140</a>
     </li></ul></dd>
     
 
@@ -629,7 +917,79 @@ Requires a postgres connection and ability to make valid postgres queries.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line148">line 148</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line165">line 165</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~setPaymentCompletedSQL"><span class="type-signature">(inner, constant) </span>setPaymentCompletedSQL<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    SQL to set a payment as completed
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line308">line 308</a>
     </li></ul></dd>
     
 
@@ -650,6 +1010,393 @@ Requires a postgres connection and ability to make valid postgres queries.
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~addUserFunds"><span class="type-signature">(async, inner) </span>addUserFunds<span class="signature">(user_id, amount)</span><span class="type-signature"> &rarr; {Array.&lt;{0: User, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Adds user funds.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of user to update</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>amount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Amount used to update user balance</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line234">line 234</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with Rafflebay User Object and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: User, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~createPayment"><span class="type-signature">(async, inner) </span>createPayment<span class="signature">(payment_id, amount, user_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Payment, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a new payment entry
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>payment_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Stripe payment ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>amount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Dollar amount of payment</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Rafflebay user id of the payment</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line264">line 264</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with Rafflebay Payment Object and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: Payment, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
 
         
             
@@ -1012,7 +1759,7 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line80">line 80</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line97">line 97</a>
     </li></ul></dd>
     
 
@@ -1194,7 +1941,7 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line187">line 187</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line204">line 204</a>
     </li></ul></dd>
     
 
@@ -1235,6 +1982,165 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
     <dd>
         
 <span class="param-type">Array.&lt;{0: User, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getPaymentInfoByPaymentId"><span class="type-signature">(async, inner) </span>getPaymentInfoByPaymentId<span class="signature">(payment_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Payment, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets the info of a payment
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>payment_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Stripe Payment ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line291">line 291</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with Rafflebay Payment Object and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: Payment, 1: String}></span>
 
 
     </dd>
@@ -1353,7 +2259,7 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line106">line 106</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -1512,7 +2418,7 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line132">line 132</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line149">line 149</a>
     </li></ul></dd>
     
 
@@ -1671,7 +2577,7 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line157">line 157</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line174">line 174</a>
     </li></ul></dd>
     
 
@@ -1729,6 +2635,165 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
     
 
     
+    <h4 class="name" id="~setPaymentCompleted"><span class="type-signature">(async, inner) </span>setPaymentCompleted<span class="signature">(payment_id)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Payment, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets a given payment ID as completed, i.e. funds have been transferred
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>payment_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Stripe payment ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line319">line 319</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with Rafflebay Payment Object and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: Payment, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="~setupRepo"><span class="type-signature">(async, inner) </span>setupRepo<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
@@ -1737,7 +2802,7 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
 
 
 <div class="description">
-    Uses createUserTableSQL to create the table, and logs the error.
+    Uses createUserTableSQL and createPaymentTableSQL to create the tables.
 </div>
 
 
@@ -1781,7 +2846,7 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line40">line 40</a>
+        <a href="models_user_postgres.js.html">models/user/postgres.js</a>, <a href="models_user_postgres.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -1855,7 +2920,7 @@ If we get an error, then we return the (null, error), otherwise return (data, nu
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Feb 20 2020 23:08:27 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 05 2020 22:03:38 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

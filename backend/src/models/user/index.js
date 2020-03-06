@@ -97,12 +97,55 @@ const UserModel = (repo) => {
   };
 
   /**
-   * @param  {number} user_id - ID for user to add funds
-   * @param  {number} amount - Amount to deposit into user's account
+   * Debits funds from a user's account
+   * 
+   * @param  {number} user_id - ID for user to debit funds from
+   * @param  {number} amount - Amount to remove from user's account
    * @return {Array<{0: User, 1: String}>} - Array with updated Rafflebay User Object and error (only one or the other)
    */
   const debitUserFunds = async (user_id, amount) => {
-    return await repo.debitUserFunds(user_id, amount);
+    const [user, err] = await repo.debitUserFunds(user_id, amount);
+    return [_.pick(user, allButPasshash), err];
+  }
+
+  /**
+   * Adds funds to a user's account, and sets the corresponding payment to be completed
+   * 
+   * @param  {number} user_id - ID for user to add funds
+   * @param  {number} amount - Amount to deposit into user's account
+   * @param  {number} payment_id - Stripe Payment ID to be set completed
+   * @return {Array<{0: User, 1: String}>} - Array with updated Rafflebay User Object and error (only one or the other)
+   */
+  const addUserFundsAndSetPaymentCompleted = async (user_id, amount, payment_id) => {
+    const [payment, err1] = await repo.setPaymentCompleted(payment_id);
+    if (err1) {
+      return [null, err1]
+    }
+
+    const [user, err2] = await repo.addUserFunds(user_id, amount);
+    return [_.pick(user, allButPasshash), err2];
+  }
+
+  /**
+   * Tells the database to create a new payment entry
+   * 
+   * @param  {string} payment_id - Stripe payment ID
+   * @param  {float} amount - Dollar amount of payment
+   * @param  {number} user_id - Rafflebay user id of the payment
+   * @return {Array<{0: Payment, 1: String}>} - Array with Rafflebay Payment Object and error (only one or the other)
+   */
+  const createPayment = async (payment_id, amount, user_id) => {
+    return await repo.createPayment(payment_id, amount, user_id);
+  }
+
+  /**
+   * Gets payment info from database 
+   * 
+   * @param  {string} payment_id - Stripe Payment ID
+   * @return {Array<{0: Payment, 1: String}>} - Array with Rafflebay Payment Object and error (only one or the other)
+   */
+  const getPaymentInfoByPaymentId = async (payment_id) => {
+    return await repo.getPaymentInfoByPaymentId(payment_id);
   }
 
   return {
@@ -112,6 +155,9 @@ const UserModel = (repo) => {
     getOtherUserInfo,
     verifyPasswordAndReturnUser,
     debitUserFunds,
+    addUserFundsAndSetPaymentCompleted,
+    createPayment,
+    getPaymentInfoByPaymentId,
   };
 };
 
