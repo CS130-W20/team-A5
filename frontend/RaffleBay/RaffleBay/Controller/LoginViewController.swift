@@ -38,8 +38,9 @@ func login_request(email: String, password: String, authenticationVM: Authentica
             }
         } else {
             print(dataResponse.error)
+            result = 0
         }
     };
     
-    return 1;
+    return result;
 }

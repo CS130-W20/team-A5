@@ -52,7 +52,7 @@ struct ProfileView: View {
                         
                     Text("\(currUser.firstName) \(currUser.lastName)")
                         .clearButtonText()
-                    Text("Account Balance: $" + "47.00")
+                    Text("Account Balance: $47.00")
                         .standardBoldText()
                 }
                 Spacer()

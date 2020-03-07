@@ -13,6 +13,8 @@ import Alamofire_SwiftyJSON
 struct LoginView: View {
     @EnvironmentObject var navigation: NavigationStack
     
+    @State private var successfulLogin: Bool = true
+    
     @State private var selection: Int? = nil
     @State private var email: String = ""
     @State private var password: String = ""
@@ -49,6 +51,12 @@ struct LoginView: View {
                     
                     Spacer().frame(height: 30)
                     
+                    //Validations Here
+                    if(!successfulLogin) {
+                        Text("Incorrect Username or Password.")
+                            .foregroundColor(.red)
+                    }
+                    
                     //Login Stack
                     //ZStack here to allow for custom shadow manipulation.
                     ZStack(){
@@ -58,7 +66,13 @@ struct LoginView: View {
                         Button(action: {
                                 let response = login_request(email: self.email, password: self.password, authenticationVM: self.authenticationVM, user: self.newUser)
                                 //self.selection = response
+                                print(response)
+                            if(response == 1){
                                 self.navigation.home()
+                            }else{
+                                self.successfulLogin = false
+                            }
+                                
                                 
                         }){
                             Text("Login")
