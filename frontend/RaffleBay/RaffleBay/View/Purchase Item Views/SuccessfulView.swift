@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct SuccessfulView: View {
+    @State var num_of_tickets: String
+    @ObservedObject var saleItem: SaleItem
     @EnvironmentObject var navigation: NavigationStack
 
     var body: some View {
@@ -22,7 +24,7 @@ struct SuccessfulView: View {
             Text("Congratulations!")
                 .clearButtonText()
             
-            Text("You successfully received 1 Ticket towards Emily's Green Blazer!")
+            Text("You successfully received \(self.num_of_tickets) Ticket(s) towards \(saleItem.item_name)!")
                 .h2()
                 .multilineTextAlignment(.center)
                 
@@ -37,8 +39,8 @@ struct SuccessfulView: View {
     }
 }
 
-struct SuccessfulView_Previews: PreviewProvider {
-    static var previews: some View {
-        SuccessfulView()
-    }
-}
+//struct SuccessfulView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SuccessfulView()
+//    }
+//}

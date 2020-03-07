@@ -54,8 +54,8 @@ final class NavigationStack: ObservableObject {
        viewStack.removeAll()
     }
     
-    func success( ){
-       currentView = NavigationItem( view: AnyView(SuccessfulView()))
+    func success(numOfTickets: String, SaleItem: SaleItem ){
+        currentView = NavigationItem( view: AnyView(SuccessfulView(num_of_tickets: numOfTickets, saleItem: SaleItem)))
        viewStack.removeAll()
     }
     
