@@ -8,6 +8,26 @@
 
 import Foundation
 import SwiftUI
+import Security
+
+//Securely generate random numbers in Swift.
+//gathers entropy from the system on clock cycles and other impossible to predict data
+func generateRandomNumber() -> Int {
+    let bytesCount = 4
+    var random: UInt32 = 0
+    var randomBytes = [UInt8](repeating: 0, count: bytesCount)
+    var returnVal: Int
+
+    SecRandomCopyBytes(kSecRandomDefault, bytesCount, &randomBytes)
+
+    NSData(bytes: randomBytes, length: bytesCount)
+      .getBytes(&random, length: bytesCount)
+
+    returnVal = Int(random)
+    
+    return returnVal
+}
+
 
 struct SaleItemDetailView : View {
     @ObservedObject var currUser = User()
@@ -99,8 +119,9 @@ struct SaleItemDetailView : View {
                     Button(action:{
                         print(self.currUser.account_balance)
                         print(self.saleItem.ticket_price)
+                        let generatedRand: Int = generateRandomNumber()
                         if Double(self.currUser.account_balance)! >= Double(self.saleItem.ticket_price)! * Double(self.num_of_tickets)! {
-                            post_bid_on_item(saleItem: self.saleItem, auth_token: self.authenticationVM.auth_token, num_of_tickets: self.num_of_tickets)
+                            post_bid_on_item(saleItem: self.saleItem, auth_token: self.authenticationVM.auth_token, num_of_tickets: self.num_of_tickets, rand_seed: generatedRand)
                             self.navigation.success(numOfTickets: self.num_of_tickets, SaleItem: self.saleItem)
                         } else {
                             self.showingAlert = true
