@@ -72,11 +72,11 @@ struct NavigationHost: View{
 
 //Check if we have some auth token
 func whatView(token: String) -> AnyView{
-//    if (token == ""){
-        return AnyView(SplashscreenView())
-//    }else{
-//        return AnyView(SaleItemTableView())
-    //}
+    if (token == ""){
+       return AnyView(SplashscreenView())
+    }else{
+        return AnyView(SaleItemTableView())
+  }
     
 }
 
