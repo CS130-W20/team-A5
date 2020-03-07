@@ -30,160 +30,165 @@ struct SignupView : View {
         
         
         ZStack(){
-
-            HStack(){
-                
-                //Left Side Spacer
+            
+            
+            //Stack for Back Button
+            VStack(){
                 Spacer()
-                
-                //Center Column
                 VStack(){
-                      
-                    Spacer().frame(height: 180)
+                    HStack(){
+                        Spacer()
+                            VStack(){
+                                VStack(){
+                                TextField("First Name", text: $someUser.firstName)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 0
+                                    }
+                                
+                                TextField("Last Name", text: $someUser.lastName)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 1
+                                    }
+                
+                                TextField("Email", text: $someUser.email)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 2
+                                    }
+                
+                                SecureField("Password", text: $someUser.password)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 3
+                                    }
+                
+                                SecureField("Password Confirmation", text: $pwdConfirm)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 4
+                                    }
+                
+                                TextField("Street Address", text: $someUser.streetAddress)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 5
+                                    }
+                
+                                TextField("City", text: $someUser.city)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 6
+                                    }
+                                
+                                HStack(){
+                                    TextField("State", text: $someUser.state)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                
+                                    TextField("Zipcode", text: $someUser.zipcode)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                }
+                                .onTapGesture {
+                                    self.value = signupFrameHeight * 7
+                                }
+                
+                                TextField("Phone Number", text: $someUser.phoneNumber)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .keyboardType(.numberPad)
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 8
+                                    }
+                
+                                TextField("Birthdate",  text: $someUser.birthdate)
+                                    .textFieldStyle(SignUpTextFieldStyle())
+                                    .onTapGesture {
+                                        self.value = signupFrameHeight * 9
+                                }
+                                }
+                                 Spacer()
+                                
+                                //Validations Here
+                                if(someUser.password != pwdConfirm) {
+                                    Text("Your passwords do not match.")
+                                        .foregroundColor(.red)
                     
-                    VStack(){
-                        TextField("First Name", text: $someUser.firstName)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 0
-                            }
-                      
-                        TextField("Last Name", text: $someUser.lastName)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 1
-                            }
-
-                        TextField("Email", text: $someUser.email)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 2
-                            }
-
-                        SecureField("Password", text: $someUser.password)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 3
-                            }
-
-                        SecureField("Password Confirmation", text: $pwdConfirm)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 4
-                            }
-
-                        TextField("Street Address", text: $someUser.streetAddress)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 5
-                            }
-
-                        TextField("City", text: $someUser.city)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 6
-                            }
-
-                        HStack(){
-                            TextField("State", text: $someUser.state)
-                            .textFieldStyle(SignUpTextFieldStyle())
-
-                            TextField("Zipcode", text: $someUser.zipcode)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                        }
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 7
-                            }
-
-                        TextField("Phone Number", text: $someUser.phoneNumber)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .keyboardType(.numberPad)
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 8
-                            }
-                        
-                        
-                        TextField("Birthdate",  text: $someUser.birthdate)
-                            .textFieldStyle(SignUpTextFieldStyle())
-                            .onTapGesture {
-                                self.value = signupFrameHeight * 9
-                            }
-                    }
-                    
-                    Spacer()
-
-                    //Validations Here
-                    if(someUser.password != pwdConfirm) {
-                        Text("Your passwords do not match.")
-                            .foregroundColor(.red)
-                        
-                    }else{
-                        //Validations Here
-                        if(!successfulSignup) {
-                            Text("Incorrect information. Fix errors and retry.")
-                                .foregroundColor(.red)
-                        }
-                    }
-                    
-                    
-                    
-                    //Login Stack
-                    //ZStack here to allow for custom shadow manipulation.
-                    ZStack(){
-                        ShadowBoxView()
-                                                
-                        //SignUp Button
-                        Button(action: {
-                                let response = post_signup(newUser: self.someUser)
-                    
-                                if(response == 1){
-                                    self.navigation.home()
                                 }else{
-                                    self.successfulSignup = false
+                                    //Validations Here
+                                    if(!successfulSignup) {
+                                        Text("Incorrect information. Fix errors and retry.")
+                                            .foregroundColor(.red)
+                                    }
                                 }
                                 
-                        }){
-                            Text("Sign Up")
-                                .blueButtonText()
-                                .frame(minWidth:0, maxWidth: frameMaxWidth)
-                        }
-                        .buttonStyle(BigBlueButtonStyle())
-                    }
+                          
+                                //Login Stack
+                                //ZStack here to allow for custom shadow manipulation.
+                                ZStack(){
+                                    ShadowBoxView()
                     
-                    //Login Button
-                    Button(action: {
-                        self.navigation.login()
-                    }){
-                        HStack(){
-                            Text("Have an account?")
-                                .standardRegularText()
-                                .padding(8)
-                            Text("Login Here")
-                                .standardBoldText()
-                                .padding(8)
-                       }
+                                    //SignUp Button
+                                    Button(action: {
+                                            let response = post_signup(newUser: self.someUser)
+                    
+                                            if(response == 1){
+                                                self.navigation.home()
+                                            }else{
+                                                self.successfulSignup = false
+                                            }
+                    
+                                    }){
+                                        Text("Sign Up")
+                                            .blueButtonText()
+                                            .frame(minWidth:0, maxWidth: frameMaxWidth)
+                                    }
+                                    .buttonStyle(BigBlueButtonStyle())
+                                }
+                    
+                                //Login Button
+                                Button(action: {
+                                    self.navigation.login()
+                                }){
+                                    HStack(){
+                                        Text("Have an account?")
+                                            .standardRegularText()
+                                            .padding(8)
+                                        Text("Login Here")
+                                            .standardBoldText()
+                                            .padding(8)
+                                   }
+                                }
+                                .buttonStyle(BigClearButtonStyle())
+                                
+    
+                            }.offset(y: -self.value)
+                                .animation(.spring())
+                                .onAppear(){
+                                    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main){ (noti) in
+                                        self.value = 0
+                                    }
+                                }
+                        Spacer()
                     }
-                    .buttonStyle(BigClearButtonStyle())
-                 
-                    }
-                    .offset(y: -self.value)
-                    .animation(.spring())
-                    .onAppear(){
-                        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main){ (noti) in
-                            self.value = 0
-                        }
-                    }
-                
-                //Right Side Spacer
-                Spacer()
-            }
-            //Overlay
-            VStack(){
-                
-                //White Background to protect Back Button
-                Rectangle().fill(Color.white).frame( height: 90 ).offset(y: 30)
-                Spacer()
-            }
+                }
+            }.offset(y:signupFrameHeight * 0.7)
+    
+            ZStack(){
+               Rectangle()
+                   .fill()
+                   .foregroundColor(Color.white)
+                   .frame(height: 80)
+                   .offset(y:0)
+               HStack(){
+                   Button(action: {
+                       self.navigation.splashscreen()
+                   }){
+                       Text("Back")
+                   }.offset(y:20)
+                   Spacer()
+               }.padding()
+
+            }.offset(y:signupFrameHeight * -6.8)
             
         }
         
@@ -195,3 +200,147 @@ struct SignupView_Previews: PreviewProvider {
         SignupView()
     }
 }
+
+
+//HStack(){
+//
+//        //Left Side Spacer
+//        Spacer()
+//
+//        //Center Column
+//        VStack(){
+//            VStack(){
+//                TextField("First Name", text: $someUser.firstName)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 0
+//                    }
+//
+//                TextField("Last Name", text: $someUser.lastName)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 1
+//                    }
+//
+//                TextField("Email", text: $someUser.email)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 2
+//                    }
+//
+//                SecureField("Password", text: $someUser.password)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 3
+//                    }
+//
+//                SecureField("Password Confirmation", text: $pwdConfirm)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 4
+//                    }
+//
+//                TextField("Street Address", text: $someUser.streetAddress)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 5
+//                    }
+//
+//                TextField("City", text: $someUser.city)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 6
+//                    }
+//
+//                HStack(){
+//                    TextField("State", text: $someUser.state)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//
+//                    TextField("Zipcode", text: $someUser.zipcode)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                }
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 7
+//                    }
+//
+//                TextField("Phone Number", text: $someUser.phoneNumber)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .keyboardType(.numberPad)
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 8
+//                    }
+//
+//
+//                TextField("Birthdate",  text: $someUser.birthdate)
+//                    .textFieldStyle(SignUpTextFieldStyle())
+//                    .onTapGesture {
+//                        self.value = signupFrameHeight * 9
+//                    }
+//            }
+//
+//            Spacer()
+//
+//            //Validations Here
+//            if(someUser.password != pwdConfirm) {
+//                Text("Your passwords do not match.")
+//                    .foregroundColor(.red)
+//
+//            }else{
+//                //Validations Here
+//                if(!successfulSignup) {
+//                    Text("Incorrect information. Fix errors and retry.")
+//                        .foregroundColor(.red)
+//                }
+//            }
+//
+//            //Login Stack
+//            //ZStack here to allow for custom shadow manipulation.
+//            ZStack(){
+//                ShadowBoxView()
+//
+//                //SignUp Button
+//                Button(action: {
+//                        let response = post_signup(newUser: self.someUser)
+//
+//                        if(response == 1){
+//                            self.navigation.home()
+//                        }else{
+//                            self.successfulSignup = false
+//                        }
+//
+//                }){
+//                    Text("Sign Up")
+//                        .blueButtonText()
+//                        .frame(minWidth:0, maxWidth: frameMaxWidth)
+//                }
+//                .buttonStyle(BigBlueButtonStyle())
+//            }
+//
+//            //Login Button
+//            Button(action: {
+//                self.navigation.login()
+//            }){
+//                HStack(){
+//                    Text("Have an account?")
+//                        .standardRegularText()
+//                        .padding(8)
+//                    Text("Login Here")
+//                        .standardBoldText()
+//                        .padding(8)
+//               }
+//            }
+//            .buttonStyle(BigClearButtonStyle())
+//
+//            }
+//            .offset(y: -self.value)
+//            .animation(.spring())
+//            .onAppear(){
+//                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main){ (noti) in
+//                    self.value = 0
+//                }
+//            }
+//
+//        //Right Side Spacer
+//        Spacer()
+//    }
+//}
