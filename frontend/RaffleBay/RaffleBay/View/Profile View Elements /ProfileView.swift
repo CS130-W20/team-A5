@@ -43,10 +43,13 @@ struct ProfileView: View {
             HStack(){
                 Spacer()
                 VStack(){
-                    Image("bose")
+                    Image("profile")
+                        .resizable()
+                        .frame(width: 100, height: 100)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 4))
                         .shadow(radius: 7)
+                        
                     Text("\(currUser.firstName) \(currUser.lastName)")
                         .clearButtonText()
                     Text("Account Balance: $" + "47.00")
