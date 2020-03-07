@@ -171,7 +171,7 @@ struct SignupView : View {
                         Spacer()
                     }
                 }
-            }.offset(y:signupFrameHeight * 0.7)
+            }.offset(y:signupFrameHeight * 1.1)
     
             ZStack(){
                Rectangle()
