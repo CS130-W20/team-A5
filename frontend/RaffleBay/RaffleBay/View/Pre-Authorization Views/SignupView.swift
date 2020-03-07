@@ -18,7 +18,9 @@ import SwiftyJSON
 
 
 struct SignupView : View {
-   @EnvironmentObject var navigation: NavigationStack
+    @EnvironmentObject var navigation: NavigationStack
+    @State private var successfulSignup: Bool = true
+    
     //Create some user and use a password confirmation var to confirm
     @ObservedObject var someUser = User()
     @State private var pwdConfirm = String()
@@ -115,31 +117,30 @@ struct SignupView : View {
                         Text("Your passwords do not match.")
                             .foregroundColor(.red)
                         
+                    }else{
+                        //Validations Here
+                        if(!successfulSignup) {
+                            Text("Incorrect information. Fix errors and retry.")
+                                .foregroundColor(.red)
+                        }
                     }
+                    
+                    
                     
                     //Login Stack
                     //ZStack here to allow for custom shadow manipulation.
                     ZStack(){
                         ShadowBoxView()
-                        
-                        //Signup Button
-//                      NavigationLink(destination: LoginView()){
-//                            Button(action: {
-//                                post_signup(newUser: self.someUser)
-//                            }){
-//                            Text("Sign Up")
-//                              .blueButtonText()
-//                              .frame(minWidth:0, maxWidth: frameMaxWidth)
-//                            }
-//                            .buttonStyle(BigBlueButtonStyle())
-//                        }
-//                        .buttonStyle(BigBlueButtonStyle())
-                        
+                                                
                         //SignUp Button
                         Button(action: {
-                                post_signup(newUser: self.someUser)
-                                //self.selection = response
-                                self.navigation.home()
+                                let response = post_signup(newUser: self.someUser)
+                    
+                                if(response == 1){
+                                    self.navigation.home()
+                                }else{
+                                    self.successfulSignup = false
+                                }
                                 
                         }){
                             Text("Sign Up")
@@ -150,21 +151,17 @@ struct SignupView : View {
                     }
                     
                     //Login Button
-                     NavigationLink(destination: LoginView()){
-                        Button(action: {
-                            
-                        }){
-                            HStack(){
-                                Text("Have an account?")
-                                    .standardRegularText()
-                                    .padding(8)
-                   
-                                Text("Login Here")
-                                     .standardBoldText()
-                                    .padding(8)
-                            }
-                        }
-
+                    Button(action: {
+                        self.navigation.login()
+                    }){
+                        HStack(){
+                            Text("Have an account?")
+                                .standardRegularText()
+                                .padding(8)
+                            Text("Login Here")
+                                .standardBoldText()
+                                .padding(8)
+                       }
                     }
                     .buttonStyle(BigClearButtonStyle())
                  
