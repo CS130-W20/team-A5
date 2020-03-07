@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct SuccessfulView: View {
+    @EnvironmentObject var navigation: NavigationStack
+
     var body: some View {
         
         VStack(){
@@ -26,7 +28,7 @@ struct SuccessfulView: View {
                 
             Spacer()
             Button(action:{
-               
+                self.navigation.home()
             }){
                 Text("Back to Home")
                     .blueButtonText()

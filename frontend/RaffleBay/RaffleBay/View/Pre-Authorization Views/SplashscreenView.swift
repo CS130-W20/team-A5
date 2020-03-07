@@ -11,54 +11,55 @@ import SwiftUI
 import SwiftyJSON
 
 struct SplashscreenView: View {
+    @EnvironmentObject var navigation: NavigationStack
     
     var body: some View {
-        NavigationView {
-            //Three column Horizontal stack. Spacers on left and right.
-            HStack(){
-                
-                //Left Side Spacer
+        //Three column Horizontal stack. Spacers on left and right.
+        HStack(){
+            
+            //Left Side Spacer
+            Spacer()
+            
+            //Center Column
+            VStack(){
                 Spacer()
                 
-                //Center Column
-                VStack(){
-                    Spacer()
+                //Title
+                LogoView()
+                
+                //Description/Tagline
+                DescriptionView()
+                
+                Spacer()
+                
+                //Login Stack
+                //ZStack here to allow for custom shadow manipulation.
+                ZStack(){
+                
+                    ShadowBoxView()
                     
-                    //Title
-                    LogoView()
-                    
-                    //Description/Tagline
-                    DescriptionView()
-                    
-                    Spacer()
-                    
-                    //Login Stack
-                    //ZStack here to allow for custom shadow manipulation.
-                    ZStack(){
-                    
-                        ShadowBoxView()
-                        
-                        NavigationLink(destination: LoginView()){
+                    Button(action: {
+                        self.navigation.login()
+                        }){
                             Text("Login")
-                                .blueButtonText()
-                                .frame(minWidth:0, maxWidth: frameMaxWidth)
-                        }
-                        .buttonStyle(BigBlueButtonStyle())
-                    }
-                    
-                    //Signup Button
-                    NavigationLink(destination: SignupView()){
-                        Text("Signup")
-                            .clearButtonText()
+                            .blueButtonText()
                             .frame(minWidth:0, maxWidth: frameMaxWidth)
-                    }
-                    .buttonStyle(BigClearButtonStyle())
-                 
+                    }.buttonStyle(BigBlueButtonStyle())
                 }
                 
-                //Right Side Spacer
-                Spacer()
+                //Signup Button
+                Button(action: {
+                    self.navigation.signup()
+                    }){
+                        Text("Signup")
+                        .clearButtonText()
+                        .frame(minWidth:0, maxWidth: frameMaxWidth)
+                }.buttonStyle(BigClearButtonStyle())
+             
             }
+            
+            //Right Side Spacer
+            Spacer()
         }
     }
 }
