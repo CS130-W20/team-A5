@@ -34,6 +34,7 @@ func login_request(email: String, password: String, authenticationVM: Authentica
                 user.firstName = data["first_name"].string!
                 user.lastName = data["last_name"].string!
                 user.pic_url = data["pic_url"].string!
+                user.account_balance = "0"
                 result = 1
             }
         } else {
