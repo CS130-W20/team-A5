@@ -67,7 +67,7 @@ struct UploadSaleItemView : View {
     @EnvironmentObject var navigation: NavigationStack
     
     //Create some user and use a password confirmation var to confirm
-    @ObservedObject var newSaleItem = SaleItem(item_name: "", pic_url: "")
+    @ObservedObject var newSaleItem = SaleItem(item_name: "", seller_id: 0, pic_url: "", item_description: "", sale_price: "", ticket_price: "", total_tickets: "", created_at: "" )
     @ObservedObject var oldSaleItem = User()
     @State var temp_total_ticket: String = ""
     @State var value: CGFloat = 0

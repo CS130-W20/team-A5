@@ -10,11 +10,13 @@ import Foundation
 import SwiftUI
 
 struct SaleItemDetailView : View {
-    @EnvironmentObject var navigation: NavigationStack
 
+    let saleItem: SaleItem
+    @EnvironmentObject var navigation: NavigationStack
+    
     @State private var num_of_tickets: Int? = 0
-//    let saleItem: SaleItem
     var body: some View {
+        
         VStack(){
             HStack(){
                 Button(action: {
@@ -26,37 +28,39 @@ struct SaleItemDetailView : View {
                         .font(.custom("Poppins", size: 24))
                 }
                 Spacer()
-            }.padding()
+            }.padding(20)
             VStack(){
                 VStack(alignment: .leading) {
-                    Image("bose")
+                    Image(saleItem.pic_url)
                         .resizable()
-                        .frame(maxWidth: 350, maxHeight: 200)
-                    Text("Bose QuietComfort 100")
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 350, height: 200)
+                        .clipped()
+                    Text(saleItem.item_name)
                         .h1()
                     HStack(alignment: .top){
                         VStack(alignment: .leading){
                              Text("Ticket Price: ")
                                .h2()
-                            Text("$15.00")
+                            Text(saleItem.ticket_price)
                                 .foregroundColor(Color("PurpleBlue"))
                         }
                        
                         Spacer()
                         VStack(alignment: .trailing){
-                            Text("Time Remaining:")
+                            Text("Expires at 5pm PST on:")
                                 .h2()
-                            Text("00:45:31")
+                            Text(saleItem.created_at)
                                 .foregroundColor(Color.red)
                         }
                     }
-                    
+                
                     Rectangle()
                         .frame(height: 1.0, alignment: .bottom)
                         .foregroundColor(Color("LightGray"))
-                    
+                
                     HStack(){
-                        Text("8")
+                        Text(saleItem.total_tickets) //This is wrong (or improperly named). I'm assuming this is "Total Tickets Remaining"
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
                             .padding(10)
@@ -65,11 +69,11 @@ struct SaleItemDetailView : View {
                         Text("Tickets Left")
                         Spacer()
                         VStack(alignment: .trailing){
-                            Text("Posted 5 Days Ago")
-                            Text("Seller: Jennifer Smith")
+                            //Need to make an API request for the seller name from id
+                            Text("Seller: " + String(saleItem.seller_id))
                         }
                     }
-                    
+                
                     Rectangle()
                        .frame(height: 1.0, alignment: .bottom)
                        .foregroundColor(Color("LightGray"))
@@ -77,30 +81,29 @@ struct SaleItemDetailView : View {
                     VStack(alignment: .leading){
                         Text("Description:")
                             .fontWeight(.bold)
-                        Text("Lorem Ipsum dolor set amet.")
+                        Text(saleItem.item_description)
                     }
                 }
                 Spacer()
                 VStack(alignment: .center){
                     Text("How many tickets would you like to purchase?:")
-
-                    Text("1")
-                        .fontWeight(.bold)
-                }.padding(20)
-                
-                Button(action:{
-                    self.navigation.success()
-                }){
-                    Text("Buy Now")
-                        .blueButtonText()
-                }.buttonStyle(BigBlueButtonStyle())
-            }.padding(40)
-        }
+                        Text("1")
+                            .fontWeight(.bold)
+                    }.padding(20)
+                    
+                    Button(action:{
+                        self.navigation.success()
+                    }){
+                        Text("Buy Now")
+                            .blueButtonText()
+                    }.buttonStyle(BigBlueButtonStyle())
+            }.padding(20)
+        }.padding()
     }
 }
 
-struct SaleItemDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        SaleItemDetailView()
-    }
-}
+//struct SaleItemDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SaleItemDetailView(saleItem: saleItems[0])
+//    }
+//}

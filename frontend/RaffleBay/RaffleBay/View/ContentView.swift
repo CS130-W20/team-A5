@@ -89,9 +89,7 @@ struct ContentView: View {
         .environmentObject(NavigationStack(
             NavigationItem( view: whatView(token: self.authenticationVM.auth_token))
                             ))
-    
-        
-        
+   
 //        if self.authenticationVM.auth_token == "" {
 //            return AnyView(SplashscreenView())
 //        } else {
@@ -114,7 +112,6 @@ struct ContentView: View {
 //                    .tag(1)
 //            })
 //        }
-
     }
 }
 
