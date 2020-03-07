@@ -71,7 +71,6 @@ const FundsController = (userModel, authService) => {
       const paymentIntent = event.data.object;
 
       const payment_id = paymentIntent.id;
-	console.log("Stripe ID: " + payment_id)
       const [payment_info, err1] = await userModel.getPaymentInfoByPaymentId(payment_id)
 
       if (err1 || payment_info == null) {
