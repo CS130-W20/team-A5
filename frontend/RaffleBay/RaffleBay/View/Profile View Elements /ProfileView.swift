@@ -12,23 +12,32 @@ let circleDiameter: CGFloat = 30
 
 
 struct ProfileView: View {
+    @EnvironmentObject var navigation: NavigationStack
+    
     @ObservedObject var currUser = User()
     @ObservedObject var authenticationVM = AuthenticationViewModel()
     @State var sellingItems: [SellingOrBuyingItem] = []
     @State var buyingItems: [SellingOrBuyingItem] = []
     @State var items_bid_on = false
     var body: some View {
-        NavigationView {
         VStack(){
             HStack(){
                 Button(action: {
-                    self.authenticationVM.auth_token = ""
+                     self.navigation.advance(
+                        NavigationItem( view: AnyView(SidebarNavView())))
                 }){
-                   Text("logout")
-                       .h1()
+                     HamburgerIconView()
                 }
+                .foregroundColor(Color("LightGray"))
                 Spacer()
-                HamburgerIconView()
+                Button(action: {
+                    self.navigation.unwind()
+                }){
+                   Text("Back")
+                        .foregroundColor(Color.gray)
+                        .fontWeight(.semibold)
+                        .font(.custom("Poppins", size: 24))
+                }
             }.padding()
                 
             HStack(){
@@ -78,8 +87,9 @@ struct ProfileView: View {
                         }
                         
                         Spacer()
-                        NavigationLink(destination: UploadSaleItemView()) {
-                            
+                        Button(action:{
+                            self.navigation.advance(NavigationItem( view: AnyView(UploadSaleItemView())))
+                        }){
                             PlusButtonView()
                         }
                     }
@@ -103,8 +113,6 @@ struct ProfileView: View {
                 }
             }
         }
-        }
-    .navigationBarBackButtonHidden(true)
         .onAppear {
             if self.currUser.lastName == ""          {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)
             }

@@ -129,6 +129,15 @@ const ItemModel = (repo) => {
     return await repo.createShipment(item_id, label, tracking_number)
   }
 
+  /**
+   * Gets info of all items that are in progress
+   * 
+   * @return {Array<{0: Array<Item>, 1: String}>} - Array with array of Rafflebay Item Objects and error (only one or the other)
+   */
+  const getItemFeed = async() => {
+    return await repo.getItemFeed();
+  }
+
 
   return {
     createItem,
@@ -141,6 +150,7 @@ const ItemModel = (repo) => {
     getItemsForSeller,
     getBidsForUser,
     createShipment,
+    getItemFeed,
   };
 };
 

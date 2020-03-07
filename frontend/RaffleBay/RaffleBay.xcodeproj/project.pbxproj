@@ -215,6 +215,35 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		8BF63948241032AD003E377C /* Pre-Authorization Views */ = {
+			isa = PBXGroup;
+			children = (
+				8BE89B9423EF835400EC2076 /* SplashscreenView.swift */,
+				8BE89B9623F0900500EC2076 /* LoginView.swift */,
+				B27513F023ECB061007305A0 /* SignupView.swift */,
+			);
+			path = "Pre-Authorization Views";
+			sourceTree = "<group>";
+		};
+		8BF6394A24103757003E377C /* Purchase Item Views */ = {
+			isa = PBXGroup;
+			children = (
+				8BB7CD8223FD038C00E83590 /* SuccessfulView.swift */,
+				B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */,
+			);
+			path = "Purchase Item Views";
+			sourceTree = "<group>";
+		};
+		8BF6394B2410383C003E377C /* Profile View Elements  */ = {
+			isa = PBXGroup;
+			children = (
+				8BC5210023FBABE600BCC476 /* ProfileView.swift */,
+				8BC5210223FBB25000BCC476 /* ProfileSaleItemView.swift */,
+				B2734643240B88EC005FF61D /* ProfileBidItemView.swift */,
+			);
+			path = "Profile View Elements ";
+			sourceTree = "<group>";
+		};
 		A774BB9277D7FA20759246DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,21 +343,16 @@
 		B27513E523ECACF7007305A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B27513E623ECAD11007305A0 /* SaleItemCellView.swift */,
-				8BB7CD8223FD038C00E83590 /* SuccessfulView.swift */,
+				8BF63948241032AD003E377C /* Pre-Authorization Views */,
+				8BF6394A24103757003E377C /* Purchase Item Views */,
+				8BF6394B2410383C003E377C /* Profile View Elements  */,
 				B27513E923ECAD38007305A0 /* SaleItemTableView.swift */,
-				B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */,
+				B27513E623ECAD11007305A0 /* SaleItemCellView.swift */,
 				8B6C220723FCAFF00014796E /* CreateSaleItem.swift */,
 				B27513B123ECAC47007305A0 /* ContentView.swift */,
-				B27513F023ECB061007305A0 /* SignupView.swift */,
-				8BE89B9623F0900500EC2076 /* LoginView.swift */,
-				8BE89B9423EF835400EC2076 /* SplashscreenView.swift */,
 				8B3ACCF723FA14CB0045F6BF /* styles.swift */,
 				8B6C220523FCA4A10014796E /* SidebarNavView.swift */,
 				8B3ACCF923FA48A70045F6BF /* constants.swift */,
-				8BC5210023FBABE600BCC476 /* ProfileView.swift */,
-				8BC5210223FBB25000BCC476 /* ProfileSaleItemView.swift */,
-				B2734643240B88EC005FF61D /* ProfileBidItemView.swift */,
 				B247F55423FE270500FA7830 /* UploadSaleItemView.swift */,
 			);
 			path = View;

@@ -11,7 +11,7 @@ import SwiftUI
 struct SaleItemCellView: View {
    
     let saleItem: SaleItem
-    let cellHeight:CGFloat = 250
+    let cellHeight:CGFloat = 200
     let cellWidth:CGFloat = 175
     
     
@@ -22,8 +22,8 @@ struct SaleItemCellView: View {
                 Image(saleItem.pic_url)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(maxWidth: cellWidth, maxHeight: cellHeight)
-                    .foregroundColor(Color("LightBlue"))
+                    .frame(width: cellWidth, height: cellHeight * 0.7)
+                    .clipped()
                 
                 HStack(){
                     VStack(){
@@ -48,5 +48,11 @@ struct SaleItemCellView: View {
         .frame(maxWidth: cellWidth, maxHeight: cellHeight)
         .cornerRadius(cellWidth/20)
         .shadow(radius: 3, y: 5)
+    }
+}
+
+struct SaleItemCellView_Previews: PreviewProvider {
+    static var previews: some View {
+        SaleItemCellView(saleItem: SaleItemTestData.saleItems()[0])
     }
 }

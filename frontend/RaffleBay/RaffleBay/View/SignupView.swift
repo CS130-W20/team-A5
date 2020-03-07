@@ -18,7 +18,9 @@ import SwiftyJSON
 
 
 struct SignupView : View {
-   
+    @EnvironmentObject var navigation: NavigationStack
+
+    
     //Create some user and use a password confirmation var to confirm
     @ObservedObject var someUser = User()
     @State private var pwdConfirm = String()
@@ -32,10 +34,10 @@ struct SignupView : View {
             Spacer()
             
             //Center Column
+            ZStack(){
             VStack(){
-                Spacer().frame(height: 180)
-                Text(someUser.firstName)
                 
+                Spacer().frame(height: 100)
                 VStack(){
                     TextField("First Name", text: $someUser.firstName)
                         .textFieldStyle(SignUpTextFieldStyle())
@@ -121,30 +123,33 @@ struct SignupView : View {
                     ShadowBoxView()
                     
                     //Signup Button
-                    NavigationLink(destination: SaleItemTableView()){
-                        Text("Login")
-                          .blueButtonText()
-                          .frame(minWidth:0, maxWidth: frameMaxWidth)
-                    }
-                    .buttonStyle(BigBlueButtonStyle())
+                    Button(action: {
+                        
+                        //NEED TO DO: REQUEST TO CREATE USER + LOGIN
+                        self.navigation.home()
+                        
+                        
+                        }){
+                            Text("Sign Up")
+                            .blueButtonText()
+                            .frame(minWidth:0, maxWidth: frameMaxWidth)
+                    }.buttonStyle(BigBlueButtonStyle())
+                    
                 }
                 
                 //Login Button
-                 NavigationLink(destination: LoginView()){
-                    Button(action: {
-                        
-                    }){
-                        HStack(){
-                            Text("Have an account?")
-                                .standardRegularText()
-                                .padding(8)
-               
-                            Text("Login Here")
-                                 .standardBoldText()
-                                .padding(8)
-                        }
+                Button(action: {
+                    self.navigation.login()
+                }){
+                    HStack(){
+                        Text("Have an account?")
+                            .standardRegularText()
+                            .padding(8)
+           
+                        Text("Login Here")
+                             .standardBoldText()
+                            .padding(8)
                     }
-
                 }
                 .buttonStyle(BigClearButtonStyle())
              
@@ -156,7 +161,22 @@ struct SignupView : View {
                         self.value = 0
                     }
                 }
-            
+                
+                
+//                HStack(){
+//
+//                    Button(action: {
+//                        self.navigation.home()
+//                    }){
+//                        Text("Back")
+//                    }
+//                    Spacer()
+//                }
+//                .frame(height: 100).background(Color.gray)
+//
+                Spacer()
+                
+            }
             //Right Side Spacer
             Spacer()
         }

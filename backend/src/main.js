@@ -7,6 +7,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const config = require('./config');
+const dotenv = require('dotenv').config({path:__dirname+'/.env'})
 
 const {PostgresDB} = require('./db/postgres');
 const {UserRepo} = require('./models/user/postgres');

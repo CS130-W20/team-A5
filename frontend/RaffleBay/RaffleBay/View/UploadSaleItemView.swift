@@ -38,6 +38,7 @@ extension CaptureImageView: UIViewControllerRepresentable {
 
 struct CameraView: View {
   
+    
   @State var image: Image? = nil
   @State var showCaptureImageView: Bool = false
   
@@ -63,9 +64,10 @@ struct CameraView: View {
 }
 
 struct UploadSaleItemView : View {
-   
+    @EnvironmentObject var navigation: NavigationStack
+    
     //Create some user and use a password confirmation var to confirm
-    @ObservedObject var newSaleItem = SaleItem(item_name: "", pic_url: "")
+    @ObservedObject var newSaleItem = SaleItem(item_name: "", seller_id: 0, pic_url: "", item_description: "", sale_price: "", ticket_price: "", total_tickets: "", created_at: "" )
     @ObservedObject var oldSaleItem = User()
     @State var temp_total_ticket: String = ""
     @State var value: CGFloat = 0
@@ -78,39 +80,37 @@ struct UploadSaleItemView : View {
             
             //Center Column
             VStack(){
+                HStack(){
+                    Button(action: {
+                        self.navigation.unwind()
+                    }){
+                       Text("Back")
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.semibold)
+                            .font(.custom("Poppins", size: 24))
+                    }
+                    Spacer()
+                }.padding()
                 Spacer().frame(height: 80)
                 
                 CameraView()
                 VStack(){
                     TextField("Item Name", text: $newSaleItem.item_name)
                         .textFieldStyle(SignUpTextFieldStyle())
-                        .onTapGesture {
-                            self.value = signupFrameHeight * 0
-                        }
-                  
-                  
-                    
+
                     TextField("Item Description", text: $newSaleItem.item_description)
                         .textFieldStyle(SignUpTextFieldStyle())
-                        .onTapGesture {
-                            self.value = signupFrameHeight * 1
-                        }
 
-                    TextField("Item Price", text: $newSaleItem.sale_price)
+                    TextField("Total Item Price", text: $newSaleItem.sale_price)
                         .textFieldStyle(SignUpTextFieldStyle())
-                        .onTapGesture {
-                            self.value = signupFrameHeight * 2
-                        }
 
                     TextField("Number of Tickets", text: $newSaleItem.total_tickets)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(SignUpTextFieldStyle())
-                        .onTapGesture {
-                            self.value = signupFrameHeight * 5
-                        }
-                    if (newSaleItem.total_tickets != "") {
-//                        $newSaleItem.ticket_price = "1"
-                        Text("Ticket Price: $5")
+
+                    if (newSaleItem.total_tickets != "") {                        
+//                        newSaleItem.ticket_price = String(Int(newSaleItem.sale_price) / Int(newSaleItem.total_tickets))
+                        Text("Ticket Price: " + newSaleItem.sale_price)
                     }
                     
                 }
@@ -121,21 +121,17 @@ struct UploadSaleItemView : View {
                     ShadowBoxView()
                     
                     //Signup Button
-                    NavigationLink(destination: CreateSaleItem(newSaleItem: newSaleItem)){
+                    Button(action:{
+                        self.navigation.advance(
+                            NavigationItem( view: AnyView(CreateSaleItem(newSaleItem: self.newSaleItem))))
+                    }){
                         Text("Submit")
-                          .blueButtonText()
-                          .frame(minWidth:0, maxWidth: frameMaxWidth)
-                    }
-                    .buttonStyle(BigBlueButtonStyle())
+                        .blueButtonText()
+                        .frame(minWidth:0, maxWidth: frameMaxWidth)
+                    }.buttonStyle(BigBlueButtonStyle())
+                    
                 }
              
-                }
-                .offset(y: -self.value)
-                .animation(.spring())
-                .onAppear(){
-                    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main){ (noti) in
-                        self.value = 0
-                    }
                 }
             
             //Right Side Spacer
