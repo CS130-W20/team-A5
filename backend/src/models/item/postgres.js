@@ -41,6 +41,7 @@ const ItemRepo = (postgres) => {
       item_id integer NOT NULL,
       ticket_count integer NOT NULL,
       total_cost float,
+      random_seed integer,
       did_win BOOLEAN,
       refunded BOOLEAN,
       timestamp timestamptz DEFAULT NOW(),
@@ -280,8 +281,8 @@ const ItemRepo = (postgres) => {
    * @type {string}
    */
   const createBidSQL = `
-    INSERT INTO bids(user_id, item_id, ticket_count, total_cost, did_win, refunded)
-    VALUES ($1, $2, $3, $4, false, false)
+    INSERT INTO bids(user_id, item_id, ticket_count, total_cost, random_seed, did_win, refunded)
+    VALUES ($1, $2, $3, $4, $5, false, false)
     RETURNING *;`
 
  
@@ -298,10 +299,11 @@ const ItemRepo = (postgres) => {
    * @param  {number} item_id - ID of the item being bid on
    * @param  {number} ticket_count - Amount of tickets user wants to buy
    * @param  {number} total_cost - Total cost of tickets that are being bought
+   * @param  {number} random_seed - Random seed value for this bid given by the frontend
    * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
    */
-  const createBid = async(user_id, item_id, ticket_count, total_cost) => {
-    const values = [user_id, item_id, ticket_count, total_cost]
+  const createBid = async(user_id, item_id, ticket_count, total_cost, random_seed) => {
+    const values = [user_id, item_id, ticket_count, total_cost, random_seed]
     try {
       const client = await postgres.connect();
 
