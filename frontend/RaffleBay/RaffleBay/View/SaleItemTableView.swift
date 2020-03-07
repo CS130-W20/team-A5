@@ -74,11 +74,10 @@ struct SaleItemTableView : View {
             Spacer().frame(height: 30)
             TextField("Search", text: $search)
                 .padding(20)
-                  .background(RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color.white).frame(height: frameMaxWidth * 1.1 / 7))
-                    .shadow(radius: 7, y: 5)
-
-            .frame(height: frameMaxWidth * 1.1 / 7)
+                .background(RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color.white).frame(height: frameMaxWidth * 1.1 / 7))
+                .shadow(radius: 7, y: 5)
+                //.frame(height: frameMaxWidth * 1.1 / 7)
             Spacer().frame(height: 30)
 
             HStack(){
@@ -105,4 +104,10 @@ struct SaleItemTableView : View {
     .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
     }
 
+}
+
+struct SaleItemTableView_Previews: PreviewProvider {
+    static var previews: some View {
+        SaleItemTableView()
+    }
 }

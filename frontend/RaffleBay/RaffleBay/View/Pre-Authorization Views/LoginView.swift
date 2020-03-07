@@ -64,7 +64,6 @@ struct LoginView: View {
                             Text("Login")
                                 .blueButtonText()
                                 .frame(minWidth:0, maxWidth: frameMaxWidth)
-                                
                         }
                         .buttonStyle(BigBlueButtonStyle())
                     }
@@ -77,7 +76,6 @@ struct LoginView: View {
                             Text("Don't have an account?")
                                 .standardRegularText()
                                 .padding(8)
-                            
                             Text("Sign Up")
                                 .standardBoldText()
                                 .padding(8)
