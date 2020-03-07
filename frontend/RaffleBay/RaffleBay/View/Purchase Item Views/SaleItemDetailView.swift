@@ -10,11 +10,17 @@ import Foundation
 import SwiftUI
 
 struct SaleItemDetailView : View {
+    @ObservedObject var currUser = User()
+    @ObservedObject var authenticationVM = AuthenticationViewModel()
+    @ObservedObject var saleItem: SaleItem
+    
+    @State private var num_of_tickets = ""
+    @State private var showingAlert = false
+    @State private var error_message = "Not enough funds. Please add more funds"
+    
 
-    let saleItem: SaleItem
     @EnvironmentObject var navigation: NavigationStack
     
-    @State private var num_of_tickets: Int? = 0
     var body: some View {
         
         VStack(){
@@ -86,17 +92,26 @@ struct SaleItemDetailView : View {
                 }
                 Spacer()
                 VStack(alignment: .center){
-                    Text("How many tickets would you like to purchase?:")
-                        Text("1")
-                            .fontWeight(.bold)
+                    Text("Tickets to purchase:")
+                    TextField("Enter the # of tickets you wish to buy", text: self.$num_of_tickets)
                     }.padding(20)
                     
                     Button(action:{
-                        self.navigation.success()
+                        print(self.currUser.account_balance)
+                        print(self.saleItem.ticket_price)
+                        if Double(self.currUser.account_balance)! >= Double(self.saleItem.ticket_price)! * Double(self.num_of_tickets)! {
+                            post_bid_on_item(saleItem: self.saleItem, auth_token: self.authenticationVM.auth_token, num_of_tickets: self.num_of_tickets)
+                            self.navigation.success(numOfTickets: self.num_of_tickets, SaleItem: self.saleItem)
+                        } else {
+                            self.showingAlert = true
+                        }
                     }){
                         Text("Buy Now")
                             .blueButtonText()
                     }.buttonStyle(BigBlueButtonStyle())
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text(self.error_message), message: Text(""), dismissButton: .default(Text("Got it!")))
+                }
             }.padding(20)
         }.padding()
     }

@@ -18,7 +18,7 @@ import SwiftyJSON
 
 
 struct SignupView : View {
-   
+   @EnvironmentObject var navigation: NavigationStack
     //Create some user and use a password confirmation var to confirm
     @ObservedObject var someUser = User()
     @State private var pwdConfirm = String()
@@ -123,10 +123,28 @@ struct SignupView : View {
                         ShadowBoxView()
                         
                         //Signup Button
-                        NavigationLink(destination: ContentView()){
-                            Text("Login")
-                              .blueButtonText()
-                              .frame(minWidth:0, maxWidth: frameMaxWidth)
+//                      NavigationLink(destination: LoginView()){
+//                            Button(action: {
+//                                post_signup(newUser: self.someUser)
+//                            }){
+//                            Text("Sign Up")
+//                              .blueButtonText()
+//                              .frame(minWidth:0, maxWidth: frameMaxWidth)
+//                            }
+//                            .buttonStyle(BigBlueButtonStyle())
+//                        }
+//                        .buttonStyle(BigBlueButtonStyle())
+                        
+                        //SignUp Button
+                        Button(action: {
+                                post_signup(newUser: self.someUser)
+                                //self.selection = response
+                                self.navigation.home()
+                                
+                        }){
+                            Text("Sign Up")
+                                .blueButtonText()
+                                .frame(minWidth:0, maxWidth: frameMaxWidth)
                         }
                         .buttonStyle(BigBlueButtonStyle())
                     }
