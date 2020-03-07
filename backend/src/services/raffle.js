@@ -76,7 +76,7 @@ const RaffleService = (itemModel, userModel) => {
 		// Then create a new shipment object with the shipping label and tracking number, to be used later or an error if the shipment was not created
 		// Then send an email to the seller with the shipping label
 		let sh = await shipment.buy(shipment.lowestRate(['USPS'], ['First']))
-		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], sh.postage_label.label_url, sh.tracking_code);
+		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], winning_bid_info['user_id'], item['seller_id'], sh.postage_label.label_url, sh.tracking_code);
 		await sendShippingLabel(item, seller_info, sh.postage_label.label_url)
 		if (e3) {
 			console.log("Error while creating shipment object");
