@@ -55,12 +55,13 @@ const FundsController = (userModel, authService) => {
   });
 
   router.post('/complete', async (req, res) => {
-    const stripe_signature = request.headers['stripe-signature'];
+    const stripe_signature = req.headers['stripe-signature'];
+
     let event;
 
     
     try {
-      event = stripe.webhooks.constructEvent(req.body, stripe_signature, process.env.STRIPE_WEBHOOK_SIGNATURE);
+      event = stripe.webhooks.constructEvent(req.rawBody, stripe_signature, process.env.STRIPE_WEBHOOK_SIGNATURE);
     } catch (err) {
       return res.status(400).json({"err": `Webhook Error: ${err.message}`});
     }
@@ -70,7 +71,7 @@ const FundsController = (userModel, authService) => {
       const paymentIntent = event.data.object;
 
       const payment_id = paymentIntent.id;
-      
+	console.log("Stripe ID: " + payment_id)
       const [payment_info, err1] = await userModel.getPaymentInfoByPaymentId(payment_id)
 
       if (err1 || payment_info == null) {
