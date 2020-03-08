@@ -114,7 +114,7 @@ struct UploadSaleItemView : View {
                     TextField("Number of Tickets", text: $newSaleItem.total_tickets)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(SignUpTextFieldStyle())
-                    
+                
                 }
                 
                 Spacer()
