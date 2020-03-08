@@ -23,7 +23,7 @@ struct SignupView : View {
     @ObservedObject var someUser = User()
     @State private var pwdConfirm = String()
     @State var value: CGFloat = 0
-    
+    @State private var showingAlert = false
     var body: some View {
         
         
@@ -137,9 +137,15 @@ struct SignupView : View {
                         
                         //SignUp Button
                         Button(action: {
-                                post_signup(newUser: self.someUser)
-                                //self.selection = response
-                                self.navigation.home()
+                            post_signup(newUser: self.someUser) {
+                                response in
+                                if response == true {
+                                    //self.selection = response
+                                    self.navigation.home()
+                                } else {
+                                    self.showingAlert = true
+                                }
+                            }
                                 
                         }){
                             Text("Sign Up")
@@ -147,6 +153,9 @@ struct SignupView : View {
                                 .frame(minWidth:0, maxWidth: frameMaxWidth)
                         }
                         .buttonStyle(BigBlueButtonStyle())
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Error with Signup"), message: Text("Please make sure you filled in every field"), dismissButton: .default(Text("Got it!")))
+                        }
                     }
                     
                     //Login Button

@@ -10,7 +10,8 @@ import Foundation
 import Alamofire_SwiftyJSON
 import Alamofire
 import SwiftyJSON
-func post_signup(newUser: User) -> Void {
+func post_signup(newUser: User, completion: @escaping (Bool) -> Void) {
+    var result = false
     let parameters: [String: Any] = [
         "first_name": newUser.firstName,
         "last_name": newUser.lastName,
@@ -33,9 +34,14 @@ func post_signup(newUser: User) -> Void {
             if message == "" {
                 let data = dataResponse.value!["data"]
                 print("data: \(data)")
+                result = true
+                completion(result)
+            } else {
+                completion(result)
             }
         } else {
             print(dataResponse.error)
+            completion(result)
         }
     };
 

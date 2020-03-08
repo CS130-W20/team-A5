@@ -16,6 +16,7 @@ struct LoginView: View {
     @State private var selection: Int? = nil
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var showingAlert = false
     @ObservedObject var authenticationVM = AuthenticationViewModel()
     @ObservedObject var newUser = User()
      var body: some View {
@@ -56,9 +57,16 @@ struct LoginView: View {
 
                         //Login Button
                         Button(action: {
-                                let response = login_request(email: self.email, password: self.password, authenticationVM: self.authenticationVM, user: self.newUser)
-                                //self.selection = response
-                                self.navigation.home()
+                            login_request(email: self.email, password: self.password, authenticationVM: self.authenticationVM, user: self.newUser) {
+                                response in
+                                if response == true {
+                                    //self.selection = response
+                                    self.navigation.home()
+                                } else {
+                                    self.showingAlert = true
+                                }
+                            }
+                                
                                 
                         }){
                             Text("Login")
@@ -66,6 +74,9 @@ struct LoginView: View {
                                 .frame(minWidth:0, maxWidth: frameMaxWidth)
                         }
                         .buttonStyle(BigBlueButtonStyle())
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Incorrect Login"), message: Text("Please try again"), dismissButton: .default(Text("Got it!")))
+                        }
                     }
                     
                     //Signup Button
