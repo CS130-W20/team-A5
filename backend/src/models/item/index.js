@@ -91,10 +91,11 @@ const ItemModel = (repo) => {
    * @param  {number} item_id - ID of item bid is for
    * @param  {number} ticket_count - Number of tickets being purchased
    * @param  {number} total_cost - Total cost of entire bid
+   * @param  {number} random_seed - Random seed value for this bid given by the frontend
    * @return {Array<{0: Bid, 1: String}>} - Array with new Rafflebay Bid Object and error (only one or the other)
    */
-  const createBid = async (user_id, item_id, ticket_count, total_cost) => {
-    return await repo.createBid(user_id, item_id, ticket_count, total_cost);
+  const createBid = async (user_id, item_id, ticket_count, total_cost, random_seed) => {
+    return await repo.createBid(user_id, item_id, ticket_count, total_cost, random_seed);
   }
 
   /**
@@ -121,12 +122,24 @@ const ItemModel = (repo) => {
    * Creates a new Shipment object
    * 
    * @param  {number} item_id - ID of item for shipment
+   * @param  {number} winner_id - ID of user who won item
+   * @param  {number} seller_id - ID of user who sold item
    * @param  {string} label - String for URL for shipping label
    * @param  {string} tracking_number - String for tracking number for the shipment
    * @return {Array<{0: Shipment, 1: String}>} - Array with Rafflebay Shipment Objects and error (only one or the other)
    */
-  const createShipment = async(item_id, label, tracking_number) => {
-    return await repo.createShipment(item_id, label, tracking_number)
+  const createShipment = async(item_id, winner_id, seller_id, label, tracking_number) => {
+    return await repo.createShipment(item_id, winner_id, seller_id, label, tracking_number)
+  }
+
+  /**
+   * Gets a shipment object with the given tracking number
+   * 
+   * @param  {string} tracking_number - String for the tracking number for the shipment
+   * @return {Array<{0: Shipment, 1: String}>} - Array with Rafflebay Shipment Objects and error (only one or the other)
+   */
+  const getShipmentInformation = async(tracking_number) => {
+    return await repo.getShipmentInformation(tracking_number)
   }
 
   /**
@@ -150,6 +163,7 @@ const ItemModel = (repo) => {
     getItemsForSeller,
     getBidsForUser,
     createShipment,
+    getShipmentInformation,
     getItemFeed,
   };
 };

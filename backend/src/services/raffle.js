@@ -1,5 +1,5 @@
 const EasyPost = require('@easypost/api');
-const api = new EasyPost('EZTK306be7aecba44da486ac37dd01871296leZm7Qb3VVPb0bv17K3ACA')
+const api = new EasyPost(process.env.EASYPOST_API_KEY)
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -19,12 +19,10 @@ const RaffleService = (itemModel, userModel) => {
 	 * database calls and email notifications
 	 * 
 	 * What this method does
-	 * 1. Selects winner with weighted random
+	 * 1. Selects winner with weighted random, using true random seeds from the frontend
 	 * 2. Set that bid as the winner
 	 * 3. Get user info for seller and winner
 	 * 4. Send alert email to the winner
-	 * TODO: Get shipping info here? From seller's zip code to winner's address
-	 * TODO: Send shipping info email to the seller
 	 * 
 	 * @param  {Item} item - Item Object with status "AR" (aka, ready to have winner selected)
 	 * @return {number} - ID of the winning Bid, -1 if an error (Error will be logged to console)
@@ -40,18 +38,20 @@ const RaffleService = (itemModel, userModel) => {
 		// Build array of bid ids, with 1 entry per ticket bought
 		let ticket_arr = []
 
+		// Also build a sum of all of the random seeds of the bids
+		let random_sum = 0
 		for (let i = 0; i < bids.length; i++) {
 			let curr_bid = bids[i]
 			let bid_id = curr_bid['bid_id']
+			random_sum += curr_bid['random_seed']
 
 			for (let count = 0; count < curr_bid['ticket_count']; count++) {
 				ticket_arr.push(bid_id)
 			}
 		}
 
-		// Get random integer between 0 and (number_of_tickets - 1)
-		// TODO: This is pseudorandom for now, make really random later
-		const winner_index = Math.floor(Math.random() * ticket_arr.length); 
+		// Use the random seed sum from the bids to get an index of the winner
+		const winner_index = random_sum % ticket_arr.length
 
 		const winning_bid_id = ticket_arr[winner_index];
 
@@ -64,10 +64,6 @@ const RaffleService = (itemModel, userModel) => {
 		// Get user info of seller and winner
 		const [seller_info, e1] = await userModel.getUserInfoById(item['seller_id'])
 		const [winning_user_info, e2] = await userModel.getUserInfoById(winning_bid_info['user_id'])
-
-		// TODO
-		// Use emails to send shipping label and tracking number to winner and seller
-		// For now just create a new shipping object with this information
 		
 		// Get the shipment object
 		const shipment = await createShippingLabel(item, seller_info, winning_user_info)
@@ -76,7 +72,7 @@ const RaffleService = (itemModel, userModel) => {
 		// Then create a new shipment object with the shipping label and tracking number, to be used later or an error if the shipment was not created
 		// Then send an email to the seller with the shipping label
 		let sh = await shipment.buy(shipment.lowestRate(['USPS'], ['First']))
-		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], sh.postage_label.label_url, sh.tracking_code);
+		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], winning_bid_info['user_id'], item['seller_id'], sh.postage_label.label_url, sh.tracking_code);
 		await sendShippingLabel(item, seller_info, sh.postage_label.label_url)
 		if (e3) {
 			console.log("Error while creating shipment object");

@@ -41,6 +41,7 @@ const ItemRepo = (postgres) => {
       item_id integer NOT NULL,
       ticket_count integer NOT NULL,
       total_cost float,
+      random_seed integer,
       did_win BOOLEAN,
       refunded BOOLEAN,
       timestamp timestamptz DEFAULT NOW(),
@@ -57,10 +58,14 @@ const ItemRepo = (postgres) => {
     CREATE TABLE IF NOT EXISTS shipments(
       shipment_id SERIAL PRIMARY KEY,
       item_id integer NOT NULL,
+      winner_id integer NOT NULL,
+      seller_id integer NOT NULL,
       label text NOT NULL,
       tracking_number text NOT NULL,
       timestamp timestamptz DEFAULT NOW(),
-      FOREIGN KEY (item_id) REFERENCES items(item_id)
+      FOREIGN KEY (item_id) REFERENCES items(item_id),
+      FOREIGN KEY (winner_id) REFERENCES users(id),
+      FOREIGN KEY (seller_id) REFERENCES users(id)
     );`;
 
   /**
@@ -276,8 +281,8 @@ const ItemRepo = (postgres) => {
    * @type {string}
    */
   const createBidSQL = `
-    INSERT INTO bids(user_id, item_id, ticket_count, total_cost, did_win, refunded)
-    VALUES ($1, $2, $3, $4, false, false)
+    INSERT INTO bids(user_id, item_id, ticket_count, total_cost, random_seed, did_win, refunded)
+    VALUES ($1, $2, $3, $4, $5, false, false)
     RETURNING *;`
 
  
@@ -294,10 +299,11 @@ const ItemRepo = (postgres) => {
    * @param  {number} item_id - ID of the item being bid on
    * @param  {number} ticket_count - Amount of tickets user wants to buy
    * @param  {number} total_cost - Total cost of tickets that are being bought
+   * @param  {number} random_seed - Random seed value for this bid given by the frontend
    * @return {Array<{0: Bid, 1: String}>} - Array with Rafflebay Bid Object and error (only one or the other)
    */
-  const createBid = async(user_id, item_id, ticket_count, total_cost) => {
-    const values = [user_id, item_id, ticket_count, total_cost]
+  const createBid = async(user_id, item_id, ticket_count, total_cost, random_seed) => {
+    const values = [user_id, item_id, ticket_count, total_cost, random_seed]
     try {
       const client = await postgres.connect();
 
@@ -412,8 +418,8 @@ const ItemRepo = (postgres) => {
    * @type {string}
    */
   const createShipmentSQL = `
-    INSERT INTO shipments(item_id, label, tracking_number)
-    VALUES($1, $2, $3)
+    INSERT INTO shipments(item_id, winner_id, seller_id, label, tracking_number)
+    VALUES($1, $2, $3, $4, $5)
     RETURNING *;`;
 
   /**
@@ -421,15 +427,45 @@ const ItemRepo = (postgres) => {
    * If we get an error, then we return the (null, error), otherwise return (data, null)
    * 
    * @param  {number} item_id - ID of item
+   * @param  {number} winner_id - ID of user who won item
+   * @param  {number} seller_id - ID of user who sold item
    * @param  {string} label - URL of shipping label
    * @param  {string} tracking_number - String of tracking number
    * @return {Array<{0: Shipment, 1: String}>} - Array with Rafflebay Shipment Object and error (only one or the other)
    */
-  const createShipment = async (item_id, label, tracking_number) => {
-    const values = [item_id, label, tracking_number];
+  const createShipment = async (item_id, winner_id, seller_id, label, tracking_number) => {
+    const values = [item_id, winner_id, seller_id, label, tracking_number];
     try {
       const client = await postgres.connect();
       const res = await client.query(createShipmentSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
+  /**
+   * Gets the shipment with the tracking number given
+   * 
+   * @type {string}
+   */
+  const getShipmentInformationSQL  = `
+    SELECT * FROM shipments
+    WHERE tracking_number=$1;`
+
+  /**
+   * Uses getShipmentInformationSQL and gets the shipment that has the tracking number
+   * If we get an error, then we return the (null, error), otherwise return (data, null)
+   * 
+   * @param  {string} tracking_number - String of tracking number
+   * @return {Array<{0: Shipment, 1: String}>} - Array with Rafflebay Shipment Object and error (only one or the other)
+   */
+  const getShipmentInformation = async (tracking_number) => {
+    const values = [tracking_number];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getShipmentInformationSQL, values);
       client.release();
       return [res.rows[0], null];
     } catch (err) {
@@ -477,6 +513,7 @@ const ItemRepo = (postgres) => {
     getItemsForSeller,
     getBidsForUser,
     createShipment,
+    getShipmentInformation,
     getItemFeed,
   };
 };

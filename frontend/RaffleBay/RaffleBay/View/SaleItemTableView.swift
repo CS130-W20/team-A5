@@ -72,13 +72,13 @@ struct SaleItemTableView : View {
                 }
             }
             Spacer().frame(height: 30)
-            TextField("Search", text: $search)
-                .padding(20)
-                .background(RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color.white).frame(height: frameMaxWidth * 1.1 / 7))
-                .shadow(radius: 7, y: 5)
-                //.frame(height: frameMaxWidth * 1.1 / 7)
-            Spacer().frame(height: 30)
+//            TextField("Search", text: $search)
+//                .padding(20)
+//                .background(RoundedRectangle(cornerRadius: 8)
+//                .foregroundColor(Color.white).frame(height: frameMaxWidth * 1.1 / 7))
+//                .shadow(radius: 7, y: 5)
+//                //.frame(height: frameMaxWidth * 1.1 / 7)
+//            Spacer().frame(height: 30)
 
             HStack(){
                 Text("Items for Sale")
