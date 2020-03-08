@@ -71,6 +71,7 @@ struct UploadSaleItemView : View {
     @ObservedObject var oldSaleItem = User()
     @State var temp_total_ticket: String = ""
     @State var value: CGFloat = 0
+    @State var noEmpty: Bool = true
     
     var body: some View {
         HStack(){
@@ -117,13 +118,21 @@ struct UploadSaleItemView : View {
                 
                 Spacer()
                 //ZStack here to allow for custom shadow manipulation.
+                if(!noEmpty) {
+                    Text("Please enter a username/password.")
+                        .foregroundColor(.red)
+                }
                 ZStack(){
                     ShadowBoxView()
                     
                     //Signup Button
                     Button(action:{
-                        self.navigation.advance(
-                            NavigationItem( view: AnyView(CreateSaleItem(newSaleItem: self.newSaleItem))))
+                        if((self.newSaleItem.item_name.count != 0) && (self.newSaleItem.item_description.count != 0) && (self.newSaleItem.sale_price.count != 0) && (self.newSaleItem.total_tickets.count != 0)){
+                                self.navigation.advance(
+                                NavigationItem( view: AnyView(CreateSaleItem(newSaleItem: self.newSaleItem))))
+                            }else{
+                                self.noEmpty = false
+                            }
                     }){
                         Text("Submit")
                         .blueButtonText()

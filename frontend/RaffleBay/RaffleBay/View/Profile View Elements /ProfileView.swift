@@ -18,7 +18,11 @@ struct ProfileView: View {
     @ObservedObject var authenticationVM = AuthenticationViewModel()
     @State var sellingItems: [SellingOrBuyingItem] = []
     @State var buyingItems: [SellingOrBuyingItem] = []
-    @State var items_bid_on = false
+    @State var items_bid_on = 0
+    
+    @State var canLoad = false
+    @State var didToggle: Bool = false
+    
     var body: some View {
         VStack(){
             HStack(){
@@ -52,7 +56,7 @@ struct ProfileView: View {
                         
                     Text("\(currUser.firstName) \(currUser.lastName)")
                         .clearButtonText()
-                    Text("Account Balance: $\(currUser.account_balance)")
+                    Text("Account Balance: $\(currUser.account_balance)0")
                         .standardBoldText()
                 }
                 Spacer()
@@ -60,7 +64,7 @@ struct ProfileView: View {
             
             HStack(){
                 Button(action: {
-                    self.items_bid_on = true
+                    self.items_bid_on = 1
                 }){
                    Text("Items Bid On")
                        .standardBoldText()
@@ -68,49 +72,62 @@ struct ProfileView: View {
                 }
                 
                 Button(action: {
-                    self.items_bid_on = false
+                    self.items_bid_on = 2
                 }){
                     Text("Items Listed")
                         .standardBoldText()
                         .padding(8)
                 }
             }
-            HStack(){
-                VStack(alignment: .center){
-                    HStack(alignment: .bottom){
-                        if items_bid_on {
-                            Text("Items You've Bid On")
-                            .standardBoldText()
-                        } else {
-                            Text("Items You've Listed")
-                            .standardBoldText()
-                        }
-                        
-                        Spacer()
-                        Button(action:{
-                            self.navigation.advance(NavigationItem( view: AnyView(UploadSaleItemView())))
-                        }){
-                            PlusButtonView()
-                        }
-                    }
-                    .padding(8)
-                    Rectangle()
-                        .frame(height: 2.0, alignment: .bottom)
-                        .foregroundColor(Color("LightGray"))
-                        .offset(y:-10)
-                    ScrollView {
-                        if self.items_bid_on {
-                            ForEach(buyingItems, id: \.id) { item in
-                                ProfileBidItemView(buyingItem: item)
+            if(items_bid_on != 0){
+                HStack(){
+                    VStack(alignment: .center){
+                        HStack(alignment: .bottom){
+                            if (items_bid_on == 1) {
+                                Text("Items You've Bid On")
+                                .standardBoldText()
+                            } else if (items_bid_on == 2) {
+                                Text("Items You've Listed")
+                                .standardBoldText()
                             }
+                            
+                            Spacer()
+                            if (self.items_bid_on == 2){
+                                Button(action:{
+                                    self.navigation.advance(NavigationItem( view: AnyView(UploadSaleItemView())))
+                                }){
+                                    Text("Add Listing")
+                                        .standardBoldText()
+                                        .underline()
+                                }
+                            }
+                        }
+                        .padding(8)
+                        Rectangle()
+                            .frame(height: 2.0, alignment: .bottom)
+                            .foregroundColor(Color("LightGray"))
+                            .offset(y:-10)
+                        ScrollView {
+                            
+                            if (self.items_bid_on == 1) {
+                                ForEach(buyingItems, id: \.id) { item in
+                                    ProfileBidItemView(buyingItem: item)
+                                        
+                                }
 
-                        } else {
-                            ForEach(sellingItems, id: \.id) { item in
-                                ProfileSaleItemView(sellingItem: item)
+                            } else if (self.items_bid_on == 2) {
+                                ForEach(sellingItems, id: \.id) { item in
+                                    ProfileSaleItemView(sellingItem: item)
+                                }
                             }
+                                
                         }
                     }
                 }
+            }else{
+                Text("Click a button above to view your items.")
+                    .standardRegularText()
+                Spacer()
             }
         }
         .onAppear {
