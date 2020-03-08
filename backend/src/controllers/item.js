@@ -1,7 +1,7 @@
 const express = require('express');
 const _ = require('lodash');
-const buyerView = ['item_id', 'item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline']
-const bidderView = ['item_id', 'item_name', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline', 'total_cost', 'tickets_bought']
+const buyerView = ['item_id', 'item_name', 'seller_id', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline']
+const bidderView = ['item_id', 'item_name', 'seller_id', 'pic_url', 'item_description', 'tags', 'sale_price', 'ticket_price', 'total_tickets', 'tickets_sold', 'status', 'deadline', 'total_cost', 'tickets_bought']
 
 const ItemController = (itemModel, userModel, authService) => {
   const router = express.Router();
