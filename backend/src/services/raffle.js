@@ -190,11 +190,77 @@ const RaffleService = (itemModel, userModel) => {
 
 	}
 
+    /**
+     * Cancel the raffle for an item
+ 	 * First, check that the item is in progress
+     * Then, update the status of the item to "CA" for cancelled
+     * Then refund each user who bid on the item
+     * @param  {Item} 	item - item to cancel
+     * @return {number} - Return status
+     */
+    const cancelRaffle = async(item) => {
+    
+    	// Make sure logged in user is the one who sold the item
+	    if (item['status'] != 'IP') {
+	      console.log("Cannot cancel: Item is not currently in progress")
+	      return -1;
+	    }
+
+	    // Set status on item to "CA" for Canceled
+	    let updated_item = await itemModel.updateItemStatus(item['item_id'], "CA")
+
+	    // Refund all users who bid on item
+	    // Get all bids for item
+	    const [bids, err3] = await itemModel.getBidsForItem(item['item_id'])
+
+	    // For each bid, refund the user the amount they paid
+	    for (let i = 0; i<bids.length; i++) {
+	      [status, err4] = await userModel.addUserFunds(bids[i]['user_id'], bids[i]['total_cost'])
+	    }
+
+	    return 0;
+
+ 	}  
+
+	/**
+	 * Function that gets called every day at midnight 
+	 * Gets all the items where the deadline has passed
+	 * If the item sold all tickets, it has a status of 'AR' and can choose a winner
+	 * Otherwise, cancel the raffle for the item
+	 * @return {number} - Return status
+	 */
+	const checkDeadlines = async () => {
+		// Get all items that have a deadline in the past and are in 'IP' or 'AR'
+		const [items, err1] = await itemModel.getItemsPastDeadline();
+
+		if (err1) {
+			console.log("Error while retreiving items")
+			return -1;
+		}
+
+		// Go through every item 
+		// Either choose a winner for the raffle, or cancel the raffle
+		for (let i = 0; i < items.length; i++) {
+			let curr_item = items[i]
+			if (curr_item['status'] == 'AR') {
+				chooseAndNotifyWinner(curr_item)
+				console.log("Chose winner")
+			} else if (curr_item['status'] == 'IP') {
+				cancelRaffle(curr_item)
+				console.log("Cancel item")
+			}
+		}
+		return 0;
+
+	}
+
 	return {
     	chooseAndNotifyWinner,
     	sendTrackingNumber,
     	sendShippingLabel,
     	createShippingLabel,
+    	cancelRaffle,
+    	checkDeadlines,
   };
 }
 
