@@ -152,6 +152,14 @@ const ItemModel = (repo) => {
     return await repo.getItemFeed();
   }
 
+  /**
+   * Gets all items that have passed their deadline
+   * @return {Array<{0: Array<Item>, 1: String}>} - Array with array of Rafflebay Item Objects and error (only one or the other)
+   */
+  const getItemsPastDeadline = async() => {
+    return await repo.getItemsPastDeadline();
+  }
+
 
   return {
     createItem,
@@ -166,6 +174,7 @@ const ItemModel = (repo) => {
     createShipment,
     getShipmentInformation,
     getItemFeed,
+    getItemsPastDeadline,
   };
 };
 

@@ -289,3 +289,19 @@ returns
   "message": "<ERROR_MESSAGE>"
 }
 ```
+
+### Cancel the raffle for an item and refund all bids for the item
+POST /api/items/cancel
+```
+{
+  "item_id": <item_id>
+}
+```
+
+returns
+```
+{
+  "data": <ITEM_MODEL_ABOVE>,
+  "message": "<ERROR_MESSAGE>",
+}
+```

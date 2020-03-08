@@ -502,6 +502,32 @@ const ItemRepo = (postgres) => {
     }
   }
 
+  /**
+   * SQL to get items past deadline
+   * @type {string}
+   */
+  const getItemsPastDeadlineSQL = `
+   SELECT * FROM items
+   WHERE deadline < NOW() AND (status='AR' OR status='IP')
+  `;
+
+  /**
+   * Gets all the items that have a deadline in the past and are in 'IP' or 'AR'
+   * 
+   * @return {Array<{0: Array<Item>, 1: String}>} - Array with array of Rafflebay Item Objects and error (only one or the other)
+   */
+  const getItemsPastDeadline = async () => {
+    values=[]
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getItemsPastDeadlineSQL, values);
+      client.release();
+      return [res.rows, null];
+    } catch (err) {
+      return [null, err];
+    }
+  }
+
 
   return {
     setupRepo,
@@ -517,6 +543,7 @@ const ItemRepo = (postgres) => {
     createShipment,
     getShipmentInformation,
     getItemFeed,
+    getItemsPastDeadline,
   };
 };
 

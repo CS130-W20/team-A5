@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const dotenv = require('dotenv').config({path:__dirname+'/.env'})
+const cron = require('node-cron');
 
 const {PostgresDB} = require('./db/postgres');
 const {UserRepo} = require('./models/user/postgres');
@@ -69,6 +70,16 @@ function start(port) {
   app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
+
+  // Cron job so every night at midnight, all raffles past a deadline are ended
+  var task = cron.schedule('0 0 * * *', () => {
+    raffleService.checkDeadlines()
+   }, {
+     scheduled: true,
+     timezone: "America/Los_Angeles"
+   });
+
+  task.start();
 }
 
 start(config.port);
