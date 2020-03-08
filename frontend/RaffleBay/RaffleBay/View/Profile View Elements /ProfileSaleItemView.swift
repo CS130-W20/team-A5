@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProfileSaleItemView: View {
     @State var sellingItem: SellingOrBuyingItem
+    @State var expireDate: String = ""
+    
     var body: some View {
         HStack(){
             Rectangle()
@@ -24,7 +26,8 @@ struct ProfileSaleItemView: View {
                 Text("Tickets Sold: \(sellingItem.tickets_sold)/\(sellingItem.total_tickets)")
                     .standardRegularText()
                 Spacer().frame(height: 10)
-                Text("Time Left: 01:44:23")
+                
+                Text("Expires On: \(expireDate)")
                     .fontWeight(.bold)
                     .font(.custom("Poppins", size: 14))
                     .foregroundColor(Color.white)
@@ -42,6 +45,21 @@ struct ProfileSaleItemView: View {
             )
         .padding(20)
         .frame(width: 400, height: frameMaxWidth * 1.2 / 2)
+        .onAppear {
+            let dateString = self.sellingItem.created_at.components(separatedBy: "T")[0]
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.locale = Locale(identifier: "en_US")
+            
+            let dateObj = dateFormatter.date(from: dateString)
+            
+//            dateFormatter.dateStyle = .medium
+//            dateFormatter.timeStyle = .none
+//            dateFormatter.locale = Locale(identifier: "en_US")
+            
+            
+            self.expireDate = dateFormatter.string(from: dateObj!)
+        }
     }
     
 }
