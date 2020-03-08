@@ -62,6 +62,7 @@ const ItemRepo = (postgres) => {
       seller_id integer NOT NULL,
       label text NOT NULL,
       tracking_number text NOT NULL,
+      price float NOT NULL,
       timestamp timestamptz DEFAULT NOW(),
       FOREIGN KEY (item_id) REFERENCES items(item_id),
       FOREIGN KEY (winner_id) REFERENCES users(id),
@@ -418,8 +419,8 @@ const ItemRepo = (postgres) => {
    * @type {string}
    */
   const createShipmentSQL = `
-    INSERT INTO shipments(item_id, winner_id, seller_id, label, tracking_number)
-    VALUES($1, $2, $3, $4, $5)
+    INSERT INTO shipments(item_id, winner_id, seller_id, label, tracking_number, price)
+    VALUES($1, $2, $3, $4, $5, $6)
     RETURNING *;`;
 
   /**
@@ -431,10 +432,11 @@ const ItemRepo = (postgres) => {
    * @param  {number} seller_id - ID of user who sold item
    * @param  {string} label - URL of shipping label
    * @param  {string} tracking_number - String of tracking number
+   * @param  {number} price - Price of the shipment to deduct from seller
    * @return {Array<{0: Shipment, 1: String}>} - Array with Rafflebay Shipment Object and error (only one or the other)
    */
-  const createShipment = async (item_id, winner_id, seller_id, label, tracking_number) => {
-    const values = [item_id, winner_id, seller_id, label, tracking_number];
+  const createShipment = async (item_id, winner_id, seller_id, label, tracking_number, price) => {
+    const values = [item_id, winner_id, seller_id, label, tracking_number, price];
     try {
       const client = await postgres.connect();
       const res = await client.query(createShipmentSQL, values);

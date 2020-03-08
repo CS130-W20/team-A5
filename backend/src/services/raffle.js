@@ -1,5 +1,5 @@
 const EasyPost = require('@easypost/api');
-const api = new EasyPost(process.env.EASYPOST_API_KEY)
+const easypostAPI = new EasyPost(process.env.EASYPOST_API_KEY)
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -67,12 +67,15 @@ const RaffleService = (itemModel, userModel) => {
 		
 		// Get the shipment object
 		const shipment = await createShippingLabel(item, seller_info, winning_user_info)
-
 		// Buy the lowest rate shipment option
 		// Then create a new shipment object with the shipping label and tracking number, to be used later or an error if the shipment was not created
 		// Then send an email to the seller with the shipping label
 		let sh = await shipment.buy(shipment.lowestRate(['USPS'], ['First']))
-		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], winning_bid_info['user_id'], item['seller_id'], sh.postage_label.label_url, sh.tracking_code);
+
+		const rate_str = sh['selected_rate']['rate']
+		const rate = parseFloat(rate_str)
+		
+		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], winning_bid_info['user_id'], item['seller_id'], sh.postage_label.label_url, sh.tracking_code, rate);
 		await sendShippingLabel(item, seller_info, sh.postage_label.label_url)
 		if (e3) {
 			console.log("Error while creating shipment object");
@@ -137,7 +140,7 @@ const RaffleService = (itemModel, userModel) => {
 	const createShippingLabel = async (item, seller, winner) => {
 		
 		// From address is the seller of the item
-		const fromAddress = new api.Address({
+		const fromAddress = new easypostAPI.Address({
 		  name: seller['first_name'] + " " + seller['last_name'], 
 		  street1: seller['address_1'],
 		  street2: seller['address_2'],
@@ -150,7 +153,7 @@ const RaffleService = (itemModel, userModel) => {
 		fromAddress.save()
 
 		// To address is the winner of the item
-		const toAddress = new api.Address({
+		const toAddress = new easypostAPI.Address({
 		  name: winner['first_name'] + " " + winner['last_name'], 
 		  street1: winner['address_1'],
 		  street2: winner['address_2'],
@@ -165,19 +168,18 @@ const RaffleService = (itemModel, userModel) => {
 
 		// Parcel information
 		// Arbitrary numbers since we don't record this for the item
-		// TODO: Add these fields when user creates an item
-		// OR just keep them arbitrary for now
-		const parcel = new api.Parcel({
+		// This is a box big enough for many items
+		const parcel = new easypostAPI.Parcel({
 		  length: 9,
-		  width: 6,
-		  height: 2,
+          width: 6,
+          height: 2,
 		  weight: 10,
 		});
 
 		parcel.save()
 
 		// Create the shipment item
-		const shipment = new api.Shipment({
+		const shipment = new easypostAPI.Shipment({
 		  to_address: toAddress,
 		  from_address: fromAddress,
 		  parcel: parcel

@@ -126,10 +126,11 @@ const ItemModel = (repo) => {
    * @param  {number} seller_id - ID of user who sold item
    * @param  {string} label - String for URL for shipping label
    * @param  {string} tracking_number - String for tracking number for the shipment
+   * @param  {number} price - Price of the shipment to deduct from seller
    * @return {Array<{0: Shipment, 1: String}>} - Array with Rafflebay Shipment Objects and error (only one or the other)
    */
-  const createShipment = async(item_id, winner_id, seller_id, label, tracking_number) => {
-    return await repo.createShipment(item_id, winner_id, seller_id, label, tracking_number)
+  const createShipment = async(item_id, winner_id, seller_id, label, tracking_number, price) => {
+    return await repo.createShipment(item_id, winner_id, seller_id, label, tracking_number, price)
   }
 
   /**
