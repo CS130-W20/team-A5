@@ -8,7 +8,8 @@ target 'RaffleBay' do
   # Pods for RaffleBay
 	pod 'Alamofire', '~> 4.5'
 	pod 'SwiftyJSON', '~> 4.0'
-	pod 'Alamofire-SwiftyJSON'  
+	pod 'Alamofire-SwiftyJSON' 
+  pod 'Stripe' 
 target 'RaffleBayTests' do
     inherit! :search_paths
     # Pods for testing
