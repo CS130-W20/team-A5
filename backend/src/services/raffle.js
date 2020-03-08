@@ -244,10 +244,8 @@ const RaffleService = (itemModel, userModel) => {
 			let curr_item = items[i]
 			if (curr_item['status'] == 'AR') {
 				chooseAndNotifyWinner(curr_item)
-				console.log("Chose winner")
 			} else if (curr_item['status'] == 'IP') {
 				cancelRaffle(curr_item)
-				console.log("Cancel item")
 			}
 		}
 		return 0;
