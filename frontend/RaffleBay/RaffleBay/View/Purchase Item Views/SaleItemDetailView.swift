@@ -37,6 +37,7 @@ struct SaleItemDetailView : View {
     @State private var num_of_tickets = ""
     @State private var showingAlert = false
     @State private var error_message = "Not enough funds. Please add more funds"
+    @State private var seller_name = ""
     
 
     @EnvironmentObject var navigation: NavigationStack
@@ -120,12 +121,19 @@ struct SaleItemDetailView : View {
                         print(self.currUser.account_balance)
                         print(self.saleItem.ticket_price)
                         let generatedRand: Int = generateRandomNumber()
-                        if Double(self.currUser.account_balance)! >= Double(self.saleItem.ticket_price)! * Double(self.num_of_tickets)! {
-                            post_bid_on_item(saleItem: self.saleItem, auth_token: self.authenticationVM.auth_token, num_of_tickets: self.num_of_tickets, rand_seed: generatedRand)
-                            self.navigation.success(numOfTickets: self.num_of_tickets, SaleItem: self.saleItem)
-                        } else {
+                        if (self.num_of_tickets == "") {
                             self.showingAlert = true
+                            self.error_message = "Please enter the number of tickets you wish to buy"
+                        } else {
+                            if Double(self.currUser.account_balance)! >= Double(self.saleItem.ticket_price)! * Double(self.num_of_tickets)! {
+                                post_bid_on_item(saleItem: self.saleItem, auth_token: self.authenticationVM.auth_token, num_of_tickets: self.num_of_tickets, rand_seed: generatedRand)
+                                self.navigation.success(numOfTickets: self.num_of_tickets, SaleItem: self.saleItem)
+                            } else {
+                                self.error_message = "Not enough funds. Please add more funds"
+                                self.showingAlert = true
+                            }
                         }
+
                     }){
                         Text("Buy Now")
                             .blueButtonText()
@@ -135,6 +143,14 @@ struct SaleItemDetailView : View {
                 }
             }.padding(20)
         }.padding()
+//            .onAppear{
+//                get_seller_name(auth_token: self.authenticationVM.auth_token, user_id: String(self.saleItem.seller_id)) {
+//                response in
+//                self.seller_name = response
+//
+//            }
+        
+//        }
     }
 }
 
