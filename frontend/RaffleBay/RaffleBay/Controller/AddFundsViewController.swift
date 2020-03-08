@@ -17,7 +17,7 @@ func post_add_funds(auth_token: String, fund_amt: Double, completion: @escaping 
     let parameters: [String: Any] = [
         "amount": fund_amt
     ]
-    Alamofire.request(deployed_url + "/api/users/funds/start", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+    Alamofire.request(url + "/api/users/funds/start", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
     .responseSwiftyJSON { dataResponse in
         print(dataResponse.request)
         if dataResponse.result.isSuccess {
