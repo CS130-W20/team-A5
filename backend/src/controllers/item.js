@@ -253,6 +253,91 @@ const ItemController = (itemModel, userModel, authService) => {
     });
   });
 
+  // The API path cancels the raffle item
+  // First it checks that the logged in user is the seller of the item and the item is in progress
+  // Then it updates the status of the item to "CA" for cancelled
+  // Then refunds each user who bid on the item
+  router.post('/cancel', async (req, res) => {
+    if (!req.body) return res.status(400).json({
+      "message": "Malformed Request",
+    });
+
+    // Get the user information of the user sending the request
+    const [user_info, err1] = await authService.getLoggedInUserInfo(req.headers);
+    if (err1) {
+      return res.status(400).json({
+        data: null,
+        message: err1
+      });
+    }
+
+    // Get item of the item to cancel
+    body = req.body
+    const item_id = body['item_id']
+    const [item_info, err2] = await itemModel.getItemInfo(item_id)
+    if (err2) {
+      return res.status(400).json({
+        data: null,
+        message: err2
+      });
+    }
+
+    // Make sure logged in user is the one who sold the item
+    if (item_info['seller_id'] != user_info['id']) {
+      return res.status(400).json({
+        data: null,
+        message: "Cannot cancel: Item is not sold by logged in user"
+      });
+    }
+
+    // Make sure logged in user is the one who sold the item
+    if (item_info['status'] != 'IP') {
+      return res.status(400).json({
+        data: null,
+        message: "Cannot cancel: Item is not currently in progress"
+      });
+    }
+
+
+    // Set status on item to "CA" for Canceled
+    let updated_item = await itemModel.updateItemStatus(item_id, "CA")
+
+    // Refund all users who bid on item
+    // Get all bids for item
+    const [bids, err3] = await itemModel.getBidsForItem(item_id)
+    if (err3) {
+      return res.status(400).json({
+        data: null,
+        message: err3
+      });
+    }
+
+    // For each bid, refund the user the amount they paid
+    for (let i = 0; i<bids.length; i++) {
+      [status, err4] = await userModel.addUserFunds(bids[i]['user_id'], bids[i]['total_cost'])
+      if (err4) {
+        return res.status(400).json({
+          data: null,
+          message: err4
+        });
+      } 
+    }
+
+    const [updated_item_info, err5] = await itemModel.getItemInfo(item_id)
+    if (err5) {
+      return res.status(400).json({
+        data: null,
+        message: err5
+      });
+    }
+
+    return res.status(200).json({
+      data: updated_item_info,
+      message: ""
+    });
+
+  });
+
   return router;
 
 }
