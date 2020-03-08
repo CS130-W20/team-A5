@@ -87,31 +87,8 @@ struct ContentView: View {
     var body: some View {
         NavigationHost()
         .environmentObject(NavigationStack(
-            NavigationItem( view: whatView(token: self.authenticationVM.auth_token))
+            NavigationItem(view: whatView(token: self.authenticationVM.auth_token))
                             ))
-   
-//        if self.authenticationVM.auth_token == "" {
-//            return AnyView(SplashscreenView())
-//        } else {
-//            return AnyView(TabView(selection: $selection){
-//                SaleItemTableView()
-//                    .tabItem {
-//                        VStack {
-//                            Image("first")
-//                            Text("First")
-//                        }
-//                    }
-//                    .tag(0)
-//                ProfileView()
-//                    .tabItem {
-//                        VStack {
-//                            Image("second")
-//                            Text("Second")
-//                        }
-//                    }
-//                    .tag(1)
-//            })
-//        }
     }
 }
 
