@@ -53,9 +53,9 @@ struct ProfileSaleItemView: View {
             
             let dateObj = dateFormatter.date(from: dateString)
             
-//            dateFormatter.dateStyle = .medium
-//            dateFormatter.timeStyle = .none
-//            dateFormatter.locale = Locale(identifier: "en_US")
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            dateFormatter.locale = Locale(identifier: "en_US")
             
             
             self.expireDate = dateFormatter.string(from: dateObj!)

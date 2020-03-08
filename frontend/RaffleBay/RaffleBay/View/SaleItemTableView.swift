@@ -85,6 +85,22 @@ struct SaleItemTableView : View {
                     .fontWeight(.bold)
 
                 Spacer()
+                
+                Button(action:{
+                    if self.currUser.lastName == "" {
+                        get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}
+                        get_all_items() {
+                            response in
+                            self.saleItems = response
+                            print("items count: \(self.saleItems.count) ")
+                        }
+                    
+                }){
+                    Text("Refresh Feed")
+                        .italic()
+                        .foregroundColor(Color.gray)
+                        .fontWeight(.regular)
+                }
 
             }
             if(saleItems.count == 0){
