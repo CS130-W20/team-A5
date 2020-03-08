@@ -23,11 +23,12 @@ class CameraController: NSObject, UINavigationControllerDelegate, UIImagePickerC
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        let uniqueName = UUID().uuidString
         imageInCoordinator = Image(uiImage: unwrapImage)
         isCoordinatorShown = false
         // here is where one would upload file to firebase
         if let data = unwrapImage.pngData(){
-            FirebaseStorageManager().uploadImageData(data: data, serverFileName: unwrapImage.description  , completionHandler: { (isSuccess, add) in if isSuccess {self.pic_url = add!} else {print("reallydidnt work") }   })
+            FirebaseStorageManager().uploadImageData(data: data, serverFileName: uniqueName , completionHandler: { (isSuccess, add) in if isSuccess {self.pic_url = add!} else {print("reallydidnt work") }   })
         }
         
     }
