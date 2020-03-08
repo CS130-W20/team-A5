@@ -246,6 +246,7 @@ POST /api/items/bid/{item_id}
 {
   "ticket_count": <number_of_tickets_in_bid>,
   "total_cost": <total_cost_of_bid>,
+  "random_seed": <random_value_to_help_with_random_winner_selection>
 }
 ```
 

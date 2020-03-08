@@ -91,10 +91,11 @@ const ItemModel = (repo) => {
    * @param  {number} item_id - ID of item bid is for
    * @param  {number} ticket_count - Number of tickets being purchased
    * @param  {number} total_cost - Total cost of entire bid
+   * @param  {number} random_seed - Random seed value for this bid given by the frontend
    * @return {Array<{0: Bid, 1: String}>} - Array with new Rafflebay Bid Object and error (only one or the other)
    */
-  const createBid = async (user_id, item_id, ticket_count, total_cost) => {
-    return await repo.createBid(user_id, item_id, ticket_count, total_cost);
+  const createBid = async (user_id, item_id, ticket_count, total_cost, random_seed) => {
+    return await repo.createBid(user_id, item_id, ticket_count, total_cost, random_seed);
   }
 
   /**
