@@ -40,6 +40,7 @@ struct CreateSaleItem: View {
                 Image.load(newSaleItem.pic_url)
                     .resizable()
                     .frame(maxWidth: 350, maxHeight: 200)
+                    
                 
                 Text(newSaleItem.item_name)
                     .h1()
