@@ -53,7 +53,11 @@ function start(port) {
     }),
   );
   app.use(cookieParser());
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({
+    verify: (req, res, buf) => {
+      req.rawBody = buf
+    }
+  }))
 
   const router = express.Router();
   router.use('/users', userController);

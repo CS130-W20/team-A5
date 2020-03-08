@@ -1,5 +1,5 @@
 const express = require('express');
-const stripe = require('stripe')('sk_test_5gplp1sIKFhQt744225EGwEI00jdqzWfG0');
+const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 const FundsController = (userModel, authService) => {
   const router = express.Router();
@@ -55,11 +55,13 @@ const FundsController = (userModel, authService) => {
   });
 
   router.post('/complete', async (req, res) => {
-    
+    const stripe_signature = req.headers['stripe-signature'];
+
     let event;
+
     
     try {
-      event = req.body;
+      event = stripe.webhooks.constructEvent(req.rawBody, stripe_signature, process.env.STRIPE_WEBHOOK_SIGNATURE);
     } catch (err) {
       return res.status(400).json({"err": `Webhook Error: ${err.message}`});
     }
@@ -69,7 +71,6 @@ const FundsController = (userModel, authService) => {
       const paymentIntent = event.data.object;
 
       const payment_id = paymentIntent.id;
-      
       const [payment_info, err1] = await userModel.getPaymentInfoByPaymentId(payment_id)
 
       if (err1 || payment_info == null) {
