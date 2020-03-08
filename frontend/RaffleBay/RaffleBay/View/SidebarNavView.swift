@@ -61,14 +61,14 @@ struct SidebarNavView: View {
                             AddFundsWrapper()
                         }
                         Spacer().frame(height: 80)
-                        Button(action: {
-                                
-                        }){
-                            Text("Settings")
-                                .foregroundColor(Color.gray)
-                                .fontWeight(.semibold)
-                                .font(.custom("Poppins", size: 24))
-                            }.padding().disabled(true)
+//                        Button(action: {
+//                                
+//                        }){
+//                            Text("Settings")
+//                                .foregroundColor(Color.gray)
+//                                .fontWeight(.semibold)
+//                                .font(.custom("Poppins", size: 24))
+//                            }.padding().disabled(true)
                         
                         Button(action: {
                                 self.authenticationVM.auth_token = ""
