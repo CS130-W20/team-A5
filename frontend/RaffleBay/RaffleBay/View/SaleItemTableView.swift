@@ -101,7 +101,13 @@ struct SaleItemTableView : View {
             }
     }
     .padding(20)
-    .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
+    .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}
+        get_all_items() {
+            response in
+            self.saleItems = response
+            print("items count: \(self.saleItems.count) ")
+        }
+    }
     }
 
 }
