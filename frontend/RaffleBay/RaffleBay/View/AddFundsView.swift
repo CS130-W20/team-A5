@@ -23,7 +23,7 @@ class AddFundsView: UIViewController {
         button.backgroundColor = .systemBlue
         button.titleLabel?.font = UIFont.systemFont(ofSize: 22)
         button.setTitle("Pay", for: .normal)
-        button.addTarget(self, action: #selector(pay), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startCheckout), for: .touchUpInside)
         return button
     }()
     
@@ -73,13 +73,14 @@ class AddFundsView: UIViewController {
         }
     }
     
-    func startCheckout() {
+    @objc func startCheckout() {
 
         post_add_funds(auth_token: auth_token, fund_amt: amount * 100) {
             response in
             let clientSecret = response["client_secret"]
             print("Created PaymentIntent")
             self.paymentIntentClientSecret = clientSecret.string
+            self.pay()
         }
 
     }
