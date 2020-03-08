@@ -95,10 +95,10 @@ struct SaleItemDetailView : View {
                                 .foregroundColor(Color("PurpleBlue")))
                         Text("Tickets Left")
                         Spacer()
-                        VStack(alignment: .trailing){
-                            //Need to make an API request for the seller name from id
-                            Text("Seller: " + String(saleItem.seller_id))
-                        }
+//                        VStack(alignment: .trailing){
+//                            //Need to make an API request for the seller name from id
+//                            Text("Seller: " + String(saleItem.seller_id))
+//                        }
                     }
                 
                     Rectangle()
