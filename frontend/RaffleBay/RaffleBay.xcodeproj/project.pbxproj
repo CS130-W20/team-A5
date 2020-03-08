@@ -45,6 +45,7 @@
 		B2734644240B88EC005FF61D /* ProfileBidItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734643240B88EC005FF61D /* ProfileBidItemView.swift */; };
 		B273464A241425B2005FF61D /* SaleItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734649241425B2005FF61D /* SaleItemDetailViewController.swift */; };
 		B273464C24142EC7005FF61D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273464B24142EC7005FF61D /* SignupViewController.swift */; };
+		B2734652241491A1005FF61D /* SaleItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734651241491A1005FF61D /* SaleItemTableViewController.swift */; };
 		B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AA23ECAC47007305A0 /* AppDelegate.swift */; };
 		B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AC23ECAC47007305A0 /* SceneDelegate.swift */; };
 		B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */; };
@@ -127,6 +128,7 @@
 		B2734643240B88EC005FF61D /* ProfileBidItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBidItemView.swift; sourceTree = "<group>"; };
 		B2734649241425B2005FF61D /* SaleItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemDetailViewController.swift; sourceTree = "<group>"; };
 		B273464B24142EC7005FF61D /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		B2734651241491A1005FF61D /* SaleItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemTableViewController.swift; sourceTree = "<group>"; };
 		B27513A723ECAC47007305A0 /* RaffleBay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleBay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27513AA23ECAC47007305A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27513AC23ECAC47007305A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				B247F55C23FFAD6C00FA7830 /* CreateSaleItemViewController.swift */,
 				B2734649241425B2005FF61D /* SaleItemDetailViewController.swift */,
 				B273464B24142EC7005FF61D /* SignupViewController.swift */,
+				B2734651241491A1005FF61D /* SaleItemTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				B273464C24142EC7005FF61D /* SignupViewController.swift in Sources */,
 				B27513EC23ECAD52007305A0 /* SaleItemDetailView.swift in Sources */,
 				B27513E223ECACD6007305A0 /* SaleItem.swift in Sources */,
+				B2734652241491A1005FF61D /* SaleItemTableViewController.swift in Sources */,
 				B2734640240B3198005FF61D /* SellingOrBuyingItem.swift in Sources */,
 				B247F55923FF38E600FA7830 /* AuthenticationViewModel.swift in Sources */,
 				B273464A241425B2005FF61D /* SaleItemDetailViewController.swift in Sources */,

@@ -122,8 +122,6 @@ struct ProfileView: View {
                 self.buyingItems = response.1
                 print("selling count: \(self.sellingItems.count) ")
             }
-//            self.sellingItems = tup.0
-//            self.buyingItems = tup.1
             
         }
     }
