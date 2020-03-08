@@ -131,7 +131,8 @@ struct SignupView : View {
                                                 response in
                                                 if response == true {
                                                     //self.selection = response
-                                                    self.navigation.home()
+                                                    //Changed this to redirect to login. Temporary workaround for the glitch with signup.
+                                                    self.navigation.login()
                                                 } else {
                                                     self.showingAlert = true
                                                 }

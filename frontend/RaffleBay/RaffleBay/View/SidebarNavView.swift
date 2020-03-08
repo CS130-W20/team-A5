@@ -73,6 +73,7 @@ struct SidebarNavView: View {
                         Button(action: {
                                 self.authenticationVM.auth_token = ""
                                 self.navigation.splashscreen()
+                                print(self.authenticationVM.auth_token)
                         }){
                             Text("Logout")
                                 .foregroundColor(Color.gray)
