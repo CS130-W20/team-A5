@@ -161,9 +161,11 @@ struct UploadSaleItemView : View {
         
     }
 }
+}
 
 struct UploadSaleItemView_Previews: PreviewProvider {
     static var previews: some View {
         UploadSaleItemView()
     }
 }
+

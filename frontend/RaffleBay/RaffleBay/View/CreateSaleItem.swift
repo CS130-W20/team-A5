@@ -23,9 +23,8 @@ struct CreateSaleItem: View {
     
     @ObservedObject var newSaleItem: SaleItem
     @ObservedObject var authenticationVM = AuthenticationViewModel()
-    
+    @State private var ticketPrice = ""
     var body: some View {
-            
         VStack(){
             HStack(){
                 Button(action: {
@@ -35,38 +34,13 @@ struct CreateSaleItem: View {
                         .foregroundColor(Color.gray)
                         .fontWeight(.semibold)
                         .font(.custom("Poppins", size: 24))
-            Spacer().frame(height: 100)
-            VStack(alignment: .leading) {
-                Image.load(newSaleItem.pic_url)
-                    .resizable()
-                    .frame(maxWidth: 350, maxHeight: 200)
-                    
-                
-                Text(newSaleItem.item_name)
-                    .h1()
-                Text(newSaleItem.item_description)
-                    .h2()
-                
-            }
-            Spacer()
-            VStack(alignment: .center){
-                Text("Raffle Duration: 14 Days")
-                    .fontWeight(.bold)
-            }
-            VStack(alignment: .leading){
-                HStack(){
-                    Text("Total List Price: ")
-                        .clearButtonText()
-                    Spacer()
-                    Text(newSaleItem.sale_price)
-                        .clearButtonText()
                 }
                 Spacer()
             }.padding()
             VStack(){
 
                 VStack(alignment: .leading) {
-                    Image("bose")
+                    Image.load(picURL: newSaleItem.pic_url)
                         .resizable()
                         .frame(maxWidth: 350, maxHeight: 200)
                     
@@ -80,12 +54,6 @@ struct CreateSaleItem: View {
                 VStack(alignment: .center){
                     Text("Raffle Duration: 7 Days")
                         .fontWeight(.bold)
-            }.padding(20)
-            NavigationLink(destination: ProfileView()){
-                Button(action: {post_sale_item(saleItem: self.newSaleItem)}) {
-                    Text("Add Listing")
-                      .blueButtonText()
-                      .frame(minWidth:0, maxWidth: frameMaxWidth)
                 }
                 VStack(alignment: .leading){
                     HStack(){
@@ -102,6 +70,13 @@ struct CreateSaleItem: View {
                         Text(newSaleItem.total_tickets)
                             .clearButtonText()
                     }
+                    HStack(){
+                        Text("Price of Each Ticket: ")
+                            .clearButtonText()
+                        Spacer()
+                        Text("$" + ticketPrice)
+                            .clearButtonText()
+                    }
                 }.padding(20)
                 Button(action:{
                     post_sale_item(auth_token: self.authenticationVM.auth_token, saleItem: self.newSaleItem)
@@ -112,6 +87,10 @@ struct CreateSaleItem: View {
                         .frame(minWidth:0, maxWidth: frameMaxWidth)
                 }.buttonStyle(BigBlueButtonStyle())
             }.padding(40)
+            .onAppear {
+                self.ticketPrice = String(Int(self.newSaleItem.sale_price)! / Int(self.newSaleItem.total_tickets)!)
+                self.newSaleItem.ticket_price = self.ticketPrice
+            }
         }
     }
 }
