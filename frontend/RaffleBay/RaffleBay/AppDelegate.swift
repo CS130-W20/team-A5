@@ -8,13 +8,14 @@
 
 import UIKit
 import CoreData
-
+import Stripe
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Stripe.setDefaultPublishableKey("pk_test_KIZC0Zlo5pa21e6NWVLu05qz00sh6tAIFr")
         // Override point for customization after application launch.
         return true
     }

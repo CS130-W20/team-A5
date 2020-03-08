@@ -6,6 +6,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+            <key>ec2-52-14-122-136.us-east-2.compute.amazonaws.com</key>
+                       <dict>
+                           <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                           <true/>
+                           <key>NSIncludesSubdomains</key>
+                           <true/>
+                       </dict>
 			<key>localhost</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

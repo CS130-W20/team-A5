@@ -11,7 +11,7 @@ import SwiftUI
 struct SidebarNavView: View {
     @EnvironmentObject var navigation: NavigationStack
     @ObservedObject var authenticationVM = AuthenticationViewModel()
-    
+    @State private var showing_add_fund_model = false
     var body: some View {
         VStack(){
             HStack(){
@@ -47,6 +47,19 @@ struct SidebarNavView: View {
                                 .fontWeight(.semibold)
                                 .font(.custom("Poppins", size: 24))
                         }.padding()
+                        Button(action: {
+                            self.showing_add_fund_model.toggle()
+//                             self.navigation.advance(
+//                                                   NavigationItem( view: AnyView(AddFundsWrapper(authenticationVM: self.authenticationVM))))
+                        }){
+                            Text("Add Funds")
+                                .foregroundColor(Color.gray)
+                                .fontWeight(.semibold)
+                                .font(.custom("Poppins", size: 24))
+                        }.padding()
+                        .sheet(isPresented: $showing_add_fund_model) {
+                            AddFundsWrapper()
+                        }
                         Spacer().frame(height: 80)
                         Button(action: {
                                 

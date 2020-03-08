@@ -19,6 +19,6 @@ let frameMaxWidth:CGFloat = 300
 
 //URL for API connection
 let url:String = "http://localhost:31337"
-
+let deployed_url: String = "http://ec2-52-14-122-136.us-east-2.compute.amazonaws.com"
 //Number of Columns to display on Sale Page
 let cols = 2
