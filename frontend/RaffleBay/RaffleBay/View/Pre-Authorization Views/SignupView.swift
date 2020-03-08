@@ -24,7 +24,8 @@ struct SignupView : View {
     @State private var pwdConfirm = String()
     @State var value: CGFloat = 0
     @State private var showingAlert = false
-
+    @State private var successfulSignup = true
+    
     var body: some View {
         
         
@@ -113,11 +114,11 @@ struct SignupView : View {
                                         .foregroundColor(.red)
                     
                                 }else{
-//                                    //Validations Here
-//                                    if(!successfulSignup) {
-//                                        Text("Incorrect information. Fix errors and retry.")
-//                                            .foregroundColor(.red)
-//                                    }
+                                    //Validations Here
+                                    if(!successfulSignup) {
+                                        Text("Incorrect or blank info. Fix errors and retry.")
+                                            .foregroundColor(.red)
+                                    }
                                 }
                                 
                           
@@ -127,6 +128,8 @@ struct SignupView : View {
                                     ShadowBoxView()
                     
                                     Button(action: {
+                                        if((self.someUser.password.count != 0) && (self.someUser.email.count != 0) && (self.someUser.firstName.count != 0) && (self.someUser.lastName.count != 0)){
+                                            self.successfulSignup = true
                                              post_signup(newUser: self.someUser) {
                                                 response in
                                                 if response == true {
@@ -137,7 +140,9 @@ struct SignupView : View {
                                                     self.showingAlert = true
                                                 }
                                             }
-                    
+                                        }else{
+                                            self.successfulSignup = false
+                                        }
                                     }){
                                         Text("Sign Up")
                                             .blueButtonText()
