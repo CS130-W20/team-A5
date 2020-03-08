@@ -127,6 +127,18 @@ const UserModel = (repo) => {
   }
 
   /**
+   * Add funds to a user's account
+   * 
+   * @param  {number} user_id - ID for user to add funds
+   * @param  {number} amount - Amount to deposit into user's account
+   * @return {Array<{0: User, 1: String}>} - Array with updated Rafflebay User Object and error (only one or the other)
+   */
+  const addUserFunds = async (user_id, amount) => {
+    const [user, err] = await repo.addUserFunds(user_id, amount)
+    return [_.pick(user, allButPasshash), err]
+  }
+
+  /**
    * Tells the database to create a new payment entry
    * 
    * @param  {string} payment_id - Stripe payment ID
@@ -156,6 +168,7 @@ const UserModel = (repo) => {
     verifyPasswordAndReturnUser,
     debitUserFunds,
     addUserFundsAndSetPaymentCompleted,
+    addUserFunds,
     createPayment,
     getPaymentInfoByPaymentId,
   };

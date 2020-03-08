@@ -136,22 +136,6 @@ returns
 }
 ```
 
-### Tell the backend that a payment has been completed
-POST /api/users/funds/complete
-```
-{
-  "payment_id": "<payment_id_from_stripe>"
-}
-```
-
-returns
-```
-{
-  "data": "<UPDATED_USER_MODEL>",
-  "message": "<ERROR_MESSAGE>"
-}
-```
-
 ### Item Model Definition
 ```
 {
