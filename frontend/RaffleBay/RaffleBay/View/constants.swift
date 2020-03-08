@@ -21,3 +21,7 @@ let url:String = "http://ec2-52-14-122-136.us-east-2.compute.amazonaws.com:80"
 
 //Number of Columns to display on Sale Page
 let cols = 2
+
+//Sale Item Cell Height
+let cellHeight:CGFloat = 200
+let cellWidth:CGFloat = 175

@@ -24,7 +24,7 @@ struct GridStack<Content: View>: View {
                     }
                 }
             }
-        }.frame(height: CGFloat(200 * rows))
+        }.frame(height: cellHeight * CGFloat(rows))
     }
 
     init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content) {

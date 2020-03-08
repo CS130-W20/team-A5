@@ -11,8 +11,7 @@ import SwiftUI
 struct SaleItemCellView: View {
    
     let saleItem: SaleItem
-    let cellHeight:CGFloat = 200
-    let cellWidth:CGFloat = 175
+    
     
     
     var body: some View {
