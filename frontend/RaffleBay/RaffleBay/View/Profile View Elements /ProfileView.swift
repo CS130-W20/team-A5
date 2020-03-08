@@ -56,7 +56,7 @@ struct ProfileView: View {
                         
                     Text("\(currUser.firstName) \(currUser.lastName)")
                         .clearButtonText()
-                    Text("Account Balance: $\(currUser.account_balance)")
+                    Text("Account Balance: $\(currUser.account_balance)0")
                         .standardBoldText()
                 }
                 Spacer()
@@ -92,10 +92,14 @@ struct ProfileView: View {
                             }
                             
                             Spacer()
-                            Button(action:{
-                                self.navigation.advance(NavigationItem( view: AnyView(UploadSaleItemView())))
-                            }){
-                                PlusButtonView()
+                            if (self.items_bid_on == 2){
+                                Button(action:{
+                                    self.navigation.advance(NavigationItem( view: AnyView(UploadSaleItemView())))
+                                }){
+                                    Text("Add Listing")
+                                        .standardBoldText()
+                                        .underline()
+                                }
                             }
                         }
                         .padding(8)
@@ -122,6 +126,7 @@ struct ProfileView: View {
                 }
             }else{
                 Text("Click a button above to view your items.")
+                    .standardRegularText()
                 Spacer()
             }
         }
