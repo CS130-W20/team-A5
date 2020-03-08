@@ -95,7 +95,7 @@ const RaffleService = (itemModel, userModel) => {
 		  to: winner['email'],
 		  from: 'admin@rafflebay.com',
 		  subject: 'Congrats! You won a Rafflebay Item. Here\'s your tracking information.',
-		  html: '<br><h1>Congratulations!</h1><div>You won ' +  item['item_name']  + ' on Rafflebay!</div><div>You can track your item with the <strong> following link: ' + tracking_code + ' </strong></div><br><div>If there are any issues with the item, please contact support: laurenfromm@gmail.com</div><br><div>Enjoy!</div><div> -- The Rafflebay Team</div>'
+		  html: '<br><h1>Congratulations!</h1><div>You won ' +  item['item_name']  + ' on Rafflebay!</div><div>You can track your item with the <strong> following link: <a href=' + tracking_code + '> Click Here </a></strong></div><br><div>If there are any issues with the item, please contact support: laurenfromm@gmail.com</div><br><div>Enjoy!</div><div> -- The Rafflebay Team</div>'
 		};
 		sgMail.send(msg);
 	}
@@ -114,7 +114,7 @@ const RaffleService = (itemModel, userModel) => {
 		  to: seller['email'],
 		  from: 'admin@rafflebay.com',
 		  subject: 'Your shipping label for your Rafflebay Item',
-		  html: '<br><h1>Congratulations!</h1><div>You sold ' +  item['item_name']  + ' on Rafflebay!</div><div>You can ship your item with the shipping label in the <strong> following link: ' + label + ' </strong></div><br><div>If there are any issues with the item, please contact support: laurenfromm@gmail.com</div><br><div>Enjoy!</div><div> -- The Rafflebay Team</div>'
+		  html: '<br><h1>Congratulations!</h1><div>You sold ' +  item['item_name']  + ' on Rafflebay!</div><div>You can ship your item with the shipping label in the <strong> following link: <a href=' + label + '> Click Here </a></strong></div><br><div>If there are any issues with the item, please contact support: laurenfromm@gmail.com</div><br><div>Enjoy!</div><div> -- The Rafflebay Team</div>'
 		};
 		sgMail.send(msg);
 	}
@@ -232,7 +232,6 @@ const RaffleService = (itemModel, userModel) => {
 	const checkDeadlines = async () => {
 		// Get all items that have a deadline in the past and are in 'IP' or 'AR'
 		const [items, err1] = await itemModel.getItemsPastDeadline();
-
 		if (err1) {
 			console.log("Error while retreiving items")
 			return -1;
