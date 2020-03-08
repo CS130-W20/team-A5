@@ -2,7 +2,28 @@ const express = require('express');
 const AdminController = (userModel, itemModel, raffleService) => {
   const router = express.Router();
 
-  alex/money-to-seller
+  // The API path to choose a winner for all items awaiting a raffle
+  router.get('/select_winners', async (req, res) => {
+    // Ensure this is a real admin user calling this endpoint
+    const auth_header = req.headers['authorization']
+    if (auth_header == null) {
+      return res.status(400).json({
+        data: null,
+        message: "No Authorization Received"
+      });
+    }
+    const token = auth_header.slice(7); 
+
+    if (token != process.env.ADMIN_AUTH_TOKEN) {
+      return res.status(400).json({
+        data: null,
+        message: "Incorrect Authorization"
+      });
+    }
+
+    // Get all items with the "AR" status
+
+    const [items, err1] = await itemModel.getItemsWithStatus("AR");
 
   	if (err1) {
       return res.status(400).json({
