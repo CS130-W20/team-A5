@@ -10,12 +10,12 @@ import Foundation
 import Alamofire_SwiftyJSON
 import Alamofire
 import SwiftyJSON
-func login_request(email: String, password: String, authenticationVM: AuthenticationViewModel, user: User) -> Int {
+func login_request(email: String, password: String, authenticationVM: AuthenticationViewModel, user: User, completion: @escaping (Bool) -> Void) {
     let parameters: [String: Any] = [
         "email": email,
         "password": password
     ]
-    var result = 0
+    var result = false
     
     print("email: \(email)")
     print("password: \(password)")
@@ -35,12 +35,15 @@ func login_request(email: String, password: String, authenticationVM: Authentica
                 user.lastName = data["last_name"].string!
                 user.pic_url = data["pic_url"].string!
                 user.account_balance = "0"
-                result = 1
+                result = true
+                completion(result)
+            } else {
+                completion(result)
             }
         } else {
             print(dataResponse.error)
+            completion(result)
         }
     };
     
-    return 1;
 }
