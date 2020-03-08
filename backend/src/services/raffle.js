@@ -83,19 +83,19 @@ const RaffleService = (itemModel, userModel) => {
 	}
 
 	/**
-	 * Function to send the tracking number to the winner
+	 * Function to send the tracking url to the winner
 	 * Used once Easypost notifies us that the shipment was shipped
 	 * @param  {Item} item - Item information that is being shipped
 	 * @param  {User} winner - User who won the item
-	 * @param  {string} tracking_code - tracking number
+	 * @param  {string} tracking_code - tracking url
 	 * @return {null} - Nothing is returned
 	 */
 	const sendTrackingNumber = async (item, winner, tracking_code) => {
 		const msg = {
 		  to: winner['email'],
 		  from: 'admin@rafflebay.com',
-		  subject: 'Your tracking number for your Rafflebay Item',
-		  text: 'Congratulations! You won ' + item['item_name'] + ' . Here is the tracking code so you can follow your item: ' + tracking_code + ' . Enjoy!',
+		  subject: 'Congrats! You won a Rafflebay Item. Here\'s your tracking information.',
+		  html: '<br><h1>Congratulations!</h1><div>You won ' +  item['item_name']  + ' on Rafflebay!</div><div>You can track your item with the <strong> following link: ' + tracking_code + ' </strong></div><br><div>If there are any issues with the item, please contact support: laurenfromm@gmail.com</div><br><div>Enjoy!</div><div> -- The Rafflebay Team</div>'
 		};
 		sgMail.send(msg);
 	}
@@ -114,7 +114,7 @@ const RaffleService = (itemModel, userModel) => {
 		  to: seller['email'],
 		  from: 'admin@rafflebay.com',
 		  subject: 'Your shipping label for your Rafflebay Item',
-		  text: 'Congratulations! You sold ' + item['item_name'] + ' . Here is a link to the shipping label so you can send your item: ' + label + ' . Enjoy!',
+		  html: '<br><h1>Congratulations!</h1><div>You sold ' +  item['item_name']  + ' on Rafflebay!</div><div>You can ship your item with the shipping label in the <strong> following link: ' + label + ' </strong></div><br><div>If there are any issues with the item, please contact support: laurenfromm@gmail.com</div><br><div>Enjoy!</div><div> -- The Rafflebay Team</div>'
 		};
 		sgMail.send(msg);
 	}
