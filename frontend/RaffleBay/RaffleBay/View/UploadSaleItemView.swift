@@ -110,7 +110,7 @@ struct UploadSaleItemView : View {
 
                     if (newSaleItem.total_tickets != "") {                        
 //                        newSaleItem.ticket_price = String(Int(newSaleItem.sale_price) / Int(newSaleItem.total_tickets))
-                        Text("Ticket Price: " + newSaleItem.sale_price)
+                        Text("Ticket Price: " + String(newSaleItem.sale_price))
                     }
                     
                 }
