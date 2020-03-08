@@ -59,7 +59,7 @@ const RaffleService = (itemModel, userModel) => {
 		const [winning_bid_info, e] = await itemModel.setBidAsWinner(winning_bid_id);
 
 		// Update status of the item to "AS" ("Awaiting Shipment")
-		let updated_item = await itemModel.updateItemStatus(item['item_id'], "AS")
+		let [updated_item, e3] = await itemModel.updateItemStatus(item['item_id'], "AS")
 
 		// Get user info of seller and winner
 		const [seller_info, e1] = await userModel.getUserInfoById(item['seller_id'])
