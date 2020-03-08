@@ -27,9 +27,10 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const EasyPost = require('@easypost/api');
-const api = new EasyPost('EZTK306be7aecba44da486ac37dd01871296leZm7Qb3VVPb0bv17K3ACA')
+const easypostAPI = new EasyPost(process.env.EASYPOST_API_KEY)
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 /**
  * A standalone service to help with raffle lifecycle events, such as randomly selecting a winner and updating databases
@@ -46,12 +47,10 @@ const RaffleService = (itemModel, userModel) => {
 	 * database calls and email notifications
 	 * 
 	 * What this method does
-	 * 1. Selects winner with weighted random
+	 * 1. Selects winner with weighted random, using true random seeds from the frontend
 	 * 2. Set that bid as the winner
 	 * 3. Get user info for seller and winner
 	 * 4. Send alert email to the winner
-	 * TODO: Get shipping info here? From seller's zip code to winner's address
-	 * TODO: Send shipping info email to the seller
 	 * 
 	 * @param  {Item} item - Item Object with status "AR" (aka, ready to have winner selected)
 	 * @return {number} - ID of the winning Bid, -1 if an error (Error will be logged to console)
@@ -67,18 +66,20 @@ const RaffleService = (itemModel, userModel) => {
 		// Build array of bid ids, with 1 entry per ticket bought
 		let ticket_arr = []
 
+		// Also build a sum of all of the random seeds of the bids
+		let random_sum = 0
 		for (let i = 0; i &lt; bids.length; i++) {
 			let curr_bid = bids[i]
 			let bid_id = curr_bid['bid_id']
+			random_sum += curr_bid['random_seed']
 
 			for (let count = 0; count &lt; curr_bid['ticket_count']; count++) {
 				ticket_arr.push(bid_id)
 			}
 		}
 
-		// Get random integer between 0 and (number_of_tickets - 1)
-		// TODO: This is pseudorandom for now, make really random later
-		const winner_index = Math.floor(Math.random() * ticket_arr.length); 
+		// Use the random seed sum from the bids to get an index of the winner
+		const winner_index = random_sum % ticket_arr.length
 
 		const winning_bid_id = ticket_arr[winner_index];
 
@@ -86,24 +87,23 @@ const RaffleService = (itemModel, userModel) => {
 		const [winning_bid_info, e] = await itemModel.setBidAsWinner(winning_bid_id);
 
 		// Update status of the item to "AS" ("Awaiting Shipment")
-		let updated_item = await itemModel.updateItemStatus(item['item_id'], "AS")
+		let [updated_item, e4] = await itemModel.updateItemStatus(item['item_id'], "AS")
 
 		// Get user info of seller and winner
 		const [seller_info, e1] = await userModel.getUserInfoById(item['seller_id'])
 		const [winning_user_info, e2] = await userModel.getUserInfoById(winning_bid_info['user_id'])
-
-		// TODO
-		// Use emails to send shipping label and tracking number to winner and seller
-		// For now just create a new shipping object with this information
 		
 		// Get the shipment object
 		const shipment = await createShippingLabel(item, seller_info, winning_user_info)
-
 		// Buy the lowest rate shipment option
 		// Then create a new shipment object with the shipping label and tracking number, to be used later or an error if the shipment was not created
 		// Then send an email to the seller with the shipping label
 		let sh = await shipment.buy(shipment.lowestRate(['USPS'], ['First']))
-		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], sh.postage_label.label_url, sh.tracking_code);
+
+		const rate_str = sh['selected_rate']['rate']
+		const rate = parseFloat(rate_str)
+		
+		const [shipping_object, e3] = await itemModel.createShipment(item['item_id'], winning_bid_info['user_id'], item['seller_id'], sh.postage_label.label_url, sh.tracking_code, rate);
 		await sendShippingLabel(item, seller_info, sh.postage_label.label_url)
 		if (e3) {
 			console.log("Error while creating shipment object");
@@ -168,7 +168,7 @@ const RaffleService = (itemModel, userModel) => {
 	const createShippingLabel = async (item, seller, winner) => {
 		
 		// From address is the seller of the item
-		const fromAddress = new api.Address({
+		const fromAddress = new easypostAPI.Address({
 		  name: seller['first_name'] + " " + seller['last_name'], 
 		  street1: seller['address_1'],
 		  street2: seller['address_2'],
@@ -181,7 +181,7 @@ const RaffleService = (itemModel, userModel) => {
 		fromAddress.save()
 
 		// To address is the winner of the item
-		const toAddress = new api.Address({
+		const toAddress = new easypostAPI.Address({
 		  name: winner['first_name'] + " " + winner['last_name'], 
 		  street1: winner['address_1'],
 		  street2: winner['address_2'],
@@ -196,19 +196,18 @@ const RaffleService = (itemModel, userModel) => {
 
 		// Parcel information
 		// Arbitrary numbers since we don't record this for the item
-		// TODO: Add these fields when user creates an item
-		// OR just keep them arbitrary for now
-		const parcel = new api.Parcel({
+		// This is a box big enough for many items
+		const parcel = new easypostAPI.Parcel({
 		  length: 9,
-		  width: 6,
-		  height: 2,
+          width: 6,
+          height: 2,
 		  weight: 10,
 		});
 
 		parcel.save()
 
 		// Create the shipment item
-		const shipment = new api.Shipment({
+		const shipment = new easypostAPI.Shipment({
 		  to_address: toAddress,
 		  from_address: fromAddress,
 		  parcel: parcel
@@ -221,11 +220,75 @@ const RaffleService = (itemModel, userModel) => {
 
 	}
 
+    /**
+     * Cancel the raffle for an item
+ 	 * First, check that the item is in progress
+     * Then, update the status of the item to "CA" for cancelled
+     * Then refund each user who bid on the item
+     * @param  {Item} 	item - item to cancel
+     * @return {number} - Return status
+     */
+    const cancelRaffle = async(item) => {
+    
+    	// Make sure logged in user is the one who sold the item
+	    if (item['status'] != 'IP') {
+	      console.log("Cannot cancel: Item is not currently in progress")
+	      return -1;
+	    }
+
+	    // Set status on item to "CA" for Canceled
+	    let updated_item = await itemModel.updateItemStatus(item['item_id'], "CA")
+
+	    // Refund all users who bid on item
+	    // Get all bids for item
+	    const [bids, err3] = await itemModel.getBidsForItem(item['item_id'])
+
+	    // For each bid, refund the user the amount they paid
+	    for (let i = 0; i&lt;bids.length; i++) {
+	      [status, err4] = await userModel.addUserFunds(bids[i]['user_id'], bids[i]['total_cost'])
+	    }
+
+	    return 0;
+
+ 	}  
+
+	/**
+	 * Function that gets called every day at midnight 
+	 * Gets all the items where the deadline has passed
+	 * If the item sold all tickets, it has a status of 'AR' and can choose a winner
+	 * Otherwise, cancel the raffle for the item
+	 * @return {number} - Return status
+	 */
+	const checkDeadlines = async () => {
+		// Get all items that have a deadline in the past and are in 'IP' or 'AR'
+		const [items, err1] = await itemModel.getItemsPastDeadline();
+
+		if (err1) {
+			console.log("Error while retreiving items")
+			return -1;
+		}
+
+		// Go through every item 
+		// Either choose a winner for the raffle, or cancel the raffle
+		for (let i = 0; i &lt; items.length; i++) {
+			let curr_item = items[i]
+			if (curr_item['status'] == 'AR') {
+				chooseAndNotifyWinner(curr_item)
+			} else if (curr_item['status'] == 'IP') {
+				cancelRaffle(curr_item)
+			}
+		}
+		return 0;
+
+	}
+
 	return {
     	chooseAndNotifyWinner,
     	sendTrackingNumber,
     	sendShippingLabel,
     	createShippingLabel,
+    	cancelRaffle,
+    	checkDeadlines,
   };
 }
 
@@ -247,7 +310,7 @@ module.exports = {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 05 2020 22:03:38 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sun Mar 08 2020 23:14:16 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

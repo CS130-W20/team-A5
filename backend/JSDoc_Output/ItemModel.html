@@ -220,7 +220,7 @@
     
 
     
-    <h4 class="name" id="~createBid"><span class="type-signature">(async, inner) </span>createBid<span class="signature">(user_id, item_id, ticket_count, total_cost)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Bid, 1: String}>}</span></h4>
+    <h4 class="name" id="~createBid"><span class="type-signature">(async, inner) </span>createBid<span class="signature">(user_id, item_id, ticket_count, total_cost, random_seed)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Bid, 1: String}>}</span></h4>
     
 
     
@@ -354,6 +354,29 @@ The repo method is atomic, will ensure bid can go through before creating
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>random_seed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Random seed value for this bid given by the frontend</td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -391,7 +414,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line96">line 96</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line97">line 97</a>
     </li></ul></dd>
     
 
@@ -815,7 +838,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
 
     
-    <h4 class="name" id="~createShipment"><span class="type-signature">(async, inner) </span>createShipment<span class="signature">(item_id, label, tracking_number)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Shipment, 1: String}>}</span></h4>
+    <h4 class="name" id="~createShipment"><span class="type-signature">(async, inner) </span>createShipment<span class="signature">(item_id, winner_id, seller_id, label, tracking_number, price)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Shipment, 1: String}>}</span></h4>
     
 
     
@@ -882,6 +905,52 @@ The repo method is atomic, will ensure bid can go through before creating
 
         <tr>
             
+                <td class="name"><code>winner_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of user who won item</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>seller_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of user who sold item</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>label</code></td>
             
 
@@ -925,6 +994,29 @@ The repo method is atomic, will ensure bid can go through before creating
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>price</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Price of the shipment to deduct from seller</td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -962,7 +1054,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line128">line 128</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -1280,7 +1372,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line116">line 116</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line117">line 117</a>
     </li></ul></dd>
     
 
@@ -1390,7 +1482,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line137">line 137</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line151">line 151</a>
     </li></ul></dd>
     
 
@@ -1708,7 +1800,7 @@ The repo method is atomic, will ensure bid can go through before creating
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line106">line 106</a>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line107">line 107</a>
     </li></ul></dd>
     
 
@@ -1749,6 +1841,116 @@ The repo method is atomic, will ensure bid can go through before creating
     <dd>
         
 <span class="param-type">Array.&lt;{0: Item, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getItemsPastDeadline"><span class="type-signature">(async, inner) </span>getItemsPastDeadline<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;{0: Array.&lt;Item>, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets all items that have passed their deadline
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line159">line 159</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with array of Rafflebay Item Objects and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: Array.&lt;Item>, 1: String}></span>
 
 
     </dd>
@@ -1908,6 +2110,165 @@ The repo method is atomic, will ensure bid can go through before creating
     <dd>
         
 <span class="param-type">Array.&lt;{0: Array.&lt;Item>, 1: String}></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getShipmentInformation"><span class="type-signature">(async, inner) </span>getShipmentInformation<span class="signature">(tracking_number)</span><span class="type-signature"> &rarr; {Array.&lt;{0: Shipment, 1: String}>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets a shipment object with the given tracking number
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tracking_number</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">String for the tracking number for the shipment</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_item_index.js.html">models/item/index.js</a>, <a href="models_item_index.js.html#line142">line 142</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Array with Rafflebay Shipment Objects and error (only one or the other)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;{0: Shipment, 1: String}></span>
 
 
     </dd>
@@ -2282,7 +2643,7 @@ The repo method is atomic, will ensure bid can go through before creating
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Mar 05 2020 22:03:38 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sun Mar 08 2020 23:14:17 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>
