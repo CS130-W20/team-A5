@@ -2,15 +2,7 @@ const express = require('express');
 const AdminController = (userModel, itemModel, raffleService) => {
   const router = express.Router();
 
-  // The API path to choose a winner for all items awaiting a raffle
-  router.get('/select_winners', async (req, res) => {
-  	// TODO add security to this method
-  	// Maybe make an admin user and only let them call this?
-  	// Or just add a hardcoded secret to the header
-
-  	// Get all items with the "AR" status
-
-  	const [items, err1] = await itemModel.getItemsWithStatus("AR");
+  alex/money-to-seller
 
   	if (err1) {
       return res.status(400).json({
