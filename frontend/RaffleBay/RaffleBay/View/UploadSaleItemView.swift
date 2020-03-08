@@ -15,9 +15,10 @@ struct CaptureImageView {
   /// MARK: - Properties
   @Binding var isShown: Bool
   @Binding var image: Image?
+@Binding var pic_url: String
   
   func makeCoordinator() -> CameraController {
-    return CameraController(isShown: $isShown, image: $image)
+    return CameraController(isShown: $isShown, image: $image, pic_url: $pic_url)
   }
 }
 
@@ -41,7 +42,8 @@ struct CameraView: View {
     
   @State var image: Image? = nil
   @State var showCaptureImageView: Bool = false
-  
+  @Binding var pic_url: String
+    
   var body: some View {
     ZStack {
       VStack {
@@ -55,11 +57,14 @@ struct CameraView: View {
           .clipShape(Rectangle())
           .overlay(Rectangle().stroke(Color.white, lineWidth: 4))
           .shadow(radius: 10)
+        
+        
       }
       if (showCaptureImageView) {
-        CaptureImageView(isShown: $showCaptureImageView, image: $image)
+        CaptureImageView(isShown: $showCaptureImageView, image: $image, pic_url: $pic_url)
       }
     }
+
   }
 }
 
@@ -72,6 +77,7 @@ struct UploadSaleItemView : View {
     @State var temp_total_ticket: String = ""
     @State var value: CGFloat = 0
     @State var noEmpty: Bool = true
+    @State var image: Image? = nil
     
     var body: some View {
         HStack(){
@@ -94,7 +100,7 @@ struct UploadSaleItemView : View {
                 }.padding()
                 Spacer().frame(height: 80)
                 
-                CameraView()
+                CameraView(pic_url: $newSaleItem.pic_url)
                 VStack(){
                     TextField("Item Name", text: $newSaleItem.item_name)
                         .textFieldStyle(SignUpTextFieldStyle())
