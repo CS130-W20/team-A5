@@ -4,22 +4,9 @@ const AdminController = (userModel, itemModel, raffleService) => {
 
   // The API path to choose a winner for all items awaiting a raffle
   router.get('/select_winners', async (req, res) => {
-  	// Ensure this is a real admin user calling this endpoint
-    const auth_header = req.headers['authorization']
-    if (auth_header == null) {
-      return res.status(400).json({
-        data: null,
-        message: "No Authorization Received"
-      });
-    }
-    const token = auth_header.slice(7); 
-
-    if (token != process.env.ADMIN_AUTH_TOKEN) {
-      return res.status(400).json({
-        data: null,
-        message: "Incorrect Authorization"
-      });
-    }
+  	// TODO add security to this method
+  	// Maybe make an admin user and only let them call this?
+  	// Or just add a hardcoded secret to the header
 
   	// Get all items with the "AR" status
 
@@ -60,7 +47,7 @@ const AdminController = (userModel, itemModel, raffleService) => {
     }
 
     // Handle the event
-    if (event.description == 'tracker.updated' && event.result.status == "in_transit") {
+    if (event.description == 'tracker.updated' && (event.result.status == "in_transit" || event.result.status == "delivered")) {
       // get the tracking information from the event
       const tracking_object = event.result;
       const tracking_url = tracking_object.public_url
