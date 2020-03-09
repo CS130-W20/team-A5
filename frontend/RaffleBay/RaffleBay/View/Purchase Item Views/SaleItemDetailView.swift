@@ -88,7 +88,7 @@ struct SaleItemDetailView : View {
                         .foregroundColor(Color("LightGray"))
                 
                     HStack(){
-                        Text(saleItem.total_tickets) //This is wrong (or improperly named). I'm assuming this is "Total Tickets Remaining"
+                        Text(String((Int(saleItem.total_tickets) ?? 0) - (Int(saleItem.tickets_sold) ?? 0)))
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
                             .padding(10)

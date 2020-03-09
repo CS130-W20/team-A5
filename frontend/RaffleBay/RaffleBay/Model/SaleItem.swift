@@ -20,10 +20,11 @@ class SaleItem: ObservableObject {
     @Published var sale_price: String = ""
     @Published var ticket_price: String = ""
     @Published var total_tickets: String = ""
+    @Published var tickets_sold: String = ""
     @Published var is_ended: Bool = true
     @Published var created_at: String = ""
     
-    init(item_name: String, item_id: Int, seller_id: Int, pic_url: String, item_description: String, sale_price: String, ticket_price: String, total_tickets: String, created_at: String) {
+    init(item_name: String, item_id: Int, seller_id: Int, pic_url: String, item_description: String, sale_price: String, ticket_price: String, total_tickets: String, tickets_sold: String, created_at: String) {
         self.item_name = item_name
         self.item_id = item_id
         self.seller_id = seller_id
@@ -32,6 +33,7 @@ class SaleItem: ObservableObject {
         self.sale_price = sale_price
         self.ticket_price = ticket_price
         self.total_tickets = total_tickets
+        self.tickets_sold = tickets_sold
         self.created_at = created_at
     }
 }

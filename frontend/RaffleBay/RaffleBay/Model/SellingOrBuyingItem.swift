@@ -21,14 +21,18 @@ class SellingOrBuyingItem: Identifiable, ObservableObject {
     @Published var ticket_price: String = ""
     @Published var total_tickets: String = ""
     @Published var tickets_sold: String = ""
+    @Published var tickets_bought: String = ""
+    @Published var total_cost: String = ""
     @Published var created_at: String = ""
     
-    init(item_name: String, pic_url: String, sale_price: String, created_at: String, tickets_sold: String, total_tickets: String) {
+    init(item_name: String, pic_url: String, sale_price: String, created_at: String, tickets_sold: String, tickets_bought: String, total_cost: String, total_tickets: String) {
         self.item_name = item_name
         self.pic_url = pic_url
         self.sale_price = sale_price
         self.created_at = created_at
         self.tickets_sold = tickets_sold
+        self.tickets_bought = tickets_bought
+        self.total_cost = total_cost
         self.total_tickets = total_tickets
     }
 }
