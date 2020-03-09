@@ -24,6 +24,12 @@ const UserController = (userModel, authService) => {
     const zip = body['zip']
     const phone = body['phone']
 
+    // Give user a default pic_url if they don't upload one
+    
+    if (pic_url == null || pic_url == "") {
+      pic_url = "profile"
+    }
+
     // TEMP Creation of token for user to simulate authentication
     const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     
