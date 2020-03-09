@@ -31,9 +31,8 @@ func get_all_items(completion: @escaping ([SaleItem]) -> Void) {
                         print(String(item["ticket_price"].double!))
                         print(String(item["total_tickets"].int!))
                         print(String(item["item_id"].int!))
-//                        print(item["created_at"].string!)
                         let sale_item = SaleItem(item_name: item["item_name"].string!, item_id: item["item_id"].int!, seller_id: item["seller_id"].int! ,pic_url: item["pic_url"].string!, item_description: item["item_description"].string!,sale_price: String(item["sale_price"].double!),ticket_price: String(item["ticket_price"].double!),  total_tickets: String(item["total_tickets"].int!), tickets_sold:
-                            String(item["tickets_sold"].int!), created_at: /*item["created_at"].string! ??*/ "" )
+                            String(item["tickets_sold"].int!), created_at: item["deadline"].string! ?? "" )
                         saleItems.append(sale_item)
                         print(sale_item.item_name)
                     }
