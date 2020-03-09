@@ -16,7 +16,7 @@ func post_sale_item(auth_token: String, saleItem: SaleItem) -> Void {
     ]
     let parameters: [String: Any] = [
         "item_name": saleItem.item_name,
-        "pic_url": "<url>",
+        "pic_url": saleItem.pic_url,
         "item_description": saleItem.item_description,
         "tags": "fun",
         "sale_price": Double(saleItem.sale_price),

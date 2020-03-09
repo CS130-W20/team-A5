@@ -18,7 +18,7 @@ struct SaleItemCellView: View {
         
         VStack(spacing: 0){
             ZStack(){
-                Image(saleItem.pic_url)
+                Image.load(picURL: saleItem.pic_url)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: cellWidth, height: cellHeight * 0.7)
