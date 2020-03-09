@@ -13,8 +13,8 @@ struct CreateSaleItem: View {
     
     @ObservedObject var newSaleItem: SaleItem
     @ObservedObject var authenticationVM = AuthenticationViewModel()
+    @State private var ticketPrice = ""
     var body: some View {
-            
         VStack(){
             HStack(){
                 Button(action: {
@@ -60,6 +60,13 @@ struct CreateSaleItem: View {
                         Text(newSaleItem.total_tickets)
                             .clearButtonText()
                     }
+                    HStack(){
+                        Text("Price of Each Ticket: ")
+                            .clearButtonText()
+                        Spacer()
+                        Text("$" + ticketPrice)
+                            .clearButtonText()
+                    }
                 }.padding(20)
                 Button(action:{
                     post_sale_item(auth_token: self.authenticationVM.auth_token, saleItem: self.newSaleItem)
@@ -70,6 +77,10 @@ struct CreateSaleItem: View {
                         .frame(minWidth:0, maxWidth: frameMaxWidth)
                 }.buttonStyle(BigBlueButtonStyle())
             }.padding(40)
+            .onAppear {
+                self.ticketPrice = String(Int(self.newSaleItem.sale_price)! / Int(self.newSaleItem.total_tickets)!)
+                self.newSaleItem.ticket_price = self.ticketPrice
+            }
         }
     }
 }

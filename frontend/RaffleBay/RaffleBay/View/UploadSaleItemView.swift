@@ -67,7 +67,7 @@ struct UploadSaleItemView : View {
     @EnvironmentObject var navigation: NavigationStack
     
     //Create some user and use a password confirmation var to confirm
-    @ObservedObject var newSaleItem = SaleItem(item_name: "", seller_id: 0, pic_url: "", item_description: "", sale_price: "", ticket_price: "", total_tickets: "", created_at: "" )
+    @ObservedObject var newSaleItem = SaleItem(item_name: "", item_id: 0, seller_id: 0, pic_url: "", item_description: "", sale_price: "", ticket_price: "", total_tickets: "", created_at: "" )
     @ObservedObject var oldSaleItem = User()
     @State var temp_total_ticket: String = ""
     @State var value: CGFloat = 0
@@ -108,11 +108,6 @@ struct UploadSaleItemView : View {
                     TextField("Number of Tickets", text: $newSaleItem.total_tickets)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(SignUpTextFieldStyle())
-
-                    if (newSaleItem.total_tickets != "") {                        
-//                        newSaleItem.ticket_price = String(Int(newSaleItem.sale_price) / Int(newSaleItem.total_tickets))
-                        Text("Ticket Price: " + String(newSaleItem.sale_price))
-                    }
                     
                 }
                 
