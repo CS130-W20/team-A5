@@ -480,9 +480,15 @@ const ItemRepo = (postgres) => {
    * @type {string}
    */
   const getItemFeedSQL = `
-   SELECT * FROM items
-   WHERE status=$1
-   ORDER BY created_at;
+   SELECT 
+      items.*, 
+      COALESCE(SUM(bids.total_cost),0) AS current_ledger,
+      CAST(COALESCE(SUM(bids.ticket_count),0) AS integer) AS tickets_sold
+    FROM items LEFT JOIN bids 
+      ON items.item_id = bids.item_id 
+    WHERE status=$1
+    GROUP BY items.item_id
+    ORDER BY items.created_at DESC;
   `;
 
   /**
