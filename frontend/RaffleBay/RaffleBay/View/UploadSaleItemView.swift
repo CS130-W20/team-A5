@@ -115,6 +115,24 @@ struct UploadSaleItemView : View {
                         .keyboardType(.decimalPad)
                         .textFieldStyle(SignUpTextFieldStyle())
                 
+
+                    if (newSaleItem.total_tickets != "") {                        
+//                        newSaleItem.ticket_price = String(Int(newSaleItem.sale_price) / Int(newSaleItem.total_tickets))
+                        Text("Ticket Price: " + String(newSaleItem.sale_price))
+                    }
+                    
+
+                    if (newSaleItem.total_tickets != "") {                        
+//                        newSaleItem.ticket_price = String(Int(newSaleItem.sale_price) / Int(newSaleItem.total_tickets))
+                        Text("Ticket Price: " + String(newSaleItem.sale_price))
+                        .onTapGesture {
+                            self.value = signupFrameHeight * 5
+                        }
+                    if (newSaleItem.total_tickets != "") {
+//                        $newSaleItem.ticket_price = "1"
+                        Text("Ticket Price: $5")
+                    }
+                    
                 }
                 
                 Spacer()
@@ -150,9 +168,11 @@ struct UploadSaleItemView : View {
         
     }
 }
+}
 
 struct UploadSaleItemView_Previews: PreviewProvider {
     static var previews: some View {
         UploadSaleItemView()
     }
 }
+
