@@ -16,7 +16,7 @@ To run the full app using the frontend, navigate to frontend/Rafflebay and click
 To just test the backend, there are makefile commands that are listed within the README.md in the backend folder.
 
 ## Testing
-To view the testing scenarios, [view the backend/tests folder](https://github.com/CS130-W20/team-A5/tree/master/backend/test).
+To view the testing scenarios, [view the backend/tests folder](https://github.com/CS130-W20/team-A5/tree/master/backend/src/test).
 The testing scenarios described, with their individiual test cases are as follows:
 
 - Creating an item to sell  
