@@ -16,7 +16,7 @@ const UserController = (userModel, authService) => {
     const last_name = body['last_name']
     const email = body['email']
     const password = body['password']
-    const pic_url = body['pic_url']
+    let pic_url = body['pic_url']
     const address_1 = body['address_1']
     const address_2 = body['address_2']
     const city = body['city']
