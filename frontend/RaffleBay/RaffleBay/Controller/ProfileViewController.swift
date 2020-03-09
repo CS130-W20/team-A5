@@ -54,14 +54,14 @@ func get_items_selling_and_bidding(auth_token: String, completion: @escaping (([
                                    print("data: \(data)")
                 if let items_selling = data["items_selling"].array { print(items_selling)
                     for item in items_selling {
-                        let sellingItem = SellingOrBuyingItem(item_name: item["item_name"].string!, pic_url: item["pic_url"].string!, sale_price: String(item["sale_price"].int!), created_at: item["created_at"].string!, tickets_sold: String(item["tickets_sold"].int!), total_tickets: String(item["total_tickets"].int!) )
+                        let sellingItem = SellingOrBuyingItem(item_name: item["item_name"].string!, pic_url: item["pic_url"].string!, sale_price: String(item["sale_price"].int!), created_at: item["created_at"].string!, tickets_sold: String(item["tickets_sold"].int!), tickets_bought: "", total_cost: "", total_tickets: String(item["total_tickets"].int!) )
                         selling.append(sellingItem)
                         print(sellingItem.item_name)
                     }
                 }
                 if let items_bidding = data["items_bidding"].array { print(items_bidding)
                     for item in items_bidding {
-                        let buyingItem = SellingOrBuyingItem(item_name: item["item_name"].string!, pic_url: item["pic_url"].string!, sale_price: String(item["sale_price"].int!), created_at: item["deadline"].string!, tickets_sold: String(item["tickets_bought"].int!), total_tickets: String(item["total_tickets"].int!) )
+                        let buyingItem = SellingOrBuyingItem(item_name: item["item_name"].string!, pic_url: item["pic_url"].string!, sale_price: String(item["sale_price"].int!), created_at: item["deadline"].string!, tickets_sold: String(item["tickets_bought"].int!), tickets_bought: String(item["tickets_bought"].int!), total_cost: String(item["total_cost"].int!), total_tickets: String(item["total_tickets"].int!) )
                         buying.append(buyingItem)
                         print(buyingItem.item_name)
                     }
