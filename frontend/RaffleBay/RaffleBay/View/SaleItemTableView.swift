@@ -63,7 +63,7 @@ struct SaleItemTableView : View {
                         self.navigation.advance(
                         NavigationItem( view: AnyView(ProfileView())))
                     }){
-                        Image(currUser.pic_url)
+                        Image("profile")//currUser.pic_url)
                             .resizable()
                             .frame(width: 40, height: 40)
                             .foregroundColor(Color("LightGray"))

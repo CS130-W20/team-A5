@@ -48,7 +48,7 @@ struct ProfileView: View {
             HStack(){
                 Spacer()
                 VStack(){
-                    Image(currUser.pic_url)
+                    Image("profile")//currUser.pic_url)
                         .resizable()
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())

@@ -19,7 +19,7 @@ func post_signup(newUser: User, completion: @escaping (Bool) -> Void) {
         "password": newUser.password,
         "pic_url": newUser.pic_url,
         "address_1": newUser.streetAddress,
-        "address_2": "<user_address_line_two>",
+        "address_2": "",
         "city": newUser.city,
         "state": newUser.state,
         "zip": newUser.zipcode,
