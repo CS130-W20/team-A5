@@ -1,6 +1,6 @@
 const {app,postgres} = require('../main'); 
 const cleardb = `
-TRUNCATE items, bids, users, shipments; 
+TRUNCATE items, bids, users, shipments, payments; 
 `;
 beforeEach(async() => {
 	try{

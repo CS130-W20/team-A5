@@ -1,6 +1,6 @@
 const {app,postgres} = require('../main'); 
 const cleardb = `
-TRUNCATE items, bids, users, shipments; 
+TRUNCATE items, bids, users, shipments, payments; 
 `;
 beforeEach(async() => {
 	try{
@@ -213,16 +213,20 @@ describe('get info of other users', () => {
 			.set('Accept', 'applications/json')
 			.expect(200); 
 		const user2 = await request(app).post('/api/users/signup')
-			.send(user1Data)
+			.send(user2Data)
 			.set('Accept', 'applications/json')
 			.expect(200); 
 		const id2 = user2.body.data.id;
 		console.log(id2)
 		const login = await request(app).post('/api/users/login')
-		const response = await request(app).get('/api/users/id2')
 			.send({"email":"user@test.com","password":"qwerty"})
+			.expect(200)
+		let authid = login.body.data.auth_token;
+		const response = await request(app).get(`/api/users/${id2}`)
 			.set('Accept', 'applications/json')
+			.set('Authorization', `Bearer ${authid}`)
 			.expect(200); 
+		console.log(response.body.message);
 		expect(response.body.data.balance).toBeUndefined();
 	})
 	it('should detail private data if user is the same as logged in user', async() => {
@@ -245,9 +249,13 @@ describe('get info of other users', () => {
 			.expect(200); 
 		const id2 = user1.body.data.id
 		const login = await request(app).post('/api/users/login')
-		const response = await request(app).get('/api/users/id2')
+			.send({"email":"user@test.com","password":"qwerty"})
+			.expect(200)
+		let authid = login.body.data.auth_token;
+		const response = await request(app).get(`/api/users/${id2}`)
 			.send({"email":"user@test.com","password":"qwerty"})
 			.set('Accept', 'applications/json')
+			.set('Authorization', `Bearer ${authid}`)
 			.expect(200); 
 		expect(response.body.data.balance).toBeDefined();
 
