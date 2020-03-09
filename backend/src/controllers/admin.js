@@ -60,7 +60,7 @@ const AdminController = (userModel, itemModel, raffleService) => {
     }
 
     // Handle the event
-    if (event.description == 'tracker.updated' && (event.result.status == "in_transit" || event.result.status == "delivered")) {
+    if (event.description == 'tracker.updated' && (event.result.status == "in_transit")) {
       // get the tracking information from the event
       const tracking_object = event.result;
       const tracking_url = tracking_object.public_url
@@ -124,6 +124,9 @@ const AdminController = (userModel, itemModel, raffleService) => {
       return res.status(200).json({"message": "Success"})
 
       } 
+
+      // If incorrect event type, return 400
+      return res.status(400).json({"message": "Unimportant event type"})
   });
 
 
