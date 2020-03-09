@@ -67,7 +67,7 @@ struct UploadSaleItemView : View {
     @EnvironmentObject var navigation: NavigationStack
     
     //Create some user and use a password confirmation var to confirm
-    @ObservedObject var newSaleItem = SaleItem(item_name: "", item_id: 0, seller_id: 0, pic_url: "", item_description: "", sale_price: "", ticket_price: "", total_tickets: "", created_at: "" )
+    @ObservedObject var newSaleItem = SaleItem(item_name: "", item_id: 0, seller_id: 0, pic_url: "", item_description: "", sale_price: "", ticket_price: "", total_tickets: "", tickets_sold: "",  created_at: "" )
     @ObservedObject var oldSaleItem = User()
     @State var temp_total_ticket: String = ""
     @State var value: CGFloat = 0
@@ -131,7 +131,7 @@ struct UploadSaleItemView : View {
                     }){
                         Text("Submit")
                         .blueButtonText()
-                        .frame(minWidth:0, maxWidth: frameMaxWidth)
+                            .frame(minWidth:CGFloat(0), maxWidth: frameMaxWidth)
                     }.buttonStyle(BigBlueButtonStyle())
                     
                 }
