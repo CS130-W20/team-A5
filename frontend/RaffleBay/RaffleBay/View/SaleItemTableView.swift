@@ -87,6 +87,7 @@ struct SaleItemTableView : View {
                 Spacer()
                 
                 Button(action:{
+                    self.saleItems = SaleItemTestData.saleItems()
                     if self.currUser.lastName == "" {
                         get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}
                         get_all_items() {
@@ -100,12 +101,12 @@ struct SaleItemTableView : View {
                         .italic()
                         .foregroundColor(Color.gray)
                         .fontWeight(.regular)
-                }
+                }.animation(.easeInOut(duration: 20))
 
             }
             if(saleItems.count == 0){
                 Spacer()
-                Text("No items to display.")
+                Text("No items to display.").animation(.easeInOut(duration: 20))
             }else{
                 ScrollView(){
                     //Currently this will only show the first even number of items. If there is a an odd number of sale items, the last item will not show. Will be slightly challenging to display that last item.
