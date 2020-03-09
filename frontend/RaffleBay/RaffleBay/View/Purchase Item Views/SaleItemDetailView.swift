@@ -38,6 +38,7 @@ struct SaleItemDetailView : View {
     @State private var showingAlert = false
     @State private var error_message = "Not enough funds. Please add more funds"
     @State private var seller_name = ""
+    @State private var currencyTicketPrice = Double()
     
 
     @EnvironmentObject var navigation: NavigationStack
@@ -69,7 +70,7 @@ struct SaleItemDetailView : View {
                         VStack(alignment: .leading){
                              Text("Ticket Price: ")
                                .h2()
-                            Text(saleItem.ticket_price)
+                            Text(convertDoubleToCurrency(amount: currencyTicketPrice))
                                 .foregroundColor(Color("PurpleBlue"))
                         }
                        
@@ -97,7 +98,9 @@ struct SaleItemDetailView : View {
                         Spacer()
                         VStack(alignment: .trailing){
                             //Need to make an API request for the seller name from id
-                            Text("Seller: " + self.seller_name)
+                            Text("Seller:")
+                                .bold()
+                            Text("\(self.seller_name)")
                         }
                     }
                 
@@ -151,6 +154,8 @@ struct SaleItemDetailView : View {
                 response in
                 self.seller_name = response
 
+                    self.currencyTicketPrice = Double(self.saleItem.ticket_price) as! Double
+                    
             }
         
         }

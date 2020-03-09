@@ -82,6 +82,21 @@ func whatView(token: String) -> AnyView{
     
 }
 
+//Currency Converter
+func convertDoubleToCurrency(amount: Double) -> String{
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .currency
+    numberFormatter.locale = Locale(identifier: "en_US")
+    return numberFormatter.string(from: NSNumber(value: amount))!
+}
+
+func convertCurrencyToDouble(input: String) -> Double? {
+     let numberFormatter = NumberFormatter()
+     numberFormatter.numberStyle = .currency
+     numberFormatter.locale = Locale(identifier: "en_US")
+     return numberFormatter.number(from: input)?.doubleValue
+}
+
 struct ContentView: View {
     //@State private var selection = 0
     @ObservedObject var authenticationVM = AuthenticationViewModel()
