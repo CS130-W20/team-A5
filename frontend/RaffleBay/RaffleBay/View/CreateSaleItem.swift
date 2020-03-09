@@ -7,6 +7,16 @@
 //
 
 import SwiftUI
+import UIKit
+extension Image {
+   static func load(picURL: String) -> Image {
+        guard let pic_url = URL(string: picURL) else { return Image("bose") }
+        guard let picData = try? Data(contentsOf: pic_url) else { return Image("bose") }
+        guard let uiim = UIImage(data: picData) else { return Image("bose") }
+        let image = Image(uiImage: uiim)
+        return image
+    }
+}
 
 struct CreateSaleItem: View {
     @EnvironmentObject var navigation: NavigationStack
@@ -30,7 +40,7 @@ struct CreateSaleItem: View {
             VStack(){
 
                 VStack(alignment: .leading) {
-                    Image("bose")
+                    Image.load(picURL: newSaleItem.pic_url)
                         .resizable()
                         .frame(maxWidth: 350, maxHeight: 200)
                     

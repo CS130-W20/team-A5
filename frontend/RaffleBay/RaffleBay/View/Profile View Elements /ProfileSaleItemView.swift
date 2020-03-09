@@ -14,9 +14,11 @@ struct ProfileSaleItemView: View {
     
     var body: some View {
         HStack(){
-            Rectangle()
+            Image.load(picURL: sellingItem.pic_url)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: frameMaxWidth * 0.4, height: frameMaxWidth * 0.4)
-            
+                .clipped()
             VStack(alignment: .leading){
                 Text(sellingItem.item_name)
                     .standardBoldText()
