@@ -482,7 +482,7 @@ const ItemRepo = (postgres) => {
   const getItemFeedSQL = `
    SELECT * FROM items
    WHERE status=$1
-   ORDER BY deadline;
+   ORDER BY created_at;
   `;
 
   /**

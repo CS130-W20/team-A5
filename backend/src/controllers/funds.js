@@ -20,6 +20,14 @@ const FundsController = (userModel, authService) => {
         message: err
       });
     }
+
+    // Check to make sure the "amount" parameter is greater than 1
+    if (body.amount < 1) {
+      return res.status(400).json({
+        data: null,
+        message: "Amount must be greater than 1"
+      });
+    }
     
     const paymentIntent = await stripe.paymentIntents.create({
       amount: body.amount,
