@@ -59,7 +59,7 @@ struct SaleItemDetailView : View {
             }.padding(20)
             VStack(){
                 VStack(alignment: .leading) {
-                    Image(saleItem.pic_url)
+                    Image.load(picURL: saleItem.pic_url)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 350, height: 200)

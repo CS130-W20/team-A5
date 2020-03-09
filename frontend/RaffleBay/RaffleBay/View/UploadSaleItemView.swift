@@ -116,10 +116,10 @@ struct UploadSaleItemView : View {
                         .textFieldStyle(SignUpTextFieldStyle())
                 
 
-                    if (newSaleItem.total_tickets != "") {                        
-//                        newSaleItem.ticket_price = String(Int(newSaleItem.sale_price) / Int(newSaleItem.total_tickets))
-                        Text("Ticket Price: " + String(newSaleItem.sale_price))
-                    }
+//                    if (newSaleItem.total_tickets != "") {
+////                        newSaleItem.ticket_price = String(Int(newSaleItem.sale_price) / Int(newSaleItem.total_tickets))
+//                        Text("Ticket Price: " + String(newSaleItem.sale_price))
+//                    }
                     
 
                     
