@@ -32,7 +32,7 @@ struct ProfileBidItemView: View {
                 Text("You Paid: $\(buyingItem.total_cost)")
                     .standardRegularText()
                 Spacer().frame(height: 10)
-                Text("Expires On: \(expireDate)")
+                Text("Created On: \(expireDate)")
                     .fontWeight(.bold)
                     .font(.custom("Poppins", size: 14))
                     .foregroundColor(Color.white)

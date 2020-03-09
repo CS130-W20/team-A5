@@ -39,7 +39,7 @@ struct SaleItemDetailView : View {
     @State private var error_message = "Not enough funds. Please add more funds"
     @State private var seller_name = ""
     @State private var currencyTicketPrice = Double()
-    
+    @State private var expireDate:String = ""
 
     @EnvironmentObject var navigation: NavigationStack
     
@@ -78,7 +78,7 @@ struct SaleItemDetailView : View {
                         VStack(alignment: .trailing){
                             Text("Expires at 12AM PST on:")
                                 .h2()
-                            Text(saleItem.created_at)
+                            Text(expireDate)
                                 .foregroundColor(Color.red)
                         }
                     }
@@ -166,7 +166,19 @@ struct SaleItemDetailView : View {
                 self.seller_name = response
 
                     self.currencyTicketPrice = Double(self.saleItem.ticket_price) as! Double
-                    
+                 
+                    let dateString = self.saleItem.created_at.components(separatedBy: "T")[0]
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    dateFormatter.locale = Locale(identifier: "en_US")
+
+                    let dateObj = dateFormatter.date(from: dateString)
+
+                    dateFormatter.dateStyle = .medium
+                    dateFormatter.timeStyle = .none
+                    dateFormatter.locale = Locale(identifier: "en_US")
+
+                    self.expireDate = dateFormatter.string(from: dateObj!)
             }
         
         }
