@@ -122,18 +122,7 @@ struct UploadSaleItemView : View {
                     }
                     
 
-                    if (newSaleItem.total_tickets != "") {                        
-//                        newSaleItem.ticket_price = String(Int(newSaleItem.sale_price) / Int(newSaleItem.total_tickets))
-                        Text("Ticket Price: " + String(newSaleItem.sale_price))
-                        .onTapGesture {
-                            self.value = signupFrameHeight * 5
-                        }
-                    if (newSaleItem.total_tickets != "") {
-//                        $newSaleItem.ticket_price = "1"
-                        Text("Ticket Price: $5")
-                    }
                     
-                }
                 
                 Spacer()
                 //ZStack here to allow for custom shadow manipulation.
