@@ -132,8 +132,17 @@ struct SaleItemDetailView : View {
                             self.error_message = "Please enter the number of tickets you wish to buy"
                         } else {
                             if Double(self.currUser.account_balance)! >= Double(self.saleItem.ticket_price)! * Double(self.num_of_tickets)! {
-                                post_bid_on_item(saleItem: self.saleItem, auth_token: self.authenticationVM.auth_token, num_of_tickets: self.num_of_tickets, rand_seed: generatedRand)
-                                self.navigation.success(numOfTickets: self.num_of_tickets, SaleItem: self.saleItem)
+                                post_bid_on_item(saleItem: self.saleItem, auth_token: self.authenticationVM.auth_token, num_of_tickets: self.num_of_tickets, rand_seed: generatedRand){
+                                    response in
+                                    if response == true {
+                                        
+                                        self.navigation.success(numOfTickets: self.num_of_tickets, SaleItem: self.saleItem)
+                                    } else {
+                                        self.showingAlert = true
+                                        self.error_message = "Please fix your errors and retry."
+                                    }
+                                }
+                               
                             } else {
                                 self.error_message = "Not enough funds. Please add more funds"
                                 self.showingAlert = true

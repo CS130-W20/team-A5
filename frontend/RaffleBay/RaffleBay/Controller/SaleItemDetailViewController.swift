@@ -10,7 +10,7 @@ import Foundation
 import Alamofire_SwiftyJSON
 import Alamofire
 import SwiftyJSON
-func post_bid_on_item(saleItem: SaleItem, auth_token: String, num_of_tickets: String, rand_seed: Int) -> Void {
+func post_bid_on_item(saleItem: SaleItem, auth_token: String, num_of_tickets: String, rand_seed: Int, completion: @escaping (Bool) -> Void) -> Void {
     print("num of tickets \(Double(num_of_tickets)!)")
     print("ticket price \(Double(saleItem.ticket_price)!)")
     let headers: HTTPHeaders = [
@@ -21,6 +21,9 @@ func post_bid_on_item(saleItem: SaleItem, auth_token: String, num_of_tickets: St
         "total_cost": Double(num_of_tickets)! * Double(saleItem.ticket_price)!,
         "random_seed": Int(rand_seed)
     ]
+    
+    var result = false
+    
     let saleItem_id = saleItem.item_id
     print("sale item id: \(saleItem_id)")
     Alamofire.request(url + "/api/items/bid/\(saleItem_id)", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
@@ -32,9 +35,14 @@ func post_bid_on_item(saleItem: SaleItem, auth_token: String, num_of_tickets: St
             if message == "" {
                 let data = dataResponse.value!["data"]
                 print("data: \(data)")
+                result = true
+                completion(result)
+            }else{
+                completion(result)
             }
         } else {
             print(dataResponse.error)
+             completion(result)
         }
     };
     
