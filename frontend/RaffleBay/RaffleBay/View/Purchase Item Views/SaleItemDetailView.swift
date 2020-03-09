@@ -95,10 +95,10 @@ struct SaleItemDetailView : View {
                                 .foregroundColor(Color("PurpleBlue")))
                         Text("Tickets Left")
                         Spacer()
-//                        VStack(alignment: .trailing){
-//                            //Need to make an API request for the seller name from id
-//                            Text("Seller: " + String(saleItem.seller_id))
-//                        }
+                        VStack(alignment: .trailing){
+                            //Need to make an API request for the seller name from id
+                            Text("Seller: " + self.seller_name)
+                        }
                     }
                 
                     Rectangle()
@@ -143,14 +143,14 @@ struct SaleItemDetailView : View {
                 }
             }.padding(20)
         }.padding()
-//            .onAppear{
-//                get_seller_name(auth_token: self.authenticationVM.auth_token, user_id: String(self.saleItem.seller_id)) {
-//                response in
-//                self.seller_name = response
-//
-//            }
+            .onAppear{
+                get_seller_name(auth_token: self.authenticationVM.auth_token, user_id: String(self.saleItem.seller_id)) {
+                response in
+                self.seller_name = response
+
+            }
         
-//        }
+        }
     }
 }
 

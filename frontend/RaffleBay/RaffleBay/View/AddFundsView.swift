@@ -53,7 +53,6 @@ class AddFundsView: UIViewController {
             view.rightAnchor.constraint(equalToSystemSpacingAfter: stackView.rightAnchor, multiplier: 2),
             stackView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 2),
         ])
-        startCheckout()
     }
 
     
@@ -63,7 +62,6 @@ class AddFundsView: UIViewController {
             if restartDemo {
                 alert.addAction(UIAlertAction(title: "Done", style: .cancel) { _ in
                     self.cardTextField.clear()
-                    self.startCheckout()
                 })
             }
             else {
