@@ -41,7 +41,7 @@ const ItemRepo = (postgres) => {
       item_id integer NOT NULL,
       ticket_count integer NOT NULL,
       total_cost float,
-      random_seed integer,
+      random_seed BIGINT,
       did_win BOOLEAN,
       refunded BOOLEAN,
       timestamp timestamptz DEFAULT NOW(),
