@@ -114,7 +114,10 @@ struct SaleItemDetailView : View {
                 Spacer()
                 VStack(alignment: .center){
                     Text("Tickets to purchase:")
-                    TextField("Enter the # of tickets you wish to buy", text: self.$num_of_tickets)
+                        .standardBoldText()
+                    TextField("# of Tickets", text: self.$num_of_tickets)
+                        .textFieldStyle(SignUpTextFieldStyle())
+                        .multilineTextAlignment(.center)
                     }.padding(20)
                     
                     Button(action:{
