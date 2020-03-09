@@ -63,7 +63,7 @@ struct SaleItemTableView : View {
                         self.navigation.advance(
                         NavigationItem( view: AnyView(ProfileView())))
                     }){
-                         Image("profile")
+                        Image(currUser.pic_url)
                             .resizable()
                             .frame(width: 40, height: 40)
                             .foregroundColor(Color("LightGray"))
@@ -81,9 +81,20 @@ struct SaleItemTableView : View {
 //            Spacer().frame(height: 30)
 
             HStack(){
-                Text("Items for Sale")
-                    .fontWeight(.bold)
-
+                
+                HStack(){
+                    VStack(){
+                        Text("Items for Sale")
+                            .fontWeight(.bold)
+//                        Text("Most Recent")
+//                            .fontWeight(.regular)
+//                            .italic()
+//                            .font(.custom("Poppins", size: 12))
+//                            .multilineTextAlignment(.leading)
+                           
+                    }
+                    Spacer()
+                }
                 Spacer()
                 
                 Button(action:{
