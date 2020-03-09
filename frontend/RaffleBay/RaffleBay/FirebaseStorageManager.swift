@@ -12,7 +12,7 @@
 
 import UIKit
 import FirebaseStorage
-
+let imageCache = NSCache<NSString, NSData>()
 class FirebaseStorageManager {
     
     public func uploadFile(localFile: URL, serverFileName: String, completionHandler: @escaping (_ isSuccess: Bool, _ url: String?) -> Void) {
@@ -53,6 +53,8 @@ class FirebaseStorageManager {
                     return
                 }
                 // File Uploaded Successfully
+                imageCache.setObject(data as NSData, forKey: downloadURL.absoluteString as NSString)
+                               completionHandler(true, downloadURL.absoluteString)
                 completionHandler(true, downloadURL.absoluteString)
             }
         }

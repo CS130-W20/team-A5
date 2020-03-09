@@ -10,13 +10,22 @@ import SwiftUI
 import UIKit
 extension Image {
    static func load(picURL: String) -> Image {
-        guard let pic_url = URL(string: picURL) else { return Image("bose") }
-        guard let picData = try? Data(contentsOf: pic_url) else { return Image("bose") }
-        guard let uiim = UIImage(data: picData) else { return Image("bose") }
+    if case let cachedImage as Data = imageCache.object(forKey: picURL as NSString){
+        guard let uiim = UIImage(data: cachedImage) else {return Image("bose")}
         let image = Image(uiImage: uiim)
         return image
     }
+    else {
+        guard let pic_url = URL(string: picURL) else { return Image("bose") }
+        guard let picData = try? Data(contentsOf: pic_url) else { return Image("bose") }
+        imageCache.setObject(picData as NSData, forKey: picURL as NSString)
+        guard let uiim = UIImage(data: picData) else { return Image("bose") }
+        let image = Image(uiImage: uiim)
+        return image
+        }
+    }
 }
+
 
 struct CreateSaleItem: View {
     @EnvironmentObject var navigation: NavigationStack

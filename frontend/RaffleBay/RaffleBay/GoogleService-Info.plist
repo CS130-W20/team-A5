@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>686244905140-lmh0g5ij0mhs3vl8ej98ququ4a62fnek.apps.googleusercontent.com</string>
+	<string>308138650652-hpf68sqmu121qlsldalfdvugr76m9o9a.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.686244905140-lmh0g5ij0mhs3vl8ej98ququ4a62fnek</string>
+	<string>com.googleusercontent.apps.308138650652-hpf68sqmu121qlsldalfdvugr76m9o9a</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAJyRdlYXnQEH7JPxfyRSHWp1FyI7c3ANc</string>
+	<string>AIzaSyB_KEXdGLYc5s87D_sNryrdGSnnqFEPbUE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>686244905140</string>
+	<string>308138650652</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>meera.RaffleBay</string>
 	<key>PROJECT_ID</key>
-	<string>rafflebay-797c5</string>
+	<string>rafflebay2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>rafflebay-797c5.appspot.com</string>
+	<string>rafflebay2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:686244905140:ios:33f63664b9adc00de597e1</string>
+	<string>1:308138650652:ios:6232acf6549b662255c3d9</string>
 	<key>DATABASE_URL</key>
-	<string>https://rafflebay-797c5.firebaseio.com</string>
+	<string>https://rafflebay2.firebaseio.com</string>
 </dict>
 </plist>

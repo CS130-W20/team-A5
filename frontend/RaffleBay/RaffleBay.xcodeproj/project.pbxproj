@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1AB490A396CC980E34EA480D /* Pods_RaffleBay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A071BC947C1A6B65E8EF7F08 /* Pods_RaffleBay.framework */; };
-		301F6FF82411BED4001DE931 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 301F6FF72411BED4001DE931 /* GoogleService-Info.plist */; };
+		305A1A1E2416D27800CD87E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 305A1A1D2416D27700CD87E8 /* GoogleService-Info.plist */; };
 		30FD4DB62414CADA0070C748 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FD4DB52414CADA0070C748 /* FirebaseStorageManager.swift */; };
 		5E8FC075D8D40B530AABE647 /* Pods_RaffleBay_RaffleBayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD40F62AB5FB4D20D5D1CE43 /* Pods_RaffleBay_RaffleBayUITests.framework */; };
 		8B3ACCF823FA14CB0045F6BF /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF723FA14CB0045F6BF /* styles.swift */; };
@@ -89,7 +89,7 @@
 
 /* Begin PBXFileReference section */
 		15B04CF6FFE81118610DB354 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		301F6FF72411BED4001DE931 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		305A1A1D2416D27700CD87E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30FD4DB52414CADA0070C748 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		880D135955D54881166E230E /* Pods_RaffleBayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C06D6D7FB6B7C906C29618 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -303,8 +303,8 @@
 				B27513B323ECAC4A007305A0 /* Assets.xcassets */,
 				B27513B823ECAC4A007305A0 /* LaunchScreen.storyboard */,
 				B27513BB23ECAC4A007305A0 /* Info.plist */,
+				305A1A1D2416D27700CD87E8 /* GoogleService-Info.plist */,
 				B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */,
-				301F6FF72411BED4001DE931 /* GoogleService-Info.plist */,
 				8BE89B6F23EF7C7200EC2076 /* Fonts */,
 				B27513B523ECAC4A007305A0 /* Preview Content */,
 			);
@@ -518,7 +518,7 @@
 				8BE89B8823EF7D4200EC2076 /* Poppins-Bold.ttf in Resources */,
 				B27513B423ECAC4A007305A0 /* Assets.xcassets in Resources */,
 				8BE89B8223EF7D4200EC2076 /* Poppins-LightItalic.ttf in Resources */,
-				301F6FF82411BED4001DE931 /* GoogleService-Info.plist in Resources */,
+				305A1A1E2416D27800CD87E8 /* GoogleService-Info.plist in Resources */,
 				8BE89B9023EF7D4200EC2076 /* Poppins-BlackItalic.ttf in Resources */,
 				8BE89B8E23EF7D4200EC2076 /* Poppins-BoldItalic.ttf in Resources */,
 			);

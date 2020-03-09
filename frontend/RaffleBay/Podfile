@@ -11,9 +11,9 @@ target 'RaffleBay' do
   pod 'Stripe' 
 	pod 'Alamofire-SwiftyJSON'  
 	pod 'Alamofire-SwiftyJSON'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Firestore'
-  pod 'FirebaseFirestoreSwift'
+  #pod 'Firebase/Analytics'
+  #pod 'Firebase/Firestore'
+  #pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
 target 'RaffleBayTests' do
     inherit! :search_paths
