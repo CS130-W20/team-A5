@@ -4,7 +4,7 @@ const AdminController = (userModel, itemModel, raffleService) => {
 
   // The API path to choose a winner for all items awaiting a raffle
   router.get('/select_winners', async (req, res) => {
-  	// Ensure this is a real admin user calling this endpoint
+    // Ensure this is a real admin user calling this endpoint
     const auth_header = req.headers['authorization']
     if (auth_header == null) {
       return res.status(400).json({
@@ -21,9 +21,9 @@ const AdminController = (userModel, itemModel, raffleService) => {
       });
     }
 
-  	// Get all items with the "AR" status
+    // Get all items with the "AR" status
 
-  	const [items, err1] = await itemModel.getItemsWithStatus("AR");
+    const [items, err1] = await itemModel.getItemsWithStatus("AR");
 
   	if (err1) {
       return res.status(400).json({
@@ -83,12 +83,38 @@ const AdminController = (userModel, itemModel, raffleService) => {
         });
       }
 
+      // Now that the item has been shipped, transfer the funds from the sale to the seller
+      // Subtract out the price of shipping
+      // Only transfer funds if the item status is "AS" ("Awaiting Shipment")
+      
+      if (item['status'] == "AS") {
+        let item_funds = item['current_ledger']
+        
+        const [updated_seller, err3] = await userModel.addUserFunds(item['seller_id'], item_funds - shipment['price'])
+        if (err3) {
+          return res.status(400).json({
+            data: null,
+            message: err3
+          });
+        }
+
+        // Update the item status to "C" - completed
+        
+        const [updated_item, err4] = await itemModel.updateItemStatus(item['item_id'], "C")
+        if (err4) {
+          return res.status(400).json({
+            data: null,
+            message: err4
+          });
+        }
+      }
+
       // get the winner information for the shipment
-      const [winner, err3] = await userModel.getUserInfoById(shipment['winner_id'])
-      if (err3) {
+      const [winner, err5] = await userModel.getUserInfoById(shipment['winner_id'])
+      if (err5) {
         return res.status(400).json({
           data: null,
-          message: err3
+          message: err5
         });
       }
 

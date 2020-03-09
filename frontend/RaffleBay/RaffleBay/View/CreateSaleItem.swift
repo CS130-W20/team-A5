@@ -42,7 +42,7 @@ struct CreateSaleItem: View {
                 }
                 Spacer()
                 VStack(alignment: .center){
-                    Text("Raffle Duration: 14 Days")
+                    Text("Raffle Duration: 7 Days")
                         .fontWeight(.bold)
                 }
                 VStack(alignment: .leading){

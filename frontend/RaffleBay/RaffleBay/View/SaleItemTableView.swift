@@ -14,7 +14,7 @@ struct GridStack<Content: View>: View {
     let rows: Int
     let columns: Int
     let content: (Int, Int) -> Content
-
+    
     var body: some View {
         VStack {
             ForEach(0 ..< rows, id: \.self) { row in
@@ -24,7 +24,7 @@ struct GridStack<Content: View>: View {
                     }
                 }
             }
-        }
+        }.frame(height: cellHeight * CGFloat(rows))
     }
 
     init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content) {
@@ -85,23 +85,50 @@ struct SaleItemTableView : View {
                     .fontWeight(.bold)
 
                 Spacer()
+                
+                Button(action:{
+                    if self.currUser.lastName == "" {
+                        get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}
+                        get_all_items() {
+                            response in
+                            self.saleItems = response
+                            print("items count: \(self.saleItems.count) ")
+                        }
+                    
+                }){
+                    Text("Refresh Feed")
+                        .italic()
+                        .foregroundColor(Color.gray)
+                        .fontWeight(.regular)
+                }
 
             }
-            ScrollView(){
-                //Currently this will only show the first even number of items. If there is a an odd number of sale items, the last item will not show. Will be slightly challenging to display that last item.
-                GridStack(rows: saleItems.count / 2, columns: 2) { row, col in
-                        Button(action:{
-                             self.navigation.advance(NavigationItem( view: AnyView(SaleItemDetailView(currUser: self.currUser, authenticationVM: self.authenticationVM, saleItem: self.saleItems[row * 2 + col]) )))
-                        }){
-                            SaleItemCellView(saleItem: self.saleItems[row * 2 + col])
-                            .padding(5)
-                        }.buttonStyle(PlainButtonStyle())
+            if(saleItems.count == 0){
+                Spacer()
+                Text("No items to display.")
+            }else{
+                ScrollView(){
+                    //Currently this will only show the first even number of items. If there is a an odd number of sale items, the last item will not show. Will be slightly challenging to display that last item.
+                    GridStack(rows: saleItems.count / 2, columns: 2) { row, col in
+                            Button(action:{
+                                 self.navigation.advance(NavigationItem( view: AnyView(SaleItemDetailView(currUser: self.currUser, authenticationVM: self.authenticationVM, saleItem: self.saleItems[row * 2 + col]) )))
+                            }){
+                                SaleItemCellView(saleItem: self.saleItems[row * 2 + col])
+                                .padding(5)
+                            }.buttonStyle(PlainButtonStyle())
 
+                    }
                 }
             }
     }
     .padding(20)
-    .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}}
+    .onAppear {if self.currUser.lastName == "" {get_user_request(auth_token: self.authenticationVM.auth_token, user: self.currUser)}
+        get_all_items() {
+            response in
+            self.saleItems = response
+            print("items count: \(self.saleItems.count) ")
+        }
+    }
     }
 
 }

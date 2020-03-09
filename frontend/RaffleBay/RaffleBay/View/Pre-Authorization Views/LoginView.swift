@@ -16,8 +16,12 @@ struct LoginView: View {
     @State private var selection: Int? = nil
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var showingAlert = false
+    @State private var successfulLogin = true
+    
     @ObservedObject var authenticationVM = AuthenticationViewModel()
     @ObservedObject var newUser = User()
+    
      var body: some View {
             HStack(){
                 
@@ -48,7 +52,10 @@ struct LoginView: View {
                     }
                     
                     Spacer().frame(height: 30)
-                    
+                    if(!successfulLogin) {
+                        Text("Please enter a username/password.")
+                            .foregroundColor(.red)
+                    }
                     //Login Stack
                     //ZStack here to allow for custom shadow manipulation.
                     ZStack(){
@@ -56,9 +63,20 @@ struct LoginView: View {
 
                         //Login Button
                         Button(action: {
-                                let response = login_request(email: self.email, password: self.password, authenticationVM: self.authenticationVM, user: self.newUser)
-                                //self.selection = response
-                                self.navigation.home()
+                            if(self.email.count != 0 && self.password.count != 0){
+                                self.successfulLogin = true
+                                login_request(email: self.email, password: self.password, authenticationVM: self.authenticationVM, user: self.newUser) {
+                                    response in
+                                    if response == true {
+                                        //self.selection = response
+                                        self.navigation.home()
+                                    } else {
+                                        self.showingAlert = true
+                                    }
+                                }
+                            }else{
+                                self.successfulLogin = false
+                            }
                                 
                         }){
                             Text("Login")
@@ -66,6 +84,9 @@ struct LoginView: View {
                                 .frame(minWidth:0, maxWidth: frameMaxWidth)
                         }
                         .buttonStyle(BigBlueButtonStyle())
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Incorrect Login"), message: Text("Please try again"), dismissButton: .default(Text("Got it!")))
+                        }
                     }
                     
                     //Signup Button
@@ -87,7 +108,7 @@ struct LoginView: View {
                 
                 //Right Side Spacer
                 Spacer()
-            }
+            }.animation(.spring())
         
         }
     
