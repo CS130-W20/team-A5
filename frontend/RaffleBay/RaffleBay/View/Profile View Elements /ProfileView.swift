@@ -139,7 +139,8 @@ struct ProfileView: View {
                 self.sellingItems = response.0
                 self.buyingItems = response.1
                 print("selling count: \(self.sellingItems.count) ")
-                self.currencyBalance = Double(self.currUser.account_balance) as! Double
+                let doubleVal:Double = 0
+                self.currencyBalance = (Double(self.currUser.account_balance) ?? doubleVal) as! Double
                 
             }
             
