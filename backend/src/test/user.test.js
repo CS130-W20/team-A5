@@ -1,5 +1,19 @@
+const {app,postgres} = require('../main'); 
+const cleardb = `
+TRUNCATE items, bids, users, shipments; 
+`;
+beforeEach(async() => {
+	try{
+		const client = await postgres.connect(); 
+		await client.query(cleardb); 
+		client.release(); 
+		return null; 
+	} catch(err) {
+		return err; 
+	}
+});
 const request = require('supertest');
-const app = require('../main'); 
+
 
 describe('Create User', () => {
 	it('should create a user when given proper data', async () => {
@@ -20,8 +34,7 @@ describe('Create User', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		
-		expect(response.data.email).toEqual(userData.email); 
+		expect(response.body.data.email).toEqual(userData.email); 
 	})
 	it('should allow for null optional fields', async () => {
 		const userData = {
@@ -40,7 +53,7 @@ describe('Create User', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		expect(response.data.email).toEqual(userData.email); 
+		expect(response.body.data.email).toEqual(userData.email); 
 	})
 	it('should reject null required fields', async () => {
 		const userData = {
@@ -77,7 +90,7 @@ describe('Create User', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		expect(response.data.email).toEqual(userData.email); 
+		expect(response.body.data.email).toEqual(userData.email); 
 		const response1 = await request(app).post('/api/users/signup')
 			.send(userData)
 			.set('Accept', 'applications/json')
@@ -123,12 +136,12 @@ describe('login', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		expect(response.data.email).toEqual(userData.email); 
+		expect(response.body.data.email).toEqual(userData.email); 
 		const authenticating = await request(app).post('/api/users/login')
 			.send({"email":"user@test.com","password":"qwerty"})
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		expect(authenticating.data.email).toEqual(userData.email); 
+		expect(authenticating.body.data.email).toEqual(userData.email); 
 
 	})
 	it('should not allow a nonexistant user', async() => {
@@ -155,12 +168,12 @@ describe('login', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		expect(response.data.email).toEqual(userData.email); 
+		expect(response.body.data.email).toEqual(userData.email); 
 		const authenticating = await request(app).post('/api/users/login')
 			.send({"email":"user@test.com","password":"qwerty"})
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		expect(authenticating.data.email).toEqual(userData.email); 
+		expect(authenticating.body.data.email).toEqual(userData.email); 
 		const second_auth = await request(app).post('/api/users/login')
 			.send({"email":"user@test.com","password":"qwerty"})
 			.set('Accept', 'applications/json')
@@ -169,7 +182,74 @@ describe('login', () => {
 })
 describe('get info of other users', () => {
 	it('should not detail any private data of other users', async() => {
+		const user1Data = {
+			"first_name": "test",
+			"last_name": "User",
+			"email": "user@test.com",
+			"password": "qwerty",
+			"pic_url": "<profile_picture_url>",
+			"address_1": "123 Address Lane",
+			"address_2": "This should be optional",
+			"city": "Los Angeles",
+			"state": "CA",
+			"zip": "90024",
+			"phone": "1234567890"
+		};
+		const user2Data = {
+			"first_name": "test2",
+			"last_name": "User2",
+			"email": "user2@test.com",
+			"password": "qwerty",
+			"pic_url": "<profile_picture_url>",
+			"address_1": "124 Address Lane",
+			"address_2": "This should be optional",
+			"city": "Los Angeles",
+			"state": "CA",
+			"zip": "90024",
+			"phone": "1234576890"
+		};
+		const user1 = await request(app).post('/api/users/signup')
+			.send(user1Data)
+			.set('Accept', 'applications/json')
+			.expect(200); 
+		const user2 = await request(app).post('/api/users/signup')
+			.send(user1Data)
+			.set('Accept', 'applications/json')
+			.expect(200); 
+		const id2 = user2.body.data.id;
+		console.log(id2)
+		const login = await request(app).post('/api/users/login')
+		const response = await request(app).get('/api/users/id2')
+			.send({"email":"user@test.com","password":"qwerty"})
+			.set('Accept', 'applications/json')
+			.expect(200); 
+		expect(response.body.data.balance).toBeUndefined();
 	})
 	it('should detail private data if user is the same as logged in user', async() => {
+		const user1Data = {
+			"first_name": "test",
+			"last_name": "User",
+			"email": "user@test.com",
+			"password": "qwerty",
+			"pic_url": "<profile_picture_url>",
+			"address_1": "123 Address Lane",
+			"address_2": "This should be optional",
+			"city": "Los Angeles",
+			"state": "CA",
+			"zip": "90024",
+			"phone": "1234567890"
+		};
+		const user1 = await request(app).post('/api/users/signup')
+			.send(user1Data)
+			.set('Accept', 'applications/json')
+			.expect(200); 
+		const id2 = user1.body.data.id
+		const login = await request(app).post('/api/users/login')
+		const response = await request(app).get('/api/users/id2')
+			.send({"email":"user@test.com","password":"qwerty"})
+			.set('Accept', 'applications/json')
+			.expect(200); 
+		expect(response.body.data.balance).toBeDefined();
+
 	})
 })

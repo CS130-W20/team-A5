@@ -7,13 +7,7 @@ build:
 
 run:
 	-pkill docker-compose
-<<<<<<< HEAD
-	docker-compose up
-||||||| constructed merge base
-	DATABASE=postgres docker-compose up
-=======
 	docker-compose up postgres backend
->>>>>>> Fully fixed docker
 
 run_background:
 	-pkill docker-compose
@@ -22,7 +16,10 @@ run_background:
 stop:
 	docker-compose down
 
-stop_test:
+run_test:
+	docker build -t rafflebay/test .
+	docker-compose up -d postgres_test test 
+	docker-compose exec postgres_test psql -p 5433 -U postgres rafflebay_test -c "DROP TABLE bids, items, users CASCADE;"
 	docker-compose down
 
 test:
@@ -32,7 +29,6 @@ test:
 
 run_test:
 	docker exec -i -t `docker ps -q --filter status=running --filter ancestor=rafflebay/backend:latest` /bin/sh -c "npm run test"
-	DATABASE=postgres_test docker-compose up
 
 format:
 	npx prettier --write --arrow-parens always --single-quote --trailing-comma all --no-bracket-spacing "src/**/*.js"
