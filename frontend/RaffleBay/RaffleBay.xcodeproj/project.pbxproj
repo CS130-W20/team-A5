@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AB490A396CC980E34EA480D /* Pods_RaffleBay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A071BC947C1A6B65E8EF7F08 /* Pods_RaffleBay.framework */; };
 		301F6FF82411BED4001DE931 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 301F6FF72411BED4001DE931 /* GoogleService-Info.plist */; };
 		30FD4DB62414CADA0070C748 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FD4DB52414CADA0070C748 /* FirebaseStorageManager.swift */; };
-		43ECFBBF65465718D230BF45 /* Pods_RaffleBay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3081B660AC02309A8C4192C8 /* Pods_RaffleBay.framework */; };
+		5E8FC075D8D40B530AABE647 /* Pods_RaffleBay_RaffleBayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD40F62AB5FB4D20D5D1CE43 /* Pods_RaffleBay_RaffleBayUITests.framework */; };
 		8B3ACCF823FA14CB0045F6BF /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF723FA14CB0045F6BF /* styles.swift */; };
 		8B3ACCFA23FA48A70045F6BF /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3ACCF923FA48A70045F6BF /* constants.swift */; };
 		8B6C220623FCA4A10014796E /* SidebarNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C220523FCA4A10014796E /* SidebarNavView.swift */; };
@@ -37,7 +38,6 @@
 		8BE89B9323EF7D4200EC2076 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE89B8123EF7D4200EC2076 /* Poppins-SemiBold.ttf */; };
 		8BE89B9523EF835400EC2076 /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE89B9423EF835400EC2076 /* SplashscreenView.swift */; };
 		8BE89B9723F0900500EC2076 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE89B9623F0900500EC2076 /* LoginView.swift */; };
-		A3CA20C487169747B8DBE422 /* Pods_RaffleBayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */; };
 		B247F55523FE270500FA7830 /* UploadSaleItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55423FE270500FA7830 /* UploadSaleItemView.swift */; };
 		B247F55723FE349E00FA7830 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55623FE349E00FA7830 /* CameraController.swift */; };
 		B247F55923FF38E600FA7830 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247F55823FF38E600FA7830 /* AuthenticationViewModel.swift */; };
@@ -47,9 +47,9 @@
 		B2734644240B88EC005FF61D /* ProfileBidItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734643240B88EC005FF61D /* ProfileBidItemView.swift */; };
 		B273464A241425B2005FF61D /* SaleItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734649241425B2005FF61D /* SaleItemDetailViewController.swift */; };
 		B273464C24142EC7005FF61D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273464B24142EC7005FF61D /* SignupViewController.swift */; };
-		B2734652241491A1005FF61D /* SaleItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734651241491A1005FF61D /* SaleItemTableViewController.swift */; };
 		B273464E241440C3005FF61D /* AddFundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273464D241440C3005FF61D /* AddFundsView.swift */; };
 		B273465024146017005FF61D /* AddFundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273464F24146017005FF61D /* AddFundsViewController.swift */; };
+		B2734652241491A1005FF61D /* SaleItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2734651241491A1005FF61D /* SaleItemTableViewController.swift */; };
 		B27513AB23ECAC47007305A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AA23ECAC47007305A0 /* AppDelegate.swift */; };
 		B27513AD23ECAC47007305A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513AC23ECAC47007305A0 /* SceneDelegate.swift */; };
 		B27513B023ECAC47007305A0 /* RaffleBay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B27513AE23ECAC47007305A0 /* RaffleBay.xcdatamodeld */; };
@@ -67,7 +67,7 @@
 		B27513EC23ECAD52007305A0 /* SaleItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */; };
 		B27513F123ECB061007305A0 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27513F023ECB061007305A0 /* SignupView.swift */; };
 		B2FF79FC23F5FA0900AE9572 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */; };
-		EA1F03AABD6C0E1B52460AF6 /* Pods_RaffleBay_RaffleBayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5712EAFB30555AB4BBECD42 /* Pods_RaffleBay_RaffleBayUITests.framework */; };
+		B68BC931CDAD55B8E2BF1944 /* Pods_RaffleBayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 880D135955D54881166E230E /* Pods_RaffleBayTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,14 +88,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20D7B4E73972CF595F6EE612 /* Pods-RaffleBay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay.release.xcconfig"; path = "Target Support Files/Pods-RaffleBay/Pods-RaffleBay.release.xcconfig"; sourceTree = "<group>"; };
-		297D5F3C5198DEDED748DFDB /* Pods-RaffleBay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay/Pods-RaffleBay.debug.xcconfig"; sourceTree = "<group>"; };
+		15B04CF6FFE81118610DB354 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		301F6FF72411BED4001DE931 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3081B660AC02309A8C4192C8 /* Pods_RaffleBay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FD4DB52414CADA0070C748 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
-		55E779020CC0948D0C0A0494 /* Pods-RaffleBayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBayTests.release.xcconfig"; path = "Target Support Files/Pods-RaffleBayTests/Pods-RaffleBayTests.release.xcconfig"; sourceTree = "<group>"; };
-		6DA863272F66B65FDDC4B6ED /* Pods-RaffleBayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBayTests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBayTests/Pods-RaffleBayTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7C9F8FC28B3FA4503302B099 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; sourceTree = "<group>"; };
+		880D135955D54881166E230E /* Pods_RaffleBayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89C06D6D7FB6B7C906C29618 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8ACBEF7FE03FA78D4A2E9D9F /* Pods-RaffleBay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay.release.xcconfig"; path = "Target Support Files/Pods-RaffleBay/Pods-RaffleBay.release.xcconfig"; sourceTree = "<group>"; };
 		8B3ACCF723FA14CB0045F6BF /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		8B3ACCF923FA48A70045F6BF /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8B6C220523FCA4A10014796E /* SidebarNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavView.swift; sourceTree = "<group>"; };
@@ -123,8 +121,9 @@
 		8BE89B8123EF7D4200EC2076 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		8BE89B9423EF835400EC2076 /* SplashscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenView.swift; sourceTree = "<group>"; };
 		8BE89B9623F0900500EC2076 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABA14B827A9D72B336BFD9D8 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9528EC4E38E8F24BA922F632 /* Pods-RaffleBay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBay.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBay/Pods-RaffleBay.debug.xcconfig"; sourceTree = "<group>"; };
+		A071BC947C1A6B65E8EF7F08 /* Pods_RaffleBay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD40F62AB5FB4D20D5D1CE43 /* Pods_RaffleBay_RaffleBayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBay_RaffleBayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B247F55423FE270500FA7830 /* UploadSaleItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSaleItemView.swift; sourceTree = "<group>"; };
 		B247F55623FE349E00FA7830 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		B247F55823FF38E600FA7830 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -134,9 +133,9 @@
 		B2734643240B88EC005FF61D /* ProfileBidItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBidItemView.swift; sourceTree = "<group>"; };
 		B2734649241425B2005FF61D /* SaleItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemDetailViewController.swift; sourceTree = "<group>"; };
 		B273464B24142EC7005FF61D /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		B2734651241491A1005FF61D /* SaleItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemTableViewController.swift; sourceTree = "<group>"; };
 		B273464D241440C3005FF61D /* AddFundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFundsView.swift; sourceTree = "<group>"; };
 		B273464F24146017005FF61D /* AddFundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFundsViewController.swift; sourceTree = "<group>"; };
+		B2734651241491A1005FF61D /* SaleItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemTableViewController.swift; sourceTree = "<group>"; };
 		B27513A723ECAC47007305A0 /* RaffleBay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleBay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27513AA23ECAC47007305A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27513AC23ECAC47007305A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,7 +159,8 @@
 		B27513EB23ECAD52007305A0 /* SaleItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleItemDetailView.swift; sourceTree = "<group>"; };
 		B27513F023ECB061007305A0 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		B2FF79FB23F5FA0900AE9572 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C5712EAFB30555AB4BBECD42 /* Pods_RaffleBay_RaffleBayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaffleBay_RaffleBayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4E4D1FC26952D8ACDE1E225 /* Pods-RaffleBayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBayTests.debug.xcconfig"; path = "Target Support Files/Pods-RaffleBayTests/Pods-RaffleBayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B57FA4311DFE2C655F377ECA /* Pods-RaffleBayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaffleBayTests.release.xcconfig"; path = "Target Support Files/Pods-RaffleBayTests/Pods-RaffleBayTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43ECFBBF65465718D230BF45 /* Pods_RaffleBay.framework in Frameworks */,
+				1AB490A396CC980E34EA480D /* Pods_RaffleBay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3CA20C487169747B8DBE422 /* Pods_RaffleBayTests.framework in Frameworks */,
+				B68BC931CDAD55B8E2BF1944 /* Pods_RaffleBayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA1F03AABD6C0E1B52460AF6 /* Pods_RaffleBay_RaffleBayUITests.framework in Frameworks */,
+				5E8FC075D8D40B530AABE647 /* Pods_RaffleBay_RaffleBayUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,14 +194,24 @@
 		47D03C900500155FDD4A07AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				297D5F3C5198DEDED748DFDB /* Pods-RaffleBay.debug.xcconfig */,
-				20D7B4E73972CF595F6EE612 /* Pods-RaffleBay.release.xcconfig */,
-				ABA14B827A9D72B336BFD9D8 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */,
-				7C9F8FC28B3FA4503302B099 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */,
-				6DA863272F66B65FDDC4B6ED /* Pods-RaffleBayTests.debug.xcconfig */,
-				55E779020CC0948D0C0A0494 /* Pods-RaffleBayTests.release.xcconfig */,
+				9528EC4E38E8F24BA922F632 /* Pods-RaffleBay.debug.xcconfig */,
+				8ACBEF7FE03FA78D4A2E9D9F /* Pods-RaffleBay.release.xcconfig */,
+				15B04CF6FFE81118610DB354 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */,
+				89C06D6D7FB6B7C906C29618 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */,
+				B4E4D1FC26952D8ACDE1E225 /* Pods-RaffleBayTests.debug.xcconfig */,
+				B57FA4311DFE2C655F377ECA /* Pods-RaffleBayTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		85B50B29F5A7AFBD6FABEBBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A071BC947C1A6B65E8EF7F08 /* Pods_RaffleBay.framework */,
+				AD40F62AB5FB4D20D5D1CE43 /* Pods_RaffleBay_RaffleBayUITests.framework */,
+				880D135955D54881166E230E /* Pods_RaffleBayTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8BE89B6F23EF7C7200EC2076 /* Fonts */ = {
@@ -258,16 +268,6 @@
 			path = "Profile View Elements ";
 			sourceTree = "<group>";
 		};
-		A774BB9277D7FA20759246DB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3081B660AC02309A8C4192C8 /* Pods_RaffleBay.framework */,
-				C5712EAFB30555AB4BBECD42 /* Pods_RaffleBay_RaffleBayUITests.framework */,
-				A23D9203AF6575B8387CC6A7 /* Pods_RaffleBayTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B275139E23ECAC47007305A0 = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +276,7 @@
 				B27513CE23ECAC4A007305A0 /* RaffleBayUITests */,
 				B27513A823ECAC47007305A0 /* Products */,
 				47D03C900500155FDD4A07AE /* Pods */,
-				A774BB9277D7FA20759246DB /* Frameworks */,
+				85B50B29F5A7AFBD6FABEBBF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -397,11 +397,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B27513D423ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBay" */;
 			buildPhases = (
-				972013249AE8884B3F818589 /* [CP] Check Pods Manifest.lock */,
+				13592519A47447C5399AF8FF /* [CP] Check Pods Manifest.lock */,
 				B27513A323ECAC47007305A0 /* Sources */,
 				B27513A423ECAC47007305A0 /* Frameworks */,
 				B27513A523ECAC47007305A0 /* Resources */,
-				F9C8DF6D6BDDD8E680440C5F /* [CP] Embed Pods Frameworks */,
+				B80894D101A768155F5E29FD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -416,7 +416,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B27513D723ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBayTests" */;
 			buildPhases = (
-				A6256D1A74A191FBFBA3CB50 /* [CP] Check Pods Manifest.lock */,
+				7A7279CD37BCB668BF9FF165 /* [CP] Check Pods Manifest.lock */,
 				B27513BC23ECAC4A007305A0 /* Sources */,
 				B27513BD23ECAC4A007305A0 /* Frameworks */,
 				B27513BE23ECAC4A007305A0 /* Resources */,
@@ -435,11 +435,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B27513DA23ECAC4A007305A0 /* Build configuration list for PBXNativeTarget "RaffleBayUITests" */;
 			buildPhases = (
-				84FDB1AC561C3EBEC5178E70 /* [CP] Check Pods Manifest.lock */,
+				76E5E884C9AC660FAA865DD1 /* [CP] Check Pods Manifest.lock */,
 				B27513C723ECAC4A007305A0 /* Sources */,
 				B27513C823ECAC4A007305A0 /* Frameworks */,
 				B27513C923ECAC4A007305A0 /* Resources */,
-				DA8BEE579B2DF7D2275514FC /* [CP] Embed Pods Frameworks */,
+				6F3C1CAD8D841BE6487EF8E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -541,29 +541,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		84FDB1AC561C3EBEC5178E70 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RaffleBay-RaffleBayUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		972013249AE8884B3F818589 /* [CP] Check Pods Manifest.lock */ = {
+		13592519A47447C5399AF8FF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -585,7 +563,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A6256D1A74A191FBFBA3CB50 /* [CP] Check Pods Manifest.lock */ = {
+		6F3C1CAD8D841BE6487EF8E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76E5E884C9AC660FAA865DD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RaffleBay-RaffleBayUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A7279CD37BCB668BF9FF165 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -607,24 +624,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DA8BEE579B2DF7D2275514FC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RaffleBay-RaffleBayUITests/Pods-RaffleBay-RaffleBayUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F9C8DF6D6BDDD8E680440C5F /* [CP] Embed Pods Frameworks */ = {
+		B80894D101A768155F5E29FD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -844,7 +844,7 @@
 		};
 		B27513D523ECAC4A007305A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 297D5F3C5198DEDED748DFDB /* Pods-RaffleBay.debug.xcconfig */;
+			baseConfigurationReference = 9528EC4E38E8F24BA922F632 /* Pods-RaffleBay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -865,7 +865,7 @@
 		};
 		B27513D623ECAC4A007305A0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20D7B4E73972CF595F6EE612 /* Pods-RaffleBay.release.xcconfig */;
+			baseConfigurationReference = 8ACBEF7FE03FA78D4A2E9D9F /* Pods-RaffleBay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -886,7 +886,7 @@
 		};
 		B27513D823ECAC4A007305A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DA863272F66B65FDDC4B6ED /* Pods-RaffleBayTests.debug.xcconfig */;
+			baseConfigurationReference = B4E4D1FC26952D8ACDE1E225 /* Pods-RaffleBayTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -909,7 +909,7 @@
 		};
 		B27513D923ECAC4A007305A0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55E779020CC0948D0C0A0494 /* Pods-RaffleBayTests.release.xcconfig */;
+			baseConfigurationReference = B57FA4311DFE2C655F377ECA /* Pods-RaffleBayTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -932,7 +932,7 @@
 		};
 		B27513DB23ECAC4A007305A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABA14B827A9D72B336BFD9D8 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */;
+			baseConfigurationReference = 15B04CF6FFE81118610DB354 /* Pods-RaffleBay-RaffleBayUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -953,7 +953,7 @@
 		};
 		B27513DC23ECAC4A007305A0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C9F8FC28B3FA4503302B099 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */;
+			baseConfigurationReference = 89C06D6D7FB6B7C906C29618 /* Pods-RaffleBay-RaffleBayUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
