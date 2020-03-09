@@ -19,6 +19,7 @@ struct ProfileView: View {
     @State var sellingItems: [SellingOrBuyingItem] = []
     @State var buyingItems: [SellingOrBuyingItem] = []
     @State var items_bid_on = 0
+    @State private var currencyBalance = Double()
     
     @State var canLoad = false
     @State var didToggle: Bool = false
@@ -56,7 +57,7 @@ struct ProfileView: View {
                         
                     Text("\(currUser.firstName) \(currUser.lastName)")
                         .clearButtonText()
-                    Text("Account Balance: $\(currUser.account_balance)0")
+                    Text("Account Balance: \(convertDoubleToCurrency(amount: currencyBalance))")
                         .standardBoldText()
                 }
                 Spacer()
@@ -138,6 +139,9 @@ struct ProfileView: View {
                 self.sellingItems = response.0
                 self.buyingItems = response.1
                 print("selling count: \(self.sellingItems.count) ")
+                let doubleVal:Double = 0
+                self.currencyBalance = (Double(self.currUser.account_balance) ?? doubleVal) as! Double
+                
             }
             
         }

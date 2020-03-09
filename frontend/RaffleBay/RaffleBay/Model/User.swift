@@ -28,19 +28,5 @@ class User: ObservableObject {
     @Published var pic_url: String = ""
     @Published var auth_token: String = ""
     @Published var account_balance: String = ""
-//    //Should these be all private and have public getters/setters?
-//    init(firstName: String, lastName: String, email: String, password: String, streetAddress: String, city: String, state: String, zipcode: String, phoneNumber: String, birthdate: Date) {
-//        self.firstName      = firstName
-//        self.lastName       = lastName
-//        self.email          = email
-//        self.password       = password
-//        self.streetAddress  = streetAddress
-//        self.city           = city
-//        self.state          = state
-//        self.zipcode        = zipcode
-//        self.phoneNumber    = phoneNumber
-//        self.birthdate      = birthdate
-//        
-//    }
     
 }
