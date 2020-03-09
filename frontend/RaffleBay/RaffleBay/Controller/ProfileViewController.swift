@@ -59,6 +59,13 @@ func get_items_selling_and_bidding(auth_token: String, completion: @escaping (([
                         print(sellingItem.item_name)
                     }
                 }
+                if let items_bidding = data["items_bidding"].array { print(items_bidding)
+                    for item in items_bidding {
+                        let buyingItem = SellingOrBuyingItem(item_name: item["item_name"].string!, pic_url: item["pic_url"].string!, sale_price: String(item["sale_price"].int!), created_at: item["deadline"].string!, tickets_sold: String(item["tickets_bought"].int!), total_tickets: String(item["total_tickets"].int!) )
+                        buying.append(buyingItem)
+                        print(buyingItem.item_name)
+                    }
+                }
                 completion((selling, buying))
                }
            } else {
