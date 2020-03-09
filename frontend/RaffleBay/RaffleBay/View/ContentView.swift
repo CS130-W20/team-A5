@@ -35,8 +35,8 @@ final class NavigationStack: ObservableObject {
     }
     
     func home( ){
-       currentView = NavigationItem( view: AnyView(SaleItemTableView()))
-       viewStack.removeAll()
+        currentView = NavigationItem( view: AnyView(SaleItemTableView()))
+        viewStack.removeAll()
     }
     
     func splashscreen( ){
@@ -45,18 +45,20 @@ final class NavigationStack: ObservableObject {
     }
     
     func login( ){
-       currentView = NavigationItem( view: AnyView(LoginView()))
-       viewStack.removeAll()
+        currentView = NavigationItem( view: AnyView(LoginView()))
+        viewStack.removeAll()
+        
     }
     
     func signup( ){
-       currentView = NavigationItem( view: AnyView(SignupView()))
-       viewStack.removeAll()
+        currentView = NavigationItem( view: AnyView(SignupView()))
+        viewStack.removeAll()
+        
     }
     
     func success(numOfTickets: String, SaleItem: SaleItem ){
         currentView = NavigationItem( view: AnyView(SuccessfulView(num_of_tickets: numOfTickets, saleItem: SaleItem)))
-       viewStack.removeAll()
+        viewStack.removeAll()
     }
     
     
@@ -66,7 +68,7 @@ struct NavigationHost: View{
    @EnvironmentObject var navigation: NavigationStack
    
    var body: some View {
-      self.navigation.currentView.view
+            self.navigation.currentView.view.animation(.easeInOut)
    }
 }
 
@@ -88,7 +90,7 @@ struct ContentView: View {
         NavigationHost()
         .environmentObject(NavigationStack(
             NavigationItem(view: whatView(token: self.authenticationVM.auth_token))
-                            ))
+        )).animation(.easeInOut(duration: 6)).transition(.slide)
     }
 }
 
