@@ -166,17 +166,21 @@ struct SaleItemDetailView : View {
                 self.seller_name = response
 
                     self.currencyTicketPrice = Double(self.saleItem.ticket_price) as! Double
-                 
+
                     let dateString = self.saleItem.created_at.components(separatedBy: "T")[0]
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     dateFormatter.locale = Locale(identifier: "en_US")
+
 
                     let dateObj = dateFormatter.date(from: dateString)
 
                     dateFormatter.dateStyle = .medium
                     dateFormatter.timeStyle = .none
                     dateFormatter.locale = Locale(identifier: "en_US")
+
+
+                    
 
                     self.expireDate = dateFormatter.string(from: dateObj!)
             }
