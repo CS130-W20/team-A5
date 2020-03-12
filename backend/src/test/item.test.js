@@ -42,11 +42,7 @@ describe('createItem', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		let authid = authenticating.body.data.auth_token;
+		let authid = signUpResponse.body.data.auth_token;
 		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "tags" : "testing", "sale_price" : 50, "total_tickets":10 };
 		const response = await request(app).post('/api/items/create')
 			.send(itemBody)
@@ -74,11 +70,7 @@ describe('createItem', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		let authid = authenticating.body.data.auth_token;
+		let authid = signUpResponse.body.data.auth_token;
 		const response = await request(app).post('/api/items/create')
 			.set('Authorization', `Bearer ${authid}`)
 			.send(null)
@@ -104,11 +96,7 @@ describe('createItem', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		let authid = authenticating.body.data.auth_token;
+		let authid = signUpResponse.body.data.auth_token;
 		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "tags" : "testing",  "total_tickets":10 };
 		await request(app).post('/api/items/create')
 			.send(itemBody)
@@ -134,11 +122,7 @@ describe('createItem', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		let authid = authenticating.body.data.auth_token;
+		let authid = signUpResponse.body.data.auth_token;
 		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "sale_price" : 50, "total_tickets":10 };
 		await request(app).post('/api/items/create')
 			.send(itemBody)
@@ -179,11 +163,7 @@ describe('Create Bid', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		let authid = authenticating.body.data.auth_token;
+		let authid = signUpResponse.body.data.auth_token;
 		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "tags" : "testing", "sale_price" : 50, "total_tickets":10 };
 		const create = await request(app).post('/api/items/create')
 			.send(itemBody)
@@ -276,12 +256,8 @@ describe('Create Bid', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
 		//const setFunds = await request(app).post
-		let authid = authenticating.body.data.auth_token;
+		let authid = signUpResponse.body.data.auth_token;
 		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "tags" : "testing", "sale_price" : 50, "total_tickets":10 };
 		const create = await request(app).post('/api/items/create')
 			.send(itemBody)

@@ -31,7 +31,7 @@ services:
   test:
     image: rafflebay/test:latest
     ports:
-      - 31337:31337
+      - 80:80
     environment:
       POSTGRES_HOSTNAME: postgres_test
     restart: "no"

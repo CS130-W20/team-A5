@@ -114,6 +114,7 @@ const ItemController = (itemModel, userModel, authService) => {
     const ticket_count = body['ticket_count']
     const total_cost = body['total_cost'] 
     const random_seed = body['random_seed']
+
     // Check to make sure user has sufficient funds
     if (user_current_funds < total_cost) {
       return res.status(400).json({

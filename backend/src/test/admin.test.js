@@ -7,7 +7,7 @@ const addFunds = `
     SET balance = (balance + $2)
     WHERE id = $1
     RETURNING *`;
-const adminkey = '2c6rtf7gy8bFehUVfui373undbjhvUGuhBiUEefpwid';
+const adminkey = process.env.ADMIN_AUTH_TOKEN;
 beforeEach(async() => {
 	try{
 		const client = await postgres.connect(); 
@@ -53,11 +53,7 @@ describe('Choose Winner', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		let authid = authenticating.body.data.auth_token;
+		let authid = signUpResponse.body.data.auth_token;
 		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "tags" : "testing", "sale_price" : 50, "total_tickets":10 };
 		const create = await request(app).post('/api/items/create')
 			.send(itemBody)
@@ -135,11 +131,7 @@ describe('Choose Winner', () => {
 			.send(sellerData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"satulurusid98@gmail.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		let authid = authenticating.body.data.auth_token;
+		let authid = signUpResponse.body.data.auth_token;
 		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "tags" : "testing", "sale_price" : 50, "total_tickets":10 };
 		const create = await request(app).post('/api/items/create')
 			.send(itemBody)

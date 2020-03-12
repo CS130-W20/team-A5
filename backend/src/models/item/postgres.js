@@ -89,6 +89,7 @@ const ItemRepo = (postgres) => {
       return err;
     }
   };
+	
   /**
    * Inserts an item entry into the items tabl
    * 

@@ -8,7 +8,6 @@ build:
 run:
 	-pkill docker-compose
 	docker-compose up postgres backend
-	docker-compose up
 
 run_background:
 	-pkill docker-compose
@@ -16,13 +15,6 @@ run_background:
 
 stop:
 	docker-compose down
-
-run_test:
-	docker build -t rafflebay/test .
-	docker-compose up -d postgres_test test 
-	docker-compose exec postgres_test psql -p 5433 -U postgres rafflebay_test -c "DROP TABLE bids, items, users CASCADE;"
-	docker-compose down
-
 
 test:
 	docker build -t rafflebay/test .
@@ -43,12 +35,10 @@ test_p_shell:
 
 #CAUTION: WILL DELETE ALL DATA
 reset_db: 
-	docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE bids, items, users;"
+	docker-compose exec postgres psql -U postgres rafflebay -c "DROP TABLE bids, items, users, payments, shipments;"
 
 jsdoc:
 	- rm -r JSDoc_Output/
 	docker exec -i -t `docker ps -q --filter status=running --filter ancestor=rafflebay/backend:latest` /bin/sh -c "node_modules/jsdoc/jsdoc.js -r src"
 	docker cp `docker ps -q --filter status=running --filter ancestor=rafflebay/backend:latest`:/app/out/ ./JSDoc_Output
-
-
 
