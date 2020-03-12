@@ -81,6 +81,7 @@ describe('createItem', () => {
 		let authid = authenticating.body.data.auth_token;
 		const response = await request(app).post('/api/items/create')
 			.set('Authorization', `Bearer ${authid}`)
+			.send(null)
 			.expect(400);
 		expect(response.body.message).toEqual("Malformed Request"); 
 	})
@@ -113,42 +114,6 @@ describe('createItem', () => {
 			.send(itemBody)
 			.set('Authorization', `Bearer ${authid}`)
 			.expect(400);  
-	})
-	it('should reject items with the exact same data', async () => {
-		//TODO must first login
-		const userData = {
-			"first_name": "test",
-			"last_name": "User",
-			"email": "user@test.com",
-			"password": "qwerty",
-			"pic_url": "<profile_picture_url>",
-			"address_1": "123 Address Lane",
-			"address_2": "This should be optional",
-			"city": "Los Angeles",
-			"state": "CA",
-			"zip": "90024",
-			"phone": "1234567890"
-		};
-		const signUpResponse = await request(app).post('/api/users/signup')
-			.send(userData)
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		let authid = authenticating.body.data.auth_token;
-		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "tags" : "testing", "sale_price" : 50, "total_tickets":10 };
-		const response = await request(app).post('/api/items/create')
-			.send(itemBody)
-			.set('Accept', 'application/json')
-			.set('Authorization', `Bearer ${authid}`)
-			.expect(200);
-		const response1 = await request(app).post('/api/items/create')
-			.send(itemBody)
-			.set('Accept', 'application/json')
-			.set('Authorization', `Bearer ${authid}`)
-			.expect(400);
 	})
 })
 describe('Create Bid', () => {
