@@ -27,8 +27,6 @@ struct ProfileBidItemView: View {
                 Spacer().frame(height: 1)
                 Text("Total Sale Price: $\(buyingItem.sale_price)")
                     .standardRegularText()
-                Text("Total Tickets Sold: \(buyingItem.tickets_sold)/\(buyingItem.total_tickets)")
-                    .standardRegularText()
                 Text("You Purchased: \(buyingItem.tickets_bought) tickets")
                     .standardRegularText()
                 Text("You Paid: $\(buyingItem.total_cost)")
