@@ -78,6 +78,7 @@ describe('Create User', () => {
 			"first_name": "test",
 			"last_name": "User",
 			"email": "user@test.com",
+			"password": "qwerty",
 			"pic_url": "<profile_picture_url>",
 			"address_1": "123 Address Lane",
 			"address_2": "This should be optional",
@@ -90,7 +91,7 @@ describe('Create User', () => {
 			.send(userData)
 			.set('Accept', 'applications/json')
 			.expect(200); 
-		expect(response.body.data.email).toEqual(userData.email); 
+		expect(response0.body.data.email).toEqual(userData.email); 
 		const response1 = await request(app).post('/api/users/signup')
 			.send(userData)
 			.set('Accept', 'applications/json')
@@ -150,35 +151,6 @@ describe('login', () => {
 			.set('Accept', 'applications/json')
 			.expect(400); 
 	})
-	it('should not allow a user currently logged in', async() => {
-		const userData = {
-			"first_name": "test",
-			"last_name": "User",
-			"email": "user@test.com",
-			"password": "qwerty",
-			"pic_url": "<profile_picture_url>",
-			"address_1": "123 Address Lane",
-			"address_2": "This should be optional",
-			"city": "Los Angeles",
-			"state": "CA",
-			"zip": "90024",
-			"phone": "1234567890"
-		};
-		const response = await request(app).post('/api/users/signup')
-			.send(userData)
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		expect(response.body.data.email).toEqual(userData.email); 
-		const authenticating = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(200); 
-		expect(authenticating.body.data.email).toEqual(userData.email); 
-		const second_auth = await request(app).post('/api/users/login')
-			.send({"email":"user@test.com","password":"qwerty"})
-			.set('Accept', 'applications/json')
-			.expect(400); 
-	})
 })
 describe('get info of other users', () => {
 	it('should not detail any private data of other users', async() => {
@@ -217,7 +189,6 @@ describe('get info of other users', () => {
 			.set('Accept', 'applications/json')
 			.expect(200); 
 		const id2 = user2.body.data.id;
-		console.log(id2)
 		const login = await request(app).post('/api/users/login')
 			.send({"email":"user@test.com","password":"qwerty"})
 			.expect(200)
@@ -226,7 +197,6 @@ describe('get info of other users', () => {
 			.set('Accept', 'applications/json')
 			.set('Authorization', `Bearer ${authid}`)
 			.expect(200); 
-		console.log(response.body.message);
 		expect(response.body.data.balance).toBeUndefined();
 	})
 	it('should detail private data if user is the same as logged in user', async() => {

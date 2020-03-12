@@ -65,6 +65,8 @@ const UserRepo = (postgres) => {
       return err;
     }
   };
+  const checkUserSQL = `
+  	SELECT * FROM users WHERE email=$1 `;
 
   /**
    * Inserts a user entry into the users table
@@ -96,11 +98,18 @@ const UserRepo = (postgres) => {
    */
   const createUser = async (first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, token) => {
     const values = [first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, token];
+	const emails = [email];
     try {
       const client = await postgres.connect();
+	  const check = await client.query(checkUserSQL, emails); 
+	  if(check.rows.length == 0){
       const res = await client.query(createUserSQL, values);
       client.release();
       return [res.rows[0], null];
+	  } else {
+		  client.release();
+		  return[null, "User Already Exists"];
+	  }
     } catch (err) {
       return [null, err];
     }

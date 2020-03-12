@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand --testTimeout=10000",
+    "test": "cross-env NODE_ENV=test jest --verbose  --forceExit --runInBand --testTimeout=10000",
     "serve": "node src/main.js"
   },
   "author": "",

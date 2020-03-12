@@ -19,6 +19,14 @@ const ItemController = (itemModel, userModel, authService) => {
     const tags = body['tags']
     const sale_price = body['sale_price']
     const total_tickets = body['total_tickets']
+	
+	if (item_name == null || item_name == "" ||
+		item_description == null || item_description == "" ||
+		tags == null || tags == "" ||
+		sale_price == null || sale_price == "" ||
+		total_tickets == null || total_tickets == ""){
+		return res.status(400).json({"message":"Malformed Request"});
+	}
     
     // Set other vars
     var dt = new Date();
@@ -108,7 +116,6 @@ const ItemController = (itemModel, userModel, authService) => {
     const ticket_count = body['ticket_count']
     const total_cost = body['total_cost'] 
     const random_seed = body['random_seed']
-
     // Check to make sure user has sufficient funds
     if (user_current_funds < total_cost) {
       return res.status(400).json({

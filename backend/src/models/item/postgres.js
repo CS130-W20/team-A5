@@ -89,7 +89,8 @@ const ItemRepo = (postgres) => {
       return err;
     }
   };
-
+  const checkItemSQL = `
+  	SELECT * FROM items WHERE item_name=$1 AND seller_id=$2`;
   /**
    * Inserts an item entry into the items tabl
    * 
@@ -118,11 +119,18 @@ const ItemRepo = (postgres) => {
    */
   const createItem = async (item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status) => {
     const values = [item_name, seller_id, pic_url, item_description, tags, sale_price, ticket_price, total_tickets, deadline, status];
+	const intoCheck = [item_name, seller_id]; 
     try {
       const client = await postgres.connect();
+	  const check = await client.query(checkItemSQL, intoCheck);
+	  if (check.rows.length == 0) {
       const res = await client.query(createItemSQL, values);
       client.release();
       return [res.rows[0], null];
+	  } else{
+		  client.release();
+		  return [null, "Item Already Exists"];
+	  }
     } catch (err) {
       return [null, err];
     }

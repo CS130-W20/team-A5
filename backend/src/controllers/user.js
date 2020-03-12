@@ -29,7 +29,13 @@ const UserController = (userModel, authService) => {
     if (pic_url == null || pic_url == "") {
       pic_url = "profile"
     }
-
+	if (password == null || password == "" || 
+		first_name == null || first_name == "" ||
+		last_name == null || last_name == "" ||
+		email == null || email == "" ||
+		address_1 == null || address_1 == "" ){
+		return res.status(400).json({"message":"Missing Required Data"});
+	}
     // TEMP Creation of token for user to simulate authentication
     const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     

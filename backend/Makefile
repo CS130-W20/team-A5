@@ -12,7 +12,7 @@ run:
 
 run_background:
 	-pkill docker-compose
-	DATABASE=postgres docker-compose up -d
+	docker-compose up -d postgres backend
 
 stop:
 	docker-compose down
@@ -27,7 +27,8 @@ run_test:
 test:
 	docker build -t rafflebay/test .
 	-pkill docker-compose
-	docker-compose up postgres_test test  
+	docker-compose up --abort-on-container-exit postgres_test test
+	docker-compose down	
 
 format:
 	npx prettier --write --arrow-parens always --single-quote --trailing-comma all --no-bracket-spacing "src/**/*.js"
