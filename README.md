@@ -23,7 +23,6 @@ The testing scenarios described, with their individiual test cases are as follow
   - Creating an item with accepted parameters was expected to succeed.  
   - Creating an item with no body of data describing the item was expected to fail.  
   - Creating an item with missing descriptive data was expected to fail.  
-  - Creating two items that are the exact same should fail.  
 - Bidding on an item   
   - Creating a bid with accepted parameters was expected to succeed.   
   - Creating a bid for an unauthenticated user should fail.   
@@ -34,7 +33,7 @@ The testing scenarios described, with their individiual test cases are as follow
   - Creating a user with missing required fields should fail.   
   - Creating a user with empty required fields should fail.   
   - Creating two users with the same background data should fail.  
--Authenticating a user  
+- Authenticating a user  
   - Authenticating a user with accepted parameters should succeed.  
   - Authenticating a user that does not exist should fail.   
   - Authenticating a user currently logged in should fail.   
