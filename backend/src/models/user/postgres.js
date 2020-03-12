@@ -67,6 +67,32 @@ const UserRepo = (postgres) => {
   };
 
   /**
+   * Retrieve the user when the email is given
+   * 
+   * @type {string}
+   */
+  const getUserInfoByEmailSQL = `
+    SELECT * FROM users WHERE email=$1;`;
+
+  /**
+   * Uses getUserInfoByEmailSQL to retrieve the user, and return either (user, null), or (null, error)
+   * 
+   * @param  {string} email - Email of the user to retrieve
+   * @return {Array<{0: User, 1: String}>} - Array with Rafflebay User Object and error (only one or the other)
+   */
+  const getUserInfoByEmail = async (email) => {
+    const values = [email];
+    try {
+      const client = await postgres.connect();
+      const res = await client.query(getUserInfoByEmailSQL, values);
+      client.release();
+      return [res.rows[0], null];
+    } catch (err) {
+      return [null, err];
+    }
+  };
+
+  /**
    * Inserts a user entry into the users table
    * 
    * @type {string}
@@ -96,11 +122,18 @@ const UserRepo = (postgres) => {
    */
   const createUser = async (first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, token) => {
     const values = [first_name, last_name, email, passhash, pic_url, address_1, address_2, city, state, zip, phone, token];
+	const emails = [email];
     try {
       const client = await postgres.connect();
+	  const check = await client.query(getUserInfoByEmailSQL, emails); 
+	  if(check.rows.length == 0){
       const res = await client.query(createUserSQL, values);
       client.release();
       return [res.rows[0], null];
+	  } else {
+		  client.release();
+		  return[null, "User Already Exists"];
+	  }
     } catch (err) {
       return [null, err];
     }
@@ -132,31 +165,6 @@ const UserRepo = (postgres) => {
     }
   };
 
-  /**
-   * Retrieve the user when the email is given
-   * 
-   * @type {string}
-   */
-  const getUserInfoByEmailSQL = `
-    SELECT * FROM users WHERE email=$1;`;
-
-  /**
-   * Uses getUserInfoByEmailSQL to retrieve the user, and return either (user, null), or (null, error)
-   * 
-   * @param  {string} email - Email of the user to retrieve
-   * @return {Array<{0: User, 1: String}>} - Array with Rafflebay User Object and error (only one or the other)
-   */
-  const getUserInfoByEmail = async (email) => {
-    const values = [email];
-    try {
-      const client = await postgres.connect();
-      const res = await client.query(getUserInfoByEmailSQL, values);
-      client.release();
-      return [res.rows[0], null];
-    } catch (err) {
-      return [null, err];
-    }
-  };
 
   /**
    * Retrieves the user when the id is given, other layers can pick certain fields to return

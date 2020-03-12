@@ -19,6 +19,12 @@ const ItemController = (itemModel, userModel, authService) => {
     const tags = body['tags']
     const sale_price = body['sale_price']
     const total_tickets = body['total_tickets']
+	
+	if (item_name == null || item_name == "" ||
+		sale_price == null || sale_price == "" ||
+		total_tickets == null || total_tickets == ""){
+		return res.status(400).json({"message":"Malformed Request"});
+	}
     
     // Set other vars
     var dt = new Date();

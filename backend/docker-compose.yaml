@@ -23,10 +23,21 @@ services:
     ports:
       - 80:80
     environment:
-      POSTGRES_HOSTNAME: ${DATABASE}
+      POSTGRES_HOSTNAME: postgres
     restart: unless-stopped
+    command: npm run serve
     depends_on: 
-      - ${DATABASE}
+      - postgres
+  test:
+    image: rafflebay/test:latest
+    ports:
+      - 80:80
+    environment:
+      POSTGRES_HOSTNAME: postgres_test
+    restart: "no"
+    command: npm test
+    depends_on: 
+      - postgres_test
 
 volumes:
   rafflebay-pgdata:
