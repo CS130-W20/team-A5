@@ -103,7 +103,7 @@ describe('Choose Winner', () => {
 		const buyerData1 = {
 			"first_name": "test1",
 			"last_name": "User",
-			"email": "ssatuluru@ucla.edu",
+			"email": "humanityisspam@gmail.com",
 			"password": "qwerty",
 			"pic_url": "<profile_picture_url>",
 			"address_1": "747 Gayley Avenue",
