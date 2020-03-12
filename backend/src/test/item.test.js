@@ -85,7 +85,7 @@ describe('createItem', () => {
 			.expect(400);
 		expect(response.body.message).toEqual("Malformed Request"); 
 	})
-	it('should fail on missing data', async() => {
+	it('should fail on required missing data', async() => {
 		//TODO must first login
 		const userData = {
 			"first_name": "test",
@@ -109,11 +109,41 @@ describe('createItem', () => {
 			.set('Accept', 'applications/json')
 			.expect(200); 
 		let authid = authenticating.body.data.auth_token;
-		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "tags" : "testing", "sale_price" : 50, "total_tickets":10 };
+		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "tags" : "testing",  "total_tickets":10 };
 		await request(app).post('/api/items/create')
 			.send(itemBody)
 			.set('Authorization', `Bearer ${authid}`)
 			.expect(400);  
+	})
+	it('should pass on optional missing data', async() => {
+		//TODO must first login
+		const userData = {
+			"first_name": "test",
+			"last_name": "User",
+			"email": "user@test.com",
+			"password": "qwerty",
+			"pic_url": "<profile_picture_url>",
+			"address_1": "123 Address Lane",
+			"address_2": "This should be optional",
+			"city": "Los Angeles",
+			"state": "CA",
+			"zip": "90024",
+			"phone": "1234567890"
+		};
+		const signUpResponse = await request(app).post('/api/users/signup')
+			.send(userData)
+			.set('Accept', 'applications/json')
+			.expect(200); 
+		const authenticating = await request(app).post('/api/users/login')
+			.send({"email":"user@test.com","password":"qwerty"})
+			.set('Accept', 'applications/json')
+			.expect(200); 
+		let authid = authenticating.body.data.auth_token;
+		const itemBody = {"item_name":"testitem", "pic_url":"<test_url>", "item_description" : "description", "sale_price" : 50, "total_tickets":10 };
+		await request(app).post('/api/items/create')
+			.send(itemBody)
+			.set('Authorization', `Bearer ${authid}`)
+			.expect(200);  
 	})
 })
 describe('Create Bid', () => {
